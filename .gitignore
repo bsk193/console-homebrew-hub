@@ -3,3 +3,5 @@ payloads/
 __pycache__/
 *.pyc
 .nojekyll
+ps5_payload_repos.txt
+y2jb_p2jb_repos.txt
