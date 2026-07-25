@@ -8,7 +8,7 @@ This repository contains an automated mirror of useful payloads for the PlayStat
 
 | Payload | Version | Category | Description | Last Updated | Source | Download |
 | --- | --- | --- | --- | --- | --- | --- |
-| **Payload Manager X** | `v0.5.0-x` | Utilities | No description provided. | `2026-07-24` | [Source](https://github.com/bsk193/ps5-payload-manager-x/releases) | [Download](https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/Payload_Manager_X_v0.5.0-x.elf) |
+| **Payload Manager X** | `v0.5.0-x` | Utilities | No description provided. | `2026-07-25` | [Source](https://github.com/bsk193/ps5-payload-manager-x/releases) | [Download](https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/Payload_Manager_X_v0.5.0-x.elf) |
 | **Payload Manager** | `v0.5.0` | Utilities | A modern, web-based dashboard to easily manage, import, and automatically load payloads on your PS5. | `2026-07-21` | [Source](https://github.com/itsPLK/pldmgr/releases) | [Download](https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/Payload_Manager_v0.5.0.elf) |
 | **PS5Upload** | `v4.1.2` | File Transfer | PS5 Upload is a tool designed to get your apps and homebrew onto your console without the headache of slow transfers. | `2026-07-19` | [Source](https://github.com/phantomptr/ps5upload/releases) | [Download](https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/PS5Upload_v4.1.2.elf) |
 | **BFpilot** | `v0.4.1` | File Manager | Lightweight PS5 file manager that is browser based | `2026-07-17` | [Source](https://github.com/ItsBlurf/BFpilot/releases) | [Download](https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/BFpilot_v0.4.1.elf) |
