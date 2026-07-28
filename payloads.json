@@ -1,18 +1,5 @@
 [
   {
-    "name": "Payload Manager X",
-    "filename": "Payload_Manager_X_v0.5.0.2x.elf",
-    "url": "https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/Payload_Manager_X_v0.5.0.2x.elf",
-    "source": "https://github.com/bsk193/ps5-payload-manager-x/releases",
-    "source_direct": "https://github.com/bsk193/ps5-payload-manager-x/releases/download/v0.5.0.2x/pldmgrx_v0.5.0.2x.elf",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-07-28",
-    "release_date": "2026-07-28",
-    "version": "v0.5.0.2x",
-    "checksum": "8e58129af45fb8e277898415d8a91a1c1ebbfd7a757b1465d0d04bea0826fcf0"
-  },
-  {
     "name": "BFpilot",
     "filename": "BFpilot_v0.4.3.elf",
     "url": "https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/BFpilot_v0.4.3.elf",
