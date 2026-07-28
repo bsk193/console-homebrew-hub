@@ -72,5 +72,11 @@
     "source": "https://github.com/drakmor/ShadowMountPlus/releases",
     "category": "Utilities",
     "description": ""
+  },
+  {
+    "name": "websrv",
+    "source": "https://github.com/ps5-payload-dev/websrv/releases",
+    "category": "Utilities",
+    "description": ""
   }
 ]
