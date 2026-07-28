@@ -48,5 +48,11 @@
     "source": "https://github.com/bsk193/elf-arsenal-mirror/releases",
     "category": "Utilities",
     "description": ""
+  },
+  {
+    "name": "PS5 Linux Loader",
+    "source": "https://github.com/ps5-linux/ps5-linux-loader/releases",
+    "category": "Utilities",
+    "description": ""
   }
 ]
