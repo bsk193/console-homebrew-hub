@@ -162,5 +162,11 @@
     "source": "https://github.com/EchoStretch/kstuff/releases",
     "category": "Utilities",
     "description": ""
+  },
+  {
+    "name": "etaHEN",
+    "source": "https://github.com/etaHEN/etaHEN/releases",
+    "category": "Utilities",
+    "description": ""
   }
 ]
