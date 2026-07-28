@@ -11,5 +11,12 @@
     "asset_pattern": "^bfpilot\\.elf$",
     "category": "Utilities",
     "description": ""
+  },
+  {
+    "name": "BFpilot Installer",
+    "source": "https://github.com/ItsBlurf/BFpilot/releases",
+    "asset_pattern": "^bfpilot-launcher-installer\\.elf$",
+    "category": "Utilities",
+    "description": ""
   }
 ]
