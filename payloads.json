@@ -150,5 +150,11 @@
     "source": "https://github.com/drakmor/ftpsrv/releases",
     "category": "Utilities",
     "description": ""
+  },
+  {
+    "name": "NPFakeSignIn",
+    "source": "https://github.com/earthonion/np-fake-signin/releases",
+    "category": "Utilities",
+    "description": ""
   }
 ]
