@@ -30,5 +30,11 @@
     "source": "https://github.com/EchoStretch/ps5-app-dumper/releases",
     "category": "Utilities",
     "description": ""
+  },
+  {
+    "name": "PS5Upload",
+    "source": "https://github.com/phantomptr/ps5upload/releases",
+    "category": "Utilities",
+    "description": ""
   }
 ]
