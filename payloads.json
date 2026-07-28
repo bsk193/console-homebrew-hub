@@ -36,5 +36,11 @@
     "source": "https://github.com/phantomptr/ps5upload/releases",
     "category": "Utilities",
     "description": ""
+  },
+  {
+    "name": "Garlic Save Manager",
+    "source": "https://github.com/earthonion/garlic-savemgr/releases",
+    "category": "Utilities",
+    "description": ""
   }
 ]
