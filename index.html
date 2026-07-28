@@ -262,8 +262,8 @@ textarea.f-input{resize:vertical;min-height:68px}
       <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
     </button>
     <button class="btn-run" id="quick-run-btn">
-      <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-      Run Mirror Update
+      <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+      Push to Mirror
     </button>
   </header>
 
@@ -568,33 +568,17 @@ async function commitPayloads(msg) {
   sha = d.content.sha;
 }
 
-async function autoTriggerMirror() {
-  try {
-    await ghFetch(`/repos/${REPO.owner}/${REPO.repo}/actions/workflows/update_mirror.yml/dispatches`,
-      { method:'POST', body:{ ref:REPO.branch } });
-    toast('Mirror update triggered — ELFs will sync shortly','wn');
-    setTimeout(loadRuns, 4000);
-  } catch(e) {
-    toast('Saved, but mirror trigger failed: '+e.message,'wn');
-  }
-}
 
 async function triggerWF(wf, label, btn) {
   const orig = btn.innerHTML; btn.disabled=true;
   btn.innerHTML=`<svg class="spin" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 11-9-9"/></svg> Running…`;
-  const qb = document.getElementById('quick-run-btn');
-  const qorig = qb.innerHTML; qb.disabled=true;
-  qb.innerHTML=`<svg class="spin" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 11-9-9"/></svg> Triggered…`;
   try {
     await ghFetch(`/repos/${REPO.owner}/${REPO.repo}/actions/workflows/${wf}/dispatches`,
       { method:'POST', body:{ ref:REPO.branch } });
     toast(`${label} triggered`,'ok');
     setTimeout(loadRuns,4000);
   } catch(e) { toast('Trigger failed: '+e.message,'err'); }
-  finally {
-    btn.disabled=false; btn.innerHTML=orig;
-    qb.disabled=false; qb.innerHTML=qorig;
-  }
+  finally { btn.disabled=false; btn.innerHTML=orig; }
 }
 
 async function loadRuns() {
@@ -613,8 +597,7 @@ document.getElementById('search-input').addEventListener('input', e => {
 });
 document.getElementById('add-btn').addEventListener('click', openAddModal);
 document.getElementById('quick-run-btn').addEventListener('click', () => {
-  const btn = document.getElementById('quick-run-btn');
-  triggerWF('update_mirror.yml','Mirror Update',btn);
+  triggerWF('update_mirror.yml', 'Mirror Update', document.getElementById('quick-run-btn'));
 });
 
 function buildChips(search='') {
@@ -763,7 +746,6 @@ async function submitPayload() {
     closeModal('payload-modal');
     renderPayloads(); updateBadge();
     toast(isEdit ? `${name} updated` : `${name} added`,'ok');
-    autoTriggerMirror();
   } catch(e) {
     toast('Save failed: '+e.message,'err');
     await loadPayloads(); // reload to get fresh sha
@@ -788,7 +770,6 @@ document.getElementById('del-confirm').addEventListener('click', async () => {
     closeModal('del-modal');
     renderPayloads(); updateBadge();
     toast(`${name} removed`,'ok');
-    autoTriggerMirror();
   } catch(e) {
     toast('Delete failed: '+e.message,'err');
     await loadPayloads();

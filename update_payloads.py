@@ -349,8 +349,15 @@ def update_payloads():
 
             existing_filename = item.get("filename", "")
             if stored_tag != new_version or not existing_filename:
-                # New version (or no filename yet): derive filename from current display name
-                new_filename = f"{sanitize_for_filename(final_name)}_{sanitize_for_version(new_version)}.{ext}"
+                # Derive filename from the source asset name, not the display name
+                base = re.sub(r'\s+', '_', original_filename.rsplit('.', 1)[0])
+                ver_tag = new_version.lstrip('v')
+                version_str = sanitize_for_version(new_version)
+                if ver_tag.lower() in base.lower() or version_str.lower() in base.lower():
+                    # Version already present in the source filename — don't duplicate it
+                    new_filename = f"{base}.{ext}"
+                else:
+                    new_filename = f"{base}_{version_str}.{ext}"
             else:
                 # Same version: preserve existing filename so display-name changes don't rename the file
                 new_filename = existing_filename
