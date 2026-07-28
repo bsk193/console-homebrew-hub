@@ -78,5 +78,11 @@
     "source": "https://github.com/ps5-payload-dev/websrv/releases",
     "category": "Utilities",
     "description": ""
+  },
+  {
+    "name": "shsrv",
+    "source": "https://github.com/ps5-payload-dev/shsrv/releases",
+    "category": "Utilities",
+    "description": ""
   }
 ]
