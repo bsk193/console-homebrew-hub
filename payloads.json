@@ -342,7 +342,7 @@
   {
     "name": "zftpd",
     "source": "https://github.com/seregonwar/zftpd/releases",
-    "asset_pattern": "^zfpd-ps5-v1.5.0\\.elf$",
+    "asset_pattern": "^zfpd-ps5-v.+\\.elf$",
     "category": "Utilities",
     "description": ""
   },
