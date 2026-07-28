@@ -120,5 +120,11 @@
     "source": "https://github.com/itsPLK/PS5-Lapy-JB-Daemon/releases",
     "category": "Utilities",
     "description": ""
+  },
+  {
+    "name": "ftpsrv",
+    "source": "https://github.com/ps5-payload-dev/ftpsrv/releases",
+    "category": "Utilities",
+    "description": ""
   }
 ]
