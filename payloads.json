@@ -54,5 +54,11 @@
     "source": "https://github.com/ps5-linux/ps5-linux-loader/releases",
     "category": "Utilities",
     "description": ""
+  },
+  {
+    "name": "KStuff Lite",
+    "source": "https://github.com/EchoStretch/kstuff-lite/releases",
+    "category": "Utilities",
+    "description": ""
   }
 ]
