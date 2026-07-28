@@ -42,5 +42,11 @@
     "source": "https://github.com/earthonion/garlic-savemgr/releases",
     "category": "Utilities",
     "description": ""
+  },
+  {
+    "name": "ELFArsenal",
+    "source": "https://github.com/bsk193/elf-arsenal-mirror/releases",
+    "category": "Utilities",
+    "description": ""
   }
 ]
