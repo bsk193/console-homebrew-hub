@@ -11,5 +11,11 @@
     "release_date": "2026-07-28",
     "version": "v0.5.0.2x",
     "checksum": "8e58129af45fb8e277898415d8a91a1c1ebbfd7a757b1465d0d04bea0826fcf0"
+  },
+  {
+    "name": "Payload Manager",
+    "source": "https://github.com/itsPLK/ps5-payload-manager/releases",
+    "category": "Utilities",
+    "description": ""
   }
 ]
