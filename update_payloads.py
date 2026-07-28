@@ -98,7 +98,7 @@ def calculate_checksum(filepath):
         return None
 
 def reorder_item(item):
-    order = ["name", "filename", "url", "source", "source_direct", "asset_pattern", "extract_file", "category", "min_fw", "description", "last_update", "release_date", "version", "checksum"]
+    order = ["name", "filename", "url", "source", "source_direct", "asset_pattern", "extract_file", "category", "min_fw", "max_fw", "description", "last_update", "release_date", "version", "checksum"]
     new_item = {}
     for key in order:
         if key in item:
@@ -308,28 +308,31 @@ def update_payloads():
             new_date = release["published_at"][:10]
             is_zip = original_filename.endswith(".zip")
             
-            proposed_name = repo_name
-            final_name = item.get("name", proposed_name)
-            
-            # Format: final_name_version.ext
+            final_name = item.get("name", repo_name)
+
             if is_zip:
                 ext = "elf"
             else:
                 ext = original_filename.rsplit('.', 1)[1] if '.' in original_filename else "bin"
-            
-            new_filename = f"{sanitize_for_filename(final_name)}_{sanitize_for_version(new_version)}.{ext}"
-
-            min_fw = item.get("min_fw")
-            version_display = f"{new_version} FW {min_fw}" if min_fw else new_version
 
             # Strip any existing FW suffix from stored version for comparison
             stored_version = item.get("version", "")
             stored_tag = stored_version.split(" FW ")[0] if " FW " in stored_version else stored_version
 
+            existing_filename = item.get("filename", "")
+            if stored_tag != new_version or not existing_filename:
+                # New version (or no filename yet): derive filename from current display name
+                new_filename = f"{sanitize_for_filename(final_name)}_{sanitize_for_version(new_version)}.{ext}"
+            else:
+                # Same version: preserve existing filename so display-name changes don't rename the file
+                new_filename = existing_filename
+
+            # Version string is just the tag — FW range is in min_fw/max_fw fields
+            version_display = new_version
+
             filepath = os.path.join(PAYLOADS_DIR, new_filename)
             needs_download = (
                 stored_tag != new_version or
-                item.get("filename") != new_filename or
                 new_filename not in mirror_assets
             )
             
@@ -394,7 +397,7 @@ def update_payloads():
                     item["url"] = f"{BASE_URL}/{new_filename}"
                     item["source_direct"] = gh_url
                     item["release_date"] = new_date
-                    item["last_update"] = item.get("min_fw") or new_date
+                    item["last_update"] = new_date
                     item["checksum"] = calculate_checksum(filepath)
                     if extract_file and is_zip:
                         item["extract_file"] = extract_file
@@ -407,10 +410,9 @@ def update_payloads():
                 if item.get("version") != version_display:
                     item["version"] = version_display
                     changed = True
-                expected_last_update = item.get("min_fw") or new_date
-                if item.get("last_update") != expected_last_update:
+                if item.get("last_update") != new_date:
                     item["release_date"] = new_date
-                    item["last_update"] = expected_last_update
+                    item["last_update"] = new_date
                     changed = True
                 if changed:
                     updated = True
