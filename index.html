@@ -375,13 +375,13 @@ textarea.f-input{resize:vertical;min-height:68px}
       <div class="field-row">
         <div class="field">
           <label>Asset Pattern</label>
-          <input class="f-input" id="f-asset-pattern" placeholder="payload.*\.elf$">
-          <span class="hint">Regex to pick the right asset when multiple ELFs exist</span>
+          <input class="f-input" id="f-asset-pattern" placeholder="e.g. ^bfpilot\.elf$">
+          <span class="hint">Required when a release has multiple ELFs — regex matched against the asset filename. Without this, CI skips entries where more than one ELF qualifies.</span>
         </div>
         <div class="field">
           <label>Extract File</label>
           <input class="f-input" id="f-extract-file" placeholder="payload.elf">
-          <span class="hint">Filename inside a .zip asset to extract</span>
+          <span class="hint">Filename to extract when the asset is a .zip</span>
         </div>
       </div>
       <div class="field-row">

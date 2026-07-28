@@ -277,9 +277,16 @@ def update_payloads():
             continue
             
         asset_pattern = item.get("asset_pattern")
+        source_direct = item.get("source_direct", "")
+        # If source_direct points to a specific asset filename, treat it as the pattern
+        if source_direct and not asset_pattern:
+            sd_basename = source_direct.rstrip("/").split("/")[-1]
+            if sd_basename:
+                asset_pattern = re.escape(sd_basename)
+
         has_extract = "extract_file" in item
         preferred_ext = ".bin" if "etaHEN" in repo_name else ".elf"
-        
+
         def score_asset(name):
             name_lower = name.lower()
             
@@ -308,13 +315,21 @@ def update_payloads():
 
         selected_asset = None
         best_score = -2
+        qualifying = []
         for asset in assets:
             score = score_asset(asset["name"])
+            if score > -1:
+                qualifying.append(asset)
             if score > best_score:
                 best_score = score
                 selected_asset = asset
-        
+
         if selected_asset and best_score > -1:
+            if len(qualifying) > 1 and not asset_pattern and not item.get("source_direct"):
+                names = ", ".join(a["name"] for a in qualifying)
+                print(f"  Skipping '{item.get('name')}': {len(qualifying)} assets qualify ({names}). "
+                      f"Set asset_pattern or source_direct to pick one.")
+                continue
             gh_url = selected_asset["browser_download_url"]
             original_filename = selected_asset["name"]
             new_version = release["tag_name"]
