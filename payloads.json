@@ -96,5 +96,11 @@
     "source": "https://github.com/OpenSourcereR-dev/ps5debug-NG/releases",
     "category": "Utilities",
     "description": ""
+  },
+  {
+    "name": "PS5GameCompressor",
+    "source": "https://github.com/juma-sayeh/PS5-Game-Compressor/releases",
+    "category": "Utilities",
+    "description": ""
   }
 ]
