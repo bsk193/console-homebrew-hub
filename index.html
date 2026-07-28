@@ -292,7 +292,7 @@ textarea.f-input{resize:vertical;min-height:68px}
         <table>
           <thead>
             <tr>
-              <th>Name</th><th>Version</th><th>Category</th><th>Min FW</th><th>Updated</th><th>Actions</th>
+              <th>Name</th><th>Version</th><th>Category</th><th>Firmware</th><th>Updated</th><th>Actions</th>
             </tr>
           </thead>
           <tbody id="tbody"></tbody>
@@ -357,13 +357,9 @@ textarea.f-input{resize:vertical;min-height:68px}
         </div>
         <div class="field">
           <label>Category *</label>
-          <select class="f-input" id="f-category">
-            <option value="">Select…</option>
-            <option>Debug</option><option>File Manager</option><option>File Transfer</option>
-            <option>HEN</option><option>Kernel</option><option>Linux</option>
-            <option>Network</option><option>Package Manager</option><option>Save Manager</option>
-            <option>Storage</option><option>Utilities</option>
-          </select>
+          <input class="f-input" id="f-category" list="cat-datalist" placeholder="Select or type…" autocomplete="off">
+          <datalist id="cat-datalist"></datalist>
+          <span class="hint">Pick existing or type a new category name</span>
         </div>
       </div>
       <div class="field">
@@ -388,9 +384,15 @@ textarea.f-input{resize:vertical;min-height:68px}
           <span class="hint">Filename inside a .zip asset to extract</span>
         </div>
       </div>
-      <div class="field">
-        <label>Minimum Firmware</label>
-        <input class="f-input" id="f-min-fw" placeholder="e.g. 3.00-12.70">
+      <div class="field-row">
+        <div class="field">
+          <label>Min Firmware</label>
+          <input class="f-input" id="f-min-fw" placeholder="e.g. 3.00">
+        </div>
+        <div class="field">
+          <label>Max Firmware</label>
+          <input class="f-input" id="f-max-fw" placeholder="e.g. 12.70">
+        </div>
       </div>
       <div class="field">
         <label>Description</label>
@@ -466,7 +468,7 @@ textarea.f-input{resize:vertical;min-height:68px}
 
 <script>
 const REPO = { owner:'bsk193', repo:'ps5-payloads-mirror', branch:'main' };
-const FIELD_ORDER = ['name','filename','url','source','source_direct','asset_pattern','extract_file','category','min_fw','description','last_update','release_date','version','checksum'];
+const FIELD_ORDER = ['name','filename','url','source','source_direct','asset_pattern','extract_file','category','min_fw','max_fw','description','last_update','release_date','version','checksum'];
 
 let token = sessionStorage.getItem('gh_pat') || '';
 let payloads = [], sha = '', catFilter = '', editIdx = -1, deleteIdx = -1;
@@ -634,7 +636,7 @@ function renderPayloads(search='') {
       <td class="cell-name">${esc(p.name)}</td>
       <td class="cell-ver">${esc(p.version||p.last_update||'—')}</td>
       <td><span class="cat-tag">${esc(p.category||'—')}</span></td>
-      <td class="cell-fw">${esc(p.min_fw||'—')}</td>
+      <td class="cell-fw">${fwRange(p)}</td>
       <td class="cell-date">${esc(p.release_date||p.last_update||'—')}</td>
       <td><div class="row-actions">
         <button class="btn-edit" data-idx="${idx}">
@@ -654,14 +656,24 @@ function renderPayloads(search='') {
 
 function updateBadge() { document.getElementById('payload-count').textContent=payloads.length; }
 function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function fwRange(p) {
+  if(p.min_fw && p.max_fw) return `<span class="cell-fw">${esc(p.min_fw)} – ${esc(p.max_fw)}</span>`;
+  return `<span class="cell-fw">${esc(p.min_fw||p.max_fw||'—')}</span>`;
+}
 
 // ── ADD / EDIT MODAL ────────────────────────────────────────────────────────
+function populateCatDatalist() {
+  const cats = [...new Set(payloads.map(p=>p.category).filter(Boolean))].sort();
+  const dl = document.getElementById('cat-datalist');
+  dl.innerHTML = cats.map(c=>`<option value="${esc(c)}">`).join('');
+}
+
 function openAddModal() {
   editIdx=-1;
   document.getElementById('modal-title').textContent='Add Payload';
   document.getElementById('modal-save').textContent='Add Payload';
   document.getElementById('edit-ci-fields').style.display='none';
-  clearForm();
+  clearForm(); populateCatDatalist();
   openModal('payload-modal');
 }
 
@@ -671,10 +683,11 @@ function openEditModal(idx) {
   document.getElementById('modal-title').textContent=`Edit — ${p.name}`;
   document.getElementById('modal-save').textContent='Save Changes';
   document.getElementById('edit-ci-fields').style.display='';
+  populateCatDatalist();
   setField('f-name',p.name); setField('f-category',p.category);
   setField('f-source',p.source); setField('f-source-direct',p.source_direct);
   setField('f-asset-pattern',p.asset_pattern); setField('f-extract-file',p.extract_file);
-  setField('f-min-fw',p.min_fw); setField('f-description',p.description);
+  setField('f-min-fw',p.min_fw); setField('f-max-fw',p.max_fw); setField('f-description',p.description);
   setField('f-version',p.version); setField('f-release-date',p.release_date);
   setField('f-last-update',p.last_update); setField('f-filename',p.filename);
   setField('f-url',p.url); setField('f-checksum',p.checksum);
@@ -684,7 +697,7 @@ function openEditModal(idx) {
 function setField(id, val) { const el=document.getElementById(id); if(el) el.value=val||''; }
 function clearForm() {
   ['f-name','f-category','f-source','f-source-direct','f-asset-pattern','f-extract-file',
-   'f-min-fw','f-description','f-version','f-release-date','f-last-update','f-filename','f-url','f-checksum']
+   'f-min-fw','f-max-fw','f-description','f-version','f-release-date','f-last-update','f-filename','f-url','f-checksum']
     .forEach(id => { const el=document.getElementById(id); if(el) el.value=''; el&&el.classList.remove('err'); });
 }
 
@@ -715,6 +728,7 @@ async function submitPayload() {
     const ap=g('f-asset-pattern'); if(ap) entry.asset_pattern=ap; else if(!isEdit) delete entry.asset_pattern;
     const ef=g('f-extract-file'); if(ef) entry.extract_file=ef; else if(!isEdit) delete entry.extract_file;
     const fw=g('f-min-fw'); if(fw) entry.min_fw=fw; else delete entry.min_fw;
+    const mfw=g('f-max-fw'); if(mfw) entry.max_fw=mfw; else delete entry.max_fw;
     entry.description=g('f-description');
     if(isEdit) {
       const ver=g('f-version'); if(ver) entry.version=ver;
