@@ -102,5 +102,11 @@
     "source": "https://github.com/juma-sayeh/PS5-Game-Compressor/releases",
     "category": "Utilities",
     "description": ""
+  },
+  {
+    "name": "zftpd",
+    "source": "https://github.com/seregonwar/zftpd/releases",
+    "category": "Utilities",
+    "description": ""
   }
 ]
