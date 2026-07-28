@@ -114,5 +114,11 @@
     "source": "https://github.com/drakmor/nanoDNS/releases",
     "category": "Utilities",
     "description": ""
+  },
+  {
+    "name": "Lapy JB Daemon",
+    "source": "https://github.com/itsPLK/PS5-Lapy-JB-Daemon/releases",
+    "category": "Utilities",
+    "description": ""
   }
 ]
