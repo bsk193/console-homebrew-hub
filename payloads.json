@@ -60,5 +60,11 @@
     "source": "https://github.com/EchoStretch/kstuff-lite/releases",
     "category": "Utilities",
     "description": ""
+  },
+  {
+    "name": "KStuff Lite DR",
+    "source": "https://github.com/drakmor/kstuff-lite/releases",
+    "category": "Utilities",
+    "description": ""
   }
 ]
