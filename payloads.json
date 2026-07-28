@@ -99,6 +99,8 @@
     "source": "https://github.com/ps5-linux/ps5-linux-loader/releases",
     "source_direct": "https://github.com/ps5-linux/ps5-linux-loader/releases/download/v2.4/ps5-linux-loader.elf",
     "category": "Utilities",
+    "min_fw": "3.00",
+    "max_fw": "7.61",
     "description": "",
     "last_update": "2026-07-06",
     "release_date": "2026-07-06",
