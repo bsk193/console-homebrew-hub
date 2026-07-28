@@ -6,10 +6,14 @@ This repository contains an automated mirror of useful payloads for the PlayStat
 
 <!-- PAYLOADS_START -->
 
-| Payload | Version | Category | Description | Last Updated | Source | Download |
+### Utilities
+
+| Payload | Version | FW Range | Description | Last Updated | Source | Download |
 | --- | --- | --- | --- | --- | --- | --- |
-| **Payload Manager X** | `v0.5.0.2x` | Utilities | No description provided. | `2026-07-28` | [Source](https://github.com/bsk193/ps5-payload-manager-x/releases) | [Download](https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/Payload_Manager_X_v0.5.0.2x.elf) |
-| **Payload Manager** | `v0.5.0` | Utilities | No description provided. | `2026-07-21` | [Source](https://github.com/itsPLK/ps5-payload-manager/releases) | [Download](https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/Payload_Manager_v0.5.0.elf) |
+| **BFpilot** | `v0.4.3` | `—` | No description provided. | `2026-07-27` | [Source](https://github.com/ItsBlurf/BFpilot/releases) | [Download](https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/BFpilot_v0.4.3.elf) |
+| **BFpilot Installer** | `v0.4.3` | `—` | No description provided. | `2026-07-27` | [Source](https://github.com/ItsBlurf/BFpilot/releases) | [Download](https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/BFpilot_Installer_v0.4.3.elf) |
+| **Payload Manager** | `v0.5.0` | `—` | No description provided. | `2026-07-21` | [Source](https://github.com/itsPLK/ps5-payload-manager/releases) | [Download](https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/Payload_Manager_v0.5.0.elf) |
+| **Payload Manager X** | `v0.5.0.2x` | `—` | No description provided. | `2026-07-28` | [Source](https://github.com/bsk193/ps5-payload-manager-x/releases) | [Download](https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/Payload_Manager_X_v0.5.0.2x.elf) |
 
 <!-- PAYLOADS_END -->
 
