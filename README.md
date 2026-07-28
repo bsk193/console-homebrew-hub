@@ -37,7 +37,7 @@ This repository contains an automated mirror of useful payloads for the PlayStat
 | **ShadowMountPlus** | `1.6beta16` | `—` | No description provided. | `2026-06-28` | [Source](https://github.com/drakmor/ShadowMountPlus/releases) | [Download](https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/shadowmountplus_1.6beta16.elf) |
 | **shsrv** | `v0.19` | `—` | No description provided. | `2026-06-28` | [Source](https://github.com/ps5-payload-dev/shsrv/releases) | [Download](https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/shsrv-ps5_v0.19.elf) |
 | **websrv** | `v0.33` | `—` | No description provided. | `2026-06-28` | [Source](https://github.com/ps5-payload-dev/websrv/releases) | [Download](https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/websrv-ps5_v0.33.elf) |
-| **zftpd** | `Unknown` | `—` | No description provided. | `Unknown` | [Source](https://github.com/seregonwar/zftpd/releases) | [Download](#) |
+| **zftpd** | `v1.5.0` | `—` | No description provided. | `2026-06-14` | [Source](https://github.com/seregonwar/zftpd/releases) | [Download](https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/zftpd-ps5-v1.5.0.elf) |
 
 <!-- PAYLOADS_END -->
 

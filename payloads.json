@@ -197,6 +197,20 @@
     "checksum": "51b66edf6210c022d57a31ab12bf97f95a3c71ea683df387d9081494f11606b2"
   },
   {
+    "name": "zftpd",
+    "filename": "zftpd-ps5-v1.5.0.elf",
+    "url": "https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/zftpd-ps5-v1.5.0.elf",
+    "source": "https://github.com/seregonwar/zftpd/releases",
+    "source_direct": "https://github.com/seregonwar/zftpd/releases/download/v1.5.0/zftpd-ps5-v1.5.0.elf",
+    "asset_pattern": "^zftpd-ps5-v.+\\.elf$",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-06-14",
+    "release_date": "2026-06-14",
+    "version": "v1.5.0",
+    "checksum": "68a80e1cb45544c15b1581a49154ad14aa8e29483e5fec786f2a95e0e28ea6cb"
+  },
+  {
     "name": "nanoDNS",
     "filename": "nanodns_0.3.elf",
     "url": "https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/nanodns_0.3.elf",
@@ -352,12 +366,5 @@
     "release_date": "2025-12-25",
     "version": "2.5B",
     "checksum": "4845cac45095361b8983b14d6690622183b0dcfbf6d7fda16e161aa91ff0531e"
-  },
-  {
-    "name": "zftpd",
-    "source": "https://github.com/seregonwar/zftpd/releases",
-    "asset_pattern": "^zftpd-ps5-v.+\\.elf$",
-    "category": "Utilities",
-    "description": ""
   }
 ]
