@@ -31,5 +31,12 @@
     "extract_file": "bfpilot.elf",
     "category": "Utilities",
     "description": ""
+  },
+  {
+    "name": "BFpilot Installer",
+    "source": "https://github.com/ItsBlurf/BFpilot/releases",
+    "extract_file": "bfpilot-launcher-installer.elf",
+    "category": "Utilities",
+    "description": ""
   }
 ]
