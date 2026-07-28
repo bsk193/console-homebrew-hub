@@ -144,5 +144,11 @@
     "source": "https://github.com/BestPig/BackPork/releases",
     "category": "Utilities",
     "description": ""
+  },
+  {
+    "name": "ftpsrv DR",
+    "source": "https://github.com/drakmor/ftpsrv/releases",
+    "category": "Utilities",
+    "description": ""
   }
 ]
