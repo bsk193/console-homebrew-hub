@@ -132,5 +132,11 @@
     "source": "https://github.com/ps5-payload-dev/klogsrv/releases",
     "category": "Utilities",
     "description": ""
+  },
+  {
+    "name": "elfldr",
+    "source": "https://github.com/ps5-payload-dev/elfldr/releases",
+    "category": "Utilities",
+    "description": ""
   }
 ]
