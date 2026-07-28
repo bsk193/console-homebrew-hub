@@ -349,6 +349,7 @@
   {
     "name": "ftpsrv",
     "source": "https://github.com/ps5-payload-dev/ftpsrv/releases",
+    "asset_pattern": "^ftpsrv-ps5\\.elf$",
     "category": "Utilities",
     "description": ""
   }
