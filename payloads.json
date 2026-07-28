@@ -156,5 +156,11 @@
     "source": "https://github.com/earthonion/np-fake-signin/releases",
     "category": "Utilities",
     "description": ""
+  },
+  {
+    "name": "KStuff",
+    "source": "https://github.com/EchoStretch/kstuff/releases",
+    "category": "Utilities",
+    "description": ""
   }
 ]
