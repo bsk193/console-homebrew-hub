@@ -84,5 +84,11 @@
     "source": "https://github.com/ps5-payload-dev/shsrv/releases",
     "category": "Utilities",
     "description": ""
+  },
+  {
+    "name": "PegasusDL",
+    "source": "https://github.com/pegasus-ps5/pegasus-dl/releases",
+    "category": "Utilities",
+    "description": ""
   }
 ]
