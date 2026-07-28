@@ -1,18 +1,5 @@
 [
   {
-    "name": "BFpilot",
-    "filename": "BFpilot_v0.4.3.elf",
-    "url": "https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/BFpilot_v0.4.3.elf",
-    "source": "https://github.com/ItsBlurf/BFpilot/releases",
-    "source_direct": "https://github.com/ItsBlurf/BFpilot/releases/download/v0.4.3/bfpilot.elf",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-07-27",
-    "release_date": "2026-07-27",
-    "version": "v0.4.3",
-    "checksum": "e2ca0a948f0d2b5d57f73672836714847a7850c0f07e0859e755e7cbb0204786"
-  },
-  {
     "name": "BFpilot Installer",
     "filename": "BFpilot_Installer_v0.4.3.elf",
     "url": "https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/BFpilot_Installer_v0.4.3.elf",
