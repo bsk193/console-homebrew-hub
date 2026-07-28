@@ -564,6 +564,17 @@ async function commitPayloads(msg) {
   sha = d.content.sha;
 }
 
+async function autoTriggerMirror() {
+  try {
+    await ghFetch(`/repos/${REPO.owner}/${REPO.repo}/actions/workflows/update_mirror.yml/dispatches`,
+      { method:'POST', body:{ ref:REPO.branch } });
+    toast('Mirror update triggered — ELFs will sync shortly','wn');
+    setTimeout(loadRuns, 4000);
+  } catch(e) {
+    toast('Saved, but mirror trigger failed: '+e.message,'wn');
+  }
+}
+
 async function triggerWF(wf, label, btn) {
   const orig = btn.innerHTML; btn.disabled=true;
   btn.innerHTML=`<svg class="spin" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 11-9-9"/></svg> Running…`;
@@ -747,7 +758,8 @@ async function submitPayload() {
     await commitPayloads(isEdit ? `feat: update ${name}` : `feat: add ${name}`);
     closeModal('payload-modal');
     renderPayloads(); updateBadge();
-    toast(isEdit ? `${name} updated` : `${name} added — run CI to fetch ELF`,'ok');
+    toast(isEdit ? `${name} updated` : `${name} added`,'ok');
+    autoTriggerMirror();
   } catch(e) {
     toast('Save failed: '+e.message,'err');
     await loadPayloads(); // reload to get fresh sha
@@ -772,6 +784,7 @@ document.getElementById('del-confirm').addEventListener('click', async () => {
     closeModal('del-modal');
     renderPayloads(); updateBadge();
     toast(`${name} removed`,'ok');
+    autoTriggerMirror();
   } catch(e) {
     toast('Delete failed: '+e.message,'err');
     await loadPayloads();
