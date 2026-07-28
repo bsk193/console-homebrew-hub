@@ -108,5 +108,11 @@
     "source": "https://github.com/seregonwar/zftpd/releases",
     "category": "Utilities",
     "description": ""
+  },
+  {
+    "name": "nanoDNS",
+    "source": "https://github.com/drakmor/nanoDNS/releases",
+    "category": "Utilities",
+    "description": ""
   }
 ]
