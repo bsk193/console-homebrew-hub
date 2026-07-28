@@ -262,6 +262,20 @@
     "checksum": "092d16ee0ede0c494947efd38d1a17bbd7cc4b022d3858ea898833c188c703e8"
   },
   {
+    "name": "ftpsrv",
+    "filename": "ftpsrv-ps5_v0.20.elf",
+    "url": "https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/ftpsrv-ps5_v0.20.elf",
+    "source": "https://github.com/ps5-payload-dev/ftpsrv/releases",
+    "source_direct": "https://github.com/ps5-payload-dev/ftpsrv/releases/download/v0.20/ftpsrv-ps5.elf",
+    "asset_pattern": "^ftpsrv-ps5\\.elf$",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-05-12",
+    "release_date": "2026-05-12",
+    "version": "v0.20",
+    "checksum": "8f305a959fb9d70fd8d52ba88409e0d5a1632e83d4ecdd38646a0a33e54089da"
+  },
+  {
     "name": "BackPork",
     "filename": "ps5-backpork_0.1.elf",
     "url": "https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/ps5-backpork_0.1.elf",
@@ -343,13 +357,6 @@
     "name": "zftpd",
     "source": "https://github.com/seregonwar/zftpd/releases",
     "asset_pattern": "^zfpd-ps5-v.+\\.elf$",
-    "category": "Utilities",
-    "description": ""
-  },
-  {
-    "name": "ftpsrv",
-    "source": "https://github.com/ps5-payload-dev/ftpsrv/releases",
-    "asset_pattern": "^ftpsrv-ps5\\.elf$",
     "category": "Utilities",
     "description": ""
   }
