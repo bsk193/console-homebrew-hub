@@ -126,5 +126,11 @@
     "source": "https://github.com/ps5-payload-dev/ftpsrv/releases",
     "category": "Utilities",
     "description": ""
+  },
+  {
+    "name": "klogsrv",
+    "source": "https://github.com/ps5-payload-dev/klogsrv/releases",
+    "category": "Utilities",
+    "description": ""
   }
 ]
