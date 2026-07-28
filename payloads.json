@@ -1,43 +1,28 @@
 [
   {
     "name": "Payload Manager X",
-    "filename": "pldmgrx_v0.5.0.2x.elf",
-    "url": "https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/pldmgrx_v0.5.0.2x.elf",
     "source": "https://github.com/bsk193/ps5-payload-manager-x/releases",
-    "source_direct": "https://github.com/bsk193/ps5-payload-manager-x/releases/download/v0.5.0.2x/pldmgrx_v0.5.0.2x.elf",
     "category": "Utilities",
-    "description": "",
-    "last_update": "2026-07-28",
-    "release_date": "2026-07-28",
-    "version": "v0.5.0.2x",
-    "checksum": "8e58129af45fb8e277898415d8a91a1c1ebbfd7a757b1465d0d04bea0826fcf0"
+    "description": ""
   },
   {
     "name": "BFpilot",
-    "filename": "bfpilot_v0.4.3.elf",
-    "url": "https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/bfpilot_v0.4.3.elf",
     "source": "https://github.com/ItsBlurf/BFpilot/releases",
-    "source_direct": "https://github.com/ItsBlurf/BFpilot/releases/download/v0.4.3/bfpilot.elf",
     "asset_pattern": "^bfpilot\\.elf$",
     "category": "Utilities",
-    "description": "",
-    "last_update": "2026-07-27",
-    "release_date": "2026-07-27",
-    "version": "v0.4.3",
-    "checksum": "e2ca0a948f0d2b5d57f73672836714847a7850c0f07e0859e755e7cbb0204786"
+    "description": ""
   },
   {
     "name": "BFpilot Installer",
-    "filename": "bfpilot-launcher-installer_v0.4.3.elf",
-    "url": "https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/bfpilot-launcher-installer_v0.4.3.elf",
     "source": "https://github.com/ItsBlurf/BFpilot/releases",
-    "source_direct": "https://github.com/ItsBlurf/BFpilot/releases/download/v0.4.3/bfpilot-launcher-installer.elf",
     "asset_pattern": "^bfpilot-launcher-installer\\.elf$",
     "category": "Utilities",
-    "description": "",
-    "last_update": "2026-07-27",
-    "release_date": "2026-07-27",
-    "version": "v0.4.3",
-    "checksum": "c79f65be428b6eefcc0df6e8c788111a3f477da3a71305c057e74d6cceab484c"
+    "description": ""
+  },
+  {
+    "name": "Payload Manager",
+    "source": "https://github.com/itsPLK/ps5-payload-manager/releases",
+    "category": "Utilities",
+    "description": ""
   }
 ]
