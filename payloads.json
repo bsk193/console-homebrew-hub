@@ -66,5 +66,11 @@
     "source": "https://github.com/drakmor/kstuff-lite/releases",
     "category": "Utilities",
     "description": ""
+  },
+  {
+    "name": "ShadowMountPlus",
+    "source": "https://github.com/drakmor/ShadowMountPlus/releases",
+    "category": "Utilities",
+    "description": ""
   }
 ]
