@@ -13,6 +13,19 @@
     "checksum": "b04130b0408128f17b8127ebd99c00c88f796d402145176aff9ac19140a03883"
   },
   {
+    "name": "PS5 App Dumper",
+    "filename": "PS5_App_Dumper_v1.11.elf",
+    "url": "https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/PS5_App_Dumper_v1.11.elf",
+    "source": "https://github.com/EchoStretch/ps5-app-dumper/releases",
+    "source_direct": "https://github.com/EchoStretch/ps5-app-dumper/releases/download/v1.11/ps5-app-dumper.elf",
+    "category": "Utilities",
+    "description": "A small utility to dump PS5 application files from the console's pfsmnt to a connected USB storage device.",
+    "last_update": "2026-07-28",
+    "release_date": "2026-07-28",
+    "version": "v1.11",
+    "checksum": "42763a6230df8ef3bf82253e9a4290e39d7c1e4b61a0a9a4477368f1d6440e1d"
+  },
+  {
     "name": "PS5Upload",
     "filename": "PS5Upload_v4.1.3.elf",
     "url": "https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/PS5Upload_v4.1.3.elf",
@@ -309,19 +322,6 @@
     "release_date": "2026-05-07",
     "version": "0.6 FW 3.00-13.20",
     "checksum": "0e87e92959791d9edf04c314802fcf18ccf37db74ae353d434a0062557f85093"
-  },
-  {
-    "name": "PS5 App Dumper",
-    "filename": "PS5_App_Dumper_v1.10.elf",
-    "url": "https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/PS5_App_Dumper_v1.10.elf",
-    "source": "https://github.com/EchoStretch/ps5-app-dumper/releases",
-    "source_direct": "https://github.com/EchoStretch/ps5-app-dumper/releases/download/v1.10/ps5-app-dumper.elf",
-    "category": "Utilities",
-    "description": "A small utility to dump PS5 application files from the console's pfsmnt to a connected USB storage device.",
-    "last_update": "2026-05-03",
-    "release_date": "2026-05-03",
-    "version": "v1.10",
-    "checksum": "95382a9e37987d8eb931cbe5db618e77d293099ef4314e3288d9899bd5ac5c00"
   },
   {
     "name": "BackPork",
