@@ -4,5 +4,12 @@
     "source": "https://github.com/bsk193/ps5-payload-manager-x/releases",
     "category": "Utilities",
     "description": ""
+  },
+  {
+    "name": "BFpilot",
+    "source": "https://github.com/ItsBlurf/BFpilot/releases",
+    "asset_pattern": "^bfpilot\\.elf$",
+    "category": "Utilities",
+    "description": ""
   }
 ]
