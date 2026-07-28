@@ -24,5 +24,11 @@
     "source": "https://github.com/itsPLK/ps5-payload-manager/releases",
     "category": "Utilities",
     "description": ""
+  },
+  {
+    "name": "PS5 App Dumper",
+    "source": "https://github.com/EchoStretch/ps5-app-dumper/releases",
+    "category": "Utilities",
+    "description": ""
   }
 ]
