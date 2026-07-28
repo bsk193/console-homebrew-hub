@@ -90,5 +90,11 @@
     "source": "https://github.com/pegasus-ps5/pegasus-dl/releases",
     "category": "Utilities",
     "description": ""
+  },
+  {
+    "name": "PS5Debug",
+    "source": "https://github.com/OpenSourcereR-dev/ps5debug-NG/releases",
+    "category": "Utilities",
+    "description": ""
   }
 ]
