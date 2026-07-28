@@ -557,6 +557,10 @@ async function loadPayloads() {
 }
 
 async function commitPayloads(msg) {
+  // Always fetch the live SHA right before writing to avoid stale-SHA 409 conflicts
+  // (CI may have committed between our last load and this save)
+  const current = await ghFetch(`/repos/${REPO.owner}/${REPO.repo}/contents/payloads.json`);
+  sha = current.sha;
   const content = JSON.stringify(payloads, null, 2)+'\n';
   const d = await ghFetch(`/repos/${REPO.owner}/${REPO.repo}/contents/payloads.json`, {
     method:'PUT', body:{ message:msg, content:b64Enc(content), sha, branch:REPO.branch }

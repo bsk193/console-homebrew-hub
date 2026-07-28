@@ -116,26 +116,39 @@ def update_readme():
         print(f"Error: {JSON_FILE} not found. Cannot update README.")
         return
 
-    table_rows = [
-        "| Payload | Version | Category | Description | Last Updated | Source | Download |",
-        "| --- | --- | --- | --- | --- | --- | --- |"
-    ]
-
+    # Group by category, sort categories alphabetically, entries by name within each
+    categories = {}
     for item in payloads:
-        name = item.get("name", "Unknown")
-        version = item.get("version", "Unknown")
-        category = item.get("category") or "Uncategorized"
-        description = item.get("description", "")
-        last_update = item.get("last_update", "Unknown")
-        source = item.get("source", "#")
-        url = item.get("url", "#")
+        cat = item.get("category") or "Uncategorized"
+        categories.setdefault(cat, []).append(item)
+    for cat in categories:
+        categories[cat].sort(key=lambda x: x.get("name", "").lower())
 
-        if not description:
-            description = "No description provided."
+    header = "| Payload | Version | FW Range | Description | Last Updated | Source | Download |"
+    divider = "| --- | --- | --- | --- | --- | --- | --- |"
 
-        table_rows.append(f"| **{name}** | `{version}` | {category} | {description} | `{last_update}` | [Source]({source}) | [Download]({url}) |")
-        
-    table_content = "\n".join(table_rows)
+    sections = []
+    for cat in sorted(categories):
+        rows = [header, divider]
+        for item in categories[cat]:
+            name = item.get("name", "Unknown")
+            version = item.get("version", "Unknown")
+            min_fw = item.get("min_fw", "")
+            max_fw = item.get("max_fw", "")
+            if min_fw and max_fw:
+                fw_range = f"{min_fw}–{max_fw}"
+            elif min_fw:
+                fw_range = f"{min_fw}+"
+            else:
+                fw_range = "—"
+            description = item.get("description") or "No description provided."
+            last_update = item.get("last_update", "Unknown")
+            source = item.get("source", "#")
+            url = item.get("url", "#")
+            rows.append(f"| **{name}** | `{version}` | `{fw_range}` | {description} | `{last_update}` | [Source]({source}) | [Download]({url}) |")
+        sections.append(f"### {cat}\n\n" + "\n".join(rows))
+
+    table_content = "\n\n".join(sections) if sections else "_No payloads yet._"
     readme_path = "README.md"
     
     support_section = "\n## Support & Suggestions\n\nIf you have suggestions for a new payload to be added or if there's an important issue with some payload, please report them in the [Issues section](https://github.com/bsk193/ps5-payloads-mirror/issues/new).\n"
