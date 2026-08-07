@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PS5 Payloads Admin</title>
+<style>
+:root {
+  --bg:  #07071a;
+  --sf:  #0d0d26;
+  --sf2: #131334;
+  --sf3: #181840;
+  --bd:  #1d1d4a;
+  --bd2: #2b2b60;
+  --ac:  #5a5ce6;
+  --ac2: #7b7df0;
+  --ac-dim: rgba(90,92,230,.15);
+  --ok:  #2bd46a;
+  --wn:  #e89a28;
+  --er:  #e85050;
+  --tx:  #c6c6e8;
+  --tx2: #70709a;
+  --tx3: #36365a;
+  --sb-w: 210px;
+  --tb-h: 52px;
+  --r: 8px;
+  --r2: 12px;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg:  #f0f0f8; --sf:  #ffffff; --sf2: #e8e8f4; --sf3: #dcdcf0;
+    --bd:  #c8c8e8; --bd2: #a0a0cc; --ac:  #4a4cd4; --ac2: #6668e0;
+    --ac-dim: rgba(74,76,212,.12); --ok: #1a9e50; --wn: #c07010; --er: #cc2020;
+    --tx: #1a1a3a; --tx2: #505080; --tx3: #9090bb;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:#07071a;--sf:#0d0d26;--sf2:#131334;--sf3:#181840;
+  --bd:#1d1d4a;--bd2:#2b2b60;--ac:#5a5ce6;--ac2:#7b7df0;
+  --ac-dim:rgba(90,92,230,.15);--ok:#2bd46a;--wn:#e89a28;--er:#e85050;
+  --tx:#c6c6e8;--tx2:#70709a;--tx3:#36365a;
+}
+:root[data-theme="light"] {
+  --bg:#f0f0f8;--sf:#ffffff;--sf2:#e8e8f4;--sf3:#dcdcf0;
+  --bd:#c8c8e8;--bd2:#a0a0cc;--ac:#4a4cd4;--ac2:#6668e0;
+  --ac-dim:rgba(74,76,212,.12);--ok:#1a9e50;--wn:#c07010;--er:#cc2020;
+  --tx:#1a1a3a;--tx2:#505080;--tx3:#9090bb;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:system-ui,-apple-system,sans-serif;font-size:14px;background:var(--bg);color:var(--tx)}
+button{cursor:pointer;font-family:inherit;font-size:13px}
+input,select,textarea{font-family:inherit;font-size:13px}
+a{color:var(--ac2);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* LOGIN */
+#login-screen{display:flex;align-items:center;justify-content:center;height:100%;background:var(--bg)}
+.login-card{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r2);padding:40px 36px;width:380px;max-width:calc(100vw - 32px)}
+.login-card h1{font-size:20px;font-weight:700;color:var(--tx);margin-bottom:6px}
+.login-card p{color:var(--tx2);font-size:13px;margin-bottom:24px;line-height:1.6}
+.login-card label{display:block;font-size:11px;font-weight:700;color:var(--tx2);letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px}
+.login-card input[type="password"]{width:100%;padding:9px 12px;background:var(--sf2);border:1px solid var(--bd);border-radius:var(--r);color:var(--tx);outline:none;margin-bottom:16px}
+.login-card input[type="password"]:focus{border-color:var(--ac)}
+.btn-primary{display:inline-flex;align-items:center;gap:6px;background:var(--ac);color:#fff;border:none;border-radius:var(--r);padding:9px 18px;font-weight:600;transition:background .15s}
+.btn-primary:hover{background:var(--ac2)}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed}
+.login-error{color:var(--er);font-size:12px;margin-top:10px;min-height:16px}
+
+/* APP SHELL */
+#app-shell{height:100%;display:grid;grid-template-columns:var(--sb-w) 1fr;grid-template-rows:var(--tb-h) 1fr;grid-template-areas:"sb tb" "sb main"}
+
+/* SIDEBAR */
+#sidebar{grid-area:sb;background:var(--sf);border-right:1px solid var(--bd);display:flex;flex-direction:column;padding:16px 0;position:relative;overflow:hidden}
+#sidebar::before{content:'';position:absolute;top:-60px;left:-40px;width:240px;height:240px;background:radial-gradient(circle,rgba(90,92,230,.18) 0%,transparent 70%);pointer-events:none}
+.sb-logo{padding:0 16px 16px;border-bottom:1px solid var(--bd);margin-bottom:8px}
+.sb-logo span{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ac2)}
+.sb-logo strong{display:block;font-size:15px;font-weight:700;color:var(--tx);margin-top:2px}
+.sb-nav{flex:1;padding:4px 8px;display:flex;flex-direction:column;gap:2px}
+.sb-item{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:var(--r);color:var(--tx2);border:none;background:none;width:100%;text-align:left;font-size:13px;font-weight:500;transition:background .12s,color .12s}
+.sb-item:hover{background:var(--sf2);color:var(--tx)}
+.sb-item.active{background:var(--ac-dim);color:var(--ac2)}
+.sb-item svg{flex-shrink:0;opacity:.8}
+.sb-badge{margin-left:auto;background:var(--ac);color:#fff;font-size:10px;font-weight:700;padding:1px 6px;border-radius:20px;min-width:18px;text-align:center}
+.sb-footer{padding:12px 12px 4px;border-top:1px solid var(--bd)}
+.pat-info{font-size:11px;color:var(--tx3)}
+.pat-info span{color:var(--ok)}
+
+/* TOPBAR */
+#topbar{grid-area:tb;background:var(--sf);border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:12px;padding:0 20px}
+.tb-title{font-size:15px;font-weight:600;color:var(--tx)}
+.tb-repo-link{font-size:12px;color:var(--tx2)}
+.tb-spacer{flex:1}
+.btn-icon{background:none;border:1px solid var(--bd);border-radius:var(--r);color:var(--tx2);padding:6px 8px;display:inline-flex;align-items:center;gap:6px;font-size:12px;transition:border-color .12s,color .12s}
+.btn-icon:hover{border-color:var(--ac);color:var(--tx)}
+.btn-run{background:var(--ac);border:none;border-radius:var(--r);color:#fff;padding:7px 14px;font-weight:600;font-size:12px;display:inline-flex;align-items:center;gap:6px;transition:background .15s}
+.btn-run:hover{background:var(--ac2)}
+.btn-run:disabled{opacity:.5;cursor:not-allowed}
+.status-dot{width:7px;height:7px;border-radius:50%;background:var(--tx3);flex-shrink:0}
+.status-dot.ok{background:var(--ok)}
+.status-dot.running{background:var(--wn);animation:pulse 1s infinite}
+.status-dot.fail{background:var(--er)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* MAIN */
+#main{grid-area:main;overflow-y:auto;padding:24px}
+
+/* SECTION HEADER */
+.sec-header{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.sec-title{font-size:18px;font-weight:700;color:var(--tx)}
+.sec-count{font-size:13px;color:var(--tx2)}
+.sec-spacer{flex:1}
+
+/* TOOLBAR */
+.toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.search-wrap{position:relative;flex:1;min-width:200px;max-width:340px}
+.search-wrap svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--tx3);pointer-events:none}
+.search-wrap input{width:100%;padding:8px 12px 8px 32px;background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);color:var(--tx);outline:none}
+.search-wrap input:focus{border-color:var(--ac)}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;border:1px solid var(--bd);background:var(--sf2);color:var(--tx2);cursor:pointer;transition:all .12s;white-space:nowrap}
+.chip:hover{border-color:var(--ac);color:var(--tx)}
+.chip.active{background:var(--ac-dim);border-color:var(--ac);color:var(--ac2)}
+
+/* TABLE */
+.tbl-wrap{overflow-x:auto;border-radius:var(--r2);border:1px solid var(--bd)}
+table{width:100%;border-collapse:collapse}
+thead th{background:var(--sf2);padding:10px 14px;text-align:left;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--tx2);white-space:nowrap;border-bottom:1px solid var(--bd)}
+tbody tr{border-bottom:1px solid var(--bd);transition:background .1s}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover{background:var(--sf2)}
+tbody td{padding:11px 14px;color:var(--tx);vertical-align:middle}
+.cell-name{font-weight:600;font-size:13px}
+.cell-ver{font-family:ui-monospace,monospace;font-size:12px;color:var(--tx2);white-space:nowrap}
+.cat-tag{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600;background:var(--ac-dim);color:var(--ac2);white-space:nowrap}
+.cell-fw{font-size:12px;color:var(--tx2);white-space:nowrap}
+.cell-date{font-size:12px;color:var(--tx2);white-space:nowrap;font-variant-numeric:tabular-nums}
+.row-actions{display:flex;gap:6px;white-space:nowrap}
+.btn-edit,.btn-del{border:1px solid var(--bd);border-radius:6px;background:none;padding:5px 10px;font-size:12px;font-weight:500;display:inline-flex;align-items:center;gap:4px;transition:all .12s}
+.btn-edit{color:var(--tx2)}
+.btn-edit:hover{border-color:var(--ac);color:var(--ac2)}
+.btn-del{color:var(--tx2)}
+.btn-del:hover{border-color:var(--er);color:var(--er)}
+.empty-state{text-align:center;padding:48px 24px;color:var(--tx2);font-size:14px}
+
+/* CI CARDS */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px;margin-bottom:24px}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r2);padding:18px 20px}
+.card-label{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--tx2);margin-bottom:8px}
+.card-title{font-size:14px;font-weight:600;color:var(--tx);margin-bottom:14px}
+.btn-outline{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--bd);border-radius:var(--r);background:var(--sf2);color:var(--tx);padding:7px 14px;font-size:12px;font-weight:600;transition:all .12s;width:100%;justify-content:center}
+.btn-outline:hover{border-color:var(--ac);color:var(--ac2)}
+.btn-outline:disabled{opacity:.5;cursor:not-allowed}
+.runs-wrap{border:1px solid var(--bd);border-radius:var(--r2);overflow:hidden}
+.run-row{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--bd)}
+.run-row:last-child{border-bottom:none}
+.run-name{flex:1;font-size:13px;font-weight:500;color:var(--tx)}
+.run-branch{font-size:11px;color:var(--tx2)}
+.run-chip{font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;white-space:nowrap}
+.run-chip.success{background:rgba(43,212,106,.15);color:var(--ok)}
+.run-chip.failure,.run-chip.timed_out{background:rgba(232,80,80,.15);color:var(--er)}
+.run-chip.in_progress,.run-chip.queued{background:rgba(232,154,40,.15);color:var(--wn)}
+.run-chip.skipped,.run-chip.cancelled{background:var(--sf2);color:var(--tx2)}
+.run-time{font-size:11px;color:var(--tx2);white-space:nowrap}
+.no-runs{padding:24px;text-align:center;color:var(--tx2);font-size:13px}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:100;align-items:flex-start;justify-content:center;padding:40px 16px;overflow-y:auto}
+.modal-overlay.open{display:flex}
+.modal{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r2);width:100%;max-width:600px;margin:auto;box-shadow:0 24px 64px rgba(0,0,0,.5)}
+.modal-header{display:flex;align-items:center;padding:18px 24px;border-bottom:1px solid var(--bd)}
+.modal-title{font-size:16px;font-weight:700;color:var(--tx);flex:1}
+.modal-close{background:none;border:none;color:var(--tx2);padding:4px;border-radius:6px;line-height:1}
+.modal-close:hover{background:var(--sf2);color:var(--tx)}
+.modal-body{padding:24px;display:flex;flex-direction:column;gap:14px}
+.modal-footer{padding:16px 24px;border-top:1px solid var(--bd);display:flex;justify-content:flex-end;gap:10px}
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--tx2)}
+.field .hint{font-size:11px;color:var(--tx3);margin-top:1px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.f-input{padding:8px 12px;background:var(--sf2);border:1px solid var(--bd);border-radius:var(--r);color:var(--tx);outline:none;width:100%}
+.f-input:focus{border-color:var(--ac)}
+.f-input.err{border-color:var(--er)}
+select.f-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2370709a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:28px}
+textarea.f-input{resize:vertical;min-height:68px}
+.ci-note{font-size:11px;color:var(--tx2);background:var(--sf2);border:1px solid var(--bd);border-radius:var(--r);padding:8px 12px;line-height:1.5}
+.ci-note strong{color:var(--wn)}
+.divider{border:none;border-top:1px solid var(--bd);margin:4px 0}
+.btn-secondary{background:var(--sf2);border:1px solid var(--bd);border-radius:var(--r);color:var(--tx);padding:8px 16px;font-size:13px;font-weight:600}
+.btn-secondary:hover{border-color:var(--bd2)}
+.btn-danger{background:rgba(232,80,80,.12);border:1px solid rgba(232,80,80,.4);border-radius:var(--r);color:var(--er);padding:8px 16px;font-size:13px;font-weight:600}
+.btn-danger:hover{background:rgba(232,80,80,.2)}
+.btn-danger:disabled{opacity:.5;cursor:not-allowed}
+
+/* TOAST */
+#toast-area{position:fixed;bottom:20px;right:20px;z-index:200;display:flex;flex-direction:column;gap:8px;pointer-events:none}
+.toast{background:var(--sf3);border:1px solid var(--bd2);border-radius:var(--r);padding:10px 16px;font-size:13px;font-weight:500;color:var(--tx);box-shadow:0 4px 16px rgba(0,0,0,.3);animation:slide-in .2s ease;max-width:320px}
+.toast.ok{border-color:rgba(43,212,106,.4);color:var(--ok)}
+.toast.err{border-color:rgba(232,80,80,.4);color:var(--er)}
+.toast.wn{border-color:rgba(232,154,40,.4);color:var(--wn)}
+@keyframes slide-in{from{transform:translateX(20px);opacity:0}to{transform:translateX(0);opacity:1}}
+.spin{animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--bd2);border-radius:3px}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-card">
+    <h1>PS5 Payloads Admin</h1>
+    <p>Enter a GitHub Personal Access Token with <strong>repo</strong> and <strong>workflow</strong> scopes to manage the mirror.</p>
+    <label for="pat-input">GitHub PAT</label>
+    <input type="password" id="pat-input" placeholder="ghp_…" autocomplete="off">
+    <button class="btn-primary" id="login-btn">
+      <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M13 12H3"/></svg>
+      Sign In
+    </button>
+    <div class="login-error" id="login-err"></div>
+  </div>
+</div>
+
+<!-- APP SHELL -->
+<div id="app-shell" style="display:none">
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar">
+    <div class="sb-logo">
+      <span>Mirror</span>
+      <strong>PS5 Payloads</strong>
+    </div>
+    <nav class="sb-nav">
+      <button class="sb-item active" data-view="payloads">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+        Payloads
+        <span class="sb-badge" id="payload-count">0</span>
+      </button>
+      <button class="sb-item" data-view="ci">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg>
+        CI &amp; Workflows
+      </button>
+    </nav>
+    <div class="sb-footer">
+      <div class="pat-info">Signed in &nbsp;<span id="pat-label">—</span></div>
+      <button class="sb-item" style="margin-top:6px" id="logout-btn">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+        Sign Out
+      </button>
+    </div>
+  </aside>
+
+  <!-- TOPBAR -->
+  <header id="topbar">
+    <span class="tb-title" id="tb-title">Payloads</span>
+    <a class="tb-repo-link" href="https://github.com/bsk193/ps5-payloads-mirror" target="_blank">bsk193/ps5-payloads-mirror ↗</a>
+    <span class="tb-spacer"></span>
+    <span class="status-dot" id="last-dot"></span>
+    <span style="font-size:12px;color:var(--tx2)" id="last-info"></span>
+    <button class="btn-icon" id="theme-btn" title="Toggle theme">
+      <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+    <button class="btn-run" id="quick-run-btn">
+      <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+      Push to Mirror
+    </button>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main id="main">
+
+    <!-- PAYLOADS VIEW -->
+    <div id="view-payloads">
+      <div class="sec-header">
+        <span class="sec-title">Payloads</span>
+        <span class="sec-count" id="filtered-count"></span>
+        <span class="sec-spacer"></span>
+        <button class="btn-primary" id="add-btn">
+          <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Add Payload
+        </button>
+      </div>
+      <div class="toolbar">
+        <div class="search-wrap">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="search-input" placeholder="Search payloads…">
+        </div>
+        <div class="chips" id="cat-chips"></div>
+      </div>
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th><th>Version</th><th>Category</th><th>Firmware</th><th>Updated</th><th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- CI VIEW -->
+    <div id="view-ci" style="display:none">
+      <div class="sec-header">
+        <span class="sec-title">CI &amp; Workflows</span>
+        <span class="sec-spacer"></span>
+        <button class="btn-icon" id="refresh-btn">
+          <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+          Refresh
+        </button>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-label">Mirror Update</div>
+          <div class="card-title">Automated Payloads Mirror</div>
+          <button class="btn-outline" id="run-mirror-btn">
+            <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Trigger Update
+          </button>
+        </div>
+        <div class="card">
+          <div class="card-label">Pages Deploy</div>
+          <div class="card-title">Deploy to GitHub Pages</div>
+          <button class="btn-outline" id="run-pages-btn">
+            <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Deploy Pages
+          </button>
+        </div>
+      </div>
+      <div class="sec-header" style="margin-top:4px">
+        <span class="sec-title" style="font-size:15px">Recent Runs</span>
+      </div>
+      <div class="runs-wrap" id="runs-list">
+        <div class="no-runs">Loading…</div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- MODAL: ADD / EDIT -->
+<div class="modal-overlay" id="payload-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="modal-title">Add Payload</span>
+      <button class="modal-close" id="modal-close-x">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="field-row">
+        <div class="field">
+          <label>Payload Name *</label>
+          <input class="f-input" id="f-name" placeholder="e.g. My Payload">
+          <span class="hint">Hyphens kept; spaces → underscores in filename</span>
+        </div>
+        <div class="field">
+          <label>Category *</label>
+          <input class="f-input" id="f-category" list="cat-datalist" placeholder="Select or type…" autocomplete="off">
+          <datalist id="cat-datalist"></datalist>
+          <span class="hint">Pick existing or type a new category name</span>
+        </div>
+      </div>
+      <div class="field">
+        <label>Source (Releases Page) *</label>
+        <input class="f-input" id="f-source" placeholder="https://github.com/owner/repo/releases">
+        <span class="hint">CI auto-detects the latest ELF asset from this page</span>
+      </div>
+      <div class="field">
+        <label>Source Direct</label>
+        <input class="f-input" id="f-source-direct" placeholder="https://github.com/owner/repo/releases/download/v1.0/payload.elf">
+        <span class="hint">Specific release URL — pin a version or bypass auto-detection</span>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Asset Pattern</label>
+          <input class="f-input" id="f-asset-pattern" placeholder="e.g. ^bfpilot\.elf$">
+          <span class="hint">Required when a release has multiple ELFs — regex matched against the asset filename. Without this, CI skips entries where more than one ELF qualifies.</span>
+        </div>
+        <div class="field">
+          <label>Extract File</label>
+          <input class="f-input" id="f-extract-file" placeholder="payload.elf">
+          <span class="hint">Filename to extract when the asset is a .zip</span>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Min Firmware</label>
+          <input class="f-input" id="f-min-fw" placeholder="e.g. 3.00">
+        </div>
+        <div class="field">
+          <label>Max Firmware</label>
+          <input class="f-input" id="f-max-fw" placeholder="e.g. 12.70">
+        </div>
+      </div>
+      <div class="field">
+        <label>Description</label>
+        <textarea class="f-input" id="f-description" rows="3" placeholder="What this payload does…"></textarea>
+      </div>
+
+      <!-- Edit-only CI fields -->
+      <div id="edit-ci-fields" style="display:none">
+        <hr class="divider">
+        <p class="ci-note"><strong>CI-managed fields.</strong> These are updated automatically on every mirror run. Edit only to correct stale metadata.</p>
+        <div style="height:10px"></div>
+        <div class="field-row">
+          <div class="field">
+            <label>Version</label>
+            <input class="f-input" id="f-version" placeholder="v1.0.0">
+          </div>
+          <div class="field">
+            <label>Release Date</label>
+            <input class="f-input" id="f-release-date" placeholder="YYYY-MM-DD">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Last Updated</label>
+            <input class="f-input" id="f-last-update" placeholder="FW range or date">
+          </div>
+          <div class="field">
+            <label>Filename</label>
+            <input class="f-input" id="f-filename" placeholder="Payload_Name_v1.0.elf">
+          </div>
+        </div>
+        <div class="field">
+          <label>Mirror Download URL</label>
+          <input class="f-input" id="f-url" placeholder="https://github.com/bsk193/ps5-payloads-mirror/releases/…">
+        </div>
+        <div class="field">
+          <label>SHA-256 Checksum</label>
+          <input class="f-input" id="f-checksum" placeholder="64-char hex">
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secondary" id="modal-cancel">Cancel</button>
+      <button class="btn-primary" id="modal-save">Add Payload</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: DELETE -->
+<div class="modal-overlay" id="del-modal">
+  <div class="modal" style="max-width:400px">
+    <div class="modal-header">
+      <span class="modal-title">Delete Payload</span>
+      <button class="modal-close" id="del-close-x">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p style="color:var(--tx);line-height:1.6">Remove <strong id="del-name"></strong> from the mirror?</p>
+      <p style="color:var(--tx2);font-size:12px;margin-top:8px;line-height:1.6">The entry is removed from <code style="background:var(--sf2);padding:1px 5px;border-radius:4px">payloads.json</code> immediately. The release asset will be cleaned up on the next CI run.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secondary" id="del-cancel">Cancel</button>
+      <button class="btn-danger" id="del-confirm">
+        <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+        Delete
+      </button>
+    </div>
+  </div>
+</div>
+
+<div id="toast-area"></div>
+
+<script>
+const REPO = { owner:'bsk193', repo:'ps5-payloads-mirror', branch:'main' };
+const FIELD_ORDER = ['name','filename','url','source','source_direct','asset_pattern','extract_file','category','min_fw','max_fw','description','last_update','release_date','version','checksum'];
+
+let token = sessionStorage.getItem('gh_pat') || '';
+let payloads = [], sha = '', catFilter = '', editIdx = -1, deleteIdx = -1;
+
+// ── THEME ──────────────────────────────────────────────────────────────────
+let theme = localStorage.getItem('theme') || 'dark';
+applyTheme();
+document.getElementById('theme-btn').addEventListener('click', () => {
+  theme = theme === 'dark' ? 'light' : 'dark';
+  localStorage.setItem('theme', theme); applyTheme();
+});
+function applyTheme() { document.documentElement.setAttribute('data-theme', theme); }
+
+// ── LOGIN ──────────────────────────────────────────────────────────────────
+document.getElementById('login-btn').addEventListener('click', doLogin);
+document.getElementById('pat-input').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
+document.getElementById('logout-btn').addEventListener('click', () => {
+  sessionStorage.removeItem('gh_pat'); token=''; showLogin();
+});
+
+async function doLogin() {
+  const pat = document.getElementById('pat-input').value.trim();
+  const err = document.getElementById('login-err');
+  const btn = document.getElementById('login-btn');
+  if(!pat) { err.textContent='Please enter a token.'; return; }
+  btn.disabled=true; btn.textContent='Checking…'; err.textContent='';
+  try {
+    const r = await fetch(`https://api.github.com/repos/${REPO.owner}/${REPO.repo}`,
+      { headers: authHeaders(pat) });
+    if(!r.ok) throw new Error('Invalid token or no repository access.');
+    token=pat; sessionStorage.setItem('gh_pat',pat); showApp();
+  } catch(e) {
+    err.textContent=e.message; btn.disabled=false; btn.textContent='Sign In';
+  }
+}
+
+function showLogin() {
+  document.getElementById('login-screen').style.display='flex';
+  document.getElementById('app-shell').style.display='none';
+}
+function showApp() {
+  document.getElementById('login-screen').style.display='none';
+  document.getElementById('app-shell').style.display='grid';
+  document.getElementById('pat-label').textContent=maskPAT(token);
+  loadPayloads(); loadRuns();
+}
+function maskPAT(t) { return t ? t.slice(0,7)+'…'+t.slice(-4) : '—'; }
+
+if(token) showApp(); else showLogin();
+
+// ── NAV ────────────────────────────────────────────────────────────────────
+document.querySelectorAll('.sb-item[data-view]').forEach(b =>
+  b.addEventListener('click', () => switchView(b.dataset.view))
+);
+function switchView(v) {
+  document.querySelectorAll('.sb-item[data-view]').forEach(b => b.classList.toggle('active', b.dataset.view===v));
+  document.getElementById('view-payloads').style.display = v==='payloads' ? '' : 'none';
+  document.getElementById('view-ci').style.display = v==='ci' ? '' : 'none';
+  document.getElementById('tb-title').textContent = v==='payloads' ? 'Payloads' : 'CI & Workflows';
+  if(v==='ci') loadRuns();
+}
+
+// ── API ─────────────────────────────────────────────────────────────────────
+function authHeaders(t) {
+  return { Authorization:`Bearer ${t||token}`, Accept:'application/vnd.github.v3+json', 'Content-Type':'application/json' };
+}
+
+async function ghFetch(path, opts={}) {
+  const r = await fetch(`https://api.github.com${path}`, {
+    ...opts, headers: { ...authHeaders(), ...(opts.headers||{}) },
+    body: opts.body ? JSON.stringify(opts.body) : undefined
+  });
+  if(!r.ok) { const j=await r.json().catch(()=>({})); throw new Error(j.message||`HTTP ${r.status}`); }
+  return r.status===204 ? null : r.json();
+}
+
+function b64Enc(str) { return btoa(unescape(encodeURIComponent(str))); }
+function b64Dec(b64) { return decodeURIComponent(escape(atob(b64.replace(/\n/g,'')))); }
+
+async function loadPayloads() {
+  try {
+    const d = await ghFetch(`/repos/${REPO.owner}/${REPO.repo}/contents/payloads.json`);
+    payloads = JSON.parse(b64Dec(d.content)); sha = d.sha;
+    renderPayloads(); updateBadge();
+  } catch(e) { toast('Load failed: '+e.message,'err'); }
+}
+
+async function commitPayloads(msg) {
+  // Always fetch the live SHA right before writing to avoid stale-SHA 409 conflicts
+  // (CI may have committed between our last load and this save)
+  const current = await ghFetch(`/repos/${REPO.owner}/${REPO.repo}/contents/payloads.json`);
+  sha = current.sha;
+  const content = JSON.stringify(payloads, null, 2)+'\n';
+  const d = await ghFetch(`/repos/${REPO.owner}/${REPO.repo}/contents/payloads.json`, {
+    method:'PUT', body:{ message:msg, content:b64Enc(content), sha, branch:REPO.branch }
+  });
+  sha = d.content.sha;
+}
+
+
+async function triggerWF(wf, label, btn) {
+  const orig = btn.innerHTML; btn.disabled=true;
+  btn.innerHTML=`<svg class="spin" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 11-9-9"/></svg> Running…`;
+  try {
+    await ghFetch(`/repos/${REPO.owner}/${REPO.repo}/actions/workflows/${wf}/dispatches`,
+      { method:'POST', body:{ ref:REPO.branch } });
+    toast(`${label} triggered`,'ok');
+    setTimeout(loadRuns,4000);
+  } catch(e) { toast('Trigger failed: '+e.message,'err'); }
+  finally { btn.disabled=false; btn.innerHTML=orig; }
+}
+
+async function loadRuns() {
+  try {
+    const d = await ghFetch(`/repos/${REPO.owner}/${REPO.repo}/actions/runs?per_page=15`);
+    renderRuns(d.workflow_runs||[]);
+    if((d.workflow_runs||[]).length) updateLastRunDot(d.workflow_runs[0]);
+  } catch(e) {
+    document.getElementById('runs-list').innerHTML=`<div class="no-runs" style="color:var(--er)">Failed: ${e.message}</div>`;
+  }
+}
+
+// ── RENDER PAYLOADS ─────────────────────────────────────────────────────────
+document.getElementById('search-input').addEventListener('input', e => {
+  renderPayloads(e.target.value);
+});
+document.getElementById('add-btn').addEventListener('click', openAddModal);
+document.getElementById('quick-run-btn').addEventListener('click', () => {
+  triggerWF('update_mirror.yml', 'Mirror Update', document.getElementById('quick-run-btn'));
+});
+
+function buildChips(search='') {
+  const cats = [...new Set(payloads.map(p=>p.category).filter(Boolean))].sort();
+  const wrap = document.getElementById('cat-chips');
+  wrap.innerHTML = ['All',...cats].map(c => {
+    const val = c==='All'?'':c;
+    return `<button class="chip${catFilter===val?' active':''}" data-cat="${val}">${esc(c)}</button>`;
+  }).join('');
+  wrap.querySelectorAll('.chip').forEach(ch => ch.addEventListener('click', () => {
+    catFilter=ch.dataset.cat; buildChips(search); renderPayloads(search);
+  }));
+}
+
+function renderPayloads(search='') {
+  const q=(search||document.getElementById('search-input').value||'').toLowerCase();
+  const filtered = payloads.filter(p => {
+    if(catFilter && p.category!==catFilter) return false;
+    if(q && !p.name.toLowerCase().includes(q) && !(p.description||'').toLowerCase().includes(q)) return false;
+    return true;
+  });
+  document.getElementById('filtered-count').textContent =
+    filtered.length===payloads.length ? `${payloads.length} payloads` : `${filtered.length} of ${payloads.length}`;
+  buildChips(search);
+
+  const tbody = document.getElementById('tbody');
+  if(!filtered.length) {
+    tbody.innerHTML=`<tr><td colspan="6"><div class="empty-state">No payloads match.</div></td></tr>`;
+    return;
+  }
+  tbody.innerHTML = filtered.map(p => {
+    const idx = payloads.indexOf(p);
+    return `<tr>
+      <td class="cell-name">${esc(p.name)}</td>
+      <td class="cell-ver">${esc(p.version||p.last_update||'—')}</td>
+      <td><span class="cat-tag">${esc(p.category||'—')}</span></td>
+      <td class="cell-fw">${fwRange(p)}</td>
+      <td class="cell-date">${esc(p.release_date||p.last_update||'—')}</td>
+      <td><div class="row-actions">
+        <button class="btn-edit" data-idx="${idx}">
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          Edit
+        </button>
+        <button class="btn-del" data-idx="${idx}" data-name="${esc(p.name)}">
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
+          Del
+        </button>
+      </div></td>
+    </tr>`;
+  }).join('');
+  tbody.querySelectorAll('.btn-edit').forEach(b => b.addEventListener('click', () => openEditModal(+b.dataset.idx)));
+  tbody.querySelectorAll('.btn-del').forEach(b => b.addEventListener('click', () => openDelModal(+b.dataset.idx, b.dataset.name)));
+}
+
+function updateBadge() { document.getElementById('payload-count').textContent=payloads.length; }
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function fwRange(p) {
+  if(p.min_fw && p.max_fw) return `<span class="cell-fw">${esc(p.min_fw)} – ${esc(p.max_fw)}</span>`;
+  return `<span class="cell-fw">${esc(p.min_fw||p.max_fw||'—')}</span>`;
+}
+
+// ── ADD / EDIT MODAL ────────────────────────────────────────────────────────
+function populateCatDatalist() {
+  const cats = [...new Set(payloads.map(p=>p.category).filter(Boolean))].sort();
+  const dl = document.getElementById('cat-datalist');
+  dl.innerHTML = cats.map(c=>`<option value="${esc(c)}">`).join('');
+}
+
+function openAddModal() {
+  editIdx=-1;
+  document.getElementById('modal-title').textContent='Add Payload';
+  document.getElementById('modal-save').textContent='Add Payload';
+  document.getElementById('edit-ci-fields').style.display='none';
+  clearForm(); populateCatDatalist();
+  openModal('payload-modal');
+}
+
+function openEditModal(idx) {
+  editIdx=idx;
+  const p=payloads[idx];
+  document.getElementById('modal-title').textContent=`Edit — ${p.name}`;
+  document.getElementById('modal-save').textContent='Save Changes';
+  document.getElementById('edit-ci-fields').style.display='';
+  populateCatDatalist();
+  setField('f-name',p.name); setField('f-category',p.category);
+  setField('f-source',p.source); setField('f-source-direct',p.source_direct);
+  setField('f-asset-pattern',p.asset_pattern); setField('f-extract-file',p.extract_file);
+  setField('f-min-fw',p.min_fw); setField('f-max-fw',p.max_fw); setField('f-description',p.description);
+  setField('f-version',p.version); setField('f-release-date',p.release_date);
+  setField('f-last-update',p.last_update); setField('f-filename',p.filename);
+  setField('f-url',p.url); setField('f-checksum',p.checksum);
+  openModal('payload-modal');
+}
+
+function setField(id, val) { const el=document.getElementById(id); if(el) el.value=val||''; }
+function clearForm() {
+  ['f-name','f-category','f-source','f-source-direct','f-asset-pattern','f-extract-file',
+   'f-min-fw','f-max-fw','f-description','f-version','f-release-date','f-last-update','f-filename','f-url','f-checksum']
+    .forEach(id => { const el=document.getElementById(id); if(el) el.value=''; el&&el.classList.remove('err'); });
+}
+
+document.getElementById('modal-save').addEventListener('click', submitPayload);
+document.getElementById('modal-cancel').addEventListener('click', () => closeModal('payload-modal'));
+document.getElementById('modal-close-x').addEventListener('click', () => closeModal('payload-modal'));
+
+async function submitPayload() {
+  const name=(document.getElementById('f-name').value||'').trim();
+  const cat=document.getElementById('f-category').value;
+  const src=(document.getElementById('f-source').value||'').trim();
+  let valid=true;
+  if(!name) { document.getElementById('f-name').classList.add('err'); valid=false; }
+  if(!cat)  { document.getElementById('f-category').classList.add('err'); valid=false; }
+  if(!src)  { document.getElementById('f-source').classList.add('err'); valid=false; }
+  if(!valid) { toast('Fill in required fields','err'); return; }
+
+  const btn=document.getElementById('modal-save');
+  const orig=btn.textContent; btn.disabled=true; btn.textContent='Saving…';
+
+  try {
+    const isEdit=editIdx>=0;
+    const entry = isEdit ? {...payloads[editIdx]} : {};
+    const g = id => (document.getElementById(id)?.value||'').trim();
+
+    entry.name=name; entry.category=cat; entry.source=src;
+    const sd=g('f-source-direct'); if(sd) entry.source_direct=sd; else if(!isEdit) delete entry.source_direct;
+    const ap=g('f-asset-pattern'); if(ap) entry.asset_pattern=ap; else if(!isEdit) delete entry.asset_pattern;
+    const ef=g('f-extract-file'); if(ef) entry.extract_file=ef; else if(!isEdit) delete entry.extract_file;
+    const fw=g('f-min-fw'); if(fw) entry.min_fw=fw; else delete entry.min_fw;
+    const mfw=g('f-max-fw'); if(mfw) entry.max_fw=mfw; else delete entry.max_fw;
+    entry.description=g('f-description');
+    if(isEdit) {
+      const ver=g('f-version'); if(ver) entry.version=ver;
+      const rd=g('f-release-date'); if(rd) entry.release_date=rd;
+      const lu=g('f-last-update'); if(lu) entry.last_update=lu;
+      const fn=g('f-filename'); if(fn) entry.filename=fn;
+      const url=g('f-url'); if(url) entry.url=url;
+      const cs=g('f-checksum'); if(cs) entry.checksum=cs;
+    }
+
+    // Reorder fields per FIELD_ORDER
+    const ordered={};
+    FIELD_ORDER.forEach(k => { if(k in entry) ordered[k]=entry[k]; });
+
+    if(isEdit) payloads[editIdx]=ordered; else payloads.push(ordered);
+    await commitPayloads(isEdit ? `feat: update ${name}` : `feat: add ${name}`);
+    closeModal('payload-modal');
+    renderPayloads(); updateBadge();
+    toast(isEdit ? `${name} updated` : `${name} added`,'ok');
+  } catch(e) {
+    toast('Save failed: '+e.message,'err');
+    await loadPayloads(); // reload to get fresh sha
+  } finally {
+    btn.disabled=false; btn.textContent=orig;
+  }
+}
+
+// ── DELETE MODAL ─────────────────────────────────────────────────────────────
+function openDelModal(idx, name) {
+  deleteIdx=idx;
+  document.getElementById('del-name').textContent=name;
+  openModal('del-modal');
+}
+document.getElementById('del-confirm').addEventListener('click', async () => {
+  const btn=document.getElementById('del-confirm');
+  const name=payloads[deleteIdx]?.name||'';
+  btn.disabled=true; btn.textContent='Deleting…';
+  try {
+    payloads.splice(deleteIdx,1);
+    await commitPayloads(`feat: remove ${name}`);
+    closeModal('del-modal');
+    renderPayloads(); updateBadge();
+    toast(`${name} removed`,'ok');
+  } catch(e) {
+    toast('Delete failed: '+e.message,'err');
+    await loadPayloads();
+  } finally {
+    btn.disabled=false;
+    btn.innerHTML=`<svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg> Delete`;
+  }
+});
+document.getElementById('del-cancel').addEventListener('click', () => closeModal('del-modal'));
+document.getElementById('del-close-x').addEventListener('click', () => closeModal('del-modal'));
+
+// ── CI VIEW ──────────────────────────────────────────────────────────────────
+document.getElementById('run-mirror-btn').addEventListener('click', () =>
+  triggerWF('update_mirror.yml','Mirror Update',document.getElementById('run-mirror-btn')));
+document.getElementById('run-pages-btn').addEventListener('click', () =>
+  triggerWF('pages.yml','Pages Deploy',document.getElementById('run-pages-btn')));
+document.getElementById('refresh-btn').addEventListener('click', loadRuns);
+
+function runChip(s) {
+  const map={success:'success',failure:'failure',timed_out:'failure',in_progress:'in_progress',queued:'in_progress',skipped:'skipped',cancelled:'skipped'};
+  return map[s]||'skipped';
+}
+function renderRuns(runs) {
+  const list=document.getElementById('runs-list');
+  if(!runs.length) { list.innerHTML='<div class="no-runs">No recent runs found.</div>'; return; }
+  list.innerHTML=runs.map(r => {
+    const s=r.conclusion||r.status||'unknown';
+    const when=r.run_started_at ? new Date(r.run_started_at).toLocaleString() : '—';
+    return `<div class="run-row">
+      <span class="status-dot ${runChip(s)}" title="${s}"></span>
+      <div style="flex:1;min-width:0">
+        <div class="run-name">${esc(r.name)}</div>
+        <div class="run-branch">${esc(r.head_branch)} · #${r.run_number}</div>
+      </div>
+      <span class="run-chip ${runChip(s)}">${s}</span>
+      <span class="run-time">${when}</span>
+      <a class="btn-icon" href="${esc(r.html_url)}" target="_blank" style="border:none;padding:4px">↗</a>
+    </div>`;
+  }).join('');
+}
+
+function updateLastRunDot(run) {
+  const s=run.conclusion||run.status;
+  const dot=document.getElementById('last-dot');
+  const info=document.getElementById('last-info');
+  const map={success:'ok',failure:'fail',in_progress:'running',queued:'running'};
+  dot.className='status-dot '+(map[s]||'');
+  info.textContent=`Last: ${s}`;
+}
+
+// ── MODALS ───────────────────────────────────────────────────────────────────
+function openModal(id) { document.getElementById(id).classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+document.querySelectorAll('.modal-overlay').forEach(m =>
+  m.addEventListener('click', e => { if(e.target===m) m.classList.remove('open'); })
+);
+document.addEventListener('keydown', e => {
+  if(e.key==='Escape') document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
+});
+document.querySelectorAll('.f-input').forEach(el =>
+  el.addEventListener('input', () => el.classList.remove('err'))
+);
+
+// ── TOAST ─────────────────────────────────────────────────────────────────────
+function toast(msg, type='') {
+  const area=document.getElementById('toast-area');
+  const t=document.createElement('div');
+  t.className='toast'+(type?' '+type:'');
+  t.textContent=msg; area.appendChild(t);
+  setTimeout(()=>t.remove(),4000);
+}
+</script>
+</body>
+</html>
