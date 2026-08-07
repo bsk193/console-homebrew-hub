@@ -5,3 +5,5 @@ __pycache__/
 .nojekyll
 ps5_payload_repos.txt
 y2jb_p2jb_repos.txt
+exploits/**/src/payload.bin
+server.pem
