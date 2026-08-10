@@ -3,38 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PS Homebrew Hub</title>
+<title>Console Homebrew Hub</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#0a0a0a;color:#c8c8c8;font-family:-apple-system,system-ui,'Segoe UI',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 16px}
-.logo{font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#444;margin-bottom:8px}
-h1{font-size:28px;font-weight:700;color:#f0f0f0;text-align:center;margin-bottom:6px}
-.sub{font-size:14px;color:#555;text-align:center;margin-bottom:40px}
-.cards{display:flex;gap:16px;width:100%;max-width:520px;flex-wrap:wrap;justify-content:center}
-.card{flex:1;min-width:200px;background:#111;border:1px solid #1e1e1e;border-radius:8px;padding:28px 24px;text-decoration:none;display:flex;flex-direction:column;align-items:flex-start;gap:10px;transition:border-color .15s,background .15s}
-.card:hover{background:#161616;border-color:#2a2a2a}
-.card-icon{width:36px;height:36px;border-radius:6px;display:flex;align-items:center;justify-content:center}
+html,body{min-height:100%;background:#09090d;color:#c8ced8;font-family:-apple-system,"Segoe UI",system-ui,sans-serif}
+body{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 20px}
+.logo{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+.logo-mark{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#3b8cff,#1957c8);display:flex;align-items:center;justify-content:center;font:800 14px/1 -apple-system,"Segoe UI",system-ui,sans-serif;color:#fff;letter-spacing:-.02em}
+.logo-text{font:700 15px/1 -apple-system,"Segoe UI",system-ui,sans-serif;color:#4a5a6e;letter-spacing:.12em;text-transform:uppercase}
+h1{font:700 30px/1.1 -apple-system,"Segoe UI",system-ui,sans-serif;color:#fff;text-align:center;letter-spacing:-.03em;margin-bottom:8px}
+.sub{font-size:14px;color:#3e4f66;text-align:center;margin-bottom:44px}
+.cards{display:flex;gap:14px;width:100%;max-width:560px;flex-wrap:wrap;justify-content:center}
+.card{flex:1;min-width:220px;background:#0d0d14;border:1px solid #1a1a24;border-radius:14px;padding:26px 22px;text-decoration:none;display:flex;flex-direction:column;gap:10px;transition:border-color .15s,background .15s,transform .15s}
+.card:hover{background:#111119;border-color:#252535;transform:translateY(-2px)}
+.card-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center}
 .card-icon svg{width:20px;height:20px}
-.card-mirror .card-icon{background:rgba(90,92,230,.15)}
-.card-mirror .card-icon svg{stroke:#5a5ce6}
-.card-exploits .card-icon{background:rgba(237,100,60,.12)}
-.card-exploits .card-icon svg{stroke:#ed643c}
-.card-title{font-size:15px;font-weight:600;color:#f0f0f0}
-.card-desc{font-size:12px;color:#666;line-height:1.5}
-.card-arrow{margin-top:auto;font-size:12px;color:#444;align-self:flex-end}
-.card-mirror .card-arrow{color:#5a5ce6}
-.card-exploits .card-arrow{color:#ed643c}
-.ftr{margin-top:40px;font-size:11px;color:#333;text-align:center}
+.card-mirror .card-icon{background:rgba(59,140,255,.12)}
+.card-mirror .card-icon svg{stroke:#3b8cff}
+.card-exploits .card-icon{background:rgba(16,185,129,.1)}
+.card-exploits .card-icon svg{stroke:#10b981}
+.card-title{font:600 15px/1 -apple-system,"Segoe UI",system-ui,sans-serif;color:#e0e6f0}
+.card-desc{font:400 12px/1.6 -apple-system,"Segoe UI",system-ui,sans-serif;color:#3e4f66}
+.card-cta{margin-top:6px;font:600 12px/1 -apple-system,"Segoe UI",system-ui,sans-serif;letter-spacing:.04em}
+.card-mirror .card-cta{color:#3b8cff}
+.card-exploits .card-cta{color:#10b981}
+.ftr{margin-top:48px;font-size:11px;color:#1e1e2c;text-align:center}
 </style>
 </head>
 <body>
 
-<div class="logo">PS Homebrew</div>
-<h1>Homebrew Hub</h1>
-<p class="sub">Payload mirror &amp; exploit host for educational use</p>
+<div class="logo">
+  <div class="logo-mark">CHH</div>
+  <span class="logo-text">Console Homebrew Hub</span>
+</div>
+<h1>Console Homebrew Hub</h1>
+<p class="sub">Payload mirror &amp; browser-based exploit host</p>
 
 <div class="cards">
-  <a class="card card-mirror" href="admin.html">
+  <a class="card card-mirror" href="payloads.html">
     <div class="card-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
@@ -43,8 +49,8 @@ h1{font-size:28px;font-weight:700;color:#f0f0f0;text-align:center;margin-bottom:
       </svg>
     </div>
     <div class="card-title">Payload Mirror</div>
-    <div class="card-desc">Browse and manage mirrored payloads. Sync with upstream GitHub releases.</div>
-    <div class="card-arrow">Open &rsaquo;</div>
+    <div class="card-desc">Browse mirrored PS5 payloads. Search, filter, and download from the mirror or upstream source.</div>
+    <div class="card-cta">Browse payloads &rsaquo;</div>
   </a>
 
   <a class="card card-exploits" href="exploits/">
@@ -54,12 +60,12 @@ h1{font-size:28px;font-weight:700;color:#f0f0f0;text-align:center;margin-bottom:
       </svg>
     </div>
     <div class="card-title">Exploits</div>
-    <div class="card-desc">Browser-based exploit host for PS3, PS4, and more. For educational &amp; private use.</div>
-    <div class="card-arrow">Open &rsaquo;</div>
+    <div class="card-desc">Browser-based jailbreaks for PS3, PS4, PS5, and PS Vita. Detects your firmware automatically.</div>
+    <div class="card-cta">View exploits &rsaquo;</div>
   </a>
 </div>
 
-<div class="ftr">For private and educational use only</div>
+<p class="ftr">For private and educational use only</p>
 
 </body>
 </html>
