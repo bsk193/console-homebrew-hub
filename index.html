@@ -7,14 +7,17 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{min-height:100%;background:#09090d;color:#c8ced8;font-family:-apple-system,"Segoe UI",system-ui,sans-serif}
-body{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 20px}
-.logo{display:flex;align-items:center;gap:10px;margin-bottom:20px}
-.logo-mark{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#3b8cff,#1957c8);display:flex;align-items:center;justify-content:center;font:800 14px/1 -apple-system,"Segoe UI",system-ui,sans-serif;color:#fff;letter-spacing:-.02em}
-.logo-text{font:700 15px/1 -apple-system,"Segoe UI",system-ui,sans-serif;color:#4a5a6e;letter-spacing:.12em;text-transform:uppercase}
-h1{font:700 30px/1.1 -apple-system,"Segoe UI",system-ui,sans-serif;color:#fff;text-align:center;letter-spacing:-.03em;margin-bottom:8px}
-.sub{font-size:14px;color:#3e4f66;text-align:center;margin-bottom:44px}
-.cards{display:flex;gap:14px;width:100%;max-width:560px;flex-wrap:wrap;justify-content:center}
-.card{flex:1;min-width:220px;background:#0d0d14;border:1px solid #1a1a24;border-radius:14px;padding:26px 22px;text-decoration:none;display:flex;flex-direction:column;gap:10px;transition:border-color .15s,background .15s,transform .15s}
+body{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 20px 48px}
+.sitenav{position:fixed;top:0;left:0;right:0;height:48px;background:rgba(9,9,13,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid #131320;display:flex;align-items:center;padding:0 20px;gap:4px;z-index:100}
+.sitenav-logo{display:flex;align-items:center;text-decoration:none;margin-right:10px}
+.sitenav-mark{width:26px;height:26px;border-radius:6px;background:linear-gradient(135deg,#3b8cff,#1957c8);display:flex;align-items:center;justify-content:center;font:800 9px/1 -apple-system,"Segoe UI",system-ui,sans-serif;color:#fff}
+.sitenav-tabs{display:flex;gap:2px}
+.sitenav-tab{padding:6px 11px;border-radius:7px;font:500 13px/1 -apple-system,"Segoe UI",system-ui,sans-serif;color:#3a4a5e;text-decoration:none;transition:color .14s,background .14s}
+.sitenav-tab:hover{color:#8090b0;background:rgba(255,255,255,.04)}
+.sitenav-tab.active{color:#c0cee8;background:rgba(59,140,255,.1)}
+h1{font:700 30px/1.1 -apple-system,"Segoe UI",system-ui,sans-serif;color:#fff;text-align:center;letter-spacing:-.03em;margin-bottom:32px}
+.cards{display:flex;gap:14px;width:100%;max-width:480px;flex-wrap:wrap;justify-content:center}
+.card{flex:1;min-width:180px;background:#0d0d14;border:1px solid #1a1a24;border-radius:14px;padding:26px 22px;text-decoration:none;display:flex;flex-direction:column;gap:10px;transition:border-color .15s,background .15s,transform .15s}
 .card:hover{background:#111119;border-color:#252535;transform:translateY(-2px)}
 .card-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center}
 .card-icon svg{width:20px;height:20px}
@@ -23,19 +26,24 @@ h1{font:700 30px/1.1 -apple-system,"Segoe UI",system-ui,sans-serif;color:#fff;te
 .card-exploits .card-icon{background:rgba(16,185,129,.1)}
 .card-exploits .card-icon svg{stroke:#10b981}
 .card-title{font:600 15px/1 -apple-system,"Segoe UI",system-ui,sans-serif;color:#e0e6f0}
-.card-desc{font:400 12px/1.6 -apple-system,"Segoe UI",system-ui,sans-serif;color:#3e4f66}
 .card-cta{margin-top:6px;font:600 12px/1 -apple-system,"Segoe UI",system-ui,sans-serif;letter-spacing:.04em}
 .card-mirror .card-cta{color:#3b8cff}
 .card-exploits .card-cta{color:#10b981}
-.ftr{margin-top:48px;font-size:11px;color:#1e1e2c;text-align:center}
 </style>
 </head>
 <body>
 
-<a class="logo" href="https://bsk193.github.io/console-homebrew-hub" style="text-decoration:none">
-  <div class="logo-mark">CHH</div>
-  <span class="logo-text">Console Homebrew Hub</span>
-</a>
+<nav class="sitenav">
+  <a class="sitenav-logo" href="https://bsk193.github.io/console-homebrew-hub">
+    <div class="sitenav-mark">CHH</div>
+  </a>
+  <div class="sitenav-tabs">
+    <a class="sitenav-tab" data-nav="home" href="./">Home</a>
+    <a class="sitenav-tab" data-nav="payloads" href="payloads.html">Payloads</a>
+    <a class="sitenav-tab" data-nav="exploits" href="exploits/">Exploits</a>
+  </div>
+</nav>
+
 <h1>Console Homebrew Hub</h1>
 
 <div class="cards">
@@ -62,6 +70,6 @@ h1{font:700 30px/1.1 -apple-system,"Segoe UI",system-ui,sans-serif;color:#fff;te
   </a>
 </div>
 
-
+<script>(function(){var p=window.location.pathname;var n='home';if(/\/exploits/.test(p))n='exploits';else if(/\/(payloads|admin)/.test(p))n='payloads';var el=document.querySelector('[data-nav="'+n+'"]');if(el)el.classList.add('active');}());</script>
 </body>
 </html>
