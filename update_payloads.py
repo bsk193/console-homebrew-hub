@@ -24,7 +24,7 @@ def sanitize_for_version(s):
     s = re.sub(r'_+', '_', s)
     return s.strip('_')
 PAYLOADS_DIR = "payloads"
-BASE_URL = "https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror"
+BASE_URL = "https://github.com/bsk193/console-homebrew-hub/releases/download/payloads-mirror"
 
 def get_repo_info(url):
     # Extract domain, owner and repo from various Git URL formats
@@ -151,7 +151,7 @@ def update_readme():
     table_content = "\n\n".join(sections) if sections else "_No payloads yet._"
     readme_path = "README.md"
     
-    support_section = "\n## Support & Suggestions\n\nIf you have suggestions for a new payload to be added or if there's an important issue with some payload, please report them in the [Issues section](https://github.com/bsk193/ps5-payloads-mirror/issues/new).\n"
+    support_section = "\n## Support & Suggestions\n\nIf you have suggestions for a new payload to be added or if there's an important issue with some payload, please report them in the [Issues section](https://github.com/bsk193/console-homebrew-hub/issues/new).\n"
     template = f"""# PS5 Payloads Mirror
 
 This repository contains an automated mirror of useful payloads for the PlayStation 5.
@@ -182,7 +182,7 @@ This repository contains an automated mirror of useful payloads for the PlayStat
             new_content = pattern.sub(f"{start_marker}\n\n{table_content}\n\n{end_marker}", content)
             new_content = new_content.replace(
                 "https://github.com/itsPLK/ps5-payloads-mirror/issues/new",
-                "https://github.com/bsk193/ps5-payloads-mirror/issues/new"
+                "https://github.com/bsk193/console-homebrew-hub/issues/new"
             )
             with open(readme_path, "w", newline="\n") as f:
                 f.write(new_content)
@@ -194,7 +194,7 @@ This repository contains an automated mirror of useful payloads for the PlayStat
 
 def get_mirror_assets():
     owner = "bsk193"
-    repo = "ps5-payloads-mirror"
+    repo = "console-homebrew-hub"
     try:
         cmd = ["gh", "api", f"repos/{owner}/{repo}/releases/tags/payloads-mirror"]
         result = subprocess.run(cmd, capture_output=True, text=True)
@@ -208,7 +208,7 @@ def get_mirror_assets():
 def cleanup_release_assets():
     print("\nChecking for stale release assets to clean up...")
     owner = "bsk193"
-    repo = "ps5-payloads-mirror"
+    repo = "console-homebrew-hub"
     
     try:
         with open(JSON_FILE, "r") as f:
@@ -282,7 +282,17 @@ def update_payloads():
         if source_direct and not asset_pattern:
             sd_basename = source_direct.rstrip("/").split("/")[-1]
             if sd_basename:
-                asset_pattern = re.escape(sd_basename)
+                # Strip version suffix so the pattern still matches when the version bumps.
+                # e.g. pldmgrx_v0.5.0.2x.elf → pldmgrx.*\.elf
+                if '.' in sd_basename:
+                    stem, ext = sd_basename.rsplit('.', 1)
+                else:
+                    stem, ext = sd_basename, ''
+                stem_stripped = re.sub(r'[-_]v?\d[\d.\w]*$', '', stem)
+                if stem_stripped and stem_stripped != stem:
+                    asset_pattern = re.escape(stem_stripped) + r'.*\.' + re.escape(ext) if ext else re.escape(stem_stripped) + r'.*'
+                else:
+                    asset_pattern = re.escape(sd_basename)
 
         has_extract = "extract_file" in item
         preferred_ext = ".bin" if "etaHEN" in repo_name else ".elf"
