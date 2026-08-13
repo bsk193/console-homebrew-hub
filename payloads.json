@@ -1,5 +1,31 @@
 [
   {
+    "name": "PS5Upload",
+    "filename": "ps5upload-5.2.1.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/payloads-mirror/ps5upload-5.2.1.elf",
+    "source": "https://github.com/phantomptr/ps5upload/releases",
+    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v5.2.1/ps5upload-5.2.1.elf",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-08-12",
+    "release_date": "2026-08-12",
+    "version": "v5.2.1",
+    "checksum": "0c23f88146a314c922953c326bc26d1a8adb871ba3244b76ce4cb6eca43977b3"
+  },
+  {
+    "name": "KStuff Lite",
+    "filename": "kstuff_v1.10.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/payloads-mirror/kstuff_v1.10.elf",
+    "source": "https://github.com/EchoStretch/kstuff-lite/releases",
+    "source_direct": "https://github.com/EchoStretch/kstuff-lite/releases/download/v1.10/kstuff.elf",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-08-12",
+    "release_date": "2026-08-12",
+    "version": "v1.10",
+    "checksum": "b1dfe57f367a35374f605127915eda38c76a6ed5d1c729e427955798bd78c66a"
+  },
+  {
     "name": "Payload Manager X",
     "filename": "pldmgrx_v0.5.1.2x.elf",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/payloads-mirror/pldmgrx_v0.5.1.2x.elf",
@@ -25,19 +51,6 @@
     "release_date": "2026-08-11",
     "version": "v0.4.4",
     "checksum": "5a8237630260026ad054d71fbbe661e433ac9ffa2cb4eea2785769c1eb7ee1c1"
-  },
-  {
-    "name": "PS5Upload",
-    "filename": "ps5upload-5.2.0.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/payloads-mirror/ps5upload-5.2.0.elf",
-    "source": "https://github.com/phantomptr/ps5upload/releases",
-    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v5.2.0/ps5upload-5.2.0.elf",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-08-10",
-    "release_date": "2026-08-10",
-    "version": "v5.2.0",
-    "checksum": "4e8028fe4b317ec163accda8dec649da73f64cdad0503a598db76054e782e971"
   },
   {
     "name": "nanoDNS",
@@ -185,19 +198,6 @@
     "release_date": "2026-07-06",
     "version": "v2.4",
     "checksum": "51382795b486f7c5a3681648d457d129088311fc3f9601aeaff78dc72fafcf1d"
-  },
-  {
-    "name": "KStuff Lite",
-    "filename": "kstuff_v1.09.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/payloads-mirror/kstuff_v1.09.elf",
-    "source": "https://github.com/EchoStretch/kstuff-lite/releases",
-    "source_direct": "https://github.com/EchoStretch/kstuff-lite/releases/download/v1.09/kstuff.elf",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-07-04",
-    "release_date": "2026-07-04",
-    "version": "v1.09",
-    "checksum": "ec5212794dc6e44ee8e70fd0549abec6d3dac8c3e03ddbeafd9f869ffe97d4e8"
   },
   {
     "name": "ShadowMountPlus",
