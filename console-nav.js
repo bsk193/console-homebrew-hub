@@ -29,9 +29,10 @@
   ].join(';');
   document.body.appendChild(cur);
 
-  /* ── Focus ring ─────────────────────────────────────────────────── */
+  /* ── Hide system cursor, inject focus ring ──────────────────────── */
   var sty = document.createElement('style');
   sty.textContent =
+    '*{cursor:none!important}' +
     ':focus-visible{outline:3px solid rgba(79,135,255,.9)!important;' +
     'outline-offset:4px!important;border-radius:6px!important}';
   document.head.appendChild(sty);
@@ -154,12 +155,16 @@
     }, 110);
 
     var el = document.activeElement;
-    if (el && el !== document.body) {
-      el.click();
-    } else {
-      var hit = document.elementFromPoint(cx, cy);
-      if (hit) hit.click();
+    if (!el || el === document.body) {
+      el = document.elementFromPoint(cx, cy);
     }
+    if (!el) return;
+    // Dispatch a real MouseEvent so links and buttons all respond
+    el.dispatchEvent(new MouseEvent('click', {
+      bubbles: true, cancelable: true,
+      clientX: cx, clientY: cy,
+      view: window
+    }));
   }
 
   /* ── Main RAF loop ──────────────────────────────────────────────── */
