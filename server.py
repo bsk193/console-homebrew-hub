@@ -56,6 +56,7 @@ def get_local_ip():
 
 
 def generate_cert(path):
+    # Try cryptography package first
     try:
         from cryptography import x509
         from cryptography.x509.oid import NameOID
@@ -90,6 +91,21 @@ def generate_cert(path):
         print('Certificate saved to %s' % path)
         return True
     except ImportError:
+        pass
+
+    # Fallback: system openssl (available on most Linux/macOS servers)
+    try:
+        import subprocess
+        print('Generating self-signed certificate via openssl...')
+        subprocess.run(
+            ['openssl', 'req', '-x509', '-newkey', 'rsa:2048',
+             '-keyout', path, '-out', path, '-days', '365', '-nodes',
+             '-subj', '/CN=localhost'],
+            check=True, capture_output=True,
+        )
+        print('Certificate saved to %s' % path)
+        return True
+    except (OSError, Exception):
         return False
 
 
@@ -229,14 +245,21 @@ ssl_ctx = None
 if not USE_HTTP:
     CERT = os.path.join(SERVE_DIR, 'server.pem')
     if not os.path.exists(CERT):
-        alt = os.path.join(SERVE_DIR, 'exploits', 'css-font-face', 'localhost.pem')
-        if os.path.exists(alt):
-            CERT = alt
-        elif not generate_cert(CERT):
-            print('WARNING: Could not generate a certificate (cryptography package missing).')
-            print('  Install it with:  pip install cryptography')
-            print('  Or run HTTP mode: python server.py 6969 --http')
-            sys.exit(1)
+        # Also look for a cert from a cloned exploit repo
+        for alt_path in [
+            os.path.join(SERVE_DIR, 'ps5', 'exploits', 'umtx', 'core', 'localhost.pem'),
+            os.path.join(SERVE_DIR, 'ps5', 'exploits', 'slopkit', 'core', 'localhost.pem'),
+        ]:
+            if os.path.exists(alt_path):
+                CERT = alt_path
+                break
+        else:
+            if not generate_cert(CERT):
+                print('WARNING: Could not generate a TLS certificate.')
+                print('  Option 1:  pip install cryptography')
+                print('  Option 2:  openssl req -x509 -newkey rsa:2048 -keyout server.pem -out server.pem -days 365 -nodes -subj /CN=localhost')
+                print('  Option 3:  python server.py 6969 --http   (no DNS trick, direct access only)')
+                sys.exit(1)
     ssl_ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
     ssl_ctx.load_cert_chain(CERT)
 
