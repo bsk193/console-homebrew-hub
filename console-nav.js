@@ -1,9 +1,8 @@
 /* CHH Console Navigation
-   D-pad  → cursor snaps to nearest button/link in that direction
-   L-Stick → cursor moves freely (like a mouse)
-   Cross  → click whatever the cursor is on
-   Circle → history back
-   Triangle → go home
+   D-pad    → cursor snaps to nearest button/link
+   L-Stick  → free cursor movement
+   Cross(X) → click focused element (intercepted at document level)
+   Circle   → back   Triangle → home
 */
 (function () {
   var INITIAL_DELAY = 300;
@@ -12,9 +11,9 @@
   var DEADZONE      = 0.20;
   var B = { CROSS:0, CIRCLE:1, TRIANGLE:3, UP:12, DOWN:13, LEFT:14, RIGHT:15 };
 
-  /* ── Cursor element ─────────────────────────────────────────────── */
-  var cur = document.createElement('div');
-  cur.style.cssText = [
+  /* ── Cursor dot ─────────────────────────────────────────────────── */
+  var dot = document.createElement('div');
+  dot.style.cssText = [
     'position:fixed',
     'width:22px','height:22px',
     'border-radius:50%',
@@ -27,32 +26,31 @@
     'will-change:left,top',
     'transition:none'
   ].join(';');
-  document.body.appendChild(cur);
+  document.body.appendChild(dot);
 
-  /* ── Hide system cursor, inject focus ring ──────────────────────── */
+  /* ── Focus ring ─────────────────────────────────────────────────── */
   var sty = document.createElement('style');
   sty.textContent =
-    '*{cursor:none!important}' +
-    ':focus-visible{outline:3px solid rgba(79,135,255,.9)!important;' +
+    ':focus{outline:3px solid rgba(79,135,255,.9)!important;' +
     'outline-offset:4px!important;border-radius:6px!important}';
   document.head.appendChild(sty);
 
   /* ── State ──────────────────────────────────────────────────────── */
   var cx = window.innerWidth  / 2;
   var cy = window.innerHeight / 2;
-  var snapped = false;           // true while cursor is locked on an element
   var dpadHeld = {}, dpadNext = {};
   var prev = { cross:false, circle:false, tri:false };
+  var _myClick = false; // guard against intercepting our own dispatched clicks
 
-  /* ── Cursor position ────────────────────────────────────────────── */
-  function placeCursor(x, y, animate) {
+  /* ── Dot position ───────────────────────────────────────────────── */
+  function placeDot(x, y, animate) {
     cx = x; cy = y;
-    cur.style.transition = animate ? 'left .14s ease,top .14s ease' : 'none';
-    cur.style.left = cx + 'px';
-    cur.style.top  = cy + 'px';
+    dot.style.transition = animate ? 'left .14s ease,top .14s ease' : 'none';
+    dot.style.left = cx + 'px';
+    dot.style.top  = cy + 'px';
   }
 
-  /* ── Focusable elements ─────────────────────────────────────────── */
+  /* ── Focusables ─────────────────────────────────────────────────── */
   function getFocusables() {
     return Array.prototype.slice.call(
       document.querySelectorAll(
@@ -70,61 +68,50 @@
     return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
   }
 
-  /* ── Snap cursor to element ─────────────────────────────────────── */
+  /* ── Snap dot + focus ───────────────────────────────────────────── */
   function snapTo(el) {
     el.focus({ preventScroll: false });
     el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
     var c = centerOf(el);
-    placeCursor(c.x, c.y, true);
-    snapped = true;
+    placeDot(c.x, c.y, true);
   }
 
-  /* ── Spatial navigation ─────────────────────────────────────────── */
+  /* ── Spatial nav ────────────────────────────────────────────────── */
   function spatialNav(dir) {
     var els = getFocusables();
     if (!els.length) return;
 
     var cur_el = document.activeElement;
-    // If nothing focused, snap to nearest element to the cursor
     if (!cur_el || els.indexOf(cur_el) === -1) {
-      var nearest = nearestTo(els, cx, cy);
-      if (nearest) snapTo(nearest);
+      // nothing focused — pick nearest to dot
+      var near = null, nearD = Infinity;
+      for (var i = 0; i < els.length; i++) {
+        var c = centerOf(els[i]);
+        var d = Math.hypot(c.x - cx, c.y - cy);
+        if (d < nearD) { nearD = d; near = els[i]; }
+      }
+      if (near) snapTo(near);
       return;
     }
 
     var cc = centerOf(cur_el);
     var best = null, bestScore = Infinity;
-
-    for (var i = 0; i < els.length; i++) {
-      var el = els[i];
+    for (var j = 0; j < els.length; j++) {
+      var el = els[j];
       if (el === cur_el) continue;
       var ec = centerOf(el);
-      var dx = ec.x - cc.x;
-      var dy = ec.y - cc.y;
-
+      var dx = ec.x - cc.x, dy = ec.y - cc.y;
       var inDir = (dir === 'up'    && dy < -6) ||
                   (dir === 'down'  && dy >  6) ||
                   (dir === 'left'  && dx < -6) ||
                   (dir === 'right' && dx >  6);
       if (!inDir) continue;
-
       var primary = (dir === 'up' || dir === 'down') ? Math.abs(dy) : Math.abs(dx);
       var perp    = (dir === 'up' || dir === 'down') ? Math.abs(dx) : Math.abs(dy);
       var score   = primary + perp * 1.6;
       if (score < bestScore) { bestScore = score; best = el; }
     }
-
     if (best) snapTo(best);
-  }
-
-  function nearestTo(els, x, y) {
-    var best = null, bestD = Infinity;
-    for (var i = 0; i < els.length; i++) {
-      var c = centerOf(els[i]);
-      var d = Math.hypot(c.x - x, c.y - y);
-      if (d < bestD) { bestD = d; best = els[i]; }
-    }
-    return best;
   }
 
   /* ── D-pad hold repeat ──────────────────────────────────────────── */
@@ -145,29 +132,41 @@
     }
   }
 
-  /* ── Click at cursor ────────────────────────────────────────────── */
-  function clickCurrent() {
-    // Pulse animation
-    cur.style.transition = 'transform .1s ease';
-    cur.style.transform  = 'translate(-50%,-50%) scale(.7)';
-    setTimeout(function () {
-      cur.style.transform = 'translate(-50%,-50%) scale(1)';
-    }, 110);
-
-    var el = document.activeElement;
-    if (!el || el === document.body) {
-      el = document.elementFromPoint(cx, cy);
-    }
+  /* ── Activate focused element ───────────────────────────────────── */
+  function activate(el) {
     if (!el) return;
-    // Dispatch a real MouseEvent so links and buttons all respond
-    el.dispatchEvent(new MouseEvent('click', {
-      bubbles: true, cancelable: true,
-      clientX: cx, clientY: cy,
-      view: window
-    }));
+    dot.style.transition = 'transform .1s ease';
+    dot.style.transform  = 'translate(-50%,-50%) scale(.7)';
+    setTimeout(function () { dot.style.transform = 'translate(-50%,-50%)'; }, 110);
+
+    /* Direct navigation for links — most reliable on PS5 */
+    var anchor = (el.tagName === 'A') ? el : (el.closest ? el.closest('a[href]') : null);
+    if (anchor && anchor.href) {
+      window.location.href = anchor.href;
+      return;
+    }
+    /* Everything else — dispatch a trusted-like click */
+    _myClick = true;
+    el.click();
+    _myClick = false;
   }
 
-  /* ── Main RAF loop ──────────────────────────────────────────────── */
+  /* ── Document-level click intercept ────────────────────────────── *
+   * PS5 Cross fires a native click at the PS5 system cursor position.
+   * If that position misses our focused element, we catch it here
+   * and redirect to whatever element is focused.                     */
+  document.addEventListener('click', function (e) {
+    if (_myClick) return; // our own dispatch — let it through
+    var focused = document.activeElement;
+    if (!focused || focused === document.body) return;
+    if (focused === e.target || focused.contains(e.target)) return; // already correct
+    // Click landed somewhere else — redirect to focused element
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    activate(focused);
+  }, true /* capture */);
+
+  /* ── RAF loop ───────────────────────────────────────────────────── */
   var rafId;
   function tick() {
     rafId = requestAnimationFrame(tick);
@@ -178,13 +177,12 @@
 
     var btns = gp.buttons;
 
-    /* D-pad → snap navigation */
     handleDpad('up',    !!(btns[B.UP]    && btns[B.UP].pressed));
     handleDpad('down',  !!(btns[B.DOWN]  && btns[B.DOWN].pressed));
     handleDpad('left',  !!(btns[B.LEFT]  && btns[B.LEFT].pressed));
     handleDpad('right', !!(btns[B.RIGHT] && btns[B.RIGHT].pressed));
 
-    /* Left stick → free cursor movement */
+    /* Left stick → free dot movement (no focus change) */
     var lx = gp.axes[0] || 0;
     var ly = gp.axes[1] || 0;
     if (Math.abs(lx) < DEADZONE) lx = 0;
@@ -192,40 +190,41 @@
     if (lx !== 0 || ly !== 0) {
       var nx = Math.max(0, Math.min(window.innerWidth,  cx + lx * STICK_SPEED));
       var ny = Math.max(0, Math.min(window.innerHeight, cy + ly * STICK_SPEED));
-      placeCursor(nx, ny, false);
-      snapped = false;
-      // Blur so focus ring doesn't fight with free cursor
-      if (document.activeElement && document.activeElement !== document.body) {
-        document.activeElement.blur();
-      }
+      placeDot(nx, ny, false);
     }
 
-    /* Cross → click */
-    var cross = !!(btns[B.CROSS]    && btns[B.CROSS].pressed);
-    var circ  = !!(btns[B.CIRCLE]   && btns[B.CIRCLE].pressed);
-    var tri   = !!(btns[B.TRIANGLE] && btns[B.TRIANGLE].pressed);
+    var cross  = !!(btns[B.CROSS]    && btns[B.CROSS].pressed);
+    var circle = !!(btns[B.CIRCLE]   && btns[B.CIRCLE].pressed);
+    var tri    = !!(btns[B.TRIANGLE] && btns[B.TRIANGLE].pressed);
 
-    if (cross && !prev.cross) clickCurrent();
-    if (circ  && !prev.circle) history.back();
-    if (tri   && !prev.tri)   location.href = '/';
+    /* Cross: activate focused element directly (backup to the intercept) */
+    if (cross && !prev.cross) {
+      var focused = document.activeElement;
+      if (focused && focused !== document.body) activate(focused);
+    }
+    if (circle && !prev.circle) history.back();
+    if (tri    && !prev.tri)    location.href = '/';
 
     prev.cross  = cross;
-    prev.circle = circ;
+    prev.circle = circle;
     prev.tri    = tri;
   }
 
   function start() {
     if (rafId) return;
-    // Snap to first focusable element on start
     var els = getFocusables();
     if (els.length) snapTo(els[0]);
     rafId = requestAnimationFrame(tick);
   }
 
-  /* Keyboard arrows for desktop testing */
+  /* Keyboard arrows (desktop testing) */
   document.addEventListener('keydown', function (e) {
     var map = { ArrowUp:'up', ArrowDown:'down', ArrowLeft:'left', ArrowRight:'right' };
     if (map[e.key]) { e.preventDefault(); spatialNav(map[e.key]); }
+    if (e.key === 'Enter') {
+      var focused = document.activeElement;
+      if (focused && focused !== document.body) activate(focused);
+    }
   });
 
   if (/PlayStation [45]/i.test(navigator.userAgent)) start();
