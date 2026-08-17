@@ -44,6 +44,39 @@ jobs:
           mkdir -p _site/v2
           rsync -a --exclude='.git' --exclude='.github' _v2/ _site/v2/
 
+      - name: Rewrite absolute paths for /v2 subpath
+        run: |
+          python3 - << 'PYEOF'
+          import os, re
+
+          ROOT = '_site/v2'
+          EXTS = {'.html', '.js', '.json'}
+
+          # Match quoted absolute paths that don't already start with /v2
+          # Covers: href="/", src="/", fetch('/'), register('/'), arr ['/'], ', '/', = '/'
+          PATTERN = re.compile(r'(["\'\(\[,=]\s*)(\/(?!v2\/))')
+
+          def rewrite(text):
+              return PATTERN.sub(lambda m: m.group(1) + '/v2/', text)
+
+          for dirpath, dirs, files in os.walk(ROOT):
+              dirs[:] = [d for d in dirs if d not in ('.git', '.github')]
+              for fn in files:
+                  if os.path.splitext(fn)[1] not in EXTS:
+                      continue
+                  path = os.path.join(dirpath, fn)
+                  try:
+                      with open(path, encoding='utf-8', errors='ignore') as f:
+                          src = f.read()
+                      out = rewrite(src)
+                      if out != src:
+                          with open(path, 'w', encoding='utf-8') as f:
+                              f.write(out)
+                          print('patched:', path)
+                  except Exception as e:
+                      print('skip:', path, e)
+          PYEOF
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
