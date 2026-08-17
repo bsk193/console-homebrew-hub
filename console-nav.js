@@ -1,27 +1,96 @@
-/* CHH Console Navigation — D-pad + gamepad support for PS5/PS4 */
+/* CHH Console Navigation — spatial D-pad navigation for PS5/PS4 */
 (function () {
-  var REPEAT_DELAY = 180;
+  var INITIAL_DELAY = 350;  // ms before first repeat fires on hold
+  var REPEAT_RATE   = 130;  // ms between repeats while holding
   var B = { CROSS: 0, CIRCLE: 1, SQUARE: 2, TRIANGLE: 3, L1: 4, R1: 5, L2: 6, R2: 7, UP: 12, DOWN: 13, LEFT: 14, RIGHT: 15 };
-  var prev = {};
+
   var raf;
+  var dpadHeld   = {};  // { dir: timestamp first pressed }
+  var dpadNext   = {};  // { dir: timestamp next repeat fires }
+  var prevCross  = false;
+  var prevCircle = false;
+  var prevTri    = false;
+
+  /* Inject a visible focus ring so the user can always see what's selected */
+  var style = document.createElement('style');
+  style.textContent = [
+    ':focus{outline:3px solid rgba(79,135,255,.9)!important;outline-offset:3px!important;border-radius:6px}',
+    ':focus:not(:focus-visible){outline:none!important}',
+    ':focus-visible{outline:3px solid rgba(79,135,255,.9)!important;outline-offset:3px!important;border-radius:6px}'
+  ].join('');
+  document.head.appendChild(style);
 
   function focusables() {
     return Array.prototype.slice.call(
-      document.querySelectorAll('a[href],button:not([disabled]),input,select,[tabindex]:not([tabindex="-1"])')
+      document.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),[tabindex]:not([tabindex="-1"])')
     ).filter(function (el) {
-      return el.offsetParent !== null;
+      var r = el.getBoundingClientRect();
+      return r.width > 0 && r.height > 0 && el.offsetParent !== null;
     });
   }
 
-  function moveFocus(dir) {
+  function center(el) {
+    var r = el.getBoundingClientRect();
+    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+  }
+
+  function spatialNav(dir) {
     var els = focusables();
     if (!els.length) return;
+
     var cur = document.activeElement;
-    var idx = els.indexOf(cur);
-    var next;
-    if (dir === 'down' || dir === 'right') next = els[idx + 1] || els[0];
-    else next = els[idx - 1] || els[els.length - 1];
-    if (next) { next.focus(); next.scrollIntoView({ block: 'nearest' }); }
+    if (!cur || els.indexOf(cur) === -1) {
+      // Nothing focused yet — pick first visible element
+      els[0].focus({ preventScroll: false });
+      return;
+    }
+
+    var cc = center(cur);
+    var best = null, bestScore = Infinity;
+
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      if (el === cur) continue;
+      var ec = center(el);
+      var dx = ec.x - cc.x;
+      var dy = ec.y - cc.y;
+
+      // Must be strictly in the pressed direction
+      var inDir = (dir === 'up'    && dy < -8) ||
+                  (dir === 'down'  && dy >  8) ||
+                  (dir === 'left'  && dx < -8) ||
+                  (dir === 'right' && dx >  8);
+      if (!inDir) continue;
+
+      // Primary axis distance + perpendicular penalty (×1.8)
+      var primary = (dir === 'up' || dir === 'down') ? Math.abs(dy) : Math.abs(dx);
+      var perp    = (dir === 'up' || dir === 'down') ? Math.abs(dx) : Math.abs(dy);
+      var score   = primary + perp * 1.8;
+
+      if (score < bestScore) { bestScore = score; best = el; }
+    }
+
+    if (best) {
+      best.focus({ preventScroll: false });
+      best.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
+  }
+
+  function handleDir(dir, pressed) {
+    var now = Date.now();
+    if (pressed) {
+      if (!dpadHeld[dir]) {
+        dpadHeld[dir] = now;
+        dpadNext[dir] = now + INITIAL_DELAY;
+        spatialNav(dir);
+      } else if (now >= dpadNext[dir]) {
+        dpadNext[dir] = now + REPEAT_RATE;
+        spatialNav(dir);
+      }
+    } else {
+      delete dpadHeld[dir];
+      delete dpadNext[dir];
+    }
   }
 
   function tick() {
@@ -29,25 +98,27 @@
     for (var pi = 0; pi < pads.length; pi++) {
       var pad = pads[pi];
       if (!pad) continue;
-      var now = Date.now();
-      for (var bi = 0; bi < pad.buttons.length; bi++) {
-        var key = pi * 256 + bi;
-        var pressed = pad.buttons[bi].pressed;
-        var last = prev[key];
-        if (pressed && (!last || now - last > REPEAT_DELAY)) {
-          prev[key] = now;
-          if (bi === B.UP || bi === B.LEFT) moveFocus('up');
-          else if (bi === B.DOWN || bi === B.RIGHT) moveFocus('down');
-          else if (bi === B.CROSS) {
-            var el = document.activeElement;
-            if (el && el !== document.body) el.click();
-          }
-          else if (bi === B.CIRCLE) history.back();
-          else if (bi === B.TRIANGLE) location.href = '/';
-        } else if (!pressed) {
-          delete prev[key];
-        }
+
+      var btns = pad.buttons;
+      handleDir('up',    !!(btns[B.UP]    && btns[B.UP].pressed));
+      handleDir('down',  !!(btns[B.DOWN]  && btns[B.DOWN].pressed));
+      handleDir('left',  !!(btns[B.LEFT]  && btns[B.LEFT].pressed));
+      handleDir('right', !!(btns[B.RIGHT] && btns[B.RIGHT].pressed));
+
+      var cross  = !!(btns[B.CROSS]    && btns[B.CROSS].pressed);
+      var circle = !!(btns[B.CIRCLE]   && btns[B.CIRCLE].pressed);
+      var tri    = !!(btns[B.TRIANGLE] && btns[B.TRIANGLE].pressed);
+
+      if (cross && !prevCross) {
+        var el = document.activeElement;
+        if (el && el !== document.body) el.click();
       }
+      if (circle && !prevCircle) history.back();
+      if (tri    && !prevTri)    location.href = '/';
+
+      prevCross  = cross;
+      prevCircle = circle;
+      prevTri    = tri;
     }
     raf = requestAnimationFrame(tick);
   }
@@ -57,13 +128,14 @@
     raf = requestAnimationFrame(tick);
   }
 
-  /* Keyboard arrow fallback */
+  /* Keyboard arrow fallback (desktop testing) */
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); moveFocus('down'); }
-    else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); moveFocus('up'); }
+    if (e.key === 'ArrowUp')    { e.preventDefault(); spatialNav('up');    }
+    else if (e.key === 'ArrowDown')  { e.preventDefault(); spatialNav('down');  }
+    else if (e.key === 'ArrowLeft')  { e.preventDefault(); spatialNav('left');  }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); spatialNav('right'); }
   });
 
-  /* Auto-start on PS5/PS4 UA or if gamepad connected */
   if (/PlayStation [45]/i.test(navigator.userAgent)) { start(); }
   window.addEventListener('gamepadconnected', start);
   window.chhNav = { start: start };
