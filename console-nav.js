@@ -40,7 +40,8 @@
   var cy = window.innerHeight / 2;
   var dpadHeld = {}, dpadNext = {};
   var prev = { cross:false, circle:false, tri:false };
-  var _myClick = false; // guard against intercepting our own dispatched clicks
+  var _myClick = false;
+  var lastSnapped = null; // PS5 may blur activeElement before our click fires
 
   /* ── Dot position ───────────────────────────────────────────────── */
   function placeDot(x, y, animate) {
@@ -70,10 +71,17 @@
 
   /* ── Snap dot + focus ───────────────────────────────────────────── */
   function snapTo(el) {
+    lastSnapped = el;
     el.focus({ preventScroll: false });
     el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
     var c = centerOf(el);
     placeDot(c.x, c.y, true);
+  }
+
+  /* Returns focused element, falling back to lastSnapped if PS5 blurred it */
+  function getTarget() {
+    var a = document.activeElement;
+    return (a && a !== document.body) ? a : lastSnapped;
   }
 
   /* ── Spatial nav ────────────────────────────────────────────────── */
@@ -156,14 +164,14 @@
    * If that position misses our focused element, we catch it here
    * and redirect to whatever element is focused.                     */
   document.addEventListener('click', function (e) {
-    if (_myClick) return; // our own dispatch — let it through
-    var focused = document.activeElement;
-    if (!focused || focused === document.body) return;
-    if (focused === e.target || focused.contains(e.target)) return; // already correct
-    // Click landed somewhere else — redirect to focused element
+    if (_myClick) return;
+    var target = getTarget();
+    if (!target) return;
+    if (target === e.target || target.contains(e.target)) return; // click already on right element
+    // PS5 Cross fired a click somewhere else — redirect to our snapped element
     e.preventDefault();
     e.stopImmediatePropagation();
-    activate(focused);
+    activate(target);
   }, true /* capture */);
 
   /* ── RAF loop ───────────────────────────────────────────────────── */
@@ -197,10 +205,10 @@
     var circle = !!(btns[B.CIRCLE]   && btns[B.CIRCLE].pressed);
     var tri    = !!(btns[B.TRIANGLE] && btns[B.TRIANGLE].pressed);
 
-    /* Cross: activate focused element directly (backup to the intercept) */
+    /* Cross: activate via lastSnapped so PS5 blur doesn't lose the target */
     if (cross && !prev.cross) {
-      var focused = document.activeElement;
-      if (focused && focused !== document.body) activate(focused);
+      var target = getTarget();
+      if (target) activate(target);
     }
     if (circle && !prev.circle) history.back();
     if (tri    && !prev.tri)    location.href = '/';
@@ -221,9 +229,9 @@
   document.addEventListener('keydown', function (e) {
     var map = { ArrowUp:'up', ArrowDown:'down', ArrowLeft:'left', ArrowRight:'right' };
     if (map[e.key]) { e.preventDefault(); spatialNav(map[e.key]); }
-    if (e.key === 'Enter') {
-      var focused = document.activeElement;
-      if (focused && focused !== document.body) activate(focused);
+    if (e.key === 'Enter' || e.key === ' ') {
+      var t = getTarget();
+      if (t) activate(t);
     }
   });
 
