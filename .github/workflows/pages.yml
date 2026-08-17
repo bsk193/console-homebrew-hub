@@ -1,11 +1,8 @@
-name: Deploy v2 to GitHub Pages
+name: Deploy GitHub Pages
 
 on:
   push:
-    branches: [v2]
-  workflow_run:
-    workflows: ["Automated Payloads Mirror"]
-    types: [success]
+    branches: [main, v2]
   workflow_dispatch:
 
 permissions:
@@ -13,9 +10,11 @@ permissions:
   pages: write
   id-token: write
 
+# Only one Pages deployment at a time; don't cancel in-progress so the live
+# site is never left in a half-deployed state.
 concurrency:
-  group: pages-v2
-  cancel-in-progress: true
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   deploy:
@@ -24,10 +23,26 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout v2
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: _main
+
+      - name: Checkout v2 branch
         uses: actions/checkout@v4
         with:
           ref: v2
+          path: _v2
+
+      - name: Assemble combined site
+        run: |
+          mkdir -p _site
+          # main → site root (/)
+          rsync -a --exclude='.git' --exclude='.github' _main/ _site/
+          # v2  → site subpath (/v2/)
+          mkdir -p _site/v2
+          rsync -a --exclude='.git' --exclude='.github' _v2/ _site/v2/
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -35,7 +50,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: _site
 
       - name: Deploy to GitHub Pages
         id: deployment
