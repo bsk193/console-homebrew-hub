@@ -1,0 +1,35 @@
+name: Update README
+
+on:
+  push:
+    branches: [v2]
+    paths:
+      - payloads.json
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Regenerate README from payloads.json
+        run: |
+          python -c "from update_payloads import update_readme; update_readme()"
+
+      - name: Commit updated README
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "docs: regenerate README from payloads.json" || echo "No changes to commit"
+          git push || echo "Nothing to push"

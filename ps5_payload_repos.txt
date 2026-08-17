@@ -1,0 +1,291 @@
+# PS5 Payload Repositories - GitHub Search Results
+# Format: Repo | URL | Description | Stars
+# Total found: 287 (filtered from 353 raw results)
+
+sharpemu/sharpemu | https://github.com/sharpemu/sharpemu | An experimental PlayStation 5 emulator for Windows, Linux and macOS. | ⭐4041
+ps5-linux/ps5-linux-loader | https://github.com/ps5-linux/ps5-linux-loader | Linux payload implementing HV exploits to run a custom bootloader | ⭐2217
+EricJMarti/inventory-hunter | https://github.com/EricJMarti/inventory-hunter | ⚡️ Get notified as soon as your next CPU, GPU, or game console is in stock | ⭐1118
+KytyPS5/KytyPS5 | https://github.com/KytyPS5/KytyPS5 | PlayStation 5 emulator for Windows | ⭐837
+FunkeyFlo/ps5-mqtt | https://github.com/FunkeyFlo/ps5-mqtt | Integrate your PlayStation 5 with Home Assistant | ⭐559
+achievements-app/psn-api | https://github.com/achievements-app/psn-api | A JavaScript library that lets you get trophy, user, and game data from the PlayStation Network. | ⭐407
+Tustin/psn-php | https://github.com/Tustin/psn-php | A PHP wrapper for the PSN API | ⭐375
+SvenGDK/PS-Multi-Tools | https://github.com/SvenGDK/PS-Multi-Tools | Backup manager with utilities for PS1, PS2, PSX (DVR), PS3, PS4, PS5, PSP & PS Vita, containing downloads for homebrew, firmwares, payloads & more. | ⭐369
+ItsJokerZz/FPKGi | https://github.com/ItsJokerZz/FPKGi | FPKGi is an open-source clone of the PKGi homebrew by Bucanero for PSP, Vita, and PS3. It retains the beloved functionality, UI, background image, and music while bringing the experience back to the latest console generations. It supports custom fake package (FPKG) content via .json files & more! It's ideal for game preservation and personal use. | ⭐263
+McCaulay/mast1c0re | https://github.com/McCaulay/mast1c0re | Develop payloads that can be executed on the PlayStation 4 or PlayStation 5 through a game save file. | ⭐258
+phantomptr/ps5upload | https://github.com/phantomptr/ps5upload | PS5 Upload is a tool designed to get your apps and homebrew onto your console without the headache of slow transfers. | ⭐213
+itsPLK/ps5-payload-manager | https://github.com/itsPLK/ps5-payload-manager | A modern, web-based dashboard to easily manage, import, and automatically load payloads on your PS5. | ⭐211
+PS5Dev/PS5SDK | https://github.com/PS5Dev/PS5SDK | An SDK to build payloads/ELF files compatible with the loader in the PS5 WebKit+Kernel Exploit chain. | ⭐204
+ps5-payload-dev/websrv | https://github.com/ps5-payload-dev/websrv | A simple web server for jailbroken PS5s that accepts connections on port 8080 | ⭐178
+ps5-payload-dev/sdk | https://github.com/ps5-payload-dev/sdk | An SDK for PS5 payloads that uses dynamic linking | ⭐159
+juma-sayeh/PS5-Game-Compressor | https://github.com/juma-sayeh/PS5-Game-Compressor | Standalone PS5 payload for compressing, unpacking, validating, and repairing ShadowMountPlus-mounted games | ⭐152
+ps5-payload-dev/ftpsrv | https://github.com/ps5-payload-dev/ftpsrv | A simple FTP server for jailbroken PS4s and PS5s | ⭐132
+Ailyth99/RewindPS4 | https://github.com/Ailyth99/RewindPS4 | A proxy network tool that can download specific versions of PS4 games(Downgrade), suitable for PS4/PS5 consoles. | ⭐121
+NookieAI/PS5-Game-Scraper | https://github.com/NookieAI/PS5-Game-Scraper | Browse, search, and download PS5 games with cover art, multiple download mirrors, and a self-updating desktop app for Windows, Mac, and Linux | ⭐105
+cragson/ps5-hen | https://github.com/cragson/ps5-hen | A Homebrew Enabler (HEN) for PS5 supporting firmware 1.00 to 4.51, based on an HV exploit chain. | ⭐96
+Gezine/ArtemisLuaLoader | https://github.com/Gezine/ArtemisLuaLoader | Run arbitrary lua script from savedata | ⭐95
+NookieAI/PS5-Vault | https://github.com/NookieAI/PS5-Vault | Scan, organize, and transfer PS5 game backups between PC and PS5 over FTP, with cover art, SHA-256 checksums, and a local REST API — Windows, macOS, and Linux | ⭐86
+itsPLK/ps5-payloads-mirror | https://github.com/itsPLK/ps5-payloads-mirror | No description | ⭐82
+StonedModder/Ghostcontrol-PS5-USB-Controller-Patcher | https://github.com/StonedModder/Ghostcontrol-PS5-USB-Controller-Patcher | A PS5 payload to allow other controllers to work via the front USB port | ⭐82
+OpenSourcereR-dev/ps5debug-NG | https://github.com/OpenSourcereR-dev/ps5debug-NG | PS5 debugger payload — userland TCP wire-protocol server hosted inside SceShellCore. GPL-3. | ⭐79
+Room-8-Group-LTD/REI | https://github.com/Room-8-Group-LTD/REI | REI is a cross-platform rendering framework and a comprehensive graphics API. Adaptable to various platforms, including PC, consoles, and mobile. It simplifies porting, especially for games developed on custom or proprietary engines. Functions as a cross-platform API as well as a helper library for platform-specific API. | ⭐72
+RavelloH/PSGameSpider | https://github.com/RavelloH/PSGameSpider | 自动爬取所有PlayStationStore中的所有游戏信息，包括封面、描述、价格、评分等，生成网页并索引 # # # Automatically crawl all game infos in all playstationstore, automatically generate web pages and index them | ⭐67
+NookieAI/kura | https://github.com/NookieAI/kura | Scan, identify, organize, and transfer your PS1-PS5 & Vita game library (Windows, macOS, Linux), with a bundled PS5 payload for installs, cheats, saves, and fan control | ⭐66
+ps5-payload-dev/offact | https://github.com/ps5-payload-dev/offact | PS5 offline account activation | ⭐66
+kvasszn/ree-save-editor | https://github.com/kvasszn/ree-save-editor | A Save Editor for RE Engine games | ⭐65
+Cryptogenic/PS5-SELF-Decrypter | https://github.com/Cryptogenic/PS5-SELF-Decrypter | A portable payload to decrypt PS5 SELF files from the filesystem to USB drive | ⭐63
+ps5-payload-dev/elfldr | https://github.com/ps5-payload-dev/elfldr | An ELF loader for jailbroken PS5s that accepts payloads on port 9021 | ⭐62
+ArkSama/PS5-Lapy-JB-Daemon | https://github.com/ArkSama/PS5-Lapy-JB-Daemon | Standalone homebrew jailbreak daemon for PS5. Mimics etaHEN's jailbreak-on-demand API. Multi-firmware (3.00 to 12.00) via ps5-payload-sdk + kstuff. No etaHEN required. | ⭐61
+ps5-payload-dev/fetchpkg | https://github.com/ps5-payload-dev/fetchpkg | Fetch Sony Playstation 4 or 5 package updates referenced by a JSON-formatted manifest at the given URL | ⭐56
+DevX-Cipher/7zip-plugin | https://github.com/DevX-Cipher/7zip-plugin | Installer unpacker Plugins for 7zip | ⭐54
+raleighlittles/PlayStation-Camera-Firmware-Loader | https://github.com/raleighlittles/PlayStation-Camera-Firmware-Loader | A cross-platform utility for loading custom firmware onto the PlayStation 5 camera, written in Rust | ⭐54
+tcatarina/y2jb-updater | https://github.com/tcatarina/y2jb-updater | Payload to update your Y2JB files on your PS5. | ⭐50
+SKFU/ps5tools | https://github.com/SKFU/ps5tools | Tools to use with PS5 related files | ⭐45
+john-tornblom/ps5-payload-sdk | https://github.com/john-tornblom/ps5-payload-sdk | An SDK for PS5 payloads that uses dynamic linking | ⭐44
+Geocld/PeaSyo4Desk | https://github.com/Geocld/PeaSyo4Desk | PlayStation remote play client, PeaSyo desktop client for windows/macOS/Linux(steamOS). | ⭐40
+ps5-payload-dev/bdj-ipv6-hen | https://github.com/ps5-payload-dev/bdj-ipv6-hen | A BD-J homebrew enabler for PS5s running firmwares 3.00-4.51 | ⭐40
+PSBrew/MicroMount | https://github.com/PSBrew/MicroMount | Auto detects and mounts compressed PFS images (.ffpsfc) and expose them to other PS5 homebrew components | ⭐40
+ItsBlurf/BFpilot | https://github.com/ItsBlurf/BFpilot | Lightweight PS5 file manager | browser based | ⭐36
+barisyild/airpsx | https://github.com/barisyild/airpsx | Remote management software for Jailbroken PlayStation 4/5 | ⭐36
+ps5-payload-dev/linkdev | https://github.com/ps5-payload-dev/linkdev | Link devices to jailbroken PS5s without acess to the PSN network | ⭐36
+eduqg/PageStation-inspired-on-ps5-reactjs | https://github.com/eduqg/PageStation-inspired-on-ps5-reactjs | Landing page based on PS5 new interface. Playstation 5 inspired UI :video_game: See Demo | ⭐34
+ghost1372/PSXMaster | https://github.com/ghost1372/PSXMaster | PSXMaster is a powerful and user-friendly application designed to simplify the process of Transferring data from PC to PS5/PS4 and managing PlayStation Games. | ⭐33
+cy33hc/ps5-payload-loader | https://github.com/cy33hc/ps5-payload-loader | No description | ⭐29
+Ragowit/psn100 | https://github.com/Ragowit/psn100 | PSN100 is a trophy tracking website with leaderboards, focusing on merging game stacks and removal of unobtainable trophies | ⭐28
+ps5-payload-dev/kstuff | https://github.com/ps5-payload-dev/kstuff | No description | ⭐26
+ItsJokerZz/FPKGi-PS5 | https://github.com/ItsJokerZz/FPKGi-PS5 | PS5 Support testing for FPKGi, a clone of the PKGi homebrew by Bucanero for PSP, Vita, and PS3. It retains the beloved functionality, familiar UI, background, and music while bringing the experience back to the latest console generations. | ⭐25
+SvenGDK/YT2JB-Toolbox | https://github.com/SvenGDK/YT2JB-Toolbox | A little toolbox for some Y2JB related tasks. | ⭐24
+StonedModder/Ghostpad | https://github.com/StonedModder/Ghostpad | PS5 payload for virtual controller creation and input redirection | ⭐23
+Rufidj/Nativehbl | https://github.com/Rufidj/Nativehbl | Native Homebrew launcher for PS5! | ⭐21
+andshrew/supreme-enigma | https://github.com/andshrew/supreme-enigma | This repository contains an extract of responses from the Sony PlayStation 5 backwards compatibility status API. | ⭐20
+KsAmJ/PS5-Auto-Jailbreak-and-Auto-Run-Payload- | https://github.com/KsAmJ/PS5-Auto-Jailbreak-and-Auto-Run-Payload- | Auto Jailbreaks and Load autorun.bin or autorun.elf once the jailbreak is done for ESP32-S3 (16MB) boards. Based on idlesauce UTMX2 with an admin file manager. Supports PS5 firmware 1.00-5.50 | ⭐20
+AssPayload/Ghostpad | https://github.com/AssPayload/Ghostpad | PS4/PS5 payload for virtual controller creation and input redirection | ⭐20
+Master-s/PS5-Payloads | https://github.com/Master-s/PS5-Payloads | PS5 Payloads | ⭐19
+john-tornblom/ps5-payload-elfldr | https://github.com/john-tornblom/ps5-payload-elfldr | An ELF loader for jailbroken PS5s that run payloads in individual processes | ⭐19
+nexgen999/PS5_Payload_Manager_Updater | https://github.com/nexgen999/PS5_Payload_Manager_Updater | PS5 Payload Manager Updater for Ps5 Payload manager | ⭐19
+StonedModder/ChronicLoader-PS5-Payload | https://github.com/StonedModder/ChronicLoader-PS5-Payload | Payload Updater & autoload.txt manager | ⭐19
+john-tornblom/ps5-payload-ftpsrv | https://github.com/john-tornblom/ps5-payload-ftpsrv | A simple FTP server for jailbroken PS5s | ⭐18
+Stuey-81/PS5_EZ_Host | https://github.com/Stuey-81/PS5_EZ_Host | Self-contained ESP32-S3 web host for serving HTML/JS payloads and utilities. | ⭐18
+itsPLK/ps5_lua_menu | https://github.com/itsPLK/ps5_lua_menu | A simple Lua web menu for launching and managing your PS5 payloads. | ⭐18
+o1298098/remote-play | https://github.com/o1298098/remote-play | browser-based remote play for Playstation | ⭐17
+deejay87/PS5-EXFAT-MKPFS-BUILDER | https://github.com/deejay87/PS5-EXFAT-MKPFS-BUILDER | PS5-EXFAT-MKPFS-BUILDER est un utilitaire automatisé tout-en-un permettant de créer, mettre à jour, optimiser et compresser des images au format .exfat ou au format PFS (.ffpfs / .ffpfsc) pour la PS5. | ⭐17
+matyushen/ps5-stock-alert | https://github.com/matyushen/ps5-stock-alert | Be smart about hunting for a PS5 | ⭐17
+ntfargo/uaf-2023-28205 | https://github.com/ntfargo/uaf-2023-28205 | PoC CVE-2023-28205: Apple WebKit Use-After-Free Vulnerability | ⭐17
+ps5-payload-dev/pacbrew-repo | https://github.com/ps5-payload-dev/pacbrew-repo | A PacBrew package repository for jailbroken PS5s | ⭐17
+MasterPS0/PS5HostPayloads | https://github.com/MasterPS0/PS5HostPayloads | PS5 Host Payloads | ⭐16
+ps5-payload-dev/shsrv | https://github.com/ps5-payload-dev/shsrv | A simple telnet-like shell server for jailbroken PS5s that accepts connections on port 2323 | ⭐16
+ps5-payload-dev/klogsrv | https://github.com/ps5-payload-dev/klogsrv | A simple socket server for jailbroken PS4s and PS5s that redirects /dev/klog to sockets connected on port 3232 | ⭐15
+ps5-payload-dev/gdbsrv | https://github.com/ps5-payload-dev/gdbsrv | A simple GDB server for jailbroken PS4s and PS5s | ⭐14
+john-tornblom/ps5-payload-shsrv | https://github.com/john-tornblom/ps5-payload-shsrv | A simple telnet-like shell server for jailbroken PS5s | ⭐14
+TetzkatLipHoka/Hollow | https://github.com/TetzkatLipHoka/Hollow | PS4 Cheatfile Viewer | ⭐13
+bizkut/unrar-ps5 | https://github.com/bizkut/unrar-ps5 | PS5 UnRAR payload for extracting homebrew archives | ⭐13
+r-salas/ical-videogames | https://github.com/r-salas/ical-videogames | Track upcoming video game release dates directly on your calendar | ⭐12
+SvenGDK/SharpProspero | https://github.com/SvenGDK/SharpProspero | A C# PS5 Homebrew SDK & Toolchain | ⭐12
+sinajet/PS5-Websrv-Payload-Menu | https://github.com/sinajet/PS5-Websrv-Payload-Menu | PS5 Websrv Payload Menu | ⭐12
+francoataffarel/ActRemoteLink | https://github.com/francoataffarel/ActRemoteLink | ActRemoteLink is a utility suite for PS5 workflows. It enables offline local account activation and Chiaki/Remote Play. Key features include changing account IDs offline, generating Remote Play PINs via system notifications, and monitoring successful pairing using a Python sender script to orchestrate the ELF payloads. | ⭐12
+deejay87/PS5-MKPFS-Image-Builder | https://github.com/deejay87/PS5-MKPFS-Image-Builder | Une interface graphique pour packager et compresser des dossiers de jeux, fichiers .ffpkg ou images .exfat au format PFS (`.ffpfs` / `.ffpfsc`) pour PS5 | ⭐11
+john-tornblom/ps5-payload-hbldr | https://github.com/john-tornblom/ps5-payload-hbldr | No description | ⭐11
+john-tornblom/ps5-payload-klogsrv | https://github.com/john-tornblom/ps5-payload-klogsrv | A simple socket server for jailbroken PS5s that redirects /dev/klog to sockets connected on port 3232 | ⭐11
+buzzer-re/ps5-kld-sdk | https://github.com/buzzer-re/ps5-kld-sdk | An SDK for building homebrew PS5 kernel modules. | ⭐11
+saieno/scuf-controller | https://github.com/saieno/scuf-controller | SystemD Service to Enable Native Support for SCUF Vantage 2 and DualShock 4/5 Controllers | ⭐10
+lapot2/Raccoon-Flash-Explorer-Demo | https://github.com/lapot2/Raccoon-Flash-Explorer-Demo | Demo/SDK version of RFE | ⭐10
+ps5-payload-dev/SDL | https://github.com/ps5-payload-dev/SDL | A PS5 port of Simple Directmedia Layer (SDL) | ⭐10
+Feyzee61/psx_payload_injector | https://github.com/Feyzee61/psx_payload_injector | Lightweight PS4/PS5 Payload Injector for ELF and BIN files over network. | ⭐10
+abtswath/psn-client | https://github.com/abtswath/psn-client | PSN 游戏列表、奖杯进度、奖杯列表接口 | ⭐9
+jeroendev-one/ps5-db-backup | https://github.com/jeroendev-one/ps5-db-backup | PS5 DB backup payload for use with PS5-Payload-SDK | ⭐9
+StonedModder/Porkfolio | https://github.com/StonedModder/Porkfolio | All-in-one PS5 homebrew utility for games, backups, FTP transfers, media, payloads, saves, avatars, and console workflows. | ⭐9
+SleepTheGod/PS5_Linux_Boot | https://github.com/SleepTheGod/PS5_Linux_Boot | Untested The script assumes a kernel exploit exists to bypass NX, SMAP, SMEP, and UMIP. Without it, boot_linux won’t run. Check PS5 homebrew communities for updates. | ⭐9
+deejay87/PS5-EXFAT-Image-Builder | https://github.com/deejay87/PS5-EXFAT-Image-Builder | PS5 EXFAT IMAGE BUILDER est un utilitaire automatisé permettant de packager et d'optimiser un fichier au format `.exfat` | ⭐8
+pink0D/btd_vhci | https://github.com/pink0D/btd_vhci | Simple BTHID library for ESP32 | ⭐8
+fabriciolak/ps-scraper | https://github.com/fabriciolak/ps-scraper | ps-scraper is a web scraper that allows you to extract data from the PlayStation Store, looking for new offers, free games, monthly games, discounts and exclusive ps plus packages. | ⭐8
+kerrdec97/ps5-payload-manager | https://github.com/kerrdec97/ps5-payload-manager | No description | ⭐8
+StonedModder/ps5-beeper-LED-Controller | https://github.com/StonedModder/ps5-beeper-LED-Controller | payload & documentation to control the beeper, and console LED brightness | ⭐8
+RastaFairy/PS5-Toolkit-11.00 | https://github.com/RastaFairy/PS5-Toolkit-11.00 | Un conjunto de herramientas encadenadas que, partiendo de un bug en el motor JavaScript WebKit de la PS5, obtienen primitivas de lectura/escritura arbitraria en memoria, escalan al kernel, instalan un cargador de payloads persistente, y permiten ejecutar cualquier archivo .elf, .bin o .self en el hardware. | ⭐8
+Rufidj/PS5_DEV_HOMEBREW | https://github.com/Rufidj/PS5_DEV_HOMEBREW | A lightweight, standalone C SDK for PS5, featuring multi-firmware compatibility with a focus on dynamic RAM EH_offset alignment. It supports automated module handle resolution and direct system interaction without standard libc dependencies, battle-tested on firmwares 13.00 and 13.20. | ⭐8
+StonedModder/ps-game-state-lib | https://github.com/StonedModder/ps-game-state-lib | Standalone PS5 game-state detection payload, C library, and desktop GUI | ⭐7
+ShahnurIslam/ps5_scraper | https://github.com/ShahnurIslam/ps5_scraper | A small webscraper used to find ps5 stock in the UK | ⭐7
+F1CU/ps5-games-in-homebrew-sync | https://github.com/F1CU/ps5-games-in-homebrew-sync | No description | ⭐7
+CasperVM/cursed_controls | https://github.com/CasperVM/cursed_controls | Universal controller receiver and mapper running on an sbc | ⭐6
+cristianmiranda/ps5-stock-bot | https://github.com/cristianmiranda/ps5-stock-bot | 🎮 PS5 Stock Bot | ⭐6
+Sagarnaikg/Playstation5 | https://github.com/Sagarnaikg/Playstation5 | online shopping app for playstation products built using Flutter . | ⭐6
+jrson83/savescum | https://github.com/jrson83/savescum | A command-line tool & webinterface, to efficiently save scum on an exploitable PS4/PS5. | ⭐6
+ImLunaHey/playstation-rtmp | https://github.com/ImLunaHey/playstation-rtmp | Capture PS5 gameplay without a capture card — DNS-spoofs Twitch and reroutes the RTMP stream to your PC | ⭐6
+MasterPS0/PS5-Power-Payloads-Project | https://github.com/MasterPS0/PS5-Power-Payloads-Project | PS5 Power Payloads Project | ⭐6
+jujuforce/PS5PayloadSender-iOS | https://github.com/jujuforce/PS5PayloadSender-iOS | PS5 Payload sender iOS application | ⭐6
+vladimir-cucu/esp-ps5-payload-sender | https://github.com/vladimir-cucu/esp-ps5-payload-sender | ESP8266 PlayStation 5 Payload Sender | ⭐6
+MasterPS0/PS5-app_title | https://github.com/MasterPS0/PS5-app_title | Payload Add title to an image | ⭐6
+rmuxnet/fraske | https://github.com/rmuxnet/fraske | fraske — PS4/PS5 homebrew utility (payload, klog, pkg install) | ⭐6
+ps5-payload-dev/regdump | https://github.com/ps5-payload-dev/regdump | No description | ⭐6
+esp32beans/nunchuk2sac | https://github.com/esp32beans/nunchuk2sac | Convert Wii Nunchuk for use with Sony Access Controller for PlayStation 5 | ⭐5
+2M4U/ColdwarModderStatus | https://github.com/2M4U/ColdwarModderStatus | Animated Discord Status For Call of Duty Cold War Modders. | ⭐5
+harsh159357/playstation_controller_flutter | https://github.com/harsh159357/playstation_controller_flutter | Play Station Controller color customizer in Flutter | ⭐5
+pmanikas/gaming-controller-tester | https://github.com/pmanikas/gaming-controller-tester | Pair and test your gaming console controller | ⭐5
+StonedModder/TM44 | https://github.com/StonedModder/TM44 | PS5 payload that sets your system to rest mode | ⭐5
+sunnyqeen/autokstuff | https://github.com/sunnyqeen/autokstuff | Automatically pause Kstuff when running homebrew games on your PS5 using the Kstuff | ⭐5
+sammwyy/EmUV | https://github.com/sammwyy/EmUV | Experimental x86_64 PlayStation 5 HLE / Compatibility layer | ⭐4
+AuntAnt/RewindPS4_macOS | https://github.com/AuntAnt/RewindPS4_macOS | A network proxy tool that allows you to download specific versions of PS4 games (Downgrade), suitable for PS4/PS5 consoles. | ⭐4
+Lucky-ESA/ioBroker.playstation | https://github.com/Lucky-ESA/ioBroker.playstation | Control Playstation and overview PSN Account | ⭐4
+chibsaabji/ps5-bar-tool | https://github.com/chibsaabji/ps5-bar-tool | PS5 utility to parse and dump Backup and Restore files works upto firmware 13.40 | ⭐4
+pgaspar/ps5_watcher | https://github.com/pgaspar/ps5_watcher | Check online stores for PS5 pre-order availability. | ⭐4
+josephang/MagicMonitor | https://github.com/josephang/MagicMonitor | Magic Monitor The purpose of this script is to take video / data input from consoles via third-party HDMI / DP to USB Device. It's for people with a game console that want to use their high performance monitor rather than TV while also using monitor as PC monitor. | ⭐4
+johnuberbacher/sky-automated-music-playstation | https://github.com/johnuberbacher/sky-automated-music-playstation | Automate music playback in the game Sky: Children of the Light by reading music sheets and sending commands through the remote-play application Chiaki (for PS4 and PS5 only). | ⭐4
+HanetakaChou/Console-Tutorial | https://github.com/HanetakaChou/Console-Tutorial | PS5 AGC Tutorial | ⭐4
+icco/hayden | https://github.com/icco/hayden | An app for finding text in a page and then firing a webhook if it does. | ⭐4
+itsPLK/ps5_payloads | https://github.com/itsPLK/ps5_payloads | No description | ⭐4
+StonedModder/PS5-SystemStateManager | https://github.com/StonedModder/PS5-SystemStateManager | PS5 Payload for triggering system shutdowns, reboots, rest mode, and disc ejection. | ⭐4
+zecoxao/nand_group_dump_elf | https://github.com/zecoxao/nand_group_dump_elf | copy of SpecterDev's nand group dump example for the ps5-payload-dev sdk from sb | ⭐4
+Pharaoh2k/PlayStation-Payload-Center | https://github.com/Pharaoh2k/PlayStation-Payload-Center | Cross-platform desktop tool to discover, download, SHA-256-verify, queue, and send homebrew payloads to a jailbroken PS4/PS5 over the network. Catalog browser, local library with update detection, send queue, and activity log. Avalonia + .NET 10, 13 languages. Windows, macOS & Linux. | ⭐4
+ogxd/brutus | https://github.com/ogxd/brutus | A scalper bot that you can command via discord. | ⭐3
+deonvz/ImageToAsciiart | https://github.com/deonvz/ImageToAsciiart | Converts any picture or your live Webcam feed into ascii art. Uses Javascript, P5.js, Asciiart repository and is based on the Coding Train Challenges. | ⭐3
+volodymyrsaienko240/PS-Trophy-Creator-site | https://github.com/volodymyrsaienko240/PS-Trophy-Creator-site | Creator PS trophy (is not real trophy) | ⭐3
+deefex/ps5bot | https://github.com/deefex/ps5bot | Playstation 5 Stock Monitor | ⭐3
+tygamvrelis/PS5StockHelper | https://github.com/tygamvrelis/PS5StockHelper | Helps with getting a PS5 | ⭐3
+eonurk/StreamPS | https://github.com/eonurk/StreamPS | Streaming directly from Twitch to Kick | ⭐3
+pmatos/ps5-order | https://github.com/pmatos/ps5-order | Script to warn me about PS5 availability | ⭐3
+hussainweb/ps5-stock-watcher | https://github.com/hussainweb/ps5-stock-watcher | A simple PHP script based on Amphp to periodically check for PS5 stock. | ⭐3
+tony-aptx4869/game_walkthroughs | https://github.com/tony-aptx4869/game_walkthroughs | Organize and summarize several game walkthroughs. 整理总结一些游戏攻略。 https://tonygames.rtfd.io | ⭐3
+nbr23/ps-updates | https://github.com/nbr23/ps-updates | Monitor PS4/PS5 updates release, and generate an RSS feed of update releases | ⭐3
+canscaw28/ps5-bot | https://github.com/canscaw28/ps5-bot | A bot that will alert you via sms if a PS5 becomes available. | ⭐3
+TinyBacklog/mkpfs-tui | https://github.com/TinyBacklog/mkpfs-tui | A Textual TUI over mkpfs: build, inspect, verify, tree and unpack PlayStation PFS (.ffpfs/.ffpfsc) images. | ⭐3
+controllercustom/x52_PS5 | https://github.com/controllercustom/x52_PS5 | Connect Logitech X52 to PlayStation 5 using hid-remapper | ⭐3
+rmanganiello/i-want-a-ps5 | https://github.com/rmanganiello/i-want-a-ps5 | Scrape some websites to check for PS5 stock. | ⭐3
+r-freeman/BD-JB-Poops-Autoloader | https://github.com/r-freeman/BD-JB-Poops-Autoloader | Burnable Blu-ray ISO for PS5, chains BD-J with NetPoops-PS5 for kernel exploitation. Includes ps5_autoload.elf (for loading ELF payloads from USB). | ⭐3
+hgr9519/ps5-wallpaper-modd | https://github.com/hgr9519/ps5-wallpaper-modd | PS5 payload to change system wallpapers. Supports JPG, PNG, DDS. Backup/Restore, web interface. | ⭐3
+JunLeB/PS5Console | https://github.com/JunLeB/PS5Console | PS5 Console 一体化 PS5 本地控制中心，将游戏挂载、存档管理、USB 手柄兼容、FTP、风扇温控和 ELF 管理整合到一个 Payload 与 Web UI 中。  当前项目用于已具备 Payload 运行环境的 PS5。请仅处理你合法拥有的游戏与存档，并自行承担测试第三方 Payload、修改系统数据库和挂载镜像的风险。 | ⭐3
+montumodi/ps5-stock-finder | https://github.com/montumodi/ps5-stock-finder | No description | ⭐2
+mi5hmash/DeathloopSaveDataChecksumFixer | https://github.com/mi5hmash/DeathloopSaveDataChecksumFixer | Fixes the checksum of Deathloop SaveData files and enables conversion between PS5 and PC SaveData file formats. | ⭐2
+nanpuyue/rtmp-forwarder | https://github.com/nanpuyue/rtmp-forwarder | A lightweight RTMP ingest proxy and forwarding service written in Rust. | ⭐2
+Retr0Hub/PS5-Emulation-SpringNEON- | https://github.com/Retr0Hub/PS5-Emulation-SpringNEON- | SpringNEON (previously SpringOnion) is a part-time project working on PS5 Emulation.[This project uses C++] | ⭐2
+vargasvini/akichi | https://github.com/vargasvini/akichi | No description | ⭐2
+CampCrystalLake/ccl-server | https://github.com/CampCrystalLake/ccl-server | host your own friday the 13th private server on ps4, one binary, no dependencies | ⭐2
+deejay87/PS5-Y2JB-NETFLIX-CUSTOM-DB | https://github.com/deejay87/PS5-Y2JB-NETFLIX-CUSTOM-DB | Application Windows permettant de personnaliser entièrement les applications YouTube et Netflix sur PS5 Jailbreak | ⭐2
+mcdona1d/gt7-nanoleaf-sync | https://github.com/mcdona1d/gt7-nanoleaf-sync | Syncs Gran Turismo 7 (PS5) telemetry data with Nanoleaf Lightstrips in real-time, providing an immersive, zero-lag RGB racing experience. | ⭐2
+EthanC/Renovate | https://github.com/EthanC/Renovate | Monitor games on Steam, Battle.net, and PlayStation and notify about updates. | ⭐2
+kpabellan/target-in-store-ps5-monitor | https://github.com/kpabellan/target-in-store-ps5-monitor | A Target in-store stock monitor for both digital and disc PS5 consoles that sends in stock alerts to SMS and/or Discord webhook. | ⭐2
+ElektroStudios/Gamefaqs-Platform-Exclusive-Games-Scraper | https://github.com/ElektroStudios/Gamefaqs-Platform-Exclusive-Games-Scraper | Crawls exclusive video games released for the platforms specified on GameFAQs website to generate a table in Markdown format with the crawled titles. | ⭐2
+esp32beans/M5Stack_Touch_SAC_Joystick | https://github.com/esp32beans/M5Stack_Touch_SAC_Joystick | M5Stack Dial Capacitive Touch Analog Joystick for Sony Access Controller | ⭐2
+cecilbowen/disgaea-7-evility-search | https://github.com/cecilbowen/disgaea-7-evility-search | Search and filter through evilities from Disgaea 7. | ⭐2
+NanospeedGamerYT/PayloadManagerESP | https://github.com/NanospeedGamerYT/PayloadManagerESP | Payload Manager PS5 en Español | ⭐2
+cosmicflow2512/PS5-PayloadManager | https://github.com/cosmicflow2512/PS5-PayloadManager | No description | ⭐2
+GARajab/ps5payloads | https://github.com/GARajab/ps5payloads | No description | ⭐2
+StonedModder/Ghostpad-Dumper | https://github.com/StonedModder/Ghostpad-Dumper | PS5 Payload that walks the user through a button/axis capture sequence with PS5 debug notifications | ⭐2
+Khandiaz6262/EmuC0re | https://github.com/Khandiaz6262/EmuC0re | Run PS5 emulators as native x86_64 shellcode via LuaC0re JIT, enabling homebrew apps from userland with NES support up to firmware 13.00 | ⭐2
+JB184351/TowerCompanion | https://github.com/JB184351/TowerCompanion | This app is a Tower of Sisyphus companion app for iOS for the game Returnal (which is on PS5 and PC) that will help the player keep track of their scores along with what Weapon, Artifacts, Parasites, Augments, and other important stats after they die. | ⭐1
+0u46r6g8t/Bot_publication | https://github.com/0u46r6g8t/Bot_publication | No description | ⭐1
+baptiste-fourmont/simple-bot-amazon | https://github.com/baptiste-fourmont/simple-bot-amazon | Simple bot Amazon, track what you want and bought it | ⭐1
+Sparky101-2/autorun360 | https://github.com/Sparky101-2/autorun360 | Provides a 360° autorun feature for fixed-view games like Diablo IV. A script for the Titan 2 (a console i/o device). | ⭐1
+alex-free/wolf4sdl-ps5 | https://github.com/alex-free/wolf4sdl-ps5 | Classic first-person shooter Wolfenstein 3D ported with PS5 payload toolchain | ⭐1
+ITSeniy/pNES5 | https://github.com/ITSeniy/pNES5 | NES Emulator for PS5. | ⭐1
+dgr8akki/kestrel | https://github.com/dgr8akki/kestrel | Native macOS menu-bar recorder for USB-C HDMI capture cards. 4K60 HEVC fragmented MP4, fully offline. | ⭐1
+brogers5/chocolatey-package-ps-remote-play | https://github.com/brogers5/chocolatey-package-ps-remote-play | Chocolatey package for PS Remote Play. | ⭐1
+Everlite/PS5-to-Steam-Bridge | https://github.com/Everlite/PS5-to-Steam-Bridge | Sync your PlayStation 5 presence to Steam as a Standalone App (v2) | ⭐1
+BalramMitta/First | https://github.com/BalramMitta/First | Python Problems | ⭐1
+HanetakaChou/Brioche-Platform-Abstraction-Layer | https://github.com/HanetakaChou/Brioche-Platform-Abstraction-Layer | Brioche Platform Abstraction Layer over the underlying Vulkan and Direct3D12 API | ⭐1
+Sparky101-2/edge-scanner | https://github.com/Sparky101-2/edge-scanner | Get Stick Perimeter Coordinates by Stick Angle. A script for the Titan 2 (a console i/o device). | ⭐1
+phantomptr/ps5drive | https://github.com/phantomptr/ps5drive | PS5Drive turns your console into a clean, high-speed transfer hub: drag in apps, homebrew, and files   from any browser, manage them with a full file UI, and keep control with built-in health/debug tools   and secure mode when you need it. | ⭐1
+dante0747/gamebeeper.gg | https://github.com/dante0747/gamebeeper.gg | All the games worth watching. One signal. — a fast, open-source video game news aggregator. | ⭐1
+gamahacka/ps5-wake-bluetooth-linux | https://github.com/gamahacka/ps5-wake-bluetooth-linux | Wake PS5 from standby over Bluetooth on Linux using Realtek adapters. Confirms RTL8852BU honours BD_ADDR override via firmware config blob. | ⭐1
+StatikkRaccoon/PS5-Payload-Injector | https://github.com/StatikkRaccoon/PS5-Payload-Injector | A small GUI for injecting payloads to the ps5-jar-loader by hammer-83 | ⭐1
+icemesh/hello-world-ps5 | https://github.com/icemesh/hello-world-ps5 | A simple Hello World payload | ⭐1
+owendswang/ps5-syslang | https://github.com/owendswang/ps5-syslang | Small PS5 payload for switching the ShellUI system language. | ⭐1
+Storm21CH/PS5-BackupDB | https://github.com/Storm21CH/PS5-BackupDB | PS5 Payload: Dumping all Database files to USB | ⭐1
+tcphdr/PS5-Kernel-Data-Dumper | https://github.com/tcphdr/PS5-Kernel-Data-Dumper | ELF payload for the PS5 that dumps the kernel's .data segment. | ⭐1
+Storm21CH/PS5-BackupDbUser | https://github.com/Storm21CH/PS5-BackupDbUser | PS5 Payload: AllinOne Dumper. Dumping all Database and User files to USB | ⭐1
+thatboialex/nexuscheatmanager | https://github.com/thatboialex/nexuscheatmanager | NexusCheats - On-console cheat manager for PS4/PS5 (ELF payload) | ⭐1
+tcphdr/PS5-Firmware-Spoofer | https://github.com/tcphdr/PS5-Firmware-Spoofer | PS5 ELF payload that utilizes GPU DMA operations to modify sysctl variables in the kernel's .data segment | ⭐1
+NikoBellikJR31/Ghostcontrol-PS5-USB-Controller-Patcher-Manba- | https://github.com/NikoBellikJR31/Ghostcontrol-PS5-USB-Controller-Patcher-Manba- | A PS5 payload to allow other controllers to work via the front USB port | ⭐1
+ItsBlurf/pldmgr-contrib | https://github.com/ItsBlurf/pldmgr-contrib | Contribution branch for itsPLK/ps5-payload-manager (Download Hub + Rest Mode fixes) | ⭐1
+tcphdr/Y2JB-Userland-Orcale-Based-Memory-Scanning | https://github.com/tcphdr/Y2JB-Userland-Orcale-Based-Memory-Scanning | Y2JB payload that enables the scanning of the PS5 userland memory of all loaded modules without triggering XOM protections. (not an exploit) | ⭐1
+alex-free/crispy-doom-ps5 | https://github.com/alex-free/crispy-doom-ps5 | Port of crispy doom to PS5 using homebrew ps5 sdk | ⭐1
+lz-anonz/PS5-JB-SUITE | https://github.com/lz-anonz/PS5-JB-SUITE | A repository with all the latest/updated files & tools you may need or want, to Jailbreak your PS5 up to the latest jailbreakable FW. | ⭐1
+gabrielrlima/ps5cam-macos | https://github.com/gabrielrlima/ps5cam-macos | Turn the Sony PS5 HD Camera into an automatic, calibrated webcam on macOS | ⭐0
+warrenwoodhouse/ps5 | https://github.com/warrenwoodhouse/ps5 | My Save Data from my PS5. Includes all of my 100% completed saves as well as a few saves to help you pass some hard trophies, mods and more. | ⭐0
+ransh2014/gt7telemtrace | https://github.com/ransh2014/gt7telemtrace | TRACE - GT7 live telemetry dashboard + 14-chart lap analysis tool. Reads UDP stream from PS4/PS5 over local network. | ⭐0
+SethClydesdale/ps5-bookmarks | https://github.com/SethClydesdale/ps5-bookmarks | Personal bookmarks for the PS5 web browser. | ⭐0
+anurag6569201/Meghdarshn | https://github.com/anurag6569201/Meghdarshn | ISRO Hackathon 2025 quick mockup for presenting under PS5 of isro hack 2025 | ⭐0
+Dejan-Port/PS5-UART-GUI | https://github.com/Dejan-Port/PS5-UART-GUI | PS5 uart citanje i brisanje gresaka | ⭐0
+LSPECTRONIZTAR/lspectr-os | https://github.com/LSPECTRONIZTAR/lspectr-os | An experimental gaming/entertainment system for Windows that was created as a test to see if it's possible to use PenguinMod (a Scratch mod) to develop an actual gaming console UI similar to the likes of a PS5 or something. Let's see how it goes... | ⭐0
+jzucker2/PlayStation2MQTT | https://github.com/jzucker2/PlayStation2MQTT | A node MQTT bridge between Sony PS5 and Home Assistant | ⭐0
+lerapeurdu62280-debug/PS-Stick-Calibrator-Ultra | https://github.com/lerapeurdu62280-debug/PS-Stick-Calibrator-Ultra | Outil complet de diagnostic et calibration des manettes PS4/PS5 - 20+ fonctionnalites. Par S.O.S INFO LUDO. | ⭐0
+TheErsysEnding/TEE-PS-Game-Checker | https://github.com/TheErsysEnding/TEE-PS-Game-Checker | Verify PlayStation game leaks via Sony's public endpoints, Korean GRAC ratings & local PKG checks. Electron GUI, multilingual (DE/EN/TR). By TheErsysEnding. | ⭐0
+jfcardososantos/PS5Torrent | https://github.com/jfcardososantos/PS5Torrent | Cliente BitTorrent homebrew para PS5 com painel web, status em tempo real e aplicativo na tela principal. | ⭐0
+BrianLesko/maze-runner | https://github.com/BrianLesko/maze-runner | Developed a Python-based maze-crawling application using a PS5 controller interface. This project highlights skills in software-hardware integration and low-code UI design, demonstrating expertise ideal for advanced software engineering. | ⭐0
+caressanoisy333/sharpemu | https://github.com/caressanoisy333/sharpemu | Emulate PlayStation 5 software on Windows, Linux, and macOS with this experimental emulator written in C#. | ⭐0
+intothevoid/nightreign | https://github.com/intothevoid/nightreign | An information dashboard for the popular game Elden Ring: Nightreign | ⭐0
+Piero24/PS5-avability-bot | https://github.com/Piero24/PS5-avability-bot | A Telegram bot to detect when the PS5 is available in one of the italian store like Unieuro, Mediaworld and so on | ⭐0
+alex-free/ps5-make-fself-recursive | https://github.com/alex-free/ps5-make-fself-recursive | Run make_fself.py recursively on a decrypted PS5 game dump folder. | ⭐0
+azhuge233/HiloadSender | https://github.com/azhuge233/HiloadSender | PS4/5 payload sender for HarmonyOS (6.0+) | ⭐0
+zyairdawson1581191/subnautica-2-ps5-port-pre-release | https://github.com/zyairdawson1581191/subnautica-2-ps5-port-pre-release | Subnautica 2 PS5 Port Pre-Release (2026) is the premier utility for early access insights. Experience high-speed updates, secure data, and fully optimized tools for elite underwater survival. | ⭐0
+Basvich/tfTest1 | https://github.com/Basvich/tfTest1 | Discovering tensorFlow.JS | ⭐0
+matthiasseghers/shell-scripts | https://github.com/matthiasseghers/shell-scripts | Personal macOS shell scripts for backup, video processing, and data tasks — with BATS tests and CI | ⭐0
+JaimePrietoRubio2004/ps5-exploded-scrollytelling | https://github.com/JaimePrietoRubio2004/ps5-exploded-scrollytelling | Scrollytelling interactivo: una PS5 explota en despiece y vuelve a la vida. Vídeo generado con IA (Google Flow) + Real-ESRGAN + Next.js + GSAP. Demo: https://web-nine-wine-78.vercel.app | ⭐0
+chrispham-cyber/Playstation-5-Landing-Page | https://github.com/chrispham-cyber/Playstation-5-Landing-Page | Cloning landing page based on original Playstation site operating Bootstrap. | ⭐0
+metloub/PSXift | https://github.com/metloub/PSXift | A clean-room, educational macOS-native research emulator project. | ⭐0
+matthiasseghers/PS5-Webm-Converter | https://github.com/matthiasseghers/PS5-Webm-Converter | Convert PS5 4K .webm recordings to a properly colour-graded .mp4 that works in any video editor. | ⭐0
+Affined-genushypoxis188/Subnautica-2-PS5-Port | https://github.com/Affined-genushypoxis188/Subnautica-2-PS5-Port | Run the Subnautica 2 sequel on Windows with custom optimizations for better performance, higher resolutions, and modern display support. | ⭐0
+RifatParadoxical/ps5-scraped-data-on-star_tech | https://github.com/RifatParadoxical/ps5-scraped-data-on-star_tech | For educational purpose only!! | ⭐0
+Acelogic/sharpemu-agentic-toolkit | https://github.com/Acelogic/sharpemu-agentic-toolkit | Evidence-backed SharpEmu NID swarm, KawaiiDRA, Context Mode, and timestamped visual regression tooling | ⭐0
+epinethrone/ps5_companion | https://github.com/epinethrone/ps5_companion | A single Home Assistant media_player entity consolidating the PS5 dashboard pattern (PSN integration + ps5-mqtt addon + Sonos/ATV/etc. for volume) with cover-art caching | ⭐0
+Coder787-source/KytyPlus | https://github.com/Coder787-source/KytyPlus | KytyPS5-based PS5 emulator with extra compatibility/HLE work. Experimental crash/boot-reach improvements — not a playability claim. | ⭐0
+raykimurayyz/nginx-rtmp | https://github.com/raykimurayyz/nginx-rtmp | A lightweight, Dockerized NGINX RTMP relay with a simple web interface for multi-platform live streaming. | ⭐0
+WekWeek/prosperous-eu | https://github.com/WekWeek/prosperous-eu | eu port of prosperous | ⭐0
+IgusMarine/mitigus-xiv | https://github.com/IgusMarine/mitigus-xiv | FFXIV latency mitigator & double-weave fix for console (PS5/PS4) players. 100% native on Windows. | ⭐0
+raykimurayyz/game-live-comment | https://github.com/raykimurayyz/game-live-comment | Forward live comments from specified streaming platforms to a PS5 Twitch chat overlay and a local web overlay. | ⭐0
+hhyyg/Miso.ps5ts.starter | https://github.com/hhyyg/Miso.ps5ts.starter | p5js & TypeScript Starter | ⭐0
+Clasc/SimplePs5TelegramBot | https://github.com/Clasc/SimplePs5TelegramBot | A simple Telegram bot that scrapes websites in the background and notifies registered users, when a ps5 is available. | ⭐0
+mbcrump/ps-jailbreak-daily-digest | https://github.com/mbcrump/ps-jailbreak-daily-digest | Resilient daily Reddit and Bluesky digest for PlayStation jailbreak and homebrew news. | ⭐0
+HanetakaChou/Letter-of-Reference-by-Crytek | https://github.com/HanetakaChou/Letter-of-Reference-by-Crytek | Letter of Reference by Crytek | ⭐0
+setarehHosseinNet/carton-ps5-efootball-cup | https://github.com/setarehHosseinNet/carton-ps5-efootball-cup | PS5 eFootball tournament manager for Carton Mohammad — group tables, match results, auto-standings, and knockout scheduling.  مدیریت مسابقات eFootball روی PS5: جدول‌بندی گروه‌ها، ثبت نتایج، محاسبه امتیاز و برنامه‌ریزی مراحل بعدی. | ⭐0
+Ay4uh/ps-controller-lab | https://github.com/Ay4uh/ps-controller-lab | No description | ⭐0
+sushantasrn/Tic-Tac-Toe | https://github.com/sushantasrn/Tic-Tac-Toe | Tic Tac Toe using Minimax Algorithm | ⭐0
+santanor/PS5-Stock-Tracker | https://github.com/santanor/PS5-Stock-Tracker | Trying to get a PS5 so I made this tracker to learn a bit about python and web scrapping | ⭐0
+vinasxexplosao/explosao-hb-payloads | https://github.com/vinasxexplosao/explosao-hb-payloads | payloads ps4 e ps5 | ⭐0
+hejran7/PS-Payload-Injector | https://github.com/hejran7/PS-Payload-Injector | PS4/PS5 payload injector | ⭐0
+HuertasRacing/ps5-payloads | https://github.com/HuertasRacing/ps5-payloads | payloads que utilizo | ⭐0
+PinkiGames3D/ps5-payloads | https://github.com/PinkiGames3D/ps5-payloads | Repositorio de payloads para el PS5 Payload Manager, una forma sencilla de gestionar payloads de terceros de manera centralizada. | ⭐0
+tiago199988/PS5-Payload-Sender | https://github.com/tiago199988/PS5-Payload-Sender | A simple PS5 Payload sender | ⭐0
+vvsx87/PS5-Payloads | https://github.com/vvsx87/PS5-Payloads | No description | ⭐0
+ItsBlurf/ps5-PAYLOADS | https://github.com/ItsBlurf/ps5-PAYLOADS | No description | ⭐0
+betmoar/ps5-payloader | https://github.com/betmoar/ps5-payloader | No description | ⭐0
+PinkiGames3D/ps5_payloads | https://github.com/PinkiGames3D/ps5_payloads | Repositorio de payloads para PS5 Payload Manager, una forma sencilla de gestionar payloads de terceros de manera centralizada. | ⭐0
+ballaballaballa/PS5-payloads | https://github.com/ballaballaballa/PS5-payloads | No description | ⭐0
+killua-zhul/ps5-payloads | https://github.com/killua-zhul/ps5-payloads | No description | ⭐0
+lstechinfo76/PS5-PAYLOADS | https://github.com/lstechinfo76/PS5-PAYLOADS | No description | ⭐0
+ZixX3r/PLUpdaterZ | https://github.com/ZixX3r/PLUpdaterZ | Unified PS5 payload hosting repository | ⭐0
+edmaren/ps5-payload-manager | https://github.com/edmaren/ps5-payload-manager | No description | ⭐0
+pquerner/ps5-payload-ssd | https://github.com/pquerner/ps5-payload-ssd | No description | ⭐0
+emtee40/PS5-Payloads-old | https://github.com/emtee40/PS5-Payloads-old | No description | ⭐0
+Yorgei/ps5-webredirect-payload | https://github.com/Yorgei/ps5-webredirect-payload | Run a simple webserver on your PS5 to redirect to a desired URL, acts as a customisable homescreen shortcut. | ⭐0
+NanospeedGamerYT/ps5-payload-manager | https://github.com/NanospeedGamerYT/ps5-payload-manager | No description | ⭐0
+yamildev01/ps5-payload-sources | https://github.com/yamildev01/ps5-payload-sources | No description | ⭐0
+gamezix/PS5_Payload_Updater | https://github.com/gamezix/PS5_Payload_Updater | No description | ⭐0
+cacharrearconjuan/mis-payloads-ps5 | https://github.com/cacharrearconjuan/mis-payloads-ps5 | No description | ⭐0
+Jamzi94/ps5-payload-catalog | https://github.com/Jamzi94/ps5-payload-catalog | Json  Payload Managers for auto update github dependencies | ⭐0
+sHarK-ps/PS5PayloadManagerUpdater | https://github.com/sHarK-ps/PS5PayloadManagerUpdater | PS5 Payloads automatically updated from different repos | ⭐0
+BenNoxXD/PS5-Payload-SDK-Docker | https://github.com/BenNoxXD/PS5-Payload-SDK-Docker | No description | ⭐0
+KernelHysteria/PS5-Payload-USB-Builder | https://github.com/KernelHysteria/PS5-Payload-USB-Builder | Desktop GUI to pick PS5 payloads from GitHub/Gitea releases, order them with delays, and export a folder containing the files | ⭐0
+rrooij/ps5-payload-sdk-docker | https://github.com/rrooij/ps5-payload-sdk-docker | Simple OCI image for PS5-payload-sdk development | ⭐0
+Fedex2002/ps5-esp32-payload-sender | https://github.com/Fedex2002/ps5-esp32-payload-sender | ESP32 MicroPython auto payload sender for PS5 | ⭐0
+barisyild/ps5-payload-sdk-build-bug | https://github.com/barisyild/ps5-payload-sdk-build-bug | No description | ⭐0
+Z3nt13/PLUZ | https://github.com/Z3nt13/PLUZ | PLUZ-PS5 or PayLoadUpdaterZ is a payload host and auto scrapper for PS5-Payload-Manager by it'sPLK | ⭐0
+JakeBusler/PS5-PM-Controller | https://github.com/JakeBusler/PS5-PM-Controller | Controller repo for personal PlayStation®5 payload mirror | ⭐0
+samirscripts/PS5-Y2JB-PAYLOAD-SENDER | https://github.com/samirscripts/PS5-Y2JB-PAYLOAD-SENDER | SIMPLE GUI Y2JB PAYLOAD SENDER FOR WINDOWS ONLY | ⭐0
+br1cks4t1ts/ps5-moonlight | https://github.com/br1cks4t1ts/ps5-moonlight | Moonlight game-streaming client as a PlayStation 5 homebrew payload. Solves the long-standing video-output blocker via sceVideoOutRegisterBuffers2 from an unsigned payload (no PKG signing / BIG_APP). | ⭐0
+drylmrls/termux_ps5_loader | https://github.com/drylmrls/termux_ps5_loader | Just a simple script to run the PS5 Jailbreak Payloads on Termux | ⭐0
+almhtar/Ghostpad | https://github.com/almhtar/Ghostpad | PS5 payload for virtual controller creation and input redirection | ⭐0
+hgr9519/ps5-wallpaper-changer | https://github.com/hgr9519/ps5-wallpaper-changer | Payloads for jailbroken PS5 to replace system wallpapers (main hub, all scenarios, backup, restore) | ⭐0
+Storm21CH/PS5-FW-3.xx-4.xx-Exploit-Menu | https://github.com/Storm21CH/PS5-FW-3.xx-4.xx-Exploit-Menu | PS5 FW 3.xx-4.xx Exploit Menu with Payloads | ⭐0
+robin2kk/Goldengames-Payloads-Host- | https://github.com/robin2kk/Goldengames-Payloads-Host- | A modern PS5-inspired Payload Sender and Web Host featuring payload management, version tracking, search, categories, and a premium Goldengames dashboard experience. | ⭐0
+JaJaMalikov/PS5_EZ_Host | https://github.com/JaJaMalikov/PS5_EZ_Host | All-in-one ESP32-S3 PS5 Jailbreak Host (UMTX2-based, WebKit 1.xx–5.xx, with built-in payload manager and standalone flasher) | ⭐0
+sunnyqeen/mkexfat | https://github.com/sunnyqeen/mkexfat | A PS5 payload that could create exfat image file form a folder. | ⭐0
+robin2kk/Goldengames-Payloads-Host-v3.0 | https://github.com/robin2kk/Goldengames-Payloads-Host-v3.0 | A modern PS5-inspired Payload Sender and Web Host featuring payload management, version tracking, search, categories, and a premium Goldengames dashboard experience. | ⭐0
+adotok/psMulti | https://github.com/adotok/psMulti | Backup manager with utilities for PS1, PS2, PSX (DVR), PS3, PS4, PS5, PSP & PS Vita, containing downloads for homebrew, firmwares, payloads & more. | ⭐0
+Rezm1t/WebSender | https://github.com/Rezm1t/WebSender | PS4/PS5 Payload Sender is a simple web-based tool for transferring binary files to PlayStation game consoles over a local network. The program acts as a local server, allowing you to conveniently send .bin, .elf, .js, and other payloads directly from your browser. | ⭐0
+sunnyqeen/unrar | https://github.com/sunnyqeen/unrar | unrar homebrew app for PS5 | ⭐0
+aydencharles/ps5-kylin-explorer | https://github.com/aydencharles/ps5-kylin-explorer | A homebrew file explorer for jailbroken PS5, built with the OpenOrbis toolchain. | ⭐0
+elezra73/ps5-jailbreak-dashboard | https://github.com/elezra73/ps5-jailbreak-dashboard | Live PS5 jailbreak / homebrew news dashboard — auto-published daily. Source: private elezra73/Agents. | ⭐0
+quatrixone/p5-manager | https://github.com/quatrixone/p5-manager | P5 Manager — self-hosted web console for PS4/PS5 homebrew | ⭐0
+LuckyShame8998/AstroFile | https://github.com/LuckyShame8998/AstroFile | AstroFile is an open-source PS5 homebrew tool designed to replace and consolidate system utilities into a single modern UI. | ⭐0
+Techx3/TouchePX5 | https://github.com/Techx3/TouchePX5 | Touché PX5 is an independent experimental PS5 emulator for PC, aiming to run legally obtained commercial games and homebrew. Users must provide their own lawful game dumps. Not affiliated with Sony. | ⭐0
+Rezhwan44/PS5-JAILBREAKING-TOOLS | https://github.com/Rezhwan44/PS5-JAILBREAKING-TOOLS | No description | ⭐0
+DNNDHH/PS5_Jailbreak_BD-J_Tools | https://github.com/DNNDHH/PS5_Jailbreak_BD-J_Tools | BD-JB | ⭐0
+EmberSystems/E.M.B.E.R | https://github.com/EmberSystems/E.M.B.E.R | A WIP full PS5 (PS4 some day) CLI / REPL Jailbreaking tool | ⭐0

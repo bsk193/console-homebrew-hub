@@ -1,0 +1,50 @@
+# Y2JB / P2JB Related Repositories - GitHub Search Results
+# Format: Repo | URL | Description | Stars
+# Total found: 46
+
+Gezine/Y2JB | https://github.com/Gezine/Y2JB | Y2JB is userland code execution using PS5 Youtube app | ⭐1338
+matem6/P2JB-Y2JB-Porting | https://github.com/matem6/P2JB-Y2JB-Porting | PS5 jailbreak via the Y2JB. Ports Gezine's p2jb kqueueex cr_ref overflow | ⭐268
+Nazky/Y2JB-WebUI | https://github.com/Nazky/Y2JB-WebUI | Localhost WebUI to manage Y2JB | ⭐67
+matem6/YarP2JB | https://github.com/matem6/YarP2JB | A P2JB port for the Yarpe userland exploit | ⭐52
+tcatarina/y2jb-updater | https://github.com/tcatarina/y2jb-updater | Payload to update your Y2JB files on your PS5. | ⭐50
+SvenGDK/YT2JB-Toolbox | https://github.com/SvenGDK/YT2JB-Toolbox | A little toolbox for some Y2JB related tasks. | ⭐24
+lz-anonz/Y2X | https://github.com/lz-anonz/Y2X | Y2eXploit (Y2X) - Y2JB Autoloader | ⭐21
+itsPLK/y2jb-updater | https://github.com/itsPLK/y2jb-updater | No description | ⭐20
+TheWizWikii/PS5-Y2JB-USBUtilityTool | https://github.com/TheWizWikii/PS5-Y2JB-USBUtilityTool | No description | ⭐16
+illusionyy/ps5-y2jb-appdb-fixup | https://github.com/illusionyy/ps5-y2jb-appdb-fixup | On console attempt to workaround YouTube from softlocking when using Y2JB. | ⭐13
+mansoor0x/Y2JB-P2JB-13.20 | https://github.com/mansoor0x/Y2JB-P2JB-13.20 | No description | ⭐12
+ps4macedo/y2jb_personalizado | https://github.com/ps4macedo/y2jb_personalizado | No description | ⭐11
+DuskFal1/p2jb | https://github.com/DuskFal1/p2jb | P2JB PS5 kernel exploit (FW 11.00-12.70) with multithreaded ELF leak accelerator | ⭐10
+StonedModder/Y2JB-Genny | https://github.com/StonedModder/Y2JB-Genny | Y2JB Generator with custom theme support | ⭐8
+ps4macedo/y2jb-p2jb | https://github.com/ps4macedo/y2jb-p2jb | No description | ⭐6
+StonedModder/CustomPSNotify | https://github.com/StonedModder/CustomPSNotify | JS based payload for sending custom notifications to your Y2JB enviorment. | ⭐5
+nexgen999/y2jb-ui-color-editor | https://github.com/nexgen999/y2jb-ui-color-editor | y2jb-ui-color-editor | ⭐4
+therealnightmareslol/Y2JB-EtaHen | https://github.com/therealnightmareslol/Y2JB-EtaHen | Y2JB / EtaHen Test | ⭐3
+StonedModder/Y2JB-Cyberpunk | https://github.com/StonedModder/Y2JB-Cyberpunk | A cyberpunk themed Y2JB | ⭐3
+Lithiumwow/Y2JB-WebUI | https://github.com/Lithiumwow/Y2JB-WebUI | BackPork integration module for Y2JB-WebUI - Automates PS5 game backporting | ⭐2
+almhtar/ps5-y2jb-autoloader | https://github.com/almhtar/ps5-y2jb-autoloader | No description | ⭐2
+deejay87/PS5-Y2JB-NETFLIX-CUSTOM-DB | https://github.com/deejay87/PS5-Y2JB-NETFLIX-CUSTOM-DB | Application Windows permettant de personnaliser entièrement les applications YouTube et Netflix sur PS5 Jailbreak | ⭐2
+ps4macedo/y2jb_theme_generator | https://github.com/ps4macedo/y2jb_theme_generator | No description | ⭐1
+ps4macedo/y2jb_auto_load | https://github.com/ps4macedo/y2jb_auto_load | No description | ⭐1
+tcphdr/Y2JB-Userland-Orcale-Based-Memory-Scanning | https://github.com/tcphdr/Y2JB-Userland-Orcale-Based-Memory-Scanning | Y2JB payload that enables the scanning of the PS5 userland memory of all loaded modules without triggering XOM protections. (not an exploit) | ⭐1
+MasterPS0/P2JB | https://github.com/MasterPS0/P2JB | P2JB | ⭐1
+mohsenkalaantari-jpg/Y2JB-Autoloader-Backup | https://github.com/mohsenkalaantari-jpg/Y2JB-Autoloader-Backup | Y2JB Autoloader Backup file (10.01+) | ⭐0
+ps4macedo/y2jb | https://github.com/ps4macedo/y2jb | No description | ⭐0
+TheFakeBot/Y2JBMtest | https://github.com/TheFakeBot/Y2JBMtest | No description | ⭐0
+Halmuhairi12/ps5-y2jb | https://github.com/Halmuhairi12/ps5-y2jb | No description | ⭐0
+by-felippe/Theme-for-Y2JB | https://github.com/by-felippe/Theme-for-Y2JB | A customized MOD based on the original Y2JB + P2JB project for PlayStation 5. | ⭐0
+by-felippe/Tema-para-Y2JB | https://github.com/by-felippe/Tema-para-Y2JB | MOD personalizado baseado no projeto original Y2JB + P2JB para PlayStation 5. | ⭐0
+egrwgre/y2jb-updater | https://github.com/egrwgre/y2jb-updater | 🖥️ Update your Y2JB files on PlayStation 5 easily, without restoring backups, using this simple payload and local HTTP server. | ⭐0
+Lithiumwow/Y2JB-AIO-Loader | https://github.com/Lithiumwow/Y2JB-AIO-Loader | No description | ⭐0
+xSpecialFoodx/y2jb-dup-testing | https://github.com/xSpecialFoodx/y2jb-dup-testing | this is a repository that tests alternatives for dup | ⭐0
+zinebarafi93-pixel/y2jb-1342-build | https://github.com/zinebarafi93-pixel/y2jb-1342-build | No description | ⭐0
+mansoor0x/Y2JB-MO0X | https://github.com/mansoor0x/Y2JB-MO0X | No description | ⭐0
+samirscripts/PS5-Y2JB-PAYLOAD-SENDER | https://github.com/samirscripts/PS5-Y2JB-PAYLOAD-SENDER | SIMPLE GUI Y2JB PAYLOAD SENDER FOR WINDOWS ONLY | ⭐0
+soulistyces/backup | https://github.com/soulistyces/backup | Auto bdj_unpatch via Y2JB chained with P2JB | ⭐0
+FAlvesMacedo/y2jb_p2jb | https://github.com/FAlvesMacedo/y2jb_p2jb | No description | ⭐0
+Paliddo86/Y2JB-P2JB | https://github.com/Paliddo86/Y2JB-P2JB | Y2JB-P2JB is an advanced JavaScript port of P2JB.lua, focused on recreating and modernizing the original logic in a browser-executable environment. Around 92% complete, the project includes corrected JS logic, runtime abstractions, synchronization improvements, firmware-aware structures, and modular execution architecture. | ⭐0
+ciss84/y2jb_p2jb_v2 | https://github.com/ciss84/y2jb_p2jb_v2 | No description | ⭐0
+retrogamingzgz/PS5-9.60-Y2JB-AutoJailbreack | https://github.com/retrogamingzgz/PS5-9.60-Y2JB-AutoJailbreack | AutoJailbreack de PS5 en versión 9.60 | ⭐0
+MaQ-Franklin/digispark-for-y2jb-ps5-autoloader | https://github.com/MaQ-Franklin/digispark-for-y2jb-ps5-autoloader | Digispark Arduino script to run the Y2JB during PS5 console boot | ⭐0
+ynw8vu9/ynw-p2jb | https://github.com/ynw8vu9/ynw-p2jb | GitHub Pages Site | ⭐0
+KleyMa/LuaPayloadSender | https://github.com/KleyMa/LuaPayloadSender | A small app for Android to execute any LUA-Related stuff like P2JB on PS5. | ⭐0

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Payloads — CHH</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#06060f;--surface:#0c0c1a;--surface2:#11111f;--border:#1c1c30;--border2:#252540;
+  --text:#dde4f2;--dim:#50608a;--muted:#2a3450;
+  --accent:#4f87ff;--accent-bg:rgba(79,135,255,.12);
+  --green:#1dd17a;--green-bg:rgba(29,209,122,.08);
+  --yellow:#fbbf24;--yellow-bg:rgba(251,191,36,.08);
+  --red:#f43f5e;--red-bg:rgba(244,63,94,.08);
+  --nav-h:52px;--r:12px;
+}
+html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-apple-system,"Segoe UI",system-ui,sans-serif}
+body{display:flex;flex-direction:column;align-items:center}
+.topnav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);background:rgba(6,6,15,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 20px;gap:8px;z-index:100}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#4f87ff,#1957c8);display:flex;align-items:center;justify-content:center;font:800 10px/1 system-ui;color:#fff}
+.logo-name{font:700 14px/1 system-ui;color:var(--text)}
+.nav-tabs{display:flex;gap:2px;margin-left:16px}
+.nav-tab{padding:6px 12px;border-radius:8px;font:500 13px/1 system-ui;color:var(--dim);text-decoration:none;transition:color .14s,background .14s}
+.nav-tab:hover,.nav-tab:focus{color:var(--text);background:rgba(255,255,255,.05);outline:none}
+.nav-tab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.nav-tab.active{color:var(--text);background:var(--accent-bg)}
+
+.page{display:flex;flex-direction:column;align-items:center;padding:calc(var(--nav-h)+32px) 20px 64px;width:100%;max-width:900px;gap:16px}
+
+h1{font:700 22px/1.1 system-ui;color:#fff;letter-spacing:-.03em;align-self:flex-start}
+
+/* Search */
+.search-input{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:0 16px;height:48px;color:var(--text);font:500 14px/1 system-ui;transition:border-color .15s}
+.search-input::placeholder{color:var(--muted)}
+.search-input:focus{outline:none;border-color:var(--accent)}
+
+/* Category pills */
+.cat-pills{width:100%;display:flex;gap:8px;flex-wrap:wrap}
+.cat-pill{padding:6px 14px;border-radius:20px;font:500 12px/1 system-ui;cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--dim);transition:all .15s}
+.cat-pill:hover,.cat-pill:focus{background:var(--surface2);color:var(--text);outline:none}
+.cat-pill:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.cat-pill.active{background:var(--accent-bg);border-color:rgba(79,135,255,.3);color:var(--accent)}
+
+/* State messages */
+.state-msg{width:100%;padding:32px;text-align:center;background:var(--surface);border:1px solid var(--border);border-radius:16px;font:400 14px/1.6 system-ui;color:var(--dim)}
+.state-msg.error{border-color:rgba(244,63,94,.2);background:var(--red-bg);color:var(--red)}
+
+/* Payload cards */
+.payload-list{width:100%;display:flex;flex-direction:column;gap:10px}
+.payload-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 18px;display:flex;align-items:center;gap:16px;transition:border-color .15s,background .15s}
+.payload-card:hover{background:var(--surface2);border-color:var(--border2)}
+.card-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:5px}
+.card-name{font:600 15px/1 system-ui;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.card-version{font:500 11px/1 system-ui;padding:2px 8px;border-radius:6px;background:var(--accent-bg);color:var(--accent)}
+.card-fw{font:500 11px/1 system-ui;padding:2px 8px;border-radius:6px;background:var(--green-bg);color:var(--green)}
+.card-cat{font:500 11px/1 system-ui;padding:2px 8px;border-radius:6px;background:rgba(255,255,255,.04);color:var(--dim)}
+.card-desc{font:400 12px/1.5 system-ui;color:var(--dim);overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.card-date{font:400 11px/1 system-ui;color:var(--muted)}
+.card-action{flex-shrink:0}
+.dl-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:10px;background:var(--accent);color:#fff;font:600 12px/1 system-ui;text-decoration:none;transition:filter .15s,transform .15s;white-space:nowrap}
+.dl-btn:hover{filter:brightness(1.1)}
+.dl-btn:active{transform:scale(.97)}
+.dl-btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.count{font:400 12px/1 system-ui;color:var(--muted);align-self:flex-start}
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a class="nav-logo" href="/"><div class="logo-mark">CHH</div><span class="logo-name">CHH</span></a>
+  <div class="nav-tabs">
+    <a class="nav-tab" href="/ps5/">PS5</a>
+    <a class="nav-tab" href="/ps5/browser/">Browser</a>
+    <a class="nav-tab active" href="/ps5/payloads/">Payloads</a>
+  </div>
+</nav>
+
+<main class="page">
+  <h1>Payload Mirror</h1>
+  <input class="search-input" id="search" type="search" placeholder="Search payloads…" autocomplete="off">
+  <div class="cat-pills" id="cat-pills"></div>
+  <div id="content"><div class="state-msg">Loading payloads&hellip;</div></div>
+</main>
+
+<script>
+(function () {
+  var allPayloads = [];
+  var activeCat = 'All';
+  var searchVal = '';
+
+  function fwRange(p) {
+    if (p.min_fw && p.max_fw) return p.min_fw + '–' + p.max_fw;
+    if (p.min_fw) return p.min_fw + '+';
+    return '—';
+  }
+
+  function render() {
+    var q = searchVal.toLowerCase();
+    var filtered = allPayloads.filter(function (p) {
+      var matchCat = activeCat === 'All' || p.category === activeCat;
+      var matchQ = !q || (p.name || '').toLowerCase().indexOf(q) !== -1 || (p.description || '').toLowerCase().indexOf(q) !== -1;
+      return matchCat && matchQ;
+    });
+
+    var content = document.getElementById('content');
+    if (!filtered.length) {
+      content.innerHTML = '<div class="state-msg">No payloads match your search.</div>';
+      return;
+    }
+
+    var html = '<div class="count">' + filtered.length + ' payload' + (filtered.length !== 1 ? 's' : '') + '</div><div class="payload-list">';
+    filtered.forEach(function (p) {
+      var fw = fwRange(p);
+      var desc = p.description ? p.description.slice(0, 120) + (p.description.length > 120 ? '…' : '') : '';
+      html += '<div class="payload-card">'
+        + '<div class="card-main">'
+        + '<div class="card-name">' + esc(p.name || 'Unknown') + '</div>'
+        + '<div class="card-meta">'
+        + (p.version ? '<span class="card-version">' + esc(p.version) + '</span>' : '')
+        + (fw !== '—' ? '<span class="card-fw">FW ' + esc(fw) + '</span>' : '')
+        + (p.category ? '<span class="card-cat">' + esc(p.category) + '</span>' : '')
+        + '</div>'
+        + (desc ? '<div class="card-desc">' + esc(desc) + '</div>' : '')
+        + (p.last_update ? '<div class="card-date">Updated ' + esc(p.last_update) + '</div>' : '')
+        + '</div>'
+        + '<div class="card-action"><a class="dl-btn" href="' + esc(p.url || '#') + '" target="_blank">&#x2B07; Download</a></div>'
+        + '</div>';
+    });
+    html += '</div>';
+    content.innerHTML = html;
+  }
+
+  function buildCatPills(payloads) {
+    var cats = ['All'];
+    payloads.forEach(function (p) { if (p.category && cats.indexOf(p.category) === -1) cats.push(p.category); });
+    var pills = document.getElementById('cat-pills');
+    pills.innerHTML = '';
+    cats.forEach(function (cat) {
+      var btn = document.createElement('button');
+      btn.className = 'cat-pill' + (cat === activeCat ? ' active' : '');
+      btn.textContent = cat;
+      btn.addEventListener('click', function () {
+        activeCat = cat;
+        document.querySelectorAll('.cat-pill').forEach(function (p) { p.classList.remove('active'); });
+        btn.classList.add('active');
+        render();
+      });
+      pills.appendChild(btn);
+    });
+  }
+
+  function esc(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  fetch('/payloads.json')
+    .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(function (data) {
+      allPayloads = data;
+      buildCatPills(data);
+      render();
+    })
+    .catch(function (e) {
+      document.getElementById('content').innerHTML = '<div class="state-msg error">Failed to load payloads.json: ' + esc(e.message) + '</div>';
+    });
+
+  document.getElementById('search').addEventListener('input', function () {
+    searchVal = this.value;
+    render();
+  });
+})();
+if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js').catch(function(){}); }
+</script>
+<script src="/console-nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,486 @@
+import json
+import subprocess
+import re
+import hashlib
+import urllib.request
+import sys
+import os
+import zipfile
+import tempfile
+import shutil
+from datetime import datetime
+
+JSON_FILE = "payloads.json"
+
+def sanitize_for_filename(s):
+    """Sanitize the name part of a filename: spaces/dots/parens → underscore."""
+    s = re.sub(r'[\s.()+]+', '_', s)
+    s = re.sub(r'_+', '_', s)
+    return s.strip('_')
+
+def sanitize_for_version(s):
+    """Sanitize the version part of a filename: keep dots/hyphens, replace spaces/parens."""
+    s = re.sub(r'[\s()+]+', '_', s)
+    s = re.sub(r'_+', '_', s)
+    return s.strip('_')
+PAYLOADS_DIR = "payloads"
+BASE_URL = "https://github.com/bsk193/console-homebrew-hub/releases/download/payloads-mirror"
+
+def get_repo_info(url):
+    # Extract domain, owner and repo from various Git URL formats
+    match = re.search(r"https?://([^/]+)/([^/]+)/([^/]+)", url)
+    if match:
+        domain = match.group(1)
+        owner = match.group(2)
+        repo = match.group(3).rstrip('/')
+        if repo.endswith('.git'):
+            repo = repo[:-4]
+        if repo == 'releases':
+            parts = url.split('/')
+            try:
+                idx = parts.index(domain)
+                owner = parts[idx+1]
+                repo = parts[idx+2]
+            except ValueError:
+                pass
+        return domain, owner, repo
+    return None, None, None
+
+def get_latest_release(domain, owner, repo):
+    try:
+        if domain == "github.com":
+            try:
+                cmd = ["gh", "api", f"repos/{owner}/{repo}/releases/latest"]
+                result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+                return json.loads(result.stdout)
+            except Exception:
+                api_url = f"https://api.github.com/repos/{owner}/{repo}/releases/latest"
+                req = urllib.request.Request(api_url, headers={'User-Agent': 'Mozilla/5.0'})
+                with urllib.request.urlopen(req) as response:
+                    return json.loads(response.read().decode('utf-8'))
+        else:
+            api_url = f"https://{domain}/api/v1/repos/{owner}/{repo}/releases/latest"
+            req = urllib.request.Request(api_url, headers={'User-Agent': 'Mozilla/5.0'})
+            with urllib.request.urlopen(req) as response:
+                return json.loads(response.read().decode('utf-8'))
+    except Exception as e:
+        print(f"Error fetching {domain}/{owner}/{repo}: {e}")
+        return None
+
+def download_file(url, filename):
+    if not os.path.exists(PAYLOADS_DIR):
+        os.makedirs(PAYLOADS_DIR)
+    
+    filepath = os.path.join(PAYLOADS_DIR, filename)
+    print(f"  Downloading {filename}...")
+    try:
+        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+        with urllib.request.urlopen(req) as response:
+            with open(filepath, 'wb') as f:
+                f.write(response.read())
+        return True
+    except Exception as e:
+        print(f"  Error downloading {filename}: {e}")
+        return False
+
+def calculate_checksum(filepath):
+    sha256 = hashlib.sha256()
+    try:
+        with open(filepath, 'rb') as f:
+            while True:
+                chunk = f.read(8192)
+                if not chunk:
+                    break
+                sha256.update(chunk)
+        return sha256.hexdigest()
+    except Exception as e:
+        print(f"  Error calculating checksum: {e}")
+        return None
+
+def reorder_item(item):
+    order = ["name", "filename", "url", "source", "source_direct", "asset_pattern", "extract_file", "category", "min_fw", "max_fw", "description", "last_update", "release_date", "version", "checksum"]
+    new_item = {}
+    for key in order:
+        if key in item:
+            new_item[key] = item[key]
+    for key in item:
+        if key not in new_item:
+            new_item[key] = item[key]
+    return new_item
+
+def update_readme():
+    try:
+        with open(JSON_FILE, "r") as f:
+            payloads = json.load(f)
+    except FileNotFoundError:
+        print(f"Error: {JSON_FILE} not found. Cannot update README.")
+        return
+
+    # Group by category, sort categories alphabetically, entries by name within each
+    categories = {}
+    for item in payloads:
+        cat = item.get("category") or "Uncategorized"
+        categories.setdefault(cat, []).append(item)
+    for cat in categories:
+        categories[cat].sort(key=lambda x: x.get("name", "").lower())
+
+    header = "| Payload | Version | FW Range | Description | Last Updated | Source | Download |"
+    divider = "| --- | --- | --- | --- | --- | --- | --- |"
+
+    sections = []
+    for cat in sorted(categories):
+        rows = [header, divider]
+        for item in categories[cat]:
+            name = item.get("name", "Unknown")
+            version = item.get("version", "Unknown")
+            min_fw = item.get("min_fw", "")
+            max_fw = item.get("max_fw", "")
+            if min_fw and max_fw:
+                fw_range = f"{min_fw}–{max_fw}"
+            elif min_fw:
+                fw_range = f"{min_fw}+"
+            else:
+                fw_range = "—"
+            description = item.get("description") or "No description provided."
+            last_update = item.get("last_update", "Unknown")
+            source = item.get("source", "#")
+            url = item.get("url", "#")
+            rows.append(f"| **{name}** | `{version}` | `{fw_range}` | {description} | `{last_update}` | [Source]({source}) | [Download]({url}) |")
+        sections.append(f"### {cat}\n\n" + "\n".join(rows))
+
+    table_content = "\n\n".join(sections) if sections else "_No payloads yet._"
+    readme_path = "README.md"
+    
+    support_section = "\n## Support & Suggestions\n\nIf you have suggestions for a new payload to be added or if there's an important issue with some payload, please report them in the [Issues section](https://github.com/bsk193/console-homebrew-hub/issues/new).\n"
+    template = f"""# PS5 Payloads Mirror
+
+This repository contains an automated mirror of useful payloads for the PlayStation 5.
+
+## Available Payloads
+
+<!-- PAYLOADS_START -->
+
+{table_content}
+
+<!-- PAYLOADS_END -->
+{support_section}"""
+
+    if not os.path.exists(readme_path):
+        print(f"Creating {readme_path}...")
+        with open(readme_path, "w", newline="\n") as f:
+            f.write(template)
+    else:
+        print(f"Updating {readme_path}...")
+        with open(readme_path, "r", newline="") as f:
+            content = f.read().replace("\r\n", "\n").replace("\r", "\n")
+
+        start_marker = "<!-- PAYLOADS_START -->"
+        end_marker = "<!-- PAYLOADS_END -->"
+
+        if start_marker in content and end_marker in content:
+            pattern = re.compile(f"{start_marker}.*?{end_marker}", re.DOTALL)
+            new_content = pattern.sub(f"{start_marker}\n\n{table_content}\n\n{end_marker}", content)
+            new_content = new_content.replace(
+                "https://github.com/itsPLK/ps5-payloads-mirror/issues/new",
+                "https://github.com/bsk193/console-homebrew-hub/issues/new"
+            )
+            with open(readme_path, "w", newline="\n") as f:
+                f.write(new_content)
+        else:
+            print("Markers not found in README.md. Appending table at the end.")
+            with open(readme_path, "a", newline="\n") as f:
+                f.write(f"\n## Available Payloads\n\n{start_marker}\n\n{table_content}\n\n{end_marker}\n")
+
+
+def get_mirror_assets():
+    owner = "bsk193"
+    repo = "console-homebrew-hub"
+    try:
+        cmd = ["gh", "api", f"repos/{owner}/{repo}/releases/tags/payloads-mirror"]
+        result = subprocess.run(cmd, capture_output=True, text=True)
+        if result.returncode == 0:
+            release_info = json.loads(result.stdout)
+            return {asset["name"] for asset in release_info.get("assets", [])}
+    except Exception as e:
+        print(f"Error fetching mirror assets: {e}")
+    return set()
+
+def cleanup_release_assets():
+    print("\nChecking for stale release assets to clean up...")
+    owner = "bsk193"
+    repo = "console-homebrew-hub"
+    
+    try:
+        with open(JSON_FILE, "r") as f:
+            payloads = json.load(f)
+        expected_files = {p["filename"] for p in payloads if "filename" in p}
+        
+        cmd = ["gh", "api", f"repos/{owner}/{repo}/releases/tags/payloads-mirror"]
+        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+        release_info = json.loads(result.stdout)
+        
+        assets = release_info.get("assets", [])
+        deleted_count = 0
+        for asset in assets:
+            asset_name = asset["name"]
+            asset_id = asset["id"]
+            
+            if asset_name not in expected_files:
+                print(f"  Removing stale asset: {asset_name} (ID: {asset_id})...")
+                del_cmd = ["gh", "api", "-X", "DELETE", f"repos/{owner}/{repo}/releases/assets/{asset_id}"]
+                subprocess.run(del_cmd, check=True)
+                print(f"  Successfully removed {asset_name}.")
+                deleted_count += 1
+                
+        if deleted_count == 0:
+            print("  No stale assets to remove.")
+        else:
+            print(f"  Removed {deleted_count} stale assets.")
+                
+    except Exception as e:
+        print(f"Error cleaning up release assets: {e}")
+
+
+def update_payloads():
+    os.makedirs(PAYLOADS_DIR, exist_ok=True)
+    try:
+        with open(JSON_FILE, "r") as f:
+            payloads = json.load(f)
+    except FileNotFoundError:
+        print(f"Error: {JSON_FILE} not found.")
+        return
+
+    mirror_assets = get_mirror_assets()
+
+    updated = False
+    for item in payloads:
+        source = item.get("source")
+        if not source:
+            # Handle ps5debug case
+            if item.get("name") == "ps5debug":
+                if not item["url"].startswith(BASE_URL):
+                     item["url"] = f"{BASE_URL}/{item['filename']}"
+                     updated = True
+            continue
+            
+        domain, owner, repo_name = get_repo_info(source)
+        if not owner:
+            continue
+            
+        print(f"Checking {owner}/{repo_name} on {domain}...")
+        release = get_latest_release(domain, owner, repo_name)
+        if not release:
+            continue
+            
+        assets = release.get("assets", [])
+        if not assets:
+            continue
+            
+        asset_pattern = item.get("asset_pattern")
+        source_direct = item.get("source_direct", "")
+        # If source_direct points to a specific asset filename, treat it as the pattern
+        if source_direct and not asset_pattern:
+            sd_basename = source_direct.rstrip("/").split("/")[-1]
+            if sd_basename:
+                # Strip version suffix so the pattern still matches when the version bumps.
+                # e.g. pldmgrx_v0.5.0.2x.elf → pldmgrx.*\.elf
+                if '.' in sd_basename:
+                    stem, ext = sd_basename.rsplit('.', 1)
+                else:
+                    stem, ext = sd_basename, ''
+                stem_stripped = re.sub(r'[-_]v?\d[\d.\w]*$', '', stem)
+                if stem_stripped and stem_stripped != stem:
+                    asset_pattern = re.escape(stem_stripped) + r'.*\.' + re.escape(ext) if ext else re.escape(stem_stripped) + r'.*'
+                else:
+                    asset_pattern = re.escape(sd_basename)
+
+        has_extract = "extract_file" in item
+        preferred_ext = ".bin" if "etaHEN" in repo_name else ".elf"
+
+        def score_asset(name):
+            name_lower = name.lower()
+            
+            # If we already have extract_file, we might be looking for a zip
+            if has_extract and name.endswith(".zip"):
+                return 20
+                
+            if not (name.endswith(".elf") or name.endswith(".bin") or (has_extract and name.endswith(".zip"))):
+                if not name.endswith(preferred_ext):
+                    return -1
+            
+            if asset_pattern and not re.search(asset_pattern, name, re.IGNORECASE):
+                return -1
+            
+            score = 0
+            if name.endswith(preferred_ext):
+                score += 5
+            if "ps5" in name_lower:
+                score += 10
+            if "ps4" in name_lower:
+                score -= 10
+            if "install" in name_lower:
+                score -= 5
+            score -= len(name) / 100.0 
+            return score
+
+        selected_asset = None
+        best_score = -2
+        qualifying = []
+        for asset in assets:
+            score = score_asset(asset["name"])
+            if score > -1:
+                qualifying.append(asset)
+            if score > best_score:
+                best_score = score
+                selected_asset = asset
+
+        if selected_asset and best_score > -1:
+            if len(qualifying) > 1 and not asset_pattern and not item.get("source_direct"):
+                names = ", ".join(a["name"] for a in qualifying)
+                print(f"  Skipping '{item.get('name')}': {len(qualifying)} assets qualify ({names}). "
+                      f"Set asset_pattern or source_direct to pick one.")
+                continue
+            gh_url = selected_asset["browser_download_url"]
+            original_filename = selected_asset["name"]
+            new_version = release["tag_name"]
+            new_date = release["published_at"][:10]
+            is_zip = original_filename.endswith(".zip")
+            
+            final_name = item.get("name", repo_name)
+
+            if is_zip:
+                ext = "elf"
+            else:
+                ext = original_filename.rsplit('.', 1)[1] if '.' in original_filename else "bin"
+
+            # Strip any existing FW suffix from stored version for comparison
+            stored_version = item.get("version", "")
+            stored_tag = stored_version.split(" FW ")[0] if " FW " in stored_version else stored_version
+
+            existing_filename = item.get("filename", "")
+            if stored_tag != new_version or not existing_filename:
+                # Derive filename from the source asset name, not the display name
+                base = re.sub(r'\s+', '_', original_filename.rsplit('.', 1)[0])
+                ver_tag = new_version.lstrip('v')
+                version_str = sanitize_for_version(new_version)
+                if ver_tag.lower() in base.lower() or version_str.lower() in base.lower():
+                    # Version already present in the source filename — don't duplicate it
+                    new_filename = f"{base}.{ext}"
+                else:
+                    new_filename = f"{base}_{version_str}.{ext}"
+            else:
+                # Same version: preserve existing filename so display-name changes don't rename the file
+                new_filename = existing_filename
+
+            # Version string is just the tag — FW range is in min_fw/max_fw fields
+            version_display = new_version
+
+            filepath = os.path.join(PAYLOADS_DIR, new_filename)
+            needs_download = (
+                stored_tag != new_version or
+                new_filename not in mirror_assets
+            )
+            
+            if needs_download:
+                print(f"  Update found: {item.get('version', 'none')} -> {new_version}")
+                
+                # Delete old file
+                if item.get("filename") and item["filename"] != new_filename:
+                    old_path = os.path.join(PAYLOADS_DIR, item["filename"])
+                    if os.path.exists(old_path):
+                        print(f"  Removing old file {item['filename']}...")
+                        os.remove(old_path)
+
+                success = False
+                extract_file = item.get("extract_file")
+                
+                if is_zip:
+                    print(f"  Processing ZIP update: {original_filename}")
+                    with tempfile.NamedTemporaryFile(delete=False) as tmp_file:
+                        tmp_path = tmp_file.name
+                    
+                    try:
+                        req = urllib.request.Request(gh_url, headers={'User-Agent': 'Mozilla/5.0'})
+                        with urllib.request.urlopen(req) as response:
+                            with open(tmp_path, 'wb') as f:
+                                f.write(response.read())
+                        
+                        with zipfile.ZipFile(tmp_path, 'r') as z:
+                            if not extract_file:
+                                elf_files = [f for f in z.namelist() if f.lower().endswith('.elf')]
+                                if len(elf_files) == 1:
+                                    extract_file = elf_files[0]
+                                    print(f"  Auto-detected internal file: {extract_file}")
+                                elif len(elf_files) > 1:
+                                    print(f"  Error: Multiple .elf files in zip and no extract_file in JSON.")
+                                    os.remove(tmp_path)
+                                    continue
+                                else:
+                                    print(f"  Error: No .elf files found in zip.")
+                                    os.remove(tmp_path)
+                                    continue
+                            
+                            print(f"  Extracting {extract_file} to {new_filename}...")
+                            with z.open(extract_file) as source_f, open(filepath, 'wb') as target_f:
+                                shutil.copyfileobj(source_f, target_f)
+                        os.remove(tmp_path)
+                        success = True
+                    except Exception as e:
+                        print(f"  Error processing zip update: {e}")
+                        if os.path.exists(tmp_path):
+                            os.remove(tmp_path)
+                else:
+                    success = download_file(gh_url, new_filename)
+                    # If we switched from zip to direct file, remove extract_file
+                    if success and "extract_file" in item:
+                        del item["extract_file"]
+
+                if success:
+                    item["name"] = final_name
+                    item["version"] = version_display
+                    item["filename"] = new_filename
+                    item["url"] = f"{BASE_URL}/{new_filename}"
+                    item["source_direct"] = gh_url
+                    item["release_date"] = new_date
+                    item["last_update"] = new_date
+                    item["checksum"] = calculate_checksum(filepath)
+                    if extract_file and is_zip:
+                        item["extract_file"] = extract_file
+                    updated = True
+                else:
+                    print(f"  Skipping update due to download failure.")
+            else:
+                print(f"  Already up to date ({new_version})")
+                changed = False
+                if item.get("version") != version_display:
+                    item["version"] = version_display
+                    changed = True
+                if item.get("last_update") != new_date:
+                    item["release_date"] = new_date
+                    item["last_update"] = new_date
+                    changed = True
+                if changed:
+                    updated = True
+        else:
+            print(f"  No suitable asset found for {source}")
+                
+    for item in payloads:
+        if item.get("filename"):
+            item["url"] = f"{BASE_URL}/{item['filename']}"
+            
+    payloads.sort(key=lambda x: x.get("release_date") or x.get("last_update", ""), reverse=True)
+    payloads = [reorder_item(p) for p in payloads]
+    
+    with open(JSON_FILE, "w") as f:
+        json.dump(payloads, f, indent=2)
+    
+    if updated:
+        print(f"\nSuccessfully updated files and sorted {JSON_FILE}")
+    else:
+        print(f"\nSorted {JSON_FILE} (no new files downloaded).")
+        
+    update_readme()
+    cleanup_release_assets()
+
+if __name__ == "__main__":
+    update_payloads()

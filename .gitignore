@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pem
+server.pem
+payloads/
+!ps5/payloads/
+!ps4/payloads/
+!ps3/payloads/
+ps5/exploits/umtx/core/
+ps5/exploits/ipv6/core/
+ps5/exploits/slopkit/core/
+.gstack/

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nintendo Switch 2 — CHH</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#06060f;--surface:#0c0c1a;--surface2:#11111f;--border:#1c1c30;--border2:#252540;--text:#dde4f2;--dim:#50608a;--muted:#2a3450;--accent:#4f87ff;--accent-bg:rgba(79,135,255,.12);--nav-h:52px;--r:12px;}
+html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-apple-system,"Segoe UI",system-ui,sans-serif}
+body{display:flex;flex-direction:column;align-items:center}
+.topnav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);background:rgba(6,6,15,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 20px;gap:8px;z-index:100}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#4f87ff,#1957c8);display:flex;align-items:center;justify-content:center;font:800 10px/1 system-ui;color:#fff}
+.logo-name{font:700 14px/1 system-ui;color:var(--text)}
+.nav-right{margin-left:auto}
+.nav-back{padding:6px 12px;border-radius:8px;font:500 13px/1 system-ui;color:var(--dim);text-decoration:none;transition:color .14s,background .14s}
+.nav-back:hover,.nav-back:focus{color:var(--text);background:rgba(255,255,255,.05);outline:none}
+.nav-back:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.page{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:calc(var(--nav-h)+48px) 20px 64px;width:100%;max-width:400px;gap:16px;text-align:center;min-height:100vh}
+.console-icon{width:80px;height:80px;border-radius:20px;background:linear-gradient(135deg,#ea580c,#9a3412);display:flex;align-items:center;justify-content:center;font:800 13px/1 system-ui;color:#fff;box-shadow:0 16px 48px rgba(234,88,12,.3)}
+h1{font:700 26px/1.1 system-ui;color:#fff;letter-spacing:-.03em}
+.coming-badge{display:inline-block;padding:5px 14px;border-radius:20px;background:rgba(251,191,36,.1);color:#fbbf24;font:600 12px/1 system-ui;letter-spacing:.06em}
+.desc{font:400 14px/1.6 system-ui;color:var(--dim);max-width:300px}
+.btn-disabled{width:100%;padding:16px;border:1px solid var(--border);border-radius:14px;background:var(--surface);color:var(--muted);font:700 13px/1 system-ui;letter-spacing:.08em;text-transform:uppercase;cursor:not-allowed}
+.btn-back{display:flex;align-items:center;justify-content:center;gap:6px;padding:12px 24px;border-radius:12px;background:transparent;border:1px solid var(--border);color:var(--dim);font:500 13px/1 system-ui;text-decoration:none;transition:all .15s}
+.btn-back:hover,.btn-back:focus{background:var(--surface2);color:var(--text);border-color:var(--border2);outline:none}
+.btn-back:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a class="nav-logo" href="/"><div class="logo-mark">CHH</div><span class="logo-name">CHH</span></a>
+  <div class="nav-right"><a class="nav-back" href="/">&#x2190; Home</a></div>
+</nav>
+<main class="page">
+  <div class="console-icon">NSW2</div>
+  <span class="coming-badge">Coming Soon</span>
+  <h1>Nintendo Switch 2</h1>
+  <p class="desc">Early research phase. Nintendo Switch 2 homebrew support is being tracked. Check back soon.</p>
+  <button class="btn-disabled" disabled>Coming Soon</button>
+  <a class="btn-back" href="/">&#x2190; Home</a>
+</main>
+<script>if('serviceWorker'in navigator){navigator.serviceWorker.register('/sw.js').catch(function(){});}</script>
+<script src="/console-nav.js"></script>
+</body>
+</html>

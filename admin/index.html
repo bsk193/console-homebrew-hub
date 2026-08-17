@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin — CHH</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#06060f;--surface:#0c0c1a;--surface2:#11111f;--border:#1c1c30;--border2:#252540;
+  --text:#dde4f2;--dim:#50608a;--muted:#2a3450;
+  --accent:#4f87ff;--accent-bg:rgba(79,135,255,.12);
+  --green:#1dd17a;--green-bg:rgba(29,209,122,.08);
+  --yellow:#fbbf24;--yellow-bg:rgba(251,191,36,.08);
+  --red:#f43f5e;--red-bg:rgba(244,63,94,.08);
+  --nav-h:52px;--r:12px;
+}
+html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-apple-system,"Segoe UI",system-ui,sans-serif}
+body{display:flex;flex-direction:column;align-items:center}
+.topnav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);background:rgba(6,6,15,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 20px;gap:8px;z-index:100}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#4f87ff,#1957c8);display:flex;align-items:center;justify-content:center;font:800 10px/1 system-ui;color:#fff}
+.logo-name{font:700 14px/1 system-ui;color:var(--text)}
+.nav-right{margin-left:auto;display:flex;gap:8px;align-items:center}
+.nav-badge{padding:4px 10px;border-radius:6px;font:600 11px/1 system-ui;background:var(--red-bg);color:var(--red);letter-spacing:.04em}
+.nav-link{padding:6px 12px;border-radius:8px;font:500 13px/1 system-ui;color:var(--dim);text-decoration:none;cursor:pointer;background:none;border:none;transition:color .14s,background .14s}
+.nav-link:hover,.nav-link:focus{color:var(--text);background:rgba(255,255,255,.05);outline:none}
+.nav-link:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* Login screen */
+#login-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;width:100%;max-width:360px;padding:calc(var(--nav-h)+48px) 20px 64px;gap:20px;margin:0 auto}
+.login-icon{width:72px;height:72px;border-radius:18px;background:linear-gradient(135deg,#4f87ff,#1957c8);display:flex;align-items:center;justify-content:center;font:800 18px/1 system-ui;color:#fff;box-shadow:0 16px 48px rgba(79,135,255,.3)}
+.login-title{font:700 24px/1.1 system-ui;color:#fff;text-align:center}
+.login-card{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:14px}
+.form-label{font:500 12px/1 system-ui;color:var(--dim);letter-spacing:.04em;text-transform:uppercase}
+.form-input{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:13px 14px;color:var(--text);font:500 15px/1 system-ui;transition:border-color .15s}
+.form-input:focus{outline:none;border-color:var(--accent)}
+.btn-login{width:100%;padding:15px;border:none;border-radius:12px;background:linear-gradient(135deg,#4f87ff,#1957c8);color:#fff;font:700 13px/1 system-ui;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:filter .15s,transform .15s}
+.btn-login:hover{filter:brightness(1.1)}
+.btn-login:active{transform:scale(.98)}
+.btn-login:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.login-error{background:var(--red-bg);border:1px solid rgba(244,63,94,.2);border-radius:8px;padding:10px 14px;font:500 13px/1 system-ui;color:var(--red);display:none;text-align:center}
+.login-error.show{display:block}
+
+/* Admin panel */
+#admin-panel{display:none;flex-direction:column;align-items:center;padding:calc(var(--nav-h)+32px) 20px 64px;width:100%;max-width:1000px;gap:20px}
+#admin-panel.show{display:flex}
+
+.panel-header{width:100%;display:flex;align-items:center;justify-content:space-between}
+.panel-title{font:700 22px/1 system-ui;color:#fff;letter-spacing:-.02em}
+.btn-add{padding:10px 18px;border:none;border-radius:10px;background:var(--accent);color:#fff;font:600 13px/1 system-ui;cursor:pointer;transition:filter .15s}
+.btn-add:hover{filter:brightness(1.1)}
+.btn-add:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.info-banner{width:100%;background:var(--yellow-bg);border:1px solid rgba(251,191,36,.2);border-radius:10px;padding:12px 16px;font:400 13px/1.5 system-ui;color:var(--yellow)}
+
+/* Payload table */
+.table-wrap{width:100%;overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:600px}
+th{padding:10px 14px;text-align:left;font:600 11px/1 system-ui;color:var(--dim);letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--border);background:var(--surface);white-space:nowrap}
+td{padding:12px 14px;font:400 13px/1.4 system-ui;color:var(--text);border-bottom:1px solid var(--border);vertical-align:middle}
+tr:hover td{background:var(--surface2)}
+.td-name{font-weight:600;color:var(--text)}
+.td-ver{font:500 11px/1 system-ui;padding:2px 8px;border-radius:6px;background:var(--accent-bg);color:var(--accent);display:inline-block}
+.td-cat{font:500 11px/1 system-ui;padding:2px 8px;border-radius:6px;background:rgba(255,255,255,.04);color:var(--dim);display:inline-block}
+.td-src{color:var(--accent);text-decoration:none;font-size:12px}
+.td-src:hover{text-decoration:underline}
+.td-src:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.action-btns{display:flex;gap:6px}
+.btn-sm{padding:5px 10px;border-radius:6px;font:600 11px/1 system-ui;cursor:pointer;border:1px solid var(--border);background:var(--surface2);color:var(--dim);transition:all .15s}
+.btn-sm:hover{color:var(--text);border-color:var(--border2)}
+.btn-sm:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.btn-sm.danger{border-color:rgba(244,63,94,.2);color:var(--red)}
+.btn-sm.danger:hover{background:var(--red-bg)}
+
+.state-msg{width:100%;padding:32px;text-align:center;background:var(--surface);border:1px solid var(--border);border-radius:16px;font:400 14px/1.6 system-ui;color:var(--dim)}
+
+/* Modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.show{display:flex}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;width:100%;max-width:480px;display:flex;flex-direction:column;gap:16px;max-height:90vh;overflow-y:auto}
+.modal-title{font:700 18px/1 system-ui;color:#fff}
+.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.modal-grid .full{grid-column:1/-1}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-select{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:11px 14px;color:var(--text);font:500 14px/1 system-ui}
+.form-select:focus{outline:none;border-color:var(--accent)}
+.modal-actions{display:flex;gap:10px;justify-content:flex-end}
+.btn-cancel{padding:10px 18px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--dim);font:600 13px/1 system-ui;cursor:pointer;transition:all .15s}
+.btn-cancel:hover{background:var(--surface2);color:var(--text)}
+.btn-cancel:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.btn-submit{padding:10px 20px;border-radius:10px;border:none;background:var(--accent);color:#fff;font:600 13px/1 system-ui;cursor:pointer;transition:filter .15s}
+.btn-submit:hover{filter:brightness(1.1)}
+.btn-submit:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a class="nav-logo" href="/"><div class="logo-mark">CHH</div><span class="logo-name">CHH</span></a>
+  <div class="nav-right">
+    <span class="nav-badge" id="nav-admin-badge" style="display:none">Admin</span>
+    <button class="nav-link" id="btn-logout" style="display:none" onclick="logout()">Logout</button>
+    <a class="nav-link" href="/">&#x2190; Home</a>
+  </div>
+</nav>
+
+<!-- Login -->
+<div id="login-screen">
+  <div class="login-icon">&#x1F512;</div>
+  <h1 class="login-title">Admin Login</h1>
+  <div class="login-card">
+    <div class="form-group">
+      <label class="form-label" for="pw-input">Password</label>
+      <input class="form-input" id="pw-input" type="password" placeholder="Enter admin password" autocomplete="current-password">
+    </div>
+    <div class="login-error" id="login-error">Incorrect password</div>
+    <button class="btn-login" id="btn-login">Login</button>
+  </div>
+</div>
+
+<!-- Admin panel -->
+<div id="admin-panel">
+  <div class="panel-header">
+    <h1 class="panel-title">Payload Management</h1>
+    <button class="btn-add" onclick="openModal()">+ Add Payload</button>
+  </div>
+  <div class="info-banner">
+    This admin panel provides an overview. To apply changes, edit <code>payloads.json</code> and run the mirror workflow from GitHub Actions.
+  </div>
+  <div id="table-container" class="state-msg">Loading payloads&hellip;</div>
+</div>
+
+<!-- Add modal -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div class="modal-title">Add Payload</div>
+    <div class="modal-grid">
+      <div class="form-group full">
+        <label class="form-label">Name</label>
+        <input class="form-input" id="m-name" type="text" placeholder="e.g. etaHEN">
+      </div>
+      <div class="form-group full">
+        <label class="form-label">Source URL (GitHub Releases)</label>
+        <input class="form-input" id="m-source" type="url" placeholder="https://github.com/owner/repo/releases">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Category</label>
+        <select class="form-select" id="m-cat">
+          <option>Utilities</option>
+          <option>Homebrew Enabler</option>
+          <option>Debug</option>
+          <option>FTP</option>
+          <option>Tools</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Asset Pattern</label>
+        <input class="form-input" id="m-pattern" type="text" placeholder="e.g. etaHEN.*\.bin">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Min FW</label>
+        <input class="form-input" id="m-minfw" type="text" placeholder="e.g. 9.00">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Max FW</label>
+        <input class="form-input" id="m-maxfw" type="text" placeholder="e.g. 12.00">
+      </div>
+      <div class="form-group full">
+        <label class="form-label">Description</label>
+        <input class="form-input" id="m-desc" type="text" placeholder="Short description">
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+      <button class="btn-submit" onclick="submitAdd()">Add Entry</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* --- Auth --- */
+var PW_HASH = '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918';
+var SESSION_KEY = 'chh_admin_auth';
+
+function hexSHA256(str) {
+  var msgBuffer = new TextEncoder().encode(str);
+  return crypto.subtle.digest('SHA-256', msgBuffer).then(function (buf) {
+    return Array.from(new Uint8Array(buf)).map(function (b) { return b.toString(16).padStart(2, '0'); }).join('');
+  });
+}
+
+function showPanel() {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('admin-panel').classList.add('show');
+  document.getElementById('nav-admin-badge').style.display = '';
+  document.getElementById('btn-logout').style.display = '';
+  loadPayloads();
+}
+
+function logout() {
+  try { sessionStorage.removeItem(SESSION_KEY); } catch(e) {}
+  document.getElementById('admin-panel').classList.remove('show');
+  document.getElementById('login-screen').style.display = '';
+  document.getElementById('nav-admin-badge').style.display = 'none';
+  document.getElementById('btn-logout').style.display = 'none';
+  document.getElementById('pw-input').value = '';
+}
+
+/* Check session */
+try { if (sessionStorage.getItem(SESSION_KEY) === 'ok') { showPanel(); } } catch(e) {}
+
+document.getElementById('btn-login').addEventListener('click', function () {
+  var pw = document.getElementById('pw-input').value;
+  hexSHA256(pw).then(function (hash) {
+    if (hash === PW_HASH) {
+      try { sessionStorage.setItem(SESSION_KEY, 'ok'); } catch(e) {}
+      document.getElementById('login-error').classList.remove('show');
+      showPanel();
+    } else {
+      document.getElementById('login-error').classList.add('show');
+      document.getElementById('pw-input').value = '';
+      document.getElementById('pw-input').focus();
+    }
+  });
+});
+
+document.getElementById('pw-input').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') document.getElementById('btn-login').click();
+});
+
+/* --- Payloads --- */
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function loadPayloads() {
+  fetch('/payloads.json')
+    .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(function (data) { renderTable(data); })
+    .catch(function (e) {
+      document.getElementById('table-container').innerHTML = '<div class="state-msg" style="color:var(--red)">Failed to load: ' + esc(e.message) + '</div>';
+    });
+}
+
+function renderTable(data) {
+  if (!data.length) {
+    document.getElementById('table-container').innerHTML = '<div class="state-msg">No payloads found.</div>';
+    return;
+  }
+  var html = '<div class="table-wrap"><table><thead><tr>'
+    + '<th>Name</th><th>Version</th><th>Category</th><th>Updated</th><th>Source</th><th>Actions</th>'
+    + '</tr></thead><tbody>';
+  data.forEach(function (p, i) {
+    html += '<tr>'
+      + '<td class="td-name">' + esc(p.name || '—') + '</td>'
+      + '<td>' + (p.version ? '<span class="td-ver">' + esc(p.version) + '</span>' : '—') + '</td>'
+      + '<td>' + (p.category ? '<span class="td-cat">' + esc(p.category) + '</span>' : '—') + '</td>'
+      + '<td>' + esc(p.last_update || '—') + '</td>'
+      + '<td>' + (p.source ? '<a class="td-src" href="' + esc(p.source) + '" target="_blank">Source &#x2197;</a>' : '—') + '</td>'
+      + '<td><div class="action-btns">'
+      + '<button class="btn-sm" onclick="editPlaceholder()">Edit</button>'
+      + '<button class="btn-sm danger" onclick="removePlaceholder()">Remove</button>'
+      + '</div></td>'
+      + '</tr>';
+  });
+  html += '</tbody></table></div>';
+  document.getElementById('table-container').innerHTML = html;
+}
+
+function editPlaceholder() { alert('Changes require editing payloads.json directly and re-running the mirror workflow.'); }
+function removePlaceholder() { alert('Changes require editing payloads.json directly and re-running the mirror workflow.'); }
+
+/* --- Modal --- */
+function openModal() { document.getElementById('modal').classList.add('show'); }
+function closeModal() { document.getElementById('modal').classList.remove('show'); }
+
+function submitAdd() {
+  var name = document.getElementById('m-name').value.trim();
+  var source = document.getElementById('m-source').value.trim();
+  if (!name || !source) { alert('Name and Source URL are required.'); return; }
+  alert('To add this payload, insert the following entry into payloads.json:\n\n'
+    + JSON.stringify({
+        name: name,
+        source: source,
+        category: document.getElementById('m-cat').value,
+        asset_pattern: document.getElementById('m-pattern').value,
+        min_fw: document.getElementById('m-minfw').value,
+        max_fw: document.getElementById('m-maxfw').value,
+        description: document.getElementById('m-desc').value
+      }, null, 2)
+    + '\n\nThen trigger the mirror workflow from GitHub Actions.');
+  closeModal();
+}
+
+document.getElementById('modal').addEventListener('click', function (e) {
+  if (e.target === this) closeModal();
+});
+</script>
+<script>if('serviceWorker'in navigator){navigator.serviceWorker.register('/sw.js').catch(function(){});}</script>
+<script src="/console-nav.js"></script>
+</body>
+</html>
