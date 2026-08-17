@@ -25,6 +25,9 @@ body{display:flex;flex-direction:column;align-items:center;min-height:100vh}
 .nav-link{padding:6px 12px;border-radius:8px;font:500 13px/1 system-ui;color:var(--dim);text-decoration:none;transition:color .14s,background .14s}
 .nav-link:hover,.nav-link:focus{color:var(--text);background:rgba(255,255,255,.05);outline:none}
 .nav-link:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.nav-donate{padding:5px 11px;border-radius:8px;font:600 12px/1 system-ui;color:#ffb347;background:rgba(255,179,71,.1);text-decoration:none;border:1px solid rgba(255,179,71,.2);white-space:nowrap;transition:color .14s,background .14s}
+.nav-donate:hover,.nav-donate:focus{background:rgba(255,179,71,.18);color:#ffd080;outline:none}
+.nav-donate:focus-visible{outline:2px solid #ffb347;outline-offset:2px}
 
 /* Page */
 .page{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:100px 20px 64px;width:100%;max-width:800px;gap:32px}
@@ -66,6 +69,7 @@ h1{font:700 28px/1.1 system-ui;color:#fff;letter-spacing:-.03em}
   </a>
   <div class="nav-right">
     <a class="nav-link" href="/admin/">Admin</a>
+    <a class="nav-donate" href="https://ko-fi.com/bsk193" target="_blank" rel="noopener">☕ Donate</a>
   </div>
 </nav>
 

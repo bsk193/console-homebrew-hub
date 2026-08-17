@@ -13,10 +13,13 @@ body{display:flex;flex-direction:column;align-items:center}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .logo-mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#4f87ff,#1957c8);display:flex;align-items:center;justify-content:center;font:800 10px/1 system-ui;color:#fff}
 .logo-name{font:700 14px/1 system-ui;color:var(--text)}
-.nav-right{margin-left:auto}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:8px}
 .nav-back{padding:6px 12px;border-radius:8px;font:500 13px/1 system-ui;color:var(--dim);text-decoration:none;transition:color .14s,background .14s}
 .nav-back:hover,.nav-back:focus{color:var(--text);background:rgba(255,255,255,.05);outline:none}
 .nav-back:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.nav-donate{padding:5px 11px;border-radius:8px;font:600 12px/1 system-ui;color:#ffb347;background:rgba(255,179,71,.1);text-decoration:none;border:1px solid rgba(255,179,71,.2);white-space:nowrap;transition:color .14s,background .14s}
+.nav-donate:hover,.nav-donate:focus{background:rgba(255,179,71,.18);color:#ffd080;outline:none}
+.nav-donate:focus-visible{outline:2px solid #ffb347;outline-offset:2px}
 .page{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:100px 20px 64px;width:100%;max-width:400px;gap:16px;text-align:center;min-height:100vh}
 .console-icon{width:80px;height:80px;border-radius:20px;background:linear-gradient(135deg,#e11d48,#9f1239);display:flex;align-items:center;justify-content:center;font:800 14px/1 system-ui;color:#fff;box-shadow:0 16px 48px rgba(225,29,72,.3)}
 h1{font:700 26px/1.1 system-ui;color:#fff;letter-spacing:-.03em}
@@ -31,7 +34,7 @@ h1{font:700 26px/1.1 system-ui;color:#fff;letter-spacing:-.03em}
 <body>
 <nav class="topnav">
   <a class="nav-logo" href="/"><div class="logo-mark">CHH</div><span class="logo-name">CHH</span></a>
-  <div class="nav-right"><a class="nav-back" href="/">&#x2190; Home</a></div>
+  <div class="nav-right"><a class="nav-back" href="/">&#x2190; Home</a><a class="nav-donate" href="https://ko-fi.com/bsk193" target="_blank" rel="noopener">☕ Donate</a></div>
 </nav>
 <main class="page">
   <div class="console-icon">NSW</div>
