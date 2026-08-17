@@ -67,13 +67,13 @@ jobs:
           ROOT   = '_site/v2'
           EXTS   = {'.html', '.js', '.json'}
 
-          # Match a slash that immediately follows a quote char ("  or ').
+          # Match a slash that immediately follows a quote char (" or ').
           # Covers href="/", src="/", fetch('/'), register('/sw.js'),
           # SW PRECACHE ['/', '/ps5/'], location.replace('/ps5/'), frame.src = '/...', etc.
-          # Restricting to quotes (not =, (, [, ,) avoids false-matching JS regex literals
-          # like `var x = /pattern/` where = appears before a regex, not a path string.
+          # Negative lookbehind (?<!/) skips quotes inside JS regex literals like /"/g or /'/i,
+          # where the quote char is preceded by the regex's opening slash.
           # Negative lookahead (?!\/) skips protocol-relative URLs like src="//cdn...".
-          PATTERN = re.compile(r'(["\'])(\/(?!\/))')
+          PATTERN = re.compile(r'(?<![/])(["\'])(\/(?!\/))')
 
           def rewrite(text):
               return PATTERN.sub(lambda m: m.group(1) + PREFIX + '/', text)
