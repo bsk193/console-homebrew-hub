@@ -55,20 +55,26 @@ jobs:
           rsync -a --exclude='.git' --exclude='.github' _v2/ _site/v2/
 
       - name: Rewrite absolute paths for /v2 subpath
+        env:
+          REPO: ${{ github.event.repository.name }}
         run: |
           python3 - << 'PYEOF'
           import os, re
 
-          ROOT = '_site/v2'
-          EXTS = {'.html', '.js', '.json'}
+          # Full base path: /console-homebrew-hub/v2  (or whatever the repo is named)
+          repo   = os.environ['REPO']
+          PREFIX = f'/{repo}/v2'
+          ROOT   = '_site/v2'
+          EXTS   = {'.html', '.js', '.json'}
 
-          # Rewrite absolute paths in quoted/paren/bracket contexts that
-          # don't already start with /v2 — covers href, src, fetch(), register(),
-          # SW precache arrays, JS assignments, etc.
-          PATTERN = re.compile(r'(["\'\(\[,=]\s*)(\/(?!v2\/))')
+          # Match a slash that immediately follows a quote, paren, bracket, or equals
+          # (with optional whitespace). Covers href=, src=, fetch('/'), register('/'),
+          # SW precache ['/', '/ps5/'], location.replace('/ps5/'), frame.src = '/...', etc.
+          # Does NOT match https://... because the slash there follows a letter, not a delimiter.
+          PATTERN = re.compile(r'(["\'\(\[,=]\s*)(\/)')
 
           def rewrite(text):
-              return PATTERN.sub(lambda m: m.group(1) + '/v2/', text)
+              return PATTERN.sub(lambda m: m.group(1) + PREFIX + '/', text)
 
           for dirpath, dirs, files in os.walk(ROOT):
               dirs[:] = [d for d in dirs if d not in ('.git', '.github')]
