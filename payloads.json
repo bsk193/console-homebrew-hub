@@ -1,5 +1,20 @@
 [
   {
+    "name": "onionHEN",
+    "filename": "OnionHEN.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/payloads-mirror/OnionHEN.elf",
+    "source": "https://github.com/aydencharles/onionHEN/releases",
+    "source_direct": "https://github.com/aydencharles/onionHEN/releases/download/v0.0.10/OnionHEN.elf",
+    "asset_pattern": "OnionHEN\\.elf",
+    "category": "Utilities",
+    "min_fw": "4.03",
+    "max_fw": "12.70",
+    "description": "PS5 homebrew enabler based on etaHEN. Supports firmware 4.03\u201312.7.",
+    "last_update": "2026-08-17",
+    "release_date": "2026-08-17",
+    "version": "v0.0.10"
+  },
+  {
     "name": "PS5Upload",
     "filename": "ps5upload-5.2.1.elf",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/payloads-mirror/ps5upload-5.2.1.elf",
@@ -51,6 +66,19 @@
     "release_date": "2026-08-11",
     "version": "v0.4.4",
     "checksum": "5a8237630260026ad054d71fbbe661e433ac9ffa2cb4eea2785769c1eb7ee1c1"
+  },
+  {
+    "name": "PIZZA-HEN",
+    "filename": "PIZZA-HEN-v0.1.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/payloads-mirror/PIZZA-HEN-v0.1.elf",
+    "source": "https://github.com/Michele-M-Media/PIZZA-HEN/releases",
+    "source_direct": "https://github.com/Michele-M-Media/PIZZA-HEN/releases/download/v0.1/PIZZA-HEN-v0.1.elf",
+    "asset_pattern": "PIZZA-HEN.*\\.elf",
+    "category": "Utilities",
+    "description": "All-in-one PS5 homebrew environment with KStuff, FTP, ps5debug-NG, plugin manager, and Itemzflow integration.",
+    "last_update": "2026-08-10",
+    "release_date": "2026-08-10",
+    "version": "v0.1"
   },
   {
     "name": "nanoDNS",
