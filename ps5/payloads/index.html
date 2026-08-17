@@ -28,7 +28,7 @@ body{display:flex;flex-direction:column;align-items:center}
 .nav-tab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .nav-tab.active{color:var(--text);background:var(--accent-bg)}
 
-.page{display:flex;flex-direction:column;align-items:center;padding:calc(var(--nav-h)+32px) 20px 64px;width:100%;max-width:900px;gap:16px}
+.page{display:flex;flex-direction:column;align-items:center;padding:calc(var(--nav-h)+56px) 20px 64px;width:100%;max-width:900px;gap:16px}
 
 h1{font:700 22px/1.1 system-ui;color:#fff;letter-spacing:-.03em;align-self:flex-start}
 
@@ -158,14 +158,17 @@ h1{font:700 22px/1.1 system-ui;color:#fff;letter-spacing:-.03em;align-self:flex-
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
-  fetch('/payloads.json')
-    .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+  var ctrl = new AbortController();
+  var fetchTimer = setTimeout(function () { ctrl.abort(); }, 10000);
+  fetch('/payloads.json', { signal: ctrl.signal })
+    .then(function (r) { clearTimeout(fetchTimer); if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
     .then(function (data) {
       allPayloads = data;
       buildCatPills(data);
       render();
     })
     .catch(function (e) {
+      clearTimeout(fetchTimer);
       document.getElementById('content').innerHTML = '<div class="state-msg error">Failed to load payloads.json: ' + esc(e.message) + '</div>';
     });
 
