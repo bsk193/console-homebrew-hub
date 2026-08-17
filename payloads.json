@@ -15,6 +15,32 @@
     "version": "v0.0.10"
   },
   {
+    "name": "WebKit Autoloader X",
+    "filename": "webkit-autoloader-installer_v0.3.0.4x.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/payloads-mirror/webkit-autoloader-installer_v0.3.0.4x.elf",
+    "source": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases",
+    "source_direct": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases/download/v0.3.0.4x/webkit-autoloader-installer_v0.3.0.4x.elf",
+    "asset_pattern": "webkit-autoloader-installer.*\\.elf",
+    "category": "Utilities",
+    "description": "Extended PS5 WebKit exploit autoloader installer ELF by bsk193.",
+    "last_update": "2026-08-17",
+    "release_date": "2026-08-17",
+    "version": "v0.3.0.4x"
+  },
+  {
+    "name": "WebKit Autoloader",
+    "filename": "webkit-autoloader-installer_v0.3.0.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/payloads-mirror/webkit-autoloader-installer_v0.3.0.elf",
+    "source": "https://github.com/itsPLK/ps5-webkit-autoloader/releases",
+    "source_direct": "https://github.com/itsPLK/ps5-webkit-autoloader/releases/download/v0.3.0/webkit-autoloader-installer_v0.3.0.elf",
+    "asset_pattern": "webkit-autoloader-installer.*\\.elf",
+    "category": "Utilities",
+    "description": "PS5 WebKit exploit autoloader installer ELF by itsPLK.",
+    "last_update": "2026-08-14",
+    "release_date": "2026-08-14",
+    "version": "v0.3.0"
+  },
+  {
     "name": "PS5Upload",
     "filename": "ps5upload-5.2.1.elf",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/payloads-mirror/ps5upload-5.2.1.elf",
