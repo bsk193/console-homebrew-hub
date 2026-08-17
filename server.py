@@ -109,30 +109,6 @@ def generate_cert(path):
         return False
 
 
-DNS_INTERCEPT_HOST = 'manuals.playstation.net'
-DNS_UPSTREAM = ('8.8.8.8', 53)
-
-
-def _parse_qname(data, offset):
-    """Return (qname_str, offset_after_qname)."""
-    labels = []
-    while offset < len(data):
-        length = data[offset]
-        if length == 0:
-            offset += 1
-            break
-        if length & 0xC0 == 0xC0:  # pointer
-            ptr = ((length & 0x3F) << 8) | data[offset + 1]
-            name, _ = _parse_qname(data, ptr)
-            labels.append(name)
-            offset += 2
-            break
-        offset += 1
-        labels.append(data[offset:offset + length].decode('ascii', errors='replace'))
-        offset += length
-    return '.'.join(labels), offset
-
-
 def build_dns_response(data, local_ip):
     if len(data) < 12:
         return None
@@ -155,45 +131,16 @@ def build_dns_response(data, local_ip):
     return header + question + answer
 
 
-def _forward_dns(data):
-    """Forward DNS query to upstream and return the response, or None on error."""
-    try:
-        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        s.settimeout(2)
-        s.sendto(data, DNS_UPSTREAM)
-        resp, _ = s.recvfrom(512)
-        return resp
-    except Exception:
-        return None
-    finally:
-        try:
-            s.close()
-        except Exception:
-            pass
-
-
 def run_dns(local_ip, port):
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     try:
         sock.bind(('0.0.0.0', port))
-        print('[DNS] Listening on port %d — intercepting %s → %s, forwarding all else to %s'
-              % (port, DNS_INTERCEPT_HOST, local_ip, DNS_UPSTREAM[0]))
+        print('[DNS] Listening on port %d — all queries → %s (no upstream forwarding)' % (port, local_ip))
         while True:
             try:
                 data, addr = sock.recvfrom(512)
-                # Parse the queried name to decide: intercept or forward
-                try:
-                    qname, _ = _parse_qname(data, 12)
-                    intercept = (qname.rstrip('.').lower() == DNS_INTERCEPT_HOST)
-                except Exception:
-                    intercept = False
-
-                if intercept:
-                    resp = build_dns_response(data, local_ip)
-                else:
-                    resp = _forward_dns(data)
-
+                resp = build_dns_response(data, local_ip)
                 if resp:
                     sock.sendto(resp, addr)
             except Exception as e:
