@@ -9,15 +9,27 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  actions: write
 
-# Only one Pages deployment at a time; don't cancel in-progress so the live
-# site is never left in a half-deployed state.
 concurrency:
   group: pages
   cancel-in-progress: false
 
 jobs:
+  # When v2 is pushed, fire a workflow_dispatch on main so the deploy
+  # job runs from main (the only branch allowed by the Pages environment).
+  trigger:
+    if: github.ref == 'refs/heads/v2'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Pages deploy from main
+        run: gh workflow run pages.yml --ref main
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+
   deploy:
+    if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -38,9 +50,7 @@ jobs:
       - name: Assemble combined site
         run: |
           mkdir -p _site
-          # main → site root (/)
           rsync -a --exclude='.git' --exclude='.github' _main/ _site/
-          # v2  → site subpath (/v2/)
           mkdir -p _site/v2
           rsync -a --exclude='.git' --exclude='.github' _v2/ _site/v2/
 
@@ -52,8 +62,9 @@ jobs:
           ROOT = '_site/v2'
           EXTS = {'.html', '.js', '.json'}
 
-          # Match quoted absolute paths that don't already start with /v2
-          # Covers: href="/", src="/", fetch('/'), register('/'), arr ['/'], ', '/', = '/'
+          # Rewrite absolute paths in quoted/paren/bracket contexts that
+          # don't already start with /v2 — covers href, src, fetch(), register(),
+          # SW precache arrays, JS assignments, etc.
           PATTERN = re.compile(r'(["\'\(\[,=]\s*)(\/(?!v2\/))')
 
           def rewrite(text):
