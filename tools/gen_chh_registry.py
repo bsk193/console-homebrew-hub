@@ -161,7 +161,7 @@ def main():
     ]
     for i, (url, mime, comp, orig) in enumerate(entries):
         sym = blob_sym(i)
-        fname = f'chh_blob_{i:03d}.deflate'
+        fname = f'src/chh_blob_{i:03d}.deflate'
         asm_lines += [
             f'\t.global {sym}',
             f'\t.type {sym}, @object',
