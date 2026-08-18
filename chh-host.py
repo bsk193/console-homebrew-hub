@@ -52,6 +52,8 @@ REQUIRED_ELFS = ["pldmgrx.elf", "chh-shortcut.elf"]
 
 SERVE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+mimetypes.add_type("text/cache-manifest", ".appcache")
+
 # ── ANSI colours ──────────────────────────────────────────────────────────────
 
 def _init_color():
@@ -359,9 +361,10 @@ class ChhHandler(SimpleHTTPRequestHandler):
         super().do_GET()
 
     def end_headers(self):
-        self.send_header("Cache-Control", "no-cache, no-store, must-revalidate")
-        self.send_header("Pragma",        "no-cache")
-        self.send_header("Expires",       "0")
+        if not self.path.endswith(('.elf', '.appcache')):
+            self.send_header("Cache-Control", "no-cache, no-store, must-revalidate")
+            self.send_header("Pragma",        "no-cache")
+            self.send_header("Expires",       "0")
         super().end_headers()
 
     def log_message(self, fmt, *args):

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" manifest="/cache.appcache">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -400,22 +400,11 @@ body{display:flex;flex-direction:column;align-items:center}
     var _autoRange = getRange(detectedFW);
     var _autoCfg = EXPLOITS[_autoRange];
     if (_autoCfg && _autoCfg.url) {
-      /* Cache all exploit pages and pldmgrx.elf for offline shortcut use before navigating */
-      if (navigator.serviceWorker && navigator.serviceWorker.controller) {
-        var _toCache = [
-          '/ps5/exploits/slopkit/', '/ps5/exploits/slopkit/index.html',
-          '/ps5/exploits/umtx/', '/ps5/exploits/umtx/index.html',
-          '/ps5/exploits/ipv6/', '/ps5/exploits/ipv6/index.html',
-          '/chh-installer.elf', '/pldmgrx.elf'
-        ];
-        navigator.serviceWorker.controller.postMessage({ type: 'CACHE_URLS', urls: _toCache });
-      }
-      setTimeout(function () { location.replace(exploitUrl(_autoCfg)); }, 100);
+      location.replace(exploitUrl(_autoCfg));
     }
   }
 })();
 
-if ('serviceWorker' in navigator) { navigator.serviceWorker.register((location.pathname.startsWith('/console-homebrew-hub/')?'/console-homebrew-hub':'')+'/sw.js').catch(function(){}); }
 </script>
 <script src="/console-nav.js"></script>
 </body>

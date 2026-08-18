@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" manifest="/cache.appcache">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -182,7 +182,6 @@ h1{font:700 22px/1.1 system-ui;color:#fff;letter-spacing:-.03em;align-self:flex-
     render();
   });
 })();
-if ('serviceWorker' in navigator) { navigator.serviceWorker.register((location.pathname.startsWith('/console-homebrew-hub/')?'/console-homebrew-hub':'')+'/sw.js').catch(function(){}); }
 </script>
 <script src="/console-nav.js"></script>
 </body>
