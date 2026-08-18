@@ -19,229 +19,65 @@ jobs:
           path: chh
 
       - name: Clone ps5-webkit-autoloader-x
-        run: git clone --recurse-submodules --depth=1 https://github.com/bsk193/ps5-webkit-autoloader-x.git autoloader-src
+        run: |
+          git clone --recurse-submodules --depth=1 \
+            https://github.com/bsk193/ps5-webkit-autoloader-x.git autoloader-src
 
       - name: Patch autoloader-x for CHH
         run: |
-          # ── 1. Write src/main_chh.c (online installer: 3 GitHub Pages shortcuts) ──
-          cat > autoloader-src/src/main_chh.c << 'CSRC'
-          #include <stdint.h>
-          #include <stdio.h>
-          #include <string.h>
-          #include <sys/syscall.h>
-          #include <unistd.h>
-          #include "app_installer.h"
-          #include "notification.h"
-          #include "wkali.h"
+          # Copy CHH-specific C source files from the CHH repo
+          cp chh/chh-src/main_chh.c       autoloader-src/src/main_chh.c
+          cp chh/chh-src/main_chh_local.c autoloader-src/src/main_chh_local.c
 
-          extern int sceUserServiceInitialize(void *);
+          # Append CHH extension function to app_installer.c
+          cat chh/chh-src/app_installer_chh_patch.c >> autoloader-src/src/app_installer.c
 
-          #define CHH_BASE "https://bsk193.github.io/console-homebrew-hub"
-
-          static const struct { const char *id; const char *label; const char *url; } CHH_APPS[] = {
-              { "CHHU00001", "CHH UMTX",    CHH_BASE "/ps5/exploits/umtx/?autoload=pldmgrx.elf"    },
-              { "CHHI00001", "CHH IPV6",    CHH_BASE "/ps5/exploits/ipv6/?autoload=pldmgrx.elf"    },
-              { "CHHS00001", "CHH Slopkit", CHH_BASE "/ps5/exploits/slopkit/?autoload=pldmgrx.elf" },
-          };
-          #define CHH_APP_COUNT (int)(sizeof(CHH_APPS) / sizeof(CHH_APPS[0]))
-
-          int main(void)
-          {
-              syscall(SYS_thr_set_name, -1, "chhi.elf");
-              int user_prio = 256;
-              sceUserServiceInitialize(&user_prio);
-
-              wkali_notify("Installing CHH shortcuts...");
-
-              int ok = 0;
-              for (int i = 0; i < CHH_APP_COUNT; i++) {
-                  char param[512];
-                  snprintf(param, sizeof(param),
-                      "{\"titleId\":\"%s\","
-                      "\"applicationCategoryType\":65536,"
-                      "\"deeplinkUri\":\"%s\","
-                      "\"localizedParameters\":{\"defaultLanguage\":\"en-US\","
-                      "\"en-US\":{\"titleName\":\"%s\"}}}",
-                      CHH_APPS[i].id, CHH_APPS[i].url, CHH_APPS[i].label);
-
-                  wkali_log("[CHH] Installing %s...\n", CHH_APPS[i].label);
-                  if (wkali_install_app_with_param(CHH_APPS[i].id,
-                          (const uint8_t *)param, strlen(param)) == 0) {
-                      wkali_notify("%s installed!", CHH_APPS[i].label);
-                      ok++;
-                  } else {
-                      wkali_notify("%s install failed.", CHH_APPS[i].label);
-                  }
-              }
-
-              if (ok == CHH_APP_COUNT) {
-                  wkali_notify("CHH installed! Reboot once, then use shortcuts.");
-              } else {
-                  wkali_notify("CHH: %d/%d shortcuts installed.", ok, CHH_APP_COUNT);
-              }
-
-              sleep(1);
-              return 0;
-          }
-          CSRC
-
-          # ── 2. Write src/main_chh_local.c (local installer: LAN shortcuts) ──
-          cat > autoloader-src/src/main_chh_local.c << 'CSRC'
-          #include <stdint.h>
-          #include <stdio.h>
-          #include <string.h>
-          #include <sys/syscall.h>
-          #include <unistd.h>
-          #include "app_installer.h"
-          #include "notification.h"
-          #include "wkali.h"
-
-          extern int sceUserServiceInitialize(void *);
-
-          #define CHH_LOCAL_HOST "192.168.1.139:6969"
-          #define CHH_LOCAL_BASE "http://" CHH_LOCAL_HOST
-
-          static const struct { const char *id; const char *label; const char *url; } CHH_LOCAL_APPS[] = {
-              { "CHHU00002", "CHH UMTX (Local)",    CHH_LOCAL_BASE "/ps5/exploits/umtx/?autoload=pldmgrx.elf"    },
-              { "CHHI00002", "CHH IPV6 (Local)",    CHH_LOCAL_BASE "/ps5/exploits/ipv6/?autoload=pldmgrx.elf"    },
-              { "CHHS00002", "CHH Slopkit (Local)", CHH_LOCAL_BASE "/ps5/exploits/slopkit/?autoload=pldmgrx.elf" },
-          };
-          #define CHH_APP_COUNT (int)(sizeof(CHH_LOCAL_APPS) / sizeof(CHH_LOCAL_APPS[0]))
-
-          int main(void)
-          {
-              syscall(SYS_thr_set_name, -1, "chhli.elf");
-              int user_prio = 256;
-              sceUserServiceInitialize(&user_prio);
-
-              wkali_notify("Installing CHH local shortcuts...");
-
-              int ok = 0;
-              for (int i = 0; i < CHH_APP_COUNT; i++) {
-                  char param[512];
-                  snprintf(param, sizeof(param),
-                      "{\"titleId\":\"%s\","
-                      "\"applicationCategoryType\":65536,"
-                      "\"deeplinkUri\":\"%s\","
-                      "\"localizedParameters\":{\"defaultLanguage\":\"en-US\","
-                      "\"en-US\":{\"titleName\":\"%s\"}}}",
-                      CHH_LOCAL_APPS[i].id, CHH_LOCAL_APPS[i].url, CHH_LOCAL_APPS[i].label);
-
-                  wkali_log("[CHH-L] Installing %s...\n", CHH_LOCAL_APPS[i].label);
-                  if (wkali_install_app_with_param(CHH_LOCAL_APPS[i].id,
-                          (const uint8_t *)param, strlen(param)) == 0) {
-                      wkali_notify("%s installed!", CHH_LOCAL_APPS[i].label);
-                      ok++;
-                  } else {
-                      wkali_notify("%s install failed.", CHH_LOCAL_APPS[i].label);
-                  }
-              }
-
-              if (ok == CHH_APP_COUNT) {
-                  wkali_notify("CHH Local installed! Shortcuts point to " CHH_LOCAL_HOST);
-              } else {
-                  wkali_notify("CHH Local: %d/%d shortcuts installed.", ok, CHH_APP_COUNT);
-              }
-
-              sleep(1);
-              return 0;
-          }
-          CSRC
-
-          # ── 3. Append wkali_install_app_with_param to app_installer.c ──
-          cat >> autoloader-src/src/app_installer.c << 'CSRC'
-
-          /* CHH extension: install one web-app shortcut with runtime param.json.
-           * Uses the same static helpers and INCASSET icon as wkali_install_app_if_needed. */
-          int wkali_install_app_with_param(const char *title_id,
-              const uint8_t *param_json, size_t param_json_size)
-          {
-              char app_dir[256], sce_sys_dir[256], param_path[256], icon_path[256];
-              snprintf(app_dir,     sizeof(app_dir),     "/user/app/%s",                    title_id);
-              snprintf(sce_sys_dir, sizeof(sce_sys_dir), "/user/app/%s/sce_sys",            title_id);
-              snprintf(param_path,  sizeof(param_path),  "/user/app/%s/sce_sys/param.json", title_id);
-              snprintf(icon_path,   sizeof(icon_path),   "/user/app/%s/sce_sys/icon0.png",  title_id);
-
-              struct stat st;
-              if (stat(app_dir, &st) == 0 &&
-                  !needs_update(param_path, param_json, param_json_size) &&
-                  !needs_update(icon_path, incasset_icon0_png, incasset_icon0_png_size))
-                  return 0;
-
-              wkali_log("[WKALI-CHH] Installing %s...\n", title_id);
-
-              int err;
-              if ((err = sceAppInstUtilInitialize()) < 0) {
-                  wkali_log("[WKALI-CHH] sceAppInstUtilInitialize failed: 0x%08X\n", err);
-                  return err;
-              }
-
-              if ((err = mkdir_p(sce_sys_dir, 0755)) < 0) {
-                  wkali_log("[WKALI-CHH] mkdir_p failed: %d\n", err);
-                  sceAppInstUtilTerminate();
-                  return err;
-              }
-
-              if ((err = install_file(param_path, param_json, param_json_size)) < 0 ||
-                  (err = install_file(icon_path, incasset_icon0_png, incasset_icon0_png_size)) < 0) {
-                  wkali_log("[WKALI-CHH] install_file failed: %d\n", err);
-                  sceAppInstUtilTerminate();
-                  return err;
-              }
-
-              err = install_app(title_id, "/user/app/");
-              sceAppInstUtilTerminate();
-              return err;
-          }
-          CSRC
-
-          # ── 4. Add declaration to app_installer.h ──
-          # Insert before the closing #endif
+          # Add wkali_install_app_with_param declaration to app_installer.h
           python3 - << 'PYEOF'
           import re
           path = 'autoloader-src/include/app_installer.h'
           with open(path, 'r') as f:
               src = f.read()
           decl = (
-              '\n'
-              '/* CHH: install one web-app shortcut with runtime-provided param.json */\n'
+              '\n/* CHH extension: install a web-app shortcut with runtime param.json */\n'
               'int wkali_install_app_with_param(const char *title_id,\n'
               '    const uint8_t *param_json, size_t param_json_size);\n'
           )
-          # Insert before the last #endif
           src = re.sub(r'(#endif\s*$)', decl + r'\1', src, flags=re.MULTILINE)
           with open(path, 'w') as f:
               f.write(src)
           print('Patched app_installer.h')
           PYEOF
 
-          # ── 5. Add CHH targets to Makefile (use Python to preserve tab chars) ──
+          # Append CHH Makefile targets (Python writes tabs correctly)
           python3 - << 'PYEOF'
-          TAB = '\t'
-          patch = f"""
-
-# ── Console Homebrew Hub targets ──────────────────────────────────────────
-CHH_SRCS       := src/main_chh.c src/app_installer.c src/notification.c src/log.c
-CHH_LOCAL_SRCS := src/main_chh_local.c src/app_installer.c src/notification.c src/log.c
-CHH_LIBS       := $(LOCAL_LIBS)
-
-.PHONY: chh chh-local
-chh: chh-installer.elf
-chh-local: chh-local-installer.elf
-
-chh-installer.elf: version icons $(CHH_SRCS) $(ICON0)
-{TAB}$(CC) $(CFLAGS) $(LDFLAGS) -o chh-installer.elf $(CHH_SRCS) $(CHH_LIBS)
-{TAB}$(STRIP) chh-installer.elf
-
-chh-local-installer.elf: version icons $(CHH_LOCAL_SRCS) $(ICON0)
-{TAB}$(CC) $(CFLAGS) $(LDFLAGS) -o chh-local-installer.elf $(CHH_LOCAL_SRCS) $(CHH_LIBS)
-{TAB}$(STRIP) chh-local-installer.elf
-"""
+          T = '\t'
+          lines = [
+              '',
+              '# Console Homebrew Hub targets',
+              'CHH_SRCS       := src/main_chh.c src/app_installer.c src/notification.c src/log.c',
+              'CHH_LOCAL_SRCS := src/main_chh_local.c src/app_installer.c src/notification.c src/log.c',
+              'CHH_LIBS       := $(LOCAL_LIBS)',
+              '',
+              '.PHONY: chh chh-local',
+              'chh: chh-installer.elf',
+              'chh-local: chh-local-installer.elf',
+              '',
+              'chh-installer.elf: version icons $(CHH_SRCS) $(ICON0)',
+              T + '$(CC) $(CFLAGS) $(LDFLAGS) -o chh-installer.elf $(CHH_SRCS) $(CHH_LIBS)',
+              T + '$(STRIP) chh-installer.elf',
+              '',
+              'chh-local-installer.elf: version icons $(CHH_LOCAL_SRCS) $(ICON0)',
+              T + '$(CC) $(CFLAGS) $(LDFLAGS) -o chh-local-installer.elf $(CHH_LOCAL_SRCS) $(CHH_LIBS)',
+              T + '$(STRIP) chh-local-installer.elf',
+              '',
+          ]
           with open('autoloader-src/Makefile', 'a') as f:
-              f.write(patch)
+              f.write('\n'.join(lines) + '\n')
           print('Patched Makefile')
           PYEOF
-          echo "All patches done."
+
+          echo "All patches applied."
 
       - name: Cache Docker SDK image
         id: cache-docker
@@ -278,7 +114,7 @@ chh-local-installer.elf: version icons $(CHH_LOCAL_SRCS) $(ICON0)
             autoloader-src/chh-installer.elf
             autoloader-src/chh-local-installer.elf
 
-  # ── Build chh-host.exe on Windows ────────────────────────────────────────
+  # ── Build chh-host.exe on Windows ─────────────────────────────────────────
   build-host-exe:
     runs-on: windows-latest
     steps:
@@ -297,7 +133,7 @@ chh-local-installer.elf: version icons $(CHH_LOCAL_SRCS) $(ICON0)
           name: chh-host-exe
           path: dist/chh-host.exe
 
-  # ── Publish everything to chh-latest release ─────────────────────────────
+  # ── Publish everything to chh-latest release ──────────────────────────────
   publish:
     runs-on: ubuntu-latest
     needs: [build-elfs, build-host-exe]
@@ -328,21 +164,17 @@ chh-local-installer.elf: version icons $(CHH_LOCAL_SRCS) $(ICON0)
       - name: Copy chh-host.py and collect payloads
         run: |
           cp chh-host.py release-assets/
-          # Collect all payload ELF/BIN files from CHH repo
+          # Collect payload ELF/BIN files from repo; skip CHH-specific ELFs
           for dir in ps5/payloads ps4/payloads ps3/payloads; do
             if [ -d "$dir" ]; then
               find "$dir" -maxdepth 1 \( -name "*.elf" -o -name "*.bin" \) \
-                | while read f; do
+                | while read -r f; do
                     dest="release-assets/$(basename "$f")"
-                    # Avoid overwriting CHH-specific ELFs with payload ELFs of same name
-                    if [ ! -f "$dest" ]; then
-                      cp "$f" "$dest"
-                      echo "Collected: $f -> release-assets/$(basename "$f")"
-                    fi
+                    [ -f "$dest" ] || cp "$f" "$dest"
                   done
             fi
           done
-          echo "--- Release assets ---"
+          echo "=== Release assets ==="
           ls -lh release-assets/
 
       - name: Publish chh-latest release
@@ -351,8 +183,7 @@ chh-local-installer.elf: version icons $(CHH_LOCAL_SRCS) $(ICON0)
         run: |
           gh release create chh-latest \
             --title "Console Homebrew Hub" \
-            --notes "CHH-specific ELFs, host scripts, and bundled PS4/PS5 payloads. Auto-updated daily from upstream repos." \
+            --notes "CHH-specific ELFs, host scripts, and bundled PS4/PS5 payloads. Auto-updated daily." \
             --latest=false 2>/dev/null || true
-
           gh release upload chh-latest release-assets/* --clobber
-          echo "Release updated: $(gh release view chh-latest --json tagName,assets --jq '.assets | length') assets"
+          echo "Published: $(gh release view chh-latest --json assets --jq '.assets|length') assets"
