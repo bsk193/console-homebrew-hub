@@ -10,4 +10,8 @@ ps5/exploits/umtx/core/
 ps5/exploits/ipv6/core/
 ps5/exploits/slopkit/core/
 webkit-autoloader-installer.elf
+webkit-autoloader-x-installer.elf
+jailbreak-local-installer.elf
+webkit-autoloader-host.py
+webkit-autoloader-host.exe
 .gstack/
