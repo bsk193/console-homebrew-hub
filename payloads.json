@@ -7,7 +7,7 @@
     "description": "Console Homebrew Hub installer \u2014 installs PS5 homescreen shortcuts pointing to CHH exploits on GitHub Pages.",
     "last_update": "2026-08-18",
     "release_date": "2026-08-18",
-    "version": "chh-latest"
+    "version": "v1.0.0"
   },
   {
     "name": "CHH Local Installer",
@@ -17,7 +17,7 @@
     "description": "Console Homebrew Hub local installer \u2014 installs PS5 homescreen shortcuts pointing to your local CHH host (192.168.1.139:6969).",
     "last_update": "2026-08-18",
     "release_date": "2026-08-18",
-    "version": "chh-latest"
+    "version": "v1.0.0"
   },
   {
     "name": "WebKit Autoloader X",
@@ -46,34 +46,6 @@
     "release_date": "2026-08-18",
     "version": "v0.3.0.7x",
     "checksum": "dd87ff5a63a331dd1ab43e183c068257b2a5e10a695894de4390a5771ca3b76e"
-  },
-  {
-    "name": "WebKit Autoloader X Host (Windows)",
-    "filename": "webkit-autoloader-x-host_v0.3.0.7x.exe",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/webkit-autoloader-x-host_v0.3.0.7x.exe",
-    "source": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases",
-    "source_direct": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases/download/v0.3.0.7x/webkit-autoloader-x-host_v0.3.0.7x.exe",
-    "asset_pattern": "webkit-autoloader-x-host.*\\.exe",
-    "category": "Utilities",
-    "description": "WebKit Autoloader X installer-host for Windows by bsk193.",
-    "last_update": "2026-08-18",
-    "release_date": "2026-08-18",
-    "version": "v0.3.0.7x",
-    "checksum": "a7f9d7caeb40d392b5a8ea6329ee949bcca44b44eae244c8e417e2b0d3d3a7aa"
-  },
-  {
-    "name": "WebKit Autoloader X Host (Linux/macOS/WSL)",
-    "filename": "webkit-autoloader-x-host_v0.3.0.7x.py",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/webkit-autoloader-x-host_v0.3.0.7x.py",
-    "source": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases",
-    "source_direct": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases/download/v0.3.0.7x/webkit-autoloader-x-host_v0.3.0.7x.py",
-    "asset_pattern": "webkit-autoloader-x-host.*\\.py",
-    "category": "Utilities",
-    "description": "WebKit Autoloader X installer-host for Linux/macOS/WSL by bsk193.",
-    "last_update": "2026-08-18",
-    "release_date": "2026-08-18",
-    "version": "v0.3.0.7x",
-    "checksum": "ca7ceb194c42c4d400b1a53137d1a2c8777ef959c7a8e3329ae50506a3eccc0a"
   },
   {
     "name": "onionHEN",
