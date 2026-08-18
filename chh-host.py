@@ -2,7 +2,7 @@
 """Console Homebrew Hub — Local Host Server
 
 Three services start together:
-  DNS   port 53    — spoofs manuals.playstation.net → this PC; blocks Sony update/CDN domains; forwards everything else to 8.8.8.8
+  DNS   port 53    — spoofs manuals.playstation.net → this PC; NXDOMAIN for everything else
   HTTPS port 443   — serves exploit pages (PS5 User's Guide / manuals trick)
   HTTP  port 6969 — serves ELF payload files + exploit pages for local shortcuts
 
@@ -45,48 +45,6 @@ DNS_TTL      = 300
 DNS_PORT     = 53
 HTTPS_PORT   = 443
 HTTP_PORT    = 6969
-
-# Sony update/CDN domains to block (NXDOMAIN). Protects against accidental
-# firmware updates while the PS5 DNS is pointed at this host.
-# List sourced from cjrb007/ps5-dns-block (credits: MODDED WARFARE, Al-Azif).
-_SONY_BLOCK_EXACT = frozenset({
-    "update.playstation.net",
-    "update.net.playstation.net",
-    "oss.dl.playstation.net",
-    "get.net.playstation.net",
-    "post.net.playstation.net",
-    "ena.net.playstation.net",
-    "gs.ww.np.dl.playstation.net",
-    "b0.ww.np.dl.playstation.net",
-    "gs2.ww.prod.dl.playstation.net",
-    "gst.prod.dl.playstation.net",
-    "sgst.prod.dl.playstation.net",
-    "psndl.net",
-    "psn-rsc.prod.dl.playstation.net",
-    "apollo.dl.playstation.net",
-    "apollo2.dl.playstation.net",
-    "nsx.sec.np.dl.playstation.net",
-    "oqesn.np.dl.playstation.net",
-    "themis.dl.playstation.net",
-    "tmdb.np.dl.playstation.net",
-    "sf.api.np.km.playstation.net",
-    "event.api.np.km.playstation.net",
-    "us.np.stun.playstation.net",
-    "fswitch.dl.playstation.net",
-    "rnps-crl.dl.playstation.net",
-    "urlconfig.api.playstation.com",
-    "crepo.ww.dl.playstation.net",
-    "playstation.sony.akadns.net",
-})
-_SONY_BLOCK_SUFFIXES = (
-    ".ps5.update.playstation.net",
-    ".dl.playstation.net",
-    ".cdn.update.playstation.net",
-    ".cdn.update.playstation.org",
-)
-
-def _is_sony_blocked(name):
-    return name in _SONY_BLOCK_EXACT or any(name.endswith(s) for s in _SONY_BLOCK_SUFFIXES)
 
 # Files downloaded from the CHH release if missing at startup
 CHH_RELEASE = "https://github.com/bsk193/console-homebrew-hub/releases/latest/download"
@@ -272,18 +230,6 @@ def _parse_dns_name(data, offset):
         offset += length
     return None, None
 
-def _forward_dns(data, upstream="8.8.8.8", timeout=2.0):
-    """Proxy a raw DNS query to an upstream resolver; return its response or None."""
-    try:
-        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        s.settimeout(timeout)
-        s.sendto(data, (upstream, 53))
-        resp, _ = s.recvfrom(4096)
-        s.close()
-        return resp
-    except OSError:
-        return None
-
 def _dns_response(data, ip=None):
     if len(data) < 12:
         return None
@@ -312,14 +258,10 @@ class _DNSHandler(socketserver.BaseRequestHandler):
             resp = _dns_response(data, server.local_ip)
             server.log_fn(_s(f"[DNS]  {name} -> {server.local_ip}", 36))
             server.guide.on_connection()
-        elif _is_sony_blocked(name):
+        else:
             resp = _dns_response(data)
             if server.verbose:
-                server.log_fn(_s(f"[DNS]  {name} -> BLOCKED (Sony update server)", 31))
-        else:
-            resp = _forward_dns(data) or _dns_response(data)
-            if server.verbose:
-                server.log_fn(_s(f"[DNS]  {name} -> forwarded to 8.8.8.8", 33))
+                server.log_fn(_s(f"[DNS]  {name} -> NXDOMAIN", 31))
         if resp:
             sock.sendto(resp, self.client_address)
 

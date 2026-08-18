@@ -43,7 +43,7 @@ jobs:
           lines = [
               '',
               '# Console Homebrew Hub targets',
-              'CHH_SRCS       := src/main_chh.c src/app_installer.c src/notification.c src/log.c',
+              'CHH_SRCS       := src/main_chh.c src/app_installer.c src/notification.c src/log.c src/inflate.c src/chh_file_registry.c',
               'CHH_LOCAL_SRCS := src/main_chh_local.c src/app_installer.c src/notification.c src/log.c',
               'CHH_LIBS       := $(LOCAL_LIBS)',
               '',
@@ -67,6 +67,18 @@ jobs:
           PYEOF
 
           echo "All patches applied."
+
+      - name: Download pldmgrx.elf for embedding
+        run: |
+          PLDMGRX_URL=$(curl -s https://api.github.com/repos/bsk193/ps5-payload-manager-x/releases/latest \
+            | python3 -c "import sys,json; r=json.load(sys.stdin); \
+              print(next(a['browser_download_url'] for a in r['assets'] if a['name'].endswith('.elf')))")
+          curl -fsSL "$PLDMGRX_URL" -o pldmgrx.elf
+          echo "pldmgrx.elf: $(wc -c < pldmgrx.elf) bytes"
+
+      - name: Generate CHH file registry
+        run: |
+          python3 chh/tools/gen_chh_registry.py chh/ pldmgrx.elf autoloader-src/src/
 
       - name: Install Pillow for icon resize
         run: pip install Pillow -q
