@@ -8,6 +8,9 @@ on:
 permissions:
   contents: write
 
+env:
+  CHH_VERSION: v1.0.0
+
 jobs:
   # ── Build CHH ELFs (requires PS5 SDK via Docker) ─────────────────────────
   build-elfs:
@@ -104,7 +107,10 @@ jobs:
             -v "$(pwd)/autoloader-src:/work" -w /work \
             ps5-webkit-autoloader-sdk \
             make chh chh-local
-          ls -lh autoloader-src/chh-installer.elf autoloader-src/chh-local-installer.elf
+          # Create versioned copies alongside the unversioned originals
+          cp autoloader-src/chh-installer.elf       autoloader-src/chh-installer_${{ env.CHH_VERSION }}.elf
+          cp autoloader-src/chh-local-installer.elf autoloader-src/chh-local-installer_${{ env.CHH_VERSION }}.elf
+          ls -lh autoloader-src/chh-installer*.elf autoloader-src/chh-local-installer*.elf
 
       - name: Upload ELF artifacts
         uses: actions/upload-artifact@v4
@@ -112,7 +118,9 @@ jobs:
           name: chh-elfs
           path: |
             autoloader-src/chh-installer.elf
+            autoloader-src/chh-installer_${{ env.CHH_VERSION }}.elf
             autoloader-src/chh-local-installer.elf
+            autoloader-src/chh-local-installer_${{ env.CHH_VERSION }}.elf
 
   # ── Build chh-host.exe on Windows ─────────────────────────────────────────
   build-host-exe:
@@ -125,13 +133,17 @@ jobs:
         run: pip install pyinstaller
 
       - name: Build chh-host.exe
-        run: pyinstaller --onefile --name chh-host chh-host.py
+        run: |
+          pyinstaller --onefile --name chh-host chh-host.py
+          copy dist\chh-host.exe "dist\chh-host_${{ env.CHH_VERSION }}.exe"
 
       - name: Upload EXE artifact
         uses: actions/upload-artifact@v4
         with:
           name: chh-host-exe
-          path: dist/chh-host.exe
+          path: |
+            dist/chh-host.exe
+            dist/chh-host_${{ env.CHH_VERSION }}.exe
 
   # ── Publish everything to chh-latest release ──────────────────────────────
   publish:
@@ -164,6 +176,7 @@ jobs:
       - name: Copy chh-host.py
         run: |
           cp chh-host.py release-assets/
+          cp chh-host.py release-assets/chh-host_${{ env.CHH_VERSION }}.py
           echo "=== Release assets (CHH files — payload ELFs uploaded separately by update_mirror.yml) ==="
           ls -lh release-assets/
 

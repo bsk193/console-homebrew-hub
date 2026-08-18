@@ -1,8 +1,8 @@
 [
   {
     "name": "CHH Installer",
-    "filename": "chh-installer.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/chh-installer.elf",
+    "filename": "chh-installer_v1.0.0.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/chh-installer_v1.0.0.elf",
     "category": "Utilities",
     "description": "Console Homebrew Hub installer \u2014 installs PS5 homescreen shortcuts pointing to CHH exploits on GitHub Pages.",
     "last_update": "2026-08-18",
@@ -11,8 +11,8 @@
   },
   {
     "name": "CHH Local Installer",
-    "filename": "chh-local-installer.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/chh-local-installer.elf",
+    "filename": "chh-local-installer_v1.0.0.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/chh-local-installer_v1.0.0.elf",
     "category": "Utilities",
     "description": "Console Homebrew Hub local installer \u2014 installs PS5 homescreen shortcuts pointing to your local CHH host (192.168.1.139:6969).",
     "last_update": "2026-08-18",
