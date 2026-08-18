@@ -16,7 +16,7 @@ int wkali_install_app_with_param(const char *title_id,
     struct stat st;
     if (stat(app_dir, &st) == 0 &&
         !needs_update(param_path, param_json, param_json_size) &&
-        !needs_update(icon_path, incasset_icon0_png, incasset_icon0_png_size))
+        !needs_update(icon_path, icon0_png, icon0_png_size))
         return 0;
 
     wkali_log("[WKALI-CHH] Installing %s...\n", title_id);
@@ -34,7 +34,7 @@ int wkali_install_app_with_param(const char *title_id,
     }
 
     if ((err = install_file(param_path, param_json, param_json_size)) < 0 ||
-        (err = install_file(icon_path, incasset_icon0_png, incasset_icon0_png_size)) < 0) {
+        (err = install_file(icon_path, icon0_png, icon0_png_size)) < 0) {
         wkali_log("[WKALI-CHH] install_file failed: %d\n", err);
         sceAppInstUtilTerminate();
         return err;

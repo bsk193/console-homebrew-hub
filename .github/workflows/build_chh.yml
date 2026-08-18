@@ -32,22 +32,7 @@ jobs:
           # Append CHH extension function to app_installer.c
           cat chh/chh-src/app_installer_chh_patch.c >> autoloader-src/src/app_installer.c
 
-          # Add wkali_install_app_with_param declaration to app_installer.h
-          python3 - << 'PYEOF'
-          import re
-          path = 'autoloader-src/include/app_installer.h'
-          with open(path, 'r') as f:
-              src = f.read()
-          decl = (
-              '\n/* CHH extension: install a web-app shortcut with runtime param.json */\n'
-              'int wkali_install_app_with_param(const char *title_id,\n'
-              '    const uint8_t *param_json, size_t param_json_size);\n'
-          )
-          src = re.sub(r'(#endif\s*$)', decl + r'\1', src, flags=re.MULTILINE)
-          with open(path, 'w') as f:
-              f.write(src)
-          print('Patched app_installer.h')
-          PYEOF
+          # (declaration is forward-declared inside main_chh.c / main_chh_local.c)
 
           # Append CHH Makefile targets (Python writes tabs correctly)
           python3 - << 'PYEOF'

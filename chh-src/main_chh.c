@@ -8,6 +8,10 @@
 #include "notification.h"
 #include "wkali.h"
 
+/* CHH extension — defined in app_installer_chh_patch.c appended to app_installer.c */
+int wkali_install_app_with_param(const char *title_id,
+    const uint8_t *param_json, size_t param_json_size);
+
 extern int sceUserServiceInitialize(void *);
 
 #define CHH_BASE "https://bsk193.github.io/console-homebrew-hub"
