@@ -48,7 +48,7 @@ HTTP_PORT    = 6969
 
 # Files downloaded from the CHH release if missing at startup
 CHH_RELEASE = "https://github.com/bsk193/console-homebrew-hub/releases/latest/download"
-REQUIRED_ELFS = ["pldmgrx.elf"]
+REQUIRED_ELFS = ["pldmgrx.elf", "chh-shortcut.elf"]
 
 SERVE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -317,8 +317,8 @@ class ChhHandler(SimpleHTTPRequestHandler):
 
       - /document/<locale>/ps5/...  → redirect to /ps5/ (firmware detection page)
         Detection page routes to the right exploit wrapper; wrapper defaults to install
-        mode (chh-installer.elf). Shortcut mode (?autoload=pldmgrx.elf) is set by the
-        installed shortcut, not the first-run manuals flow.
+        mode (chh-shortcut.elf). After the shortcut is installed the user can run any
+        exploit with ?autoload=pldmgrx.elf to load Payload Manager X.
 
       - /console-homebrew-hub/<rest> → /<rest>
         The CHH wrapper pages embed exploit cores in iframes using their GitHub Pages

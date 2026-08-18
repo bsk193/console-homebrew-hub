@@ -1,4 +1,4 @@
-var CACHE = 'chh-v5';
+var CACHE = 'chh-v6';
 
 /* Determine the base path from the SW's own URL so paths work on both
    GitHub Pages (/console-homebrew-hub/) and a local server (/). */
@@ -18,9 +18,10 @@ var PRECACHE_REL = [
   '/ps5/exploits/umtx/core/document/en/ps5/index.html',
   '/ps5/exploits/ipv6/core/document/en/ps5/index.html',
   '/ps5/exploits/slopkit/core/slopkit/poops.html',
-  /* ELF payloads — chh-installer.elf omitted: served by the embedded ELF server,
-     not cached here (large file would pressure memory during exploit) */
+  /* ELF payloads — pre-cached so they are available offline and serve from
+     SW cache during exploit (no network fetch = no background memory pressure) */
   '/pldmgrx.elf',
+  '/chh-shortcut.elf',
 ];
 
 var PRECACHE = PRECACHE_REL.map(function(p) { return _swBase + p; });
