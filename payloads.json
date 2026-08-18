@@ -2,7 +2,7 @@
   {
     "name": "CHH Installer",
     "filename": "chh-installer_v1.0.0.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/chh-installer_v1.0.0.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/chh-installer_v1.0.0.elf",
     "category": "Utilities",
     "description": "Console Homebrew Hub installer \u2014 installs PS5 homescreen shortcuts pointing to CHH exploits on GitHub Pages.",
     "last_update": "2026-08-18",
@@ -12,7 +12,7 @@
   {
     "name": "CHH Local Installer",
     "filename": "chh-local-installer_v1.0.0.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/chh-local-installer_v1.0.0.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/chh-local-installer_v1.0.0.elf",
     "category": "Utilities",
     "description": "Console Homebrew Hub local installer \u2014 installs PS5 homescreen shortcuts pointing to your local CHH host (192.168.1.139:6969).",
     "last_update": "2026-08-18",
@@ -22,7 +22,7 @@
   {
     "name": "WebKit Autoloader X",
     "filename": "webkit-autoloader-x-installer_v0.3.0.7x.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/webkit-autoloader-x-installer_v0.3.0.7x.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/webkit-autoloader-x-installer_v0.3.0.7x.elf",
     "source": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases",
     "source_direct": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases/download/v0.3.0.7x/webkit-autoloader-x-installer_v0.3.0.7x.elf",
     "asset_pattern": "webkit-autoloader-x-installer.*\\.elf",
@@ -36,7 +36,7 @@
   {
     "name": "WebKit Autoloader X (Local)",
     "filename": "webkit-autoloader-x-local-installer_v0.3.0.7x.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/webkit-autoloader-x-local-installer_v0.3.0.7x.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/webkit-autoloader-x-local-installer_v0.3.0.7x.elf",
     "source": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases",
     "source_direct": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases/download/v0.3.0.7x/webkit-autoloader-x-local-installer_v0.3.0.7x.elf",
     "asset_pattern": "webkit-autoloader-x-local-installer.*\\.elf",
@@ -50,7 +50,7 @@
   {
     "name": "onionHEN",
     "filename": "OnionHEN.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/OnionHEN.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/OnionHEN.elf",
     "source": "https://github.com/aydencharles/onionHEN/releases",
     "source_direct": "https://github.com/aydencharles/onionHEN/releases/download/v0.0.10/OnionHEN.elf",
     "asset_pattern": "OnionHEN\\.elf",
@@ -66,7 +66,7 @@
   {
     "name": "WebKit Autoloader",
     "filename": "webkit-autoloader-installer_v0.3.0.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/webkit-autoloader-installer_v0.3.0.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/webkit-autoloader-installer_v0.3.0.elf",
     "source": "https://github.com/itsPLK/ps5-webkit-autoloader/releases",
     "source_direct": "https://github.com/itsPLK/ps5-webkit-autoloader/releases/download/v0.3.0/webkit-autoloader-installer_v0.3.0.elf",
     "asset_pattern": "webkit-autoloader-installer.*\\.elf",
@@ -80,7 +80,7 @@
   {
     "name": "PS5Upload",
     "filename": "ps5upload-5.2.1.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-5.2.1.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/ps5upload-5.2.1.elf",
     "source": "https://github.com/phantomptr/ps5upload/releases",
     "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v5.2.1/ps5upload-5.2.1.elf",
     "category": "Utilities",
@@ -93,7 +93,7 @@
   {
     "name": "KStuff Lite",
     "filename": "kstuff_v1.10.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/kstuff_v1.10.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/kstuff_v1.10.elf",
     "source": "https://github.com/EchoStretch/kstuff-lite/releases",
     "source_direct": "https://github.com/EchoStretch/kstuff-lite/releases/download/v1.10/kstuff.elf",
     "category": "Utilities",
@@ -106,7 +106,7 @@
   {
     "name": "Payload Manager X",
     "filename": "pldmgrx_v0.5.1.2x.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/pldmgrx_v0.5.1.2x.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/pldmgrx_v0.5.1.2x.elf",
     "source": "https://github.com/bsk193/ps5-payload-manager-x/releases",
     "source_direct": "https://github.com/bsk193/ps5-payload-manager-x/releases/download/v0.5.1.2x/pldmgrx_v0.5.1.2x.elf",
     "category": "Utilities",
@@ -119,7 +119,7 @@
   {
     "name": "BFpilot",
     "filename": "bfpilot_v0.4.4.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/bfpilot_v0.4.4.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/bfpilot_v0.4.4.elf",
     "source": "https://github.com/ItsBlurf/BFpilot/releases",
     "source_direct": "https://github.com/ItsBlurf/BFpilot/releases/download/v0.4.4/bfpilot.elf",
     "asset_pattern": "^bfpilot\\.elf$",
@@ -133,7 +133,7 @@
   {
     "name": "PIZZA-HEN",
     "filename": "PIZZA-HEN-v0.1.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/PIZZA-HEN-v0.1.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/PIZZA-HEN-v0.1.elf",
     "source": "https://github.com/Michele-M-Media/PIZZA-HEN/releases",
     "source_direct": "https://github.com/Michele-M-Media/PIZZA-HEN/releases/download/v0.1/PIZZA-HEN-v0.1.elf",
     "asset_pattern": "PIZZA-HEN.*\\.elf",
@@ -147,7 +147,7 @@
   {
     "name": "nanoDNS",
     "filename": "nanodns_0.4.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/nanodns_0.4.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/nanodns_0.4.elf",
     "source": "https://github.com/drakmor/nanoDNS/releases",
     "source_direct": "https://github.com/drakmor/nanoDNS/releases/download/0.4/nanodns.elf",
     "category": "Utilities",
@@ -160,7 +160,7 @@
   {
     "name": "websrv",
     "filename": "websrv-ps5_v0.34.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/websrv-ps5_v0.34.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/websrv-ps5_v0.34.elf",
     "source": "https://github.com/ps5-payload-dev/websrv/releases",
     "source_direct": "https://github.com/ps5-payload-dev/websrv/releases/download/v0.34/websrv-ps5.elf",
     "category": "Utilities",
@@ -173,7 +173,7 @@
   {
     "name": "shsrv",
     "filename": "shsrv-ps5_v0.20.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/shsrv-ps5_v0.20.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/shsrv-ps5_v0.20.elf",
     "source": "https://github.com/ps5-payload-dev/shsrv/releases",
     "source_direct": "https://github.com/ps5-payload-dev/shsrv/releases/download/v0.20/shsrv-ps5.elf",
     "category": "Utilities",
@@ -186,7 +186,7 @@
   {
     "name": "klogsrv",
     "filename": "klogsrv-ps5_v0.9.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/klogsrv-ps5_v0.9.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/klogsrv-ps5_v0.9.elf",
     "source": "https://github.com/ps5-payload-dev/klogsrv/releases",
     "source_direct": "https://github.com/ps5-payload-dev/klogsrv/releases/download/v0.9/klogsrv-ps5.elf",
     "category": "Utilities",
@@ -199,7 +199,7 @@
   {
     "name": "elfldr",
     "filename": "elfldr-ps5_v0.24.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/elfldr-ps5_v0.24.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/elfldr-ps5_v0.24.elf",
     "source": "https://github.com/ps5-payload-dev/elfldr/releases",
     "source_direct": "https://github.com/ps5-payload-dev/elfldr/releases/download/v0.24/elfldr-ps5.elf",
     "category": "Utilities",
@@ -212,7 +212,7 @@
   {
     "name": "ftpsrv",
     "filename": "ftpsrv-ps5_v0.21.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ftpsrv-ps5_v0.21.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/ftpsrv-ps5_v0.21.elf",
     "source": "https://github.com/ps5-payload-dev/ftpsrv/releases",
     "source_direct": "https://github.com/ps5-payload-dev/ftpsrv/releases/download/v0.21/ftpsrv-ps5.elf",
     "asset_pattern": "^ftpsrv-ps5\\.elf$",
@@ -226,7 +226,7 @@
   {
     "name": "Payload Manager",
     "filename": "pldmgr_v0.5.1.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/pldmgr_v0.5.1.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/pldmgr_v0.5.1.elf",
     "source": "https://github.com/itsPLK/ps5-payload-manager/releases",
     "source_direct": "https://github.com/itsPLK/ps5-payload-manager/releases/download/v0.5.1/pldmgr_v0.5.1.elf",
     "category": "Utilities",
@@ -239,7 +239,7 @@
   {
     "name": "PS5 App Dumper",
     "filename": "ps5-app-dumper_v1.11.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5-app-dumper_v1.11.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/ps5-app-dumper_v1.11.elf",
     "source": "https://github.com/EchoStretch/ps5-app-dumper/releases",
     "source_direct": "https://github.com/EchoStretch/ps5-app-dumper/releases/download/v1.11/ps5-app-dumper.elf",
     "category": "Utilities",
@@ -252,7 +252,7 @@
   {
     "name": "BFpilot Installer",
     "filename": "bfpilot-launcher-installer_v0.4.3.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/bfpilot-launcher-installer_v0.4.3.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/bfpilot-launcher-installer_v0.4.3.elf",
     "source": "https://github.com/ItsBlurf/BFpilot/releases",
     "source_direct": "https://github.com/ItsBlurf/BFpilot/releases/download/v0.4.3/bfpilot-launcher-installer.elf",
     "asset_pattern": "^bfpilot-launcher-installer\\.elf$",
@@ -266,7 +266,7 @@
   {
     "name": "ELFArsenal",
     "filename": "elf-arsenal_v1.6.22.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/elf-arsenal_v1.6.22.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/elf-arsenal_v1.6.22.elf",
     "source": "https://github.com/bsk193/elf-arsenal-mirror/releases",
     "source_direct": "https://github.com/bsk193/elf-arsenal-mirror/releases/download/v1.6.22/elf-arsenal.elf",
     "category": "Utilities",
@@ -279,7 +279,7 @@
   {
     "name": "PS5 Linux Loader",
     "filename": "ps5-linux-loader_v2.4.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5-linux-loader_v2.4.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/ps5-linux-loader_v2.4.elf",
     "source": "https://github.com/ps5-linux/ps5-linux-loader/releases",
     "source_direct": "https://github.com/ps5-linux/ps5-linux-loader/releases/download/v2.4/ps5-linux-loader.elf",
     "category": "Utilities",
@@ -294,7 +294,7 @@
   {
     "name": "ShadowMountPlus",
     "filename": "shadowmountplus_1.6beta16.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/shadowmountplus_1.6beta16.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/shadowmountplus_1.6beta16.elf",
     "source": "https://github.com/drakmor/ShadowMountPlus/releases",
     "source_direct": "https://github.com/drakmor/ShadowMountPlus/releases/download/1.6beta16/shadowmountplus.elf",
     "category": "Utilities",
@@ -307,7 +307,7 @@
   {
     "name": "PegasusDL",
     "filename": "pegasus_dl_v1.7.0.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/pegasus_dl_v1.7.0.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/pegasus_dl_v1.7.0.elf",
     "source": "https://github.com/pegasus-ps5/pegasus-dl/releases",
     "source_direct": "https://github.com/pegasus-ps5/pegasus-dl/releases/download/v1.7.0/pegasus_dl.elf",
     "category": "Utilities",
@@ -320,7 +320,7 @@
   {
     "name": "PS5Debug",
     "filename": "ps5debug-NG_v1.3.0.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5debug-NG_v1.3.0.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/ps5debug-NG_v1.3.0.elf",
     "source": "https://github.com/OpenSourcereR-dev/ps5debug-NG/releases",
     "source_direct": "https://github.com/OpenSourcereR-dev/ps5debug-NG/releases/download/1.3.0/ps5debug-NG_v1.3.0.elf",
     "category": "Utilities",
@@ -333,7 +333,7 @@
   {
     "name": "PS5GameCompressor",
     "filename": "game-compressor_v1.0.3.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/game-compressor_v1.0.3.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/game-compressor_v1.0.3.elf",
     "source": "https://github.com/juma-sayeh/PS5-Game-Compressor/releases",
     "source_direct": "https://github.com/juma-sayeh/PS5-Game-Compressor/releases/download/v1.0.3/game-compressor.elf",
     "category": "Utilities",
@@ -346,7 +346,7 @@
   {
     "name": "zftpd",
     "filename": "zftpd-ps5-v1.5.0.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/zftpd-ps5-v1.5.0.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/zftpd-ps5-v1.5.0.elf",
     "source": "https://github.com/seregonwar/zftpd/releases",
     "source_direct": "https://github.com/seregonwar/zftpd/releases/download/v1.5.0/zftpd-ps5-v1.5.0.elf",
     "asset_pattern": "^zftpd-ps5-v.+\\.elf$",
@@ -360,7 +360,7 @@
   {
     "name": "Lapy JB Daemon",
     "filename": "lapy_jb_daemon-v1.2.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/lapy_jb_daemon-v1.2.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/lapy_jb_daemon-v1.2.elf",
     "source": "https://github.com/itsPLK/PS5-Lapy-JB-Daemon/releases",
     "source_direct": "https://github.com/itsPLK/PS5-Lapy-JB-Daemon/releases/download/v1.2/lapy_jb_daemon-v1.2.elf",
     "category": "Utilities",
@@ -373,7 +373,7 @@
   {
     "name": "KStuff Lite DR",
     "filename": "kstuff_1.2-dr-test1.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/kstuff_1.2-dr-test1.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/kstuff_1.2-dr-test1.elf",
     "source": "https://github.com/drakmor/kstuff-lite/releases",
     "source_direct": "https://github.com/drakmor/kstuff-lite/releases/download/1.2-dr-test1/kstuff.elf",
     "category": "Utilities",
@@ -386,7 +386,7 @@
   {
     "name": "BackPork",
     "filename": "ps5-backpork_0.1.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5-backpork_0.1.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/ps5-backpork_0.1.elf",
     "source": "https://github.com/BestPig/BackPork/releases",
     "source_direct": "https://github.com/BestPig/BackPork/releases/download/0.1/ps5-backpork.elf",
     "category": "Utilities",
@@ -399,7 +399,7 @@
   {
     "name": "ftpsrv DR",
     "filename": "ftpsrv-ps5_1.15-ng-stable.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ftpsrv-ps5_1.15-ng-stable.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/ftpsrv-ps5_1.15-ng-stable.elf",
     "source": "https://github.com/drakmor/ftpsrv/releases",
     "source_direct": "https://github.com/drakmor/ftpsrv/releases/download/1.15-ng-stable/ftpsrv-ps5.elf",
     "category": "Utilities",
@@ -412,7 +412,7 @@
   {
     "name": "Garlic Save Manager",
     "filename": "garlic-savemgr_v1.7.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/garlic-savemgr_v1.7.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/garlic-savemgr_v1.7.elf",
     "source": "https://github.com/earthonion/garlic-savemgr/releases",
     "source_direct": "https://github.com/earthonion/garlic-savemgr/releases/download/v1.7/garlic-savemgr.elf",
     "category": "Utilities",
@@ -425,7 +425,7 @@
   {
     "name": "NPFakeSignIn",
     "filename": "np-fake-signin-ps5_1.1.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/np-fake-signin-ps5_1.1.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/np-fake-signin-ps5_1.1.elf",
     "source": "https://github.com/earthonion/np-fake-signin/releases",
     "source_direct": "https://github.com/earthonion/np-fake-signin/releases/download/1.1/np-fake-signin-ps5.elf",
     "category": "Utilities",
@@ -438,7 +438,7 @@
   {
     "name": "KStuff",
     "filename": "kstuff_v1.6.7.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/kstuff_v1.6.7.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/kstuff_v1.6.7.elf",
     "source": "https://github.com/EchoStretch/kstuff/releases",
     "source_direct": "https://github.com/EchoStretch/kstuff/releases/download/v1.6.7/kstuff.elf",
     "category": "Utilities",
@@ -451,7 +451,7 @@
   {
     "name": "etaHEN",
     "filename": "etaHEN-2.5B.bin",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/etaHEN-2.5B.bin",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/etaHEN-2.5B.bin",
     "source": "https://github.com/etaHEN/etaHEN/releases",
     "source_direct": "https://github.com/etaHEN/etaHEN/releases/download/2.5B/etaHEN-2.5B.bin",
     "category": "Utilities",
