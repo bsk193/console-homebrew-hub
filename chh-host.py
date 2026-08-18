@@ -47,7 +47,7 @@ HTTPS_PORT   = 443
 HTTP_PORT    = 6969
 
 # Files downloaded from the CHH release if missing at startup
-CHH_RELEASE = "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest"
+CHH_RELEASE = "https://github.com/bsk193/console-homebrew-hub/releases/latest/download"
 REQUIRED_ELFS = ["pldmgrx.elf"]
 
 SERVE_DIR = os.path.dirname(os.path.abspath(__file__))

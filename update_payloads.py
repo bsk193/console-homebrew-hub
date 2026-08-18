@@ -37,8 +37,14 @@ def _get_latest_chh_tag():
     return None
 
 _CHH_TAG = _get_latest_chh_tag()
-BASE_URL = f"https://github.com/bsk193/console-homebrew-hub/releases/download/{_CHH_TAG or 'chh-latest'}"
-print(f"[mirror] Using release tag: {_CHH_TAG or 'chh-latest (fallback)'}")
+if not _CHH_TAG:
+    print("[mirror] WARNING: could not resolve latest release tag — using releases/latest/download redirect")
+BASE_URL = (
+    f"https://github.com/bsk193/console-homebrew-hub/releases/download/{_CHH_TAG}"
+    if _CHH_TAG else
+    "https://github.com/bsk193/console-homebrew-hub/releases/latest/download"
+)
+print(f"[mirror] Using release tag: {_CHH_TAG or '(latest redirect fallback)'}")
 
 # Assets managed by build_chh.yml — never deleted by cleanup
 PROTECTED_ASSETS = {"chh-installer.elf", "chh-local-installer.elf", "chh-host.exe", "chh-host.py", "pldmgrx.elf"}

@@ -145,7 +145,7 @@ jobs:
             dist/chh-host.exe
             dist/chh-host_${{ env.CHH_VERSION }}.exe
 
-  # ── Publish everything to chh-latest release ──────────────────────────────
+  # ── Publish everything to versioned release ───────────────────────────────
   publish:
     runs-on: ubuntu-latest
     needs: [build-elfs, build-host-exe]
