@@ -18,9 +18,9 @@ var PRECACHE_REL = [
   '/ps5/exploits/umtx/core/document/en/ps5/index.html',
   '/ps5/exploits/ipv6/core/document/en/ps5/index.html',
   '/ps5/exploits/slopkit/core/slopkit/poops.html',
-  /* ELF payloads */
+  /* ELF payloads — chh-installer.elf omitted: served by the embedded ELF server,
+     not cached here (large file would pressure memory during exploit) */
   '/pldmgrx.elf',
-  '/chh-installer.elf',
 ];
 
 var PRECACHE = PRECACHE_REL.map(function(p) { return _swBase + p; });
