@@ -134,7 +134,7 @@ jobs:
 
       - name: Build chh-host.exe
         run: |
-          pyinstaller --onefile --name chh-host server.py
+          pyinstaller --onefile --name chh-host chh-host.py
           copy dist\chh-host.exe "dist\chh-host_${{ env.CHH_VERSION }}.exe"
 
       - name: Upload EXE artifact
@@ -173,10 +173,10 @@ jobs:
           curl -fsSL "$PLDMGRX_URL" -o release-assets/pldmgrx.elf
           echo "pldmgrx.elf: $(wc -c < release-assets/pldmgrx.elf) bytes"
 
-      - name: Copy server.py as chh-host.py
+      - name: Copy chh-host.py
         run: |
-          cp server.py release-assets/chh-host.py
-          cp server.py release-assets/chh-host_${{ env.CHH_VERSION }}.py
+          cp chh-host.py release-assets/chh-host.py
+          cp chh-host.py release-assets/chh-host_${{ env.CHH_VERSION }}.py
           echo "=== Release assets (CHH files — payload ELFs uploaded separately by update_mirror.yml) ==="
           ls -lh release-assets/
 
