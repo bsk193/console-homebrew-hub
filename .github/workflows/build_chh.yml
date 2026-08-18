@@ -1,15 +1,15 @@
 name: Build Console Homebrew Hub Release
 
 on:
-  schedule:
-    - cron: '0 3 * * *'
-  workflow_dispatch:
+  push:
+    tags:
+      - 'v*.*.*'
 
 permissions:
   contents: write
 
 env:
-  CHH_VERSION: v1.0.0
+  CHH_VERSION: ${{ github.ref_name }}
 
 jobs:
   # ── Build CHH ELFs (requires PS5 SDK via Docker) ─────────────────────────
@@ -184,12 +184,13 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          NOTES="CHH ${{ env.CHH_VERSION }} — chh-installer.elf, chh-local-installer.elf, chh-host.exe, chh-host.py, plus mirrored PS5 payloads. Auto-updated daily."
           gh release create chh-latest \
-            --title "Console Homebrew Hub v1.0.0" \
-            --notes "CHH v1.0.0 — chh-installer.elf, chh-local-installer.elf, chh-host.exe, chh-host.py, plus mirrored PS5 payloads. Auto-updated daily." \
+            --title "Console Homebrew Hub ${{ env.CHH_VERSION }}" \
+            --notes "$NOTES" \
             --latest=false 2>/dev/null || true
           gh release edit chh-latest \
-            --title "Console Homebrew Hub v1.0.0" \
-            --notes "CHH v1.0.0 — chh-installer.elf, chh-local-installer.elf, chh-host.exe, chh-host.py, plus mirrored PS5 payloads. Auto-updated daily." 2>/dev/null || true
+            --title "Console Homebrew Hub ${{ env.CHH_VERSION }}" \
+            --notes "$NOTES" 2>/dev/null || true
           gh release upload chh-latest release-assets/* --clobber
           echo "Published: $(gh release view chh-latest --json assets --jq '.assets|length') assets"

@@ -1,9 +1,11 @@
 name: Automated Payloads Mirror
 
 on:
+  push:
+    branches: [main]
   schedule:
     - cron: '0 0 * * *' # Daily at midnight UTC
-  workflow_dispatch: # Manual trigger
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -54,7 +56,3 @@ jobs:
           git pull --rebase origin main
           git push
 
-      - name: Deploy GitHub Pages
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh workflow run pages.yml

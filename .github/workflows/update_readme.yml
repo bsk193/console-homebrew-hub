@@ -3,8 +3,9 @@ name: Update README
 on:
   push:
     branches: [main]
-    paths:
-      - payloads.json
+  workflow_run:
+    workflows: [Automated Payloads Mirror]
+    types: [completed]
   workflow_dispatch:
 
 permissions:
