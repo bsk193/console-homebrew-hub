@@ -2,77 +2,40 @@ name: Deploy GitHub Pages
 
 on:
   push:
-    branches: [main, v2]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: read
   pages: write
   id-token: write
-  actions: write
 
 concurrency:
   group: pages
   cancel-in-progress: false
 
 jobs:
-  # When v2 is pushed, fire a workflow_dispatch on main so the deploy
-  # job runs from main (the only branch allowed by the Pages environment).
-  trigger:
-    if: github.ref == 'refs/heads/v2'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Trigger Pages deploy from main
-        run: gh workflow run pages.yml --ref main
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_REPO: ${{ github.repository }}
-
   deploy:
-    if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout main branch
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: main
-          path: _main
 
-      - name: Checkout v2 branch
-        uses: actions/checkout@v4
-        with:
-          ref: v2
-          path: _v2
-
-      - name: Assemble combined site
-        run: |
-          mkdir -p _site
-          rsync -a --exclude='.git' --exclude='.github' _main/ _site/
-          mkdir -p _site/v2
-          rsync -a --exclude='.git' --exclude='.github' _v2/ _site/v2/
-
-      - name: Rewrite absolute paths for /v2 subpath
+      - name: Rewrite absolute paths for GitHub Pages subpath
         env:
           REPO: ${{ github.event.repository.name }}
         run: |
           python3 - << 'PYEOF'
           import os, re
 
-          # Full base path: /console-homebrew-hub/v2  (or whatever the repo is named)
           repo   = os.environ['REPO']
-          PREFIX = f'/{repo}/v2'
-          ROOT   = '_site/v2'
+          PREFIX = f'/{repo}'
+          ROOT   = '.'
           EXTS   = {'.html', '.js', '.json'}
 
-          # Match a slash that immediately follows a quote char (" or ').
-          # Covers href="/", src="/", fetch('/'), register('/sw.js'),
-          # SW PRECACHE ['/', '/ps5/'], location.replace('/ps5/'), frame.src = '/...', etc.
-          # Negative lookbehind (?<!/) skips quotes inside JS regex literals like /"/g or /'/i,
-          # where the quote char is preceded by the regex's opening slash.
-          # Negative lookahead (?!\/) skips protocol-relative URLs like src="//cdn...".
           PATTERN = re.compile(r'(?<![/])(["\'])(\/(?!\/))')
 
           def rewrite(text):
@@ -102,7 +65,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: _site
+          path: .
 
       - name: Deploy to GitHub Pages
         id: deployment

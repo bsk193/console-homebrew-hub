@@ -2,7 +2,7 @@ name: Update README
 
 on:
   push:
-    branches: [v2]
+    branches: [main]
     paths:
       - payloads.json
   workflow_dispatch:
