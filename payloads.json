@@ -16,32 +16,24 @@
     "checksum": "fd6618fa00f4fc8ba437334aa20577acd79307fea19f6e210477a23d24fa18b6"
   },
   {
-    "name": "WebKit Autoloader X",
-    "filename": "webkit-autoloader-installer_v0.3.0.5x.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/webkit-autoloader-installer_v0.3.0.5x.elf",
-    "source": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases",
-    "source_direct": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases/download/v0.3.0.5x/webkit-autoloader-installer_v0.3.0.5x.elf",
-    "asset_pattern": "webkit-autoloader-installer.*\\.elf",
+    "name": "CHH Installer",
+    "filename": "chh-installer.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/chh-installer.elf",
     "category": "Utilities",
-    "description": "Extended PS5 WebKit exploit autoloader installer ELF by bsk193.",
-    "last_update": "2026-08-17",
-    "release_date": "2026-08-17",
-    "version": "v0.3.0.5x",
-    "checksum": "a121e143d95ff232714552f85a2c8ee3ae9d32fdf33cd83402d5bdd8b9a0923d"
+    "description": "Console Homebrew Hub installer — installs PS5 homescreen shortcuts pointing to CHH exploits on GitHub Pages.",
+    "last_update": "2026-08-18",
+    "release_date": "2026-08-18",
+    "version": "chh-latest"
   },
   {
-    "name": "WebKit Autoloader X (Local)",
-    "filename": "jailbreak-local-installer_v0.3.0.5x.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/jailbreak-local-installer_v0.3.0.5x.elf",
-    "source": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases",
-    "source_direct": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases/download/v0.3.0.5x/jailbreak-local-installer_v0.3.0.5x.elf",
-    "asset_pattern": "jailbreak-local-installer.*\\.elf",
+    "name": "CHH Local Installer",
+    "filename": "chh-local-installer.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/chh-local-installer.elf",
     "category": "Utilities",
-    "description": "PS5 local jailbreak installer ELF from WebKit Autoloader X by bsk193.",
-    "last_update": "2026-08-17",
-    "release_date": "2026-08-17",
-    "version": "v0.3.0.5x",
-    "checksum": "6e96cd4068aa9cd1465a007bb5f2ba398812b2474629e0960baf3c683be1a143"
+    "description": "Console Homebrew Hub local installer — installs PS5 homescreen shortcuts pointing to your local CHH host (192.168.1.139:6969).",
+    "last_update": "2026-08-18",
+    "release_date": "2026-08-18",
+    "version": "chh-latest"
   },
   {
     "name": "WebKit Autoloader",
