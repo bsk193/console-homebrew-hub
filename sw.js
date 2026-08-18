@@ -1,4 +1,4 @@
-var CACHE = 'chh-v3';
+var CACHE = 'chh-v4';
 var PRECACHE = [
   '/', '/index.html',
   '/console-nav.js',
@@ -13,6 +13,9 @@ var PRECACHE = [
   '/ps5/exploits/umtx/core/document/en/ps5/index.html',
   '/ps5/exploits/ipv6/core/document/en/ps5/index.html',
   '/ps5/exploits/slopkit/core/slopkit/poops.html',
+  /* ELF payloads — cached for offline shortcut use */
+  '/pldmgrx.elf',
+  '/chh-installer.elf',
 ];
 
 self.addEventListener('install', function (e) {

@@ -353,6 +353,14 @@ body{display:flex;flex-direction:column;align-items:center}
   var noteEl = document.getElementById('note');
   var picker = document.getElementById('fw-picker');
 
+  /* ?autoload param: when set (shortcut mode), auto-navigate to the exploit page
+     and propagate the param so the exploit auto-runs pldmgrx instead of installing. */
+  var _autoload = new URLSearchParams(location.search).get('autoload');
+
+  function exploitUrl(cfg) {
+    return _autoload ? (cfg.url + '?autoload=' + encodeURIComponent(_autoload)) : cfg.url;
+  }
+
   function apply(fw) {
     var range = getRange(fw);
     var cfg = EXPLOITS[range];
@@ -367,10 +375,10 @@ body{display:flex;flex-direction:column;align-items:center}
     valExploit.textContent = cfg.label;
     valLoader.textContent = range === 'unsupported' || range === 'userland' ? '—' : 'elfldr';
 
-    btnRun.textContent = btnLabel;
+    btnRun.textContent = _autoload ? ('Autoload ' + _autoload + ' via ' + cfg.label) : btnLabel;
     if (canRun) {
       btnRun.classList.remove('disabled');
-      btnRun.onclick = function () { location.href = cfg.url; };
+      btnRun.onclick = function () { location.href = exploitUrl(cfg); };
     } else {
       btnRun.classList.add('disabled');
       btnRun.onclick = null;
@@ -386,6 +394,25 @@ body{display:flex;flex-direction:column;align-items:center}
   picker.addEventListener('change', function () {
     apply(picker.value || currentFW);
   });
+
+  /* Shortcut mode: firmware detected → auto-navigate to the exploit page immediately */
+  if (_autoload && detectedFW) {
+    var _autoRange = getRange(detectedFW);
+    var _autoCfg = EXPLOITS[_autoRange];
+    if (_autoCfg && _autoCfg.url) {
+      /* Cache all exploit pages and pldmgrx.elf for offline shortcut use before navigating */
+      if (navigator.serviceWorker && navigator.serviceWorker.controller) {
+        var _toCache = [
+          '/ps5/exploits/slopkit/', '/ps5/exploits/slopkit/index.html',
+          '/ps5/exploits/umtx/', '/ps5/exploits/umtx/index.html',
+          '/ps5/exploits/ipv6/', '/ps5/exploits/ipv6/index.html',
+          '/chh-installer.elf', '/pldmgrx.elf'
+        ];
+        navigator.serviceWorker.controller.postMessage({ type: 'CACHE_URLS', urls: _toCache });
+      }
+      setTimeout(function () { location.replace(exploitUrl(_autoCfg)); }, 100);
+    }
+  }
 })();
 
 if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js').catch(function(){}); }

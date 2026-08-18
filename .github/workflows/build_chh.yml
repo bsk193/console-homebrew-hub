@@ -188,7 +188,7 @@ jobs:
           BASE="https://github.com/bsk193/console-homebrew-hub/releases/download/${VER}"
           printf '## Downloads\n\n| Platform | File |\n|---|---|\n' > /tmp/notes.md
           printf '| PS5 (installer payload) | [chh-installer_%s.elf](%s/chh-installer_%s.elf) |\n' "$VER" "$BASE" "$VER" >> /tmp/notes.md
-          printf '| PS5 (optional: "Jailbreak (Local)" shortcut only) | [chh-local-installer_%s.elf](%s/chh-local-installer_%s.elf) |\n' "$VER" "$BASE" "$VER" >> /tmp/notes.md
+          printf '| PS5 (optional: local host shortcuts) | [chh-local-installer_%s.elf](%s/chh-local-installer_%s.elf) |\n' "$VER" "$BASE" "$VER" >> /tmp/notes.md
           printf '| Linux / macOS / WSL (host server) | [chh-host_%s.py](%s/chh-host_%s.py) |\n' "$VER" "$BASE" "$VER" >> /tmp/notes.md
           printf '| Windows (host server) | [chh-host_%s.exe](%s/chh-host_%s.exe) |\n' "$VER" "$BASE" "$VER" >> /tmp/notes.md
           printf '\nMirrored PS5 payload ELFs are also included in this release and auto-updated daily.\n' >> /tmp/notes.md
