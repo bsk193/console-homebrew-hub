@@ -3,6 +3,9 @@ name: Automated Payloads Mirror
 on:
   push:
     branches: [main]
+  workflow_run:
+    workflows: [Build Console Homebrew Hub Release]
+    types: [completed]
   schedule:
     - cron: '0 0 * * *' # Daily at midnight UTC
   workflow_dispatch:
