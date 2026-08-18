@@ -2,24 +2,23 @@
 """
 gen_chh_registry.py — generate CHH file registry using .incbin assembly.
 
-Instead of C byte-array literals (slow to compile), each compressed blob is
-written as a raw binary file and included via assembly .incbin directives.
-The C file only contains the tiny metadata array.
+Small files (hub/wrapper HTML pages, console-nav.js) are embedded in the ELF.
+Large files (exploit cores, pldmgrx.elf) are proxied from the PC at runtime.
 
-Only SMALL files (hub/wrapper HTML pages, console-nav.js) are embedded in the
-ELF.  Large files (exploit cores, pldmgrx.elf) are listed in the AppCache
-manifest but served at runtime via the MHD proxy (which reads the PC's IP from
-/etc/resolv.conf and forwards requests to chh-host.py on port 6969).  This
-keeps the ELF small enough to buffer safely during the exploit.
+The AppCache manifest is generated DYNAMICALLY by the ELF at runtime based on
+which exploit was just used (passed as ?exploit=X query param).  This ensures
+AppCache only downloads the ~25 files for ONE exploit rather than all 105, so
+the background download completes quickly before the user can retry.
 
 Usage:
     python3 tools/gen_chh_registry.py <chh-repo-root> <pldmgrx-elf-path> <out-dir>
 
 Outputs to <out-dir>:
     chh_blob_NNN.deflate    — raw DEFLATE-compressed blobs (embedded files only)
-    chh_data.S              — assembly that .incbin's each blob into .rodata
-    chh_file_registry.c     — ChhFile metadata array (no bulk data)
+    chh_data.S              — assembly .incbin for each blob
+    chh_file_registry.c     — ChhFile metadata array
     chh_file_registry.h     — ChhFile struct + extern declarations
+    chh_proxy_paths.h       — per-exploit proxy path lists for dynamic manifest
 """
 
 import os
@@ -51,25 +50,22 @@ def blob_sym(index):
     return f'_chh_blob_{index:03d}'
 
 def should_embed(url):
-    """Return True for small files to embed in the ELF.
-
-    Exploit core files and pldmgrx.elf are large (hundreds of KB each).
-    Embedding them would make chh-installer.elf several MB, causing the PS5
-    browser to run out of memory when it buffers the ELF during the exploit.
-    These files are listed in the AppCache manifest but served at runtime
-    via the MHD proxy to the PC's chh-host.py on port 6969.
-    """
+    """Return True for small files to embed in the ELF binary."""
     if url == '/pldmgrx.elf':
         return False
-    # /ps5/exploits/<name>/core/... — large exploit JS/HTML bundles
     if url.startswith('/ps5/exploits/') and '/core/' in url:
         return False
     return True
 
-def collect_frontend_files(repo_root):
-    """Walk ps5/ (skip payloads/) for html/js/css, plus console-nav.js."""
-    files = []
+def exploit_for(url):
+    """Return exploit name (slopkit/umtx/ipv6) for a core file URL, else None."""
+    for name in ('slopkit', 'umtx', 'ipv6'):
+        if url.startswith(f'/ps5/exploits/{name}/'):
+            return name
+    return None
 
+def collect_frontend_files(repo_root):
+    files = []
     abs_dir = os.path.join(repo_root, 'ps5')
     for dirpath, dirnames, filenames in os.walk(abs_dir):
         dirnames[:] = [d for d in dirnames if d not in ('payloads',)]
@@ -80,25 +76,10 @@ def collect_frontend_files(repo_root):
             abs_path = os.path.join(dirpath, fname)
             rel = os.path.relpath(abs_path, repo_root).replace('\\', '/')
             files.append(('/' + rel, abs_path))
-
     nav = os.path.join(repo_root, 'console-nav.js')
     if os.path.exists(nav):
         files.append(('/console-nav.js', nav))
-
     return files
-
-def build_appcache(all_urls):
-    lines = [
-        'CACHE MANIFEST',
-        '# CHH v1',
-        '',
-        'CACHE:',
-        '/installer/index.html',
-    ]
-    for url in sorted(all_urls):
-        lines.append(url)
-    lines += ['', 'NETWORK:', '*', '', 'FALLBACK:']
-    return '\n'.join(lines) + '\n'
 
 def build_installer_html():
     return (
@@ -126,6 +107,9 @@ def build_installer_html():
         '</html>\n'
     )
 
+def c_str(s):
+    return '"' + s.replace('\\', '\\\\').replace('"', '\\"') + '"'
+
 def main():
     if len(sys.argv) != 4:
         print(f'Usage: {sys.argv[0]} <repo-root> <pldmgrx-elf> <out-dir>')
@@ -138,20 +122,15 @@ def main():
     all_file_entries = collect_frontend_files(repo_root)
     all_file_entries.append(('/pldmgrx.elf', pldmgrx_path))
 
-    # AppCache manifest lists ALL files (embedded + proxied)
-    all_urls = [url for url, _ in all_file_entries]
-    appcache_content = build_appcache(all_urls)
-    installer_html = build_installer_html()
-
-    # Split: small files to embed, large files to proxy from PC at runtime
-    embed_file_entries = [(url, p) for url, p in all_file_entries if should_embed(url)]
-    proxy_file_entries = [(url, p) for url, p in all_file_entries if not should_embed(url)]
+    # Split into embedded (small) and proxy (large) entries
+    embed_file_entries = [(u, p) for u, p in all_file_entries if should_embed(u)]
+    proxy_file_entries = [(u, p) for u, p in all_file_entries if not should_embed(u)]
 
     print(f'[gen] Embedding {len(embed_file_entries)} small files, '
           f'proxying {len(proxy_file_entries)} large files from PC')
 
-    # Build compressed entries for embedded files
-    entries = []
+    # Compress embedded files
+    entries = []  # (url, mime, compressed_bytes, original_size)
     total_orig = total_comp = 0
 
     for url, abs_path in embed_file_entries:
@@ -164,23 +143,17 @@ def main():
         print(f'  [embed] {url}: {len(data):,} -> {len(comp):,}')
 
     for url, abs_path in proxy_file_entries:
-        size = os.path.getsize(abs_path)
-        print(f'  [proxy] {url}: {size:,} bytes (served from PC:6969 during install)')
+        print(f'  [proxy] {url}: {os.path.getsize(abs_path):,} bytes (PC:6969)')
 
-    # Add generated installer/manifest files (always embedded)
-    generated = [
-        ('/installer/index.html',     installer_html.encode()),
-        ('/installer/cache.appcache', appcache_content.encode()),
-    ]
-    for url, content_bytes in generated:
-        comp = deflate_raw(content_bytes)
-        entries.append((url, mime_for(url), comp, len(content_bytes)))
-        total_orig += len(content_bytes)
-        total_comp += len(comp)
-        print(f'  [embed] {url}: {len(content_bytes):,} -> {len(comp):,} (generated)')
+    # Add generated installer HTML (embedded; manifest is dynamic, not embedded)
+    installer_html = build_installer_html().encode()
+    comp = deflate_raw(installer_html)
+    entries.append(('/installer/index.html', 'text/html; charset=utf-8', comp, len(installer_html)))
+    total_orig += len(installer_html)
+    total_comp += len(comp)
+    print(f'  [embed] /installer/index.html: {len(installer_html):,} -> {len(comp):,} (generated)')
 
-    print(f'[gen] Embedded total: {total_orig:,} -> {total_comp:,} bytes '
-          f'({100*total_comp//max(total_orig,1)}% of original), '
+    print(f'[gen] Embedded total: {total_orig:,} -> {total_comp:,} bytes, '
           f'{len(entries)} files')
 
     # ── Write raw blob files ─────────────────────────────────────────────────
@@ -189,7 +162,7 @@ def main():
         with open(blob_path, 'wb') as f:
             f.write(comp)
 
-    # ── Write chh_data.S (assembly with .incbin) ─────────────────────────────
+    # ── Write chh_data.S ─────────────────────────────────────────────────────
     asm_lines = [
         '/* AUTO-GENERATED by tools/gen_chh_registry.py — do not edit */',
         '\t.section .rodata,"a",@progbits',
@@ -212,7 +185,7 @@ def main():
         f.write('\n'.join(asm_lines))
     print(f'[gen] Wrote {s_path}')
 
-    # ── Write chh_file_registry.c (metadata only) ────────────────────────────
+    # ── Write chh_file_registry.c ─────────────────────────────────────────────
     c_lines = [
         '/* AUTO-GENERATED by tools/gen_chh_registry.py — do not edit */',
         '#include <stddef.h>',
@@ -226,7 +199,7 @@ def main():
     c_lines.append(f'const ChhFile CHH_FILES[{len(entries)}] = {{')
     for i, (url, mime, comp, orig) in enumerate(entries):
         c_lines.append(
-            f'    {{ "{url}", "{mime}", {blob_sym(i)}, {len(comp)}UL, {orig}UL }},'
+            f'    {{ {c_str(url)}, {c_str(mime)}, {blob_sym(i)}, {len(comp)}UL, {orig}UL }},'
         )
     c_lines.append('};')
     c_lines.append(f'const size_t CHH_FILE_COUNT = {len(entries)};')
@@ -259,6 +232,37 @@ def main():
     with open(h_path, 'w') as f:
         f.write('\n'.join(h_lines))
     print(f'[gen] Wrote {h_path}')
+
+    # ── Write chh_proxy_paths.h (per-exploit path lists for dynamic manifest) ──
+    # Group proxy files by exploit name; /pldmgrx.elf appended to each list
+    by_exploit = {'slopkit': [], 'umtx': [], 'ipv6': []}
+    for url, _ in proxy_file_entries:
+        ex = exploit_for(url)
+        if ex and ex in by_exploit:
+            by_exploit[ex].append(url)
+
+    px_lines = [
+        '/* AUTO-GENERATED by tools/gen_chh_registry.py — do not edit */',
+        '#pragma once',
+        '',
+    ]
+    for ex, paths in by_exploit.items():
+        sym = f'CHH_PROXY_{ex.upper()}'
+        px_lines.append(f'static const char * const {sym}[] = {{')
+        for p in sorted(paths):
+            px_lines.append(f'    {c_str(p)},')
+        px_lines.append('    "/pldmgrx.elf",')
+        px_lines.append('    NULL')
+        px_lines.append('};')
+        px_lines.append(f'#define {sym}_COUNT {len(paths) + 1}')
+        px_lines.append('')
+
+    px_path = os.path.join(out_dir, 'chh_proxy_paths.h')
+    with open(px_path, 'w') as f:
+        f.write('\n'.join(px_lines))
+    print(f'[gen] Wrote {px_path}')
+    for ex, paths in by_exploit.items():
+        print(f'  {ex}: {len(paths)} core files + pldmgrx.elf')
 
 
 if __name__ == '__main__':

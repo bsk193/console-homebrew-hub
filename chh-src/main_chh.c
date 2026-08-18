@@ -15,6 +15,7 @@
 #include "notification.h"
 #include "wkali.h"
 #include "chh_file_registry.h"
+#include "chh_proxy_paths.h"
 
 /* Defined in app_installer_chh_patch.c (appended to app_installer.c) */
 int wkali_install_app_with_param(const char *title_id,
@@ -38,6 +39,11 @@ static volatile int g_install_done = 0;
    Large exploit core files and pldmgrx.elf are not embedded in this ELF —
    they are proxied from the PC during AppCache installation. */
 static char g_pc_ip[INET_ADDRSTRLEN] = "";
+
+/* Which exploit triggered the install flow (set from ?exploit=X query param).
+   Used to build a per-exploit AppCache manifest so only ~25 files are
+   downloaded instead of all 105, preventing background memory pressure. */
+static char g_exploit[32] = "";
 
 /* ── PC IP detection ──────────────────────────────────────────────────────── */
 
@@ -192,6 +198,53 @@ static enum MHD_Result proxy_file(struct MHD_Connection *conn, const char *path)
     return r;
 }
 
+/* ── Dynamic AppCache manifest ───────────────────────────────────────────── */
+
+static enum MHD_Result serve_dynamic_manifest(struct MHD_Connection *conn)
+{
+    /* Choose per-exploit proxy path list; fall back to slopkit if unknown */
+    const char * const *proxy_paths;
+    if (strcmp(g_exploit, "umtx") == 0)
+        proxy_paths = CHH_PROXY_UMTX;
+    else if (strcmp(g_exploit, "ipv6") == 0)
+        proxy_paths = CHH_PROXY_IPV6;
+    else
+        proxy_paths = CHH_PROXY_SLOPKIT;
+
+    /* Estimate manifest size: header + one line per embedded file + proxy files */
+    size_t cap = 4096 + CHH_FILE_COUNT * 80;
+    for (const char * const *p = proxy_paths; *p; p++)
+        cap += strlen(*p) + 2;
+    char *buf = malloc(cap);
+    if (!buf) return MHD_NO;
+
+    size_t n = 0;
+    n += (size_t)snprintf(buf + n, cap - n,
+        "CACHE MANIFEST\n"
+        "# CHH v1 exploit=%s\n"
+        "\nCACHE:\n",
+        g_exploit);
+
+    /* Embedded files (served directly from the ELF, no PC needed) */
+    for (size_t i = 0; i < CHH_FILE_COUNT; i++)
+        n += (size_t)snprintf(buf + n, cap - n, "%s\n", CHH_FILES[i].path);
+
+    /* Exploit-specific proxy files (fetched from PC:6969 by the ELF) */
+    for (const char * const *p = proxy_paths; *p; p++)
+        n += (size_t)snprintf(buf + n, cap - n, "%s\n", *p);
+
+    n += (size_t)snprintf(buf + n, cap - n, "\nNETWORK:\n*\n");
+
+    struct MHD_Response *resp = MHD_create_response_from_buffer(
+        n, buf, MHD_RESPMEM_MUST_FREE);
+    if (!resp) { free(buf); return MHD_NO; }
+    MHD_add_response_header(resp, "Content-Type", "text/cache-manifest");
+    MHD_add_response_header(resp, "Cache-Control", "no-store");
+    enum MHD_Result r = MHD_queue_response(conn, MHD_HTTP_OK, resp);
+    MHD_destroy_response(resp);
+    return r;
+}
+
 /* ── Embedded file serving ───────────────────────────────────────────────── */
 
 static enum MHD_Result serve_file(struct MHD_Connection *conn, const ChhFile *f)
@@ -242,12 +295,29 @@ static enum MHD_Result request_cb(void *cls, struct MHD_Connection *conn,
         return r;
     }
 
-    /* Strip query string for registry lookup */
+    /* Strip query string for registry lookup; extract exploit= param if present */
     char path[512];
     strncpy(path, url, sizeof(path) - 1);
     path[sizeof(path) - 1] = '\0';
     char *q = strchr(path, '?');
     if (q) *q = '\0';
+
+    /* When the installer page is requested with ?exploit=X, record which exploit
+       triggered this install so we can serve a per-exploit AppCache manifest. */
+    if (strcmp(path, "/installer/index.html") == 0) {
+        const char *ex = MHD_lookup_connection_value(conn, MHD_GET_ARGUMENT_KIND, "exploit");
+        if (ex && (strcmp(ex, "slopkit") == 0 ||
+                   strcmp(ex, "umtx")    == 0 ||
+                   strcmp(ex, "ipv6")    == 0)) {
+            strncpy(g_exploit, ex, sizeof(g_exploit) - 1);
+            g_exploit[sizeof(g_exploit) - 1] = '\0';
+            wkali_log("[CHH] install mode: exploit=%s\n", g_exploit);
+        }
+    }
+
+    /* Dynamic AppCache manifest — generated per exploit to limit download size */
+    if (strcmp(path, "/installer/cache.appcache") == 0)
+        return serve_dynamic_manifest(conn);
 
     /* Exact path match in embedded registry */
     for (size_t i = 0; i < CHH_FILE_COUNT; i++) {
