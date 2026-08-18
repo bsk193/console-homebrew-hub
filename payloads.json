@@ -1,26 +1,10 @@
 [
   {
-    "name": "onionHEN",
-    "filename": "OnionHEN.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/OnionHEN.elf",
-    "source": "https://github.com/aydencharles/onionHEN/releases",
-    "source_direct": "https://github.com/aydencharles/onionHEN/releases/download/v0.0.10/OnionHEN.elf",
-    "asset_pattern": "OnionHEN\\.elf",
-    "category": "Utilities",
-    "min_fw": "4.03",
-    "max_fw": "12.70",
-    "description": "PS5 homebrew enabler based on etaHEN. Supports firmware 4.03\u201312.7.",
-    "last_update": "2026-08-17",
-    "release_date": "2026-08-17",
-    "version": "v0.0.10",
-    "checksum": "fd6618fa00f4fc8ba437334aa20577acd79307fea19f6e210477a23d24fa18b6"
-  },
-  {
     "name": "CHH Installer",
     "filename": "chh-installer.elf",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/chh-installer.elf",
     "category": "Utilities",
-    "description": "Console Homebrew Hub installer — installs PS5 homescreen shortcuts pointing to CHH exploits on GitHub Pages.",
+    "description": "Console Homebrew Hub installer \u2014 installs PS5 homescreen shortcuts pointing to CHH exploits on GitHub Pages.",
     "last_update": "2026-08-18",
     "release_date": "2026-08-18",
     "version": "chh-latest"
@@ -30,7 +14,7 @@
     "filename": "chh-local-installer.elf",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/chh-local-installer.elf",
     "category": "Utilities",
-    "description": "Console Homebrew Hub local installer — installs PS5 homescreen shortcuts pointing to your local CHH host (192.168.1.139:6969).",
+    "description": "Console Homebrew Hub local installer \u2014 installs PS5 homescreen shortcuts pointing to your local CHH host (192.168.1.139:6969).",
     "last_update": "2026-08-18",
     "release_date": "2026-08-18",
     "version": "chh-latest"
@@ -46,7 +30,8 @@
     "description": "PS5 WebKit exploit autoloader X installer ELF by bsk193.",
     "last_update": "2026-08-18",
     "release_date": "2026-08-18",
-    "version": "v0.3.0.7x"
+    "version": "v0.3.0.7x",
+    "checksum": "0d127de16e803ca00ddb03b2e33c957e3073ed2f4d58e94bcd6173b6bee8e54e"
   },
   {
     "name": "WebKit Autoloader X (Local)",
@@ -56,10 +41,11 @@
     "source_direct": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases/download/v0.3.0.7x/webkit-autoloader-x-local-installer_v0.3.0.7x.elf",
     "asset_pattern": "webkit-autoloader-x-local-installer.*\\.elf",
     "category": "Utilities",
-    "description": "PS5 WebKit Autoloader X local installer ELF by bsk193 — installs a Jailbreak (Local) shortcut only.",
+    "description": "PS5 WebKit Autoloader X local installer ELF by bsk193 \u2014 installs a Jailbreak (Local) shortcut only.",
     "last_update": "2026-08-18",
     "release_date": "2026-08-18",
-    "version": "v0.3.0.7x"
+    "version": "v0.3.0.7x",
+    "checksum": "dd87ff5a63a331dd1ab43e183c068257b2a5e10a695894de4390a5771ca3b76e"
   },
   {
     "name": "WebKit Autoloader X Host (Windows)",
@@ -72,7 +58,8 @@
     "description": "WebKit Autoloader X installer-host for Windows by bsk193.",
     "last_update": "2026-08-18",
     "release_date": "2026-08-18",
-    "version": "v0.3.0.7x"
+    "version": "v0.3.0.7x",
+    "checksum": "a7f9d7caeb40d392b5a8ea6329ee949bcca44b44eae244c8e417e2b0d3d3a7aa"
   },
   {
     "name": "WebKit Autoloader X Host (Linux/macOS/WSL)",
@@ -85,7 +72,24 @@
     "description": "WebKit Autoloader X installer-host for Linux/macOS/WSL by bsk193.",
     "last_update": "2026-08-18",
     "release_date": "2026-08-18",
-    "version": "v0.3.0.7x"
+    "version": "v0.3.0.7x",
+    "checksum": "ca7ceb194c42c4d400b1a53137d1a2c8777ef959c7a8e3329ae50506a3eccc0a"
+  },
+  {
+    "name": "onionHEN",
+    "filename": "OnionHEN.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/OnionHEN.elf",
+    "source": "https://github.com/aydencharles/onionHEN/releases",
+    "source_direct": "https://github.com/aydencharles/onionHEN/releases/download/v0.0.10/OnionHEN.elf",
+    "asset_pattern": "OnionHEN\\.elf",
+    "category": "Utilities",
+    "min_fw": "4.03",
+    "max_fw": "12.70",
+    "description": "PS5 homebrew enabler based on etaHEN. Supports firmware 4.03\u201312.7.",
+    "last_update": "2026-08-17",
+    "release_date": "2026-08-17",
+    "version": "v0.0.10",
+    "checksum": "fd6618fa00f4fc8ba437334aa20577acd79307fea19f6e210477a23d24fa18b6"
   },
   {
     "name": "WebKit Autoloader",
