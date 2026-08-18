@@ -32,20 +32,22 @@ jobs:
         run: |
           python update_payloads.py
 
-      - name: Create and Update payloads-mirror Release
+      - name: Upload payloads to latest versioned release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Create release if it doesn't exist
-          gh release create chh-latest \
-            --title "Console Homebrew Hub v1.0.0" \
-            --notes "CHH v1.0.0 — chh-installer.elf, chh-local-installer.elf, chh-host.exe, chh-host.py, plus mirrored PS5 payloads. Auto-updated daily." \
-            --latest=false 2>/dev/null || true
+          # Find the latest versioned release tag (v*.*.*)
+          RELEASE_TAG=$(gh release list --limit 10 --json tagName \
+            --jq '[.[] | select(.tagName | test("^v[0-9]"))] | .[0].tagName' 2>/dev/null || true)
+          if [ -z "$RELEASE_TAG" ]; then
+            echo "No versioned release found — skipping payload upload."
+            exit 0
+          fi
+          echo "Uploading payloads to release: $RELEASE_TAG"
 
           # Upload all payload binaries
           if [ -d "payloads" ] && [ "$(ls -A payloads)" ]; then
-            echo "Uploading payloads to chh-latest release..."
-            gh release upload chh-latest payloads/* --clobber
+            gh release upload "$RELEASE_TAG" payloads/* --clobber
           else
             echo "No payloads to upload."
           fi

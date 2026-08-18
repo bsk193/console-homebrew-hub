@@ -44,13 +44,15 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Download from chh-latest release; skip gracefully if the release doesn't exist yet
-          if gh release view chh-latest --repo bsk193/console-homebrew-hub >/dev/null 2>&1; then
-            gh release download chh-latest --repo bsk193/console-homebrew-hub \
+          # Download from latest versioned release; skip gracefully if none exists yet
+          RELEASE_TAG=$(gh release list --repo bsk193/console-homebrew-hub --limit 10 --json tagName \
+            --jq '[.[] | select(.tagName | test("^v[0-9]"))] | .[0].tagName' 2>/dev/null || true)
+          if [ -n "$RELEASE_TAG" ]; then
+            gh release download "$RELEASE_TAG" --repo bsk193/console-homebrew-hub \
               --pattern "chh-installer.elf" --output chh-installer.elf
-            echo "Downloaded chh-installer.elf ($(wc -c < chh-installer.elf) bytes)"
+            echo "Downloaded chh-installer.elf from $RELEASE_TAG ($(wc -c < chh-installer.elf) bytes)"
           else
-            echo "chh-latest release not yet available — skipping chh-installer.elf"
+            echo "No versioned release found yet — skipping chh-installer.elf"
           fi
 
       - name: Rewrite absolute paths for GitHub Pages subpath

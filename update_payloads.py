@@ -24,7 +24,21 @@ def sanitize_for_version(s):
     s = re.sub(r'_+', '_', s)
     return s.strip('_')
 PAYLOADS_DIR = "payloads"
-BASE_URL = "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest"
+
+def _get_latest_chh_tag():
+    try:
+        cmd = ["gh", "api", "repos/bsk193/console-homebrew-hub/releases/latest", "--jq", ".tag_name"]
+        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+        tag = result.stdout.strip()
+        if tag and tag.startswith("v"):
+            return tag
+    except Exception:
+        pass
+    return None
+
+_CHH_TAG = _get_latest_chh_tag()
+BASE_URL = f"https://github.com/bsk193/console-homebrew-hub/releases/download/{_CHH_TAG or 'chh-latest'}"
+print(f"[mirror] Using release tag: {_CHH_TAG or 'chh-latest (fallback)'}")
 
 # Assets managed by build_chh.yml — never deleted by cleanup
 PROTECTED_ASSETS = {"chh-installer.elf", "chh-local-installer.elf", "chh-host.exe", "chh-host.py", "pldmgrx.elf"}
@@ -206,7 +220,7 @@ def get_mirror_assets():
     owner = "bsk193"
     repo = "console-homebrew-hub"
     try:
-        cmd = ["gh", "api", f"repos/{owner}/{repo}/releases/tags/chh-latest"]
+        cmd = ["gh", "api", f"repos/{owner}/{repo}/releases/latest"]
         result = subprocess.run(cmd, capture_output=True, text=True)
         if result.returncode == 0:
             release_info = json.loads(result.stdout)
@@ -225,7 +239,7 @@ def cleanup_release_assets():
             payloads = json.load(f)
         expected_files = {p["filename"] for p in payloads if "filename" in p}
         
-        cmd = ["gh", "api", f"repos/{owner}/{repo}/releases/tags/chh-latest"]
+        cmd = ["gh", "api", f"repos/{owner}/{repo}/releases/latest"]
         result = subprocess.run(cmd, capture_output=True, text=True, check=True)
         release_info = json.loads(result.stdout)
         

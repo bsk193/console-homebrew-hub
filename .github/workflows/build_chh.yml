@@ -180,12 +180,12 @@ jobs:
           echo "=== Release assets (CHH files — payload ELFs uploaded separately by update_mirror.yml) ==="
           ls -lh release-assets/
 
-      - name: Publish chh-latest release
+      - name: Publish versioned release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          BASE="https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest"
           VER="${{ env.CHH_VERSION }}"
+          BASE="https://github.com/bsk193/console-homebrew-hub/releases/download/${VER}"
           NOTES="## Downloads
 
 | Platform | File |
@@ -196,12 +196,12 @@ jobs:
 | Windows (host server) | [chh-host_${VER}.exe](${BASE}/chh-host_${VER}.exe) |
 
 Mirrored PS5 payload ELFs are also included in this release and auto-updated daily."
-          gh release create chh-latest \
-            --title "Console Homebrew Hub ${{ env.CHH_VERSION }}" \
+          gh release create "${VER}" \
+            --title "Console Homebrew Hub ${VER}" \
             --notes "$NOTES" \
-            --latest=false 2>/dev/null || true
-          gh release edit chh-latest \
-            --title "Console Homebrew Hub ${{ env.CHH_VERSION }}" \
+            --latest=true 2>/dev/null || true
+          gh release edit "${VER}" \
+            --title "Console Homebrew Hub ${VER}" \
             --notes "$NOTES" 2>/dev/null || true
-          gh release upload chh-latest release-assets/* --clobber
-          echo "Published: $(gh release view chh-latest --json assets --jq '.assets|length') assets"
+          gh release upload "${VER}" release-assets/* --clobber
+          echo "Published: $(gh release view "${VER}" --json assets --jq '.assets|length') assets"
