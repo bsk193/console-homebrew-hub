@@ -37,6 +37,19 @@ jobs:
           curl -fsSL "$PLDMGRX_URL" -o pldmgrx.elf
           echo "Downloaded pldmgrx.elf ($(wc -c < pldmgrx.elf) bytes)"
 
+      - name: Download chh-installer.elf
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Download from chh-latest release; skip gracefully if the release doesn't exist yet
+          if gh release view chh-latest --repo bsk193/console-homebrew-hub >/dev/null 2>&1; then
+            gh release download chh-latest --repo bsk193/console-homebrew-hub \
+              --pattern "chh-installer.elf" --output chh-installer.elf
+            echo "Downloaded chh-installer.elf ($(wc -c < chh-installer.elf) bytes)"
+          else
+            echo "chh-latest release not yet available — skipping chh-installer.elf"
+          fi
+
       - name: Rewrite absolute paths for GitHub Pages subpath
         env:
           REPO: ${{ github.event.repository.name }}

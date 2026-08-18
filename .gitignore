@@ -9,9 +9,10 @@ payloads/
 ps5/exploits/umtx/core/
 ps5/exploits/ipv6/core/
 ps5/exploits/slopkit/core/
-webkit-autoloader-x-installer.elf
-jailbreak-local-installer.elf
-webkit-autoloader-host.py
-webkit-autoloader-host.exe
+chh-installer.elf
+chh-local-installer.elf
+chh-host.exe
 pldmgrx.elf
+webkit-autoloader*.elf
+jailbreak-local-installer.elf
 .gstack/
