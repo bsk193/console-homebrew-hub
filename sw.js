@@ -1,4 +1,4 @@
-var CACHE = 'chh-v6';
+var CACHE = 'chh-v7';
 
 /* Determine the base path from the SW's own URL so paths work on both
    GitHub Pages (/console-homebrew-hub/) and a local server (/). */
@@ -60,6 +60,15 @@ self.addEventListener('message', function (e) {
 
 self.addEventListener('fetch', function (e) {
   var url = e.request.url;
+  /* Belt-and-suspenders for slopkit top-level navigation: if the core fetches
+     a bundled payload ELF from its ../payloads/ directory, serve
+     chh-shortcut.elf from cache instead — handles cores that ignore ?autoload. */
+  if (/\/payloads\/[^/?#]+\.elf(\?|$)/.test(url)) {
+    e.respondWith(caches.match(_swBase + '/chh-shortcut.elf').then(function (r) {
+      return r || fetch(_swBase + '/chh-shortcut.elf');
+    }));
+    return;
+  }
   /* Cache-first for ELFs, bins, and exploit core resources */
   var cacheFirst = /\.(elf|bin)$|\?v=|\/offsets\/|\/core\//.test(url);
   if (cacheFirst) {
