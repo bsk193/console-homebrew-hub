@@ -33,8 +33,8 @@ jobs:
         run: |
           # Create release if it doesn't exist
           gh release create chh-latest \
-            --title "Console Homebrew Hub" \
-            --notes "CHH-specific ELFs, host scripts, and bundled PS4/PS5 payloads. Auto-updated daily." \
+            --title "Console Homebrew Hub v1.0.0" \
+            --notes "CHH v1.0.0 — chh-installer.elf, chh-local-installer.elf, chh-host.exe, chh-host.py, plus mirrored PS5 payloads. Auto-updated daily." \
             --latest=false 2>/dev/null || true
 
           # Upload all payload binaries
