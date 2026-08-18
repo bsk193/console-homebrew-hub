@@ -32,12 +32,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Create release if it doesn't exist
-          gh release create payloads-mirror --title "Payloads Mirror" --notes "Automated mirror of payloads." || true
+          gh release create chh-latest \
+            --title "Console Homebrew Hub" \
+            --notes "CHH-specific ELFs, host scripts, and bundled PS4/PS5 payloads. Auto-updated daily." \
+            --latest=false 2>/dev/null || true
 
           # Upload all payload binaries
           if [ -d "payloads" ] && [ "$(ls -A payloads)" ]; then
-            echo "Uploading payloads to release..."
-            gh release upload payloads-mirror payloads/* --clobber
+            echo "Uploading payloads to chh-latest release..."
+            gh release upload chh-latest payloads/* --clobber
           else
             echo "No payloads to upload."
           fi

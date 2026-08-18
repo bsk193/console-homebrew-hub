@@ -24,7 +24,10 @@ def sanitize_for_version(s):
     s = re.sub(r'_+', '_', s)
     return s.strip('_')
 PAYLOADS_DIR = "payloads"
-BASE_URL = "https://github.com/bsk193/console-homebrew-hub/releases/download/payloads-mirror"
+BASE_URL = "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest"
+
+# Assets managed by build_chh.yml — never deleted by cleanup
+PROTECTED_ASSETS = {"chh-installer.elf", "chh-local-installer.elf", "chh-host.exe", "chh-host.py", "pldmgrx.elf"}
 
 def get_repo_info(url):
     # Extract domain, owner and repo from various Git URL formats
@@ -196,7 +199,7 @@ def get_mirror_assets():
     owner = "bsk193"
     repo = "console-homebrew-hub"
     try:
-        cmd = ["gh", "api", f"repos/{owner}/{repo}/releases/tags/payloads-mirror"]
+        cmd = ["gh", "api", f"repos/{owner}/{repo}/releases/tags/chh-latest"]
         result = subprocess.run(cmd, capture_output=True, text=True)
         if result.returncode == 0:
             release_info = json.loads(result.stdout)
@@ -215,7 +218,7 @@ def cleanup_release_assets():
             payloads = json.load(f)
         expected_files = {p["filename"] for p in payloads if "filename" in p}
         
-        cmd = ["gh", "api", f"repos/{owner}/{repo}/releases/tags/payloads-mirror"]
+        cmd = ["gh", "api", f"repos/{owner}/{repo}/releases/tags/chh-latest"]
         result = subprocess.run(cmd, capture_output=True, text=True, check=True)
         release_info = json.loads(result.stdout)
         
@@ -225,7 +228,7 @@ def cleanup_release_assets():
             asset_name = asset["name"]
             asset_id = asset["id"]
             
-            if asset_name not in expected_files:
+            if asset_name not in expected_files and asset_name not in PROTECTED_ASSETS:
                 print(f"  Removing stale asset: {asset_name} (ID: {asset_id})...")
                 del_cmd = ["gh", "api", "-X", "DELETE", f"repos/{owner}/{repo}/releases/assets/{asset_id}"]
                 subprocess.run(del_cmd, check=True)

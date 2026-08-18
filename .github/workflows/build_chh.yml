@@ -161,20 +161,10 @@ jobs:
           curl -fsSL "$PLDMGRX_URL" -o release-assets/pldmgrx.elf
           echo "pldmgrx.elf: $(wc -c < release-assets/pldmgrx.elf) bytes"
 
-      - name: Copy chh-host.py and collect payloads
+      - name: Copy chh-host.py
         run: |
           cp chh-host.py release-assets/
-          # Collect payload ELF/BIN files from repo; skip CHH-specific ELFs
-          for dir in ps5/payloads ps4/payloads ps3/payloads; do
-            if [ -d "$dir" ]; then
-              find "$dir" -maxdepth 1 \( -name "*.elf" -o -name "*.bin" \) \
-                | while read -r f; do
-                    dest="release-assets/$(basename "$f")"
-                    [ -f "$dest" ] || cp "$f" "$dest"
-                  done
-            fi
-          done
-          echo "=== Release assets ==="
+          echo "=== Release assets (CHH files — payload ELFs uploaded separately by update_mirror.yml) ==="
           ls -lh release-assets/
 
       - name: Publish chh-latest release
