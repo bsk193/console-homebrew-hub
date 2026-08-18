@@ -135,7 +135,7 @@ document.getElementById('url-form').addEventListener('submit', function(e) {
   if (!/^https?:\/\//i.test(val)) val = 'https://' + val;
   location.href = val;
 });
-if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js').catch(function(){}); }
+if ('serviceWorker' in navigator) { navigator.serviceWorker.register((location.pathname.startsWith('/console-homebrew-hub/')?'/console-homebrew-hub':'')+'/sw.js').catch(function(){}); }
 </script>
 <script src="/console-nav.js"></script>
 </body>

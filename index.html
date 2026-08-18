@@ -128,7 +128,7 @@ h1{font:700 28px/1.1 system-ui;color:#fff;letter-spacing:-.03em}
 </main>
 
 <script>
-if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js').catch(function(){}); }
+if ('serviceWorker' in navigator) { navigator.serviceWorker.register((location.pathname.startsWith('/console-homebrew-hub/')?'/console-homebrew-hub':'')+'/sw.js').catch(function(){}); }
 
 /* Auto-detect and redirect */
 (function () {

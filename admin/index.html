@@ -302,7 +302,7 @@ document.getElementById('modal').addEventListener('click', function (e) {
   if (e.target === this) closeModal();
 });
 </script>
-<script>if('serviceWorker'in navigator){navigator.serviceWorker.register('/sw.js').catch(function(){});}</script>
+<script>if('serviceWorker'in navigator){navigator.serviceWorker.register((location.pathname.startsWith('/console-homebrew-hub/')?'/console-homebrew-hub':'')+'/sw.js').catch(function(){});}</script>
 <script src="/console-nav.js"></script>
 </body>
 </html>

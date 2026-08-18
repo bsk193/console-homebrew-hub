@@ -44,7 +44,7 @@ h1{font:700 26px/1.1 system-ui;color:#fff;letter-spacing:-.03em}
   <button class="btn-disabled" disabled>Coming Soon</button>
   <a class="btn-back" href="/">&#x2190; Home</a>
 </main>
-<script>if('serviceWorker'in navigator){navigator.serviceWorker.register('/sw.js').catch(function(){});}</script>
+<script>if('serviceWorker'in navigator){navigator.serviceWorker.register((location.pathname.startsWith('/console-homebrew-hub/')?'/console-homebrew-hub':'')+'/sw.js').catch(function(){});}</script>
 <script src="/console-nav.js"></script>
 </body>
 </html>

@@ -415,7 +415,7 @@ body{display:flex;flex-direction:column;align-items:center}
   }
 })();
 
-if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js').catch(function(){}); }
+if ('serviceWorker' in navigator) { navigator.serviceWorker.register((location.pathname.startsWith('/console-homebrew-hub/')?'/console-homebrew-hub':'')+'/sw.js').catch(function(){}); }
 </script>
 <script src="/console-nav.js"></script>
 </body>
