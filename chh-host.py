@@ -315,9 +315,10 @@ class GuideStatus:
 class ChhHandler(SimpleHTTPRequestHandler):
     """Serves files from SERVE_DIR with path-rewrite rules:
 
-      - /document/<locale>/ps5/...  → redirect to CHH wrapper (/ps5/exploits/umtx/?autoload=pldmgrx.elf)
-        This makes the PS5 User's Guide trick show the CHH UI (same as local shortcuts),
-        not the raw UMTX core UI.
+      - /document/<locale>/ps5/...  → redirect to /ps5/ (firmware detection page)
+        Detection page routes to the right exploit wrapper; wrapper defaults to install
+        mode (chh-installer.elf). Shortcut mode (?autoload=pldmgrx.elf) is set by the
+        installed shortcut, not the first-run manuals flow.
 
       - /console-homebrew-hub/<rest> → /<rest>
         The CHH wrapper pages embed exploit cores in iframes using their GitHub Pages
@@ -336,7 +337,7 @@ class ChhHandler(SimpleHTTPRequestHandler):
     def _rewrite(self):
         # 1. Manuals trick: redirect to CHH wrapper with autoload param
         if re.match(r"^/document/[^/]+/ps5(/|$)", self.path):
-            return "redirect", "/ps5/exploits/umtx/?autoload=pldmgrx.elf"
+            return "redirect", "/ps5/"
 
         # 2. Strip /console-homebrew-hub prefix (GitHub Pages base path → local root)
         if self.path.startswith("/console-homebrew-hub/"):
