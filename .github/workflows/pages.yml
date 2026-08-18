@@ -30,6 +30,13 @@ jobs:
           git clone --depth=1 https://github.com/idlesauce/PS5-Exploit-Host.git ps5/exploits/ipv6/core
           git clone --depth=1 https://github.com/jordyidk/slopkit.git ps5/exploits/slopkit/core
 
+      - name: Download pldmgrx.elf
+        run: |
+          PLDMGRX_URL=$(curl -s https://api.github.com/repos/bsk193/ps5-payload-manager-x/releases/latest \
+            | python3 -c "import sys,json; r=json.load(sys.stdin); print(next(a['browser_download_url'] for a in r['assets'] if a['name'].endswith('.elf')))")
+          curl -fsSL "$PLDMGRX_URL" -o pldmgrx.elf
+          echo "Downloaded pldmgrx.elf ($(wc -c < pldmgrx.elf) bytes)"
+
       - name: Rewrite absolute paths for GitHub Pages subpath
         env:
           REPO: ${{ github.event.repository.name }}

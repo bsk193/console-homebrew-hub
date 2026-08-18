@@ -36,6 +36,11 @@ jobs:
           HOST_EXE=$(echo "$X_RELEASE" | jq -r '.assets[] | select(.name | endswith(".exe")) | .browser_download_url')
           curl -fsSL "$HOST_EXE" -o autoloader/webkit-autoloader-host.exe
 
+          # pldmgrx.elf from bsk193/ps5-payload-manager-x
+          PLDMGRX_RELEASE=$(gh api repos/bsk193/ps5-payload-manager-x/releases/latest)
+          PLDMGRX_URL=$(echo "$PLDMGRX_RELEASE" | jq -r '.assets[] | select(.name | test("pldmgrx.*\\.elf")) | .browser_download_url')
+          curl -fsSL "$PLDMGRX_URL" -o autoloader/pldmgrx.elf
+
           # Create release if it doesn't exist, then overwrite assets with stable filenames
           gh release create autoloader-latest \
             --title "Autoloader Installers (Latest)" \
