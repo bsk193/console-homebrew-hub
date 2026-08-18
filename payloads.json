@@ -27,7 +27,7 @@
     "last_update": "2026-08-17",
     "release_date": "2026-08-17",
     "version": "v0.3.0.5x",
-    "checksum": "40a9ec6f24308bdcd905cc2fc2a135e7538f5d1848a848fbdc30ebe0bf897262"
+    "checksum": "a121e143d95ff232714552f85a2c8ee3ae9d32fdf33cd83402d5bdd8b9a0923d"
   },
   {
     "name": "WebKit Autoloader X (Local)",
@@ -40,7 +40,8 @@
     "description": "PS5 local jailbreak installer ELF from WebKit Autoloader X by bsk193.",
     "last_update": "2026-08-17",
     "release_date": "2026-08-17",
-    "version": "v0.3.0.5x"
+    "version": "v0.3.0.5x",
+    "checksum": "6e96cd4068aa9cd1465a007bb5f2ba398812b2474629e0960baf3c683be1a143"
   },
   {
     "name": "WebKit Autoloader",
