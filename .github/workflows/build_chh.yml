@@ -43,7 +43,7 @@ jobs:
           lines = [
               '',
               '# Console Homebrew Hub targets',
-              'CHH_SRCS       := src/main_chh.c src/app_installer.c src/notification.c src/log.c src/inflate.c src/chh_file_registry.c',
+              'CHH_SRCS       := src/main_chh.c src/app_installer.c src/notification.c src/log.c src/inflate.c src/chh_file_registry.c src/chh_data.S',
               'CHH_LOCAL_SRCS := src/main_chh_local.c src/app_installer.c src/notification.c src/log.c',
               'CHH_LIBS       := $(LOCAL_LIBS) -lmicrohttpd',
               '',
