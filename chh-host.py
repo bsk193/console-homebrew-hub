@@ -7,13 +7,13 @@ Three services start together:
   HTTP  port 6969 — serves ELF payload files + exploit pages for local shortcuts
 
 Usage:
-  sudo python server.py            # guided mode (recommended)
-  sudo python server.py --verbose  # detailed per-request logging
-  sudo python server.py --no-dns   # skip DNS (use external DNS tool)
-  python server.py --no-dns --no-https  # HTTP 6969 only, no elevated privileges needed
+  sudo python chh-host.py            # guided mode (recommended)
+  sudo python chh-host.py --verbose  # detailed per-request logging
+  sudo python chh-host.py --no-dns   # skip DNS (use external DNS tool)
+  python chh-host.py --no-dns --no-https  # HTTP 6969 only, no elevated privileges needed
 
 PS5 setup:
-  1. Run: sudo python server.py
+  1. Run: sudo python chh-host.py
   2. PS5: Settings > Network > Setup > Custom > DNS Manual
      Primary DNS: <IP shown on startup>
   3. Open User's Guide on PS5 — exploit loads automatically via the manuals trick.
@@ -407,7 +407,7 @@ def start_http(port, handler_factory, verbose):
 
 def parse_args(argv=None):
     p = argparse.ArgumentParser(
-        prog="server.py",
+        prog="chh-host.py",
         description="CHH local host: DNS spoofer + HTTPS/HTTP servers for PS5 exploit delivery.",
     )
     p.add_argument("--ip",         default=None,     help="Override local IP (auto-detected by default).")

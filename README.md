@@ -9,7 +9,7 @@ Local exploit host for PS5 (and more consoles coming soon).
 python setup_exploits.py
 
 # 2. Start the server (DNS + HTTPS)
-sudo python server.py
+sudo python chh-host.py
 ```
 
 Then on your PS5:
