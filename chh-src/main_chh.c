@@ -31,7 +31,7 @@ extern int sceUserServiceInitialize(void *);
 
 static volatile int g_install_done = 0;
 
-static MHD_Result serve_file(struct MHD_Connection *conn, const ChhFile *f)
+static enum MHD_Result serve_file(struct MHD_Connection *conn, const ChhFile *f)
 {
     unsigned long dlen = f->original_size;
     unsigned long slen = f->compressed_size;
@@ -52,12 +52,12 @@ static MHD_Result serve_file(struct MHD_Connection *conn, const ChhFile *f)
     }
     MHD_add_response_header(resp, "Content-Type", f->content_type);
     MHD_add_response_header(resp, "Cache-Control", "no-cache");
-    MHD_Result r = MHD_queue_response(conn, MHD_HTTP_OK, resp);
+    enum MHD_Result r = MHD_queue_response(conn, MHD_HTTP_OK, resp);
     MHD_destroy_response(resp);
     return r;
 }
 
-static MHD_Result request_cb(void *cls, struct MHD_Connection *conn,
+static enum MHD_Result request_cb(void *cls, struct MHD_Connection *conn,
     const char *url, const char *method,
     const char *version, const char *upload_data,
     size_t *upload_data_size, void **con_cls)
@@ -74,7 +74,7 @@ static MHD_Result request_cb(void *cls, struct MHD_Connection *conn,
         static const char ok[] = "OK";
         struct MHD_Response *resp = MHD_create_response_from_buffer(
             2, (void *)ok, MHD_RESPMEM_PERSISTENT);
-        MHD_Result r = MHD_queue_response(conn, MHD_HTTP_OK, resp);
+        enum MHD_Result r = MHD_queue_response(conn, MHD_HTTP_OK, resp);
         MHD_destroy_response(resp);
         return r;
     }
@@ -106,7 +106,7 @@ static MHD_Result request_cb(void *cls, struct MHD_Connection *conn,
     static const char nf[] = "Not Found";
     struct MHD_Response *resp = MHD_create_response_from_buffer(
         9, (void *)nf, MHD_RESPMEM_PERSISTENT);
-    MHD_Result r = MHD_queue_response(conn, MHD_HTTP_NOT_FOUND, resp);
+    enum MHD_Result r = MHD_queue_response(conn, MHD_HTTP_NOT_FOUND, resp);
     MHD_destroy_response(resp);
     return r;
 }
@@ -127,7 +127,7 @@ int main(void)
     sa.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
 
     struct MHD_Daemon *mhd = MHD_start_daemon(
-        MHD_USE_THREAD_PER_CONNECTION | MHD_USE_IPv4,
+        MHD_USE_THREAD_PER_CONNECTION,
         CHH_PORT, NULL, NULL, request_cb, NULL,
         MHD_OPTION_SOCK_ADDR, (struct sockaddr *)&sa,
         MHD_OPTION_END);
