@@ -14,7 +14,7 @@ int wkali_install_app_with_param(const char *title_id,
 
 extern int sceUserServiceInitialize(void *);
 
-#define CHH_LOCAL_HOST "192.168.1.139:20181"
+#define CHH_LOCAL_HOST "192.168.1.139:6969"
 #define CHH_LOCAL_BASE "http://" CHH_LOCAL_HOST
 
 static const struct {

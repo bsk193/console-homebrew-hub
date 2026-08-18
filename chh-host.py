@@ -2,22 +2,22 @@
 """Console Homebrew Hub — Local Host Server
 
 Three services start together:
-  DNS   port 53    — spoofs manuals.playstation.net to this PC; NXDOMAIN everything else
+  DNS   port 53    — spoofs manuals.playstation.net to this PC; forwards everything else to 8.8.8.8
   HTTPS port 443   — serves exploit pages (PS5 User's Guide / manuals trick)
-  HTTP  port 20181 — serves ELF payload files + exploit pages for local shortcuts
+  HTTP  port 6969 — serves ELF payload files + exploit pages for local shortcuts
 
 Usage:
   sudo python chh-host.py            # guided mode (recommended)
   sudo python chh-host.py --verbose  # detailed per-request logging
   sudo python chh-host.py --no-dns   # skip DNS (use external DNS tool)
-  python chh-host.py --no-dns --no-https  # HTTP 20181 only, no elevated privileges needed
+  python chh-host.py --no-dns --no-https  # HTTP 6969 only, no elevated privileges needed
 
 PS5 setup:
   1. Run: sudo python chh-host.py
   2. PS5: Settings > Network > Setup > Custom > DNS Manual
      Primary DNS: <IP shown on startup>
   3. Open User's Guide on PS5 — exploit loads automatically via the manuals trick.
-     Or use the CHH Local Installer shortcut to go straight to port 20181.
+     Or use the CHH Local Installer shortcut to go straight to port 6969.
 """
 
 import argparse
@@ -44,7 +44,7 @@ DNS_TARGET   = "manuals.playstation.net"
 DNS_TTL      = 300
 DNS_PORT     = 53
 HTTPS_PORT   = 443
-HTTP_PORT    = 20181
+HTTP_PORT    = 6969
 
 # Files downloaded from the CHH release if missing at startup
 CHH_RELEASE = "https://github.com/bsk193/console-homebrew-hub/releases/latest/download"
@@ -230,6 +230,18 @@ def _parse_dns_name(data, offset):
         offset += length
     return None, None
 
+def _forward_dns(data, upstream="8.8.8.8", timeout=2.0):
+    """Proxy a raw DNS query to an upstream resolver; return its response or None."""
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.settimeout(timeout)
+        s.sendto(data, (upstream, 53))
+        resp, _ = s.recvfrom(4096)
+        s.close()
+        return resp
+    except OSError:
+        return None
+
 def _dns_response(data, ip=None):
     if len(data) < 12:
         return None
@@ -259,9 +271,9 @@ class _DNSHandler(socketserver.BaseRequestHandler):
             server.log_fn(_s(f"[DNS]  {name} -> {server.local_ip}", 36))
             server.guide.on_connection()
         else:
-            resp = _dns_response(data)
+            resp = _forward_dns(data) or _dns_response(data)
             if server.verbose:
-                server.log_fn(_s(f"[DNS]  {name} -> BLOCKED (NXDOMAIN)", 33))
+                server.log_fn(_s(f"[DNS]  {name} -> forwarded to 8.8.8.8", 33))
         if resp:
             sock.sendto(resp, self.client_address)
 
@@ -295,7 +307,7 @@ class GuideStatus:
             "\n[+] PS5 connection detected.\n"
             "    Open the User's Guide on your PS5\n"
             "    (Settings -> User's Guide) to trigger the exploit.\n"
-            "    Or navigate to your CHH local shortcut on port 20181.\n"
+            "    Or navigate to your CHH local shortcut on port 6969.\n"
         ))
 
     def on_exploit_served(self):
@@ -471,7 +483,7 @@ def main(argv=None):
         if tls_ctx:
             httpsd = start_https(args.https_port, tls_ctx, handler, args.verbose)
 
-    # HTTP 20181 (ELF payload server + exploit pages for local shortcuts)
+    # HTTP 6969 (ELF payload server + exploit pages for local shortcuts)
     httpd = start_http(args.http_port, handler, args.verbose)
 
     if not dns and not httpsd and not httpd:
