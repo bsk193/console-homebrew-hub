@@ -313,9 +313,18 @@ class GuideStatus:
 # ── HTTP/HTTPS request handler ────────────────────────────────────────────────
 
 class ChhHandler(SimpleHTTPRequestHandler):
-    """Serves files from SERVE_DIR with two path-rewrite rules:
-      - /document/<locale>/ps5/... -> /ps5/exploits/umtx/core/document/en/ps5/... (manuals trick)
-      - all other paths served as-is (static file server)
+    """Serves files from SERVE_DIR with path-rewrite rules:
+
+      - /document/<locale>/ps5/...  → redirect to CHH wrapper (/ps5/exploits/umtx/?autoload=pldmgrx.elf)
+        This makes the PS5 User's Guide trick show the CHH UI (same as local shortcuts),
+        not the raw UMTX core UI.
+
+      - /console-homebrew-hub/<rest> → /<rest>
+        The CHH wrapper pages embed exploit cores in iframes using their GitHub Pages
+        absolute path (/console-homebrew-hub/...).  Strip the prefix so those requests
+        resolve to the local repo files.
+
+      - everything else → static file server from SERVE_DIR
     """
 
     def __init__(self, *args, verbose=False, guide=None, **kwargs):
@@ -325,19 +334,27 @@ class ChhHandler(SimpleHTTPRequestHandler):
         super().__init__(*args, **kwargs)
 
     def _rewrite(self):
-        # Normalise locale in manuals-trick path and point into exploit core
-        m = re.match(r"^/document/[^/]+/ps5(/.*)$", self.path)
-        if m:
-            rest = m.group(1) or "/index.html"
-            self.path = "/ps5/exploits/umtx/core/document/en/ps5" + rest
-            return True
-        return False
+        # 1. Manuals trick: redirect to CHH wrapper with autoload param
+        if re.match(r"^/document/[^/]+/ps5(/|$)", self.path):
+            return "redirect", "/ps5/exploits/umtx/?autoload=pldmgrx.elf"
+
+        # 2. Strip /console-homebrew-hub prefix (GitHub Pages base path → local root)
+        if self.path.startswith("/console-homebrew-hub/"):
+            self.path = self.path[len("/console-homebrew-hub"):]  # keep leading /
+            return "rewrite", None
+
+        return None, None
 
     def do_GET(self):
         self._guide.on_connection()
-        was_manuals = self._rewrite()
-        if was_manuals:
+        action, target = self._rewrite()
+        if action == "redirect":
             self._guide.on_exploit_served()
+            self.send_response(302)
+            self.send_header("Location", target)
+            self.send_header("Cache-Control", "no-cache")
+            self.end_headers()
+            return
         super().do_GET()
 
     def end_headers(self):
