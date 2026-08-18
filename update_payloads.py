@@ -381,7 +381,8 @@ def update_payloads():
             filepath = os.path.join(PAYLOADS_DIR, new_filename)
             needs_download = (
                 stored_tag != new_version or
-                new_filename not in mirror_assets
+                new_filename not in mirror_assets or
+                not os.path.exists(filepath)
             )
             
             if needs_download:
