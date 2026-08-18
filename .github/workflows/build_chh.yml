@@ -184,7 +184,18 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          NOTES="CHH ${{ env.CHH_VERSION }} — chh-installer.elf, chh-local-installer.elf, chh-host.exe, chh-host.py, plus mirrored PS5 payloads. Auto-updated daily."
+          BASE="https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest"
+          VER="${{ env.CHH_VERSION }}"
+          NOTES="## Downloads
+
+| Platform | File |
+|---|---|
+| PS5 (installer payload) | [chh-installer_${VER}.elf](${BASE}/chh-installer_${VER}.elf) |
+| PS5 (optional: \"Jailbreak (Local)\" shortcut only) | [chh-local-installer_${VER}.elf](${BASE}/chh-local-installer_${VER}.elf) |
+| Linux / macOS / WSL (host server) | [chh-host_${VER}.py](${BASE}/chh-host_${VER}.py) |
+| Windows (host server) | [chh-host_${VER}.exe](${BASE}/chh-host_${VER}.exe) |
+
+Mirrored PS5 payload ELFs are also included in this release and auto-updated daily."
           gh release create chh-latest \
             --title "Console Homebrew Hub ${{ env.CHH_VERSION }}" \
             --notes "$NOTES" \
