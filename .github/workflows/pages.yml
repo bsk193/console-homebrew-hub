@@ -24,6 +24,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Clone exploit cores
+        run: |
+          git clone --depth=1 https://github.com/idlesauce/umtx2.git ps5/exploits/umtx/core
+          git clone --depth=1 https://github.com/idlesauce/PS5-Exploit-Host.git ps5/exploits/ipv6/core
+          git clone --depth=1 https://github.com/jordyidk/slopkit.git ps5/exploits/slopkit/core
+
       - name: Rewrite absolute paths for GitHub Pages subpath
         env:
           REPO: ${{ github.event.repository.name }}
@@ -42,7 +48,8 @@ jobs:
               return PATTERN.sub(lambda m: m.group(1) + PREFIX + '/', text)
 
           for dirpath, dirs, files in os.walk(ROOT):
-              dirs[:] = [d for d in dirs if d not in ('.git', '.github')]
+              # Skip git internals and exploit cores (they use their own relative paths)
+              dirs[:] = [d for d in dirs if d not in ('.git', '.github', 'core')]
               for fn in files:
                   if os.path.splitext(fn)[1] not in EXTS:
                       continue

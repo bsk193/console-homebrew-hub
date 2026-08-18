@@ -1,4 +1,4 @@
-var CACHE = 'chh-v2';
+var CACHE = 'chh-v3';
 var PRECACHE = [
   '/', '/index.html',
   '/console-nav.js',
@@ -9,6 +9,10 @@ var PRECACHE = [
   '/ps5/exploits/umtx/', '/ps5/exploits/umtx/index.html',
   '/ps5/exploits/ipv6/', '/ps5/exploits/ipv6/index.html',
   '/ps4/', '/ps3/', '/vita/', '/switch/', '/switch2/',
+  /* Exploit core entry points — cloned at deploy time, needed for offline shortcut use */
+  '/ps5/exploits/umtx/core/document/en/ps5/index.html',
+  '/ps5/exploits/ipv6/core/document/en/ps5/index.html',
+  '/ps5/exploits/slopkit/core/slopkit/poops.html',
 ];
 
 self.addEventListener('install', function (e) {
@@ -29,10 +33,22 @@ self.addEventListener('activate', function (e) {
   );
 });
 
+/* Cache-warm on demand: exploit wrappers send this after install success */
+self.addEventListener('message', function (e) {
+  if (!e.data || e.data.type !== 'CACHE_URLS') return;
+  e.waitUntil(
+    caches.open(CACHE).then(function (c) {
+      return Promise.allSettled((e.data.urls || []).map(function (u) {
+        return fetch(u).then(function (r) { return c.put(u, r); }).catch(function () {});
+      }));
+    })
+  );
+});
+
 self.addEventListener('fetch', function (e) {
   var url = e.request.url;
-  /* Cache-first for ELFs, offsets, versioned assets */
-  var cacheFirst = /\.(elf|bin)$|\?v=|\/offsets\//.test(url);
+  /* Cache-first for ELFs, bins, and exploit core resources (JS/data inside core/) */
+  var cacheFirst = /\.(elf|bin)$|\?v=|\/offsets\/|\/core\//.test(url);
   if (cacheFirst) {
     e.respondWith(caches.match(e.request).then(function (r) {
       return r || fetch(e.request).then(function (res) {
@@ -43,7 +59,7 @@ self.addEventListener('fetch', function (e) {
     }));
     return;
   }
-  /* Network-first for HTML */
+  /* Network-first for HTML and everything else */
   e.respondWith(
     fetch(e.request).then(function (res) {
       var clone = res.clone();
