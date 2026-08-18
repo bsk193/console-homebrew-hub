@@ -6,11 +6,17 @@ Instead of C byte-array literals (slow to compile), each compressed blob is
 written as a raw binary file and included via assembly .incbin directives.
 The C file only contains the tiny metadata array.
 
+Only SMALL files (hub/wrapper HTML pages, console-nav.js) are embedded in the
+ELF.  Large files (exploit cores, pldmgrx.elf) are listed in the AppCache
+manifest but served at runtime via the MHD proxy (which reads the PC's IP from
+/etc/resolv.conf and forwards requests to chh-host.py on port 6969).  This
+keeps the ELF small enough to buffer safely during the exploit.
+
 Usage:
     python3 tools/gen_chh_registry.py <chh-repo-root> <pldmgrx-elf-path> <out-dir>
 
 Outputs to <out-dir>:
-    chh_blob_NNN.deflate    — raw DEFLATE-compressed blobs
+    chh_blob_NNN.deflate    — raw DEFLATE-compressed blobs (embedded files only)
     chh_data.S              — assembly that .incbin's each blob into .rodata
     chh_file_registry.c     — ChhFile metadata array (no bulk data)
     chh_file_registry.h     — ChhFile struct + extern declarations
@@ -44,7 +50,24 @@ def mime_for(path):
 def blob_sym(index):
     return f'_chh_blob_{index:03d}'
 
+def should_embed(url):
+    """Return True for small files to embed in the ELF.
+
+    Exploit core files and pldmgrx.elf are large (hundreds of KB each).
+    Embedding them would make chh-installer.elf several MB, causing the PS5
+    browser to run out of memory when it buffers the ELF during the exploit.
+    These files are listed in the AppCache manifest but served at runtime
+    via the MHD proxy to the PC's chh-host.py on port 6969.
+    """
+    if url == '/pldmgrx.elf':
+        return False
+    # /ps5/exploits/<name>/core/... — large exploit JS/HTML bundles
+    if url.startswith('/ps5/exploits/') and '/core/' in url:
+        return False
+    return True
+
 def collect_frontend_files(repo_root):
+    """Walk ps5/ (skip payloads/) for html/js/css, plus console-nav.js."""
     files = []
 
     abs_dir = os.path.join(repo_root, 'ps5')
@@ -112,40 +135,53 @@ def main():
     os.makedirs(out_dir, exist_ok=True)
 
     print(f'[gen] Collecting frontend files from {repo_root}...')
-    file_entries = collect_frontend_files(repo_root)
-    file_entries.append(('/pldmgrx.elf', pldmgrx_path))
+    all_file_entries = collect_frontend_files(repo_root)
+    all_file_entries.append(('/pldmgrx.elf', pldmgrx_path))
 
-    all_urls = [url for url, _ in file_entries]
+    # AppCache manifest lists ALL files (embedded + proxied)
+    all_urls = [url for url, _ in all_file_entries]
     appcache_content = build_appcache(all_urls)
     installer_html = build_installer_html()
 
-    generated = [
-        ('/installer/index.html',    installer_html.encode()),
-        ('/installer/cache.appcache', appcache_content.encode()),
-    ]
+    # Split: small files to embed, large files to proxy from PC at runtime
+    embed_file_entries = [(url, p) for url, p in all_file_entries if should_embed(url)]
+    proxy_file_entries = [(url, p) for url, p in all_file_entries if not should_embed(url)]
 
-    # Build full list: (url, mime, compressed_bytes, original_size)
+    print(f'[gen] Embedding {len(embed_file_entries)} small files, '
+          f'proxying {len(proxy_file_entries)} large files from PC')
+
+    # Build compressed entries for embedded files
     entries = []
     total_orig = total_comp = 0
 
-    for url, abs_path in file_entries:
+    for url, abs_path in embed_file_entries:
         with open(abs_path, 'rb') as f:
             data = f.read()
         comp = deflate_raw(data)
         entries.append((url, mime_for(abs_path), comp, len(data)))
         total_orig += len(data)
         total_comp += len(comp)
-        print(f'  {url}: {len(data):,} -> {len(comp):,}')
+        print(f'  [embed] {url}: {len(data):,} -> {len(comp):,}')
 
+    for url, abs_path in proxy_file_entries:
+        size = os.path.getsize(abs_path)
+        print(f'  [proxy] {url}: {size:,} bytes (served from PC:6969 during install)')
+
+    # Add generated installer/manifest files (always embedded)
+    generated = [
+        ('/installer/index.html',     installer_html.encode()),
+        ('/installer/cache.appcache', appcache_content.encode()),
+    ]
     for url, content_bytes in generated:
         comp = deflate_raw(content_bytes)
         entries.append((url, mime_for(url), comp, len(content_bytes)))
         total_orig += len(content_bytes)
         total_comp += len(comp)
-        print(f'  {url}: {len(content_bytes):,} -> {len(comp):,} (generated)')
+        print(f'  [embed] {url}: {len(content_bytes):,} -> {len(comp):,} (generated)')
 
-    print(f'[gen] Total: {total_orig:,} -> {total_comp:,} bytes '
-          f'({100*total_comp//total_orig}% of original)')
+    print(f'[gen] Embedded total: {total_orig:,} -> {total_comp:,} bytes '
+          f'({100*total_comp//max(total_orig,1)}% of original), '
+          f'{len(entries)} files')
 
     # ── Write raw blob files ─────────────────────────────────────────────────
     for i, (url, mime, comp, orig) in enumerate(entries):
