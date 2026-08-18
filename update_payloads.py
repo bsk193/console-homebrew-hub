@@ -302,15 +302,18 @@ def update_payloads():
 
         def score_asset(name):
             name_lower = name.lower()
-            
+
             # If we already have extract_file, we might be looking for a zip
             if has_extract and name.endswith(".zip"):
                 return 20
-                
-            if not (name.endswith(".elf") or name.endswith(".bin") or (has_extract and name.endswith(".zip"))):
-                if not name.endswith(preferred_ext):
+
+            is_standard = name.endswith(".elf") or name.endswith(".bin")
+            if not is_standard and not (has_extract and name.endswith(".zip")):
+                # Non-standard extension (.exe, .py, etc.): only accept if
+                # asset_pattern explicitly matches it
+                if not asset_pattern or not re.search(asset_pattern, name, re.IGNORECASE):
                     return -1
-            
+
             if asset_pattern and not re.search(asset_pattern, name, re.IGNORECASE):
                 return -1
             

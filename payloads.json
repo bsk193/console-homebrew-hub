@@ -36,6 +36,58 @@
     "version": "chh-latest"
   },
   {
+    "name": "WebKit Autoloader X",
+    "filename": "webkit-autoloader-x-installer_v0.3.0.7x.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/webkit-autoloader-x-installer_v0.3.0.7x.elf",
+    "source": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases",
+    "source_direct": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases/download/v0.3.0.7x/webkit-autoloader-x-installer_v0.3.0.7x.elf",
+    "asset_pattern": "webkit-autoloader-x-installer.*\\.elf",
+    "category": "Utilities",
+    "description": "PS5 WebKit exploit autoloader X installer ELF by bsk193.",
+    "last_update": "2026-08-18",
+    "release_date": "2026-08-18",
+    "version": "v0.3.0.7x"
+  },
+  {
+    "name": "WebKit Autoloader X (Local)",
+    "filename": "webkit-autoloader-x-local-installer_v0.3.0.7x.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/webkit-autoloader-x-local-installer_v0.3.0.7x.elf",
+    "source": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases",
+    "source_direct": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases/download/v0.3.0.7x/webkit-autoloader-x-local-installer_v0.3.0.7x.elf",
+    "asset_pattern": "webkit-autoloader-x-local-installer.*\\.elf",
+    "category": "Utilities",
+    "description": "PS5 WebKit Autoloader X local installer ELF by bsk193 — installs a Jailbreak (Local) shortcut only.",
+    "last_update": "2026-08-18",
+    "release_date": "2026-08-18",
+    "version": "v0.3.0.7x"
+  },
+  {
+    "name": "WebKit Autoloader X Host (Windows)",
+    "filename": "webkit-autoloader-x-host_v0.3.0.7x.exe",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/webkit-autoloader-x-host_v0.3.0.7x.exe",
+    "source": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases",
+    "source_direct": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases/download/v0.3.0.7x/webkit-autoloader-x-host_v0.3.0.7x.exe",
+    "asset_pattern": "webkit-autoloader-x-host.*\\.exe",
+    "category": "Utilities",
+    "description": "WebKit Autoloader X installer-host for Windows by bsk193.",
+    "last_update": "2026-08-18",
+    "release_date": "2026-08-18",
+    "version": "v0.3.0.7x"
+  },
+  {
+    "name": "WebKit Autoloader X Host (Linux/macOS/WSL)",
+    "filename": "webkit-autoloader-x-host_v0.3.0.7x.py",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/webkit-autoloader-x-host_v0.3.0.7x.py",
+    "source": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases",
+    "source_direct": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases/download/v0.3.0.7x/webkit-autoloader-x-host_v0.3.0.7x.py",
+    "asset_pattern": "webkit-autoloader-x-host.*\\.py",
+    "category": "Utilities",
+    "description": "WebKit Autoloader X installer-host for Linux/macOS/WSL by bsk193.",
+    "last_update": "2026-08-18",
+    "release_date": "2026-08-18",
+    "version": "v0.3.0.7x"
+  },
+  {
     "name": "WebKit Autoloader",
     "filename": "webkit-autoloader-installer_v0.3.0.elf",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/chh-latest/webkit-autoloader-installer_v0.3.0.elf",
