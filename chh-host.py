@@ -54,6 +54,8 @@ REQUIRED_ELFS = ["pldmgrx.elf", "chh-shortcut.elf"]
 
 SERVE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+mimetypes.add_type("text/cache-manifest", ".appcache")
+
 # ── ANSI colours ──────────────────────────────────────────────────────────────
 
 def _init_color():

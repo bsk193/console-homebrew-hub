@@ -5,9 +5,9 @@
  * to hold a ~100-200 KB ArrayBuffer (vs 2-5 MB for chh-installer.elf), which
  * prevents OOM during the kernel exploit phase.
  *
- * Offline caching is handled by the service worker (sw.js) which pre-caches
- * the hub pages and pldmgrx.elf.  After the shortcut is installed once (while
- * the PC host is running), subsequent uses work fully offline.
+ * Offline caching is handled by AppCache on the shortcut landing page
+ * (chh.html).  After the shortcut is installed once (while the PC host is
+ * running), subsequent uses work fully offline.
  */
 
 #include <stddef.h>
@@ -27,8 +27,8 @@ int wkali_install_app_with_param(const char *title_id,
 extern int sceUserServiceInitialize(void *);
 
 #define CHH_SHORTCUT_ID  "CHHM00001"
-/* Shortcut reopens the CHH hub; SW caches pldmgrx.elf + exploit pages offline. */
-#define CHH_SHORTCUT_URL "https://manuals.playstation.net/ps5/"
+/* Shortcut opens chh.html which has AppCache manifest for offline caching. */
+#define CHH_SHORTCUT_URL "https://manuals.playstation.net/ps5/chh.html"
 #define CHH_LABEL        "CHH"
 
 int main(void)
