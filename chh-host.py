@@ -50,7 +50,7 @@ HTTP_PORT    = 6969
 CHH_REPO    = "bsk193/console-homebrew-hub"
 CHH_RELEASE = f"https://github.com/{CHH_REPO}/releases/latest/download"
 CHH_ZIP     = f"https://github.com/{CHH_REPO}/archive/refs/heads/main.zip"
-REQUIRED_ELFS = ["pldmgrx.elf", "chh-shortcut.elf"]
+REQUIRED_ELFS = ["pldmgrx.elf", "chh-installer.elf"]
 
 # Exploit core repos (not in the main repo ZIP — separate git repos)
 EXPLOIT_CORES = [
@@ -489,7 +489,7 @@ class ChhHandler(SimpleHTTPRequestHandler):
 
       - /document/<locale>/ps5/...  → redirect to /ps5/ (firmware detection page)
         Detection page routes to the right exploit wrapper; wrapper defaults to install
-        mode (chh-shortcut.elf). After the shortcut is installed the user can run any
+        mode (chh-installer.elf). After the shortcut is installed the user can run any
         exploit with ?autoload=pldmgrx.elf to load Payload Manager X.
 
       - /console-homebrew-hub/<rest> → /<rest>

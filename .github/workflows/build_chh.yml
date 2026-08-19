@@ -29,14 +29,12 @@ jobs:
       - name: Patch autoloader-x for CHH
         run: |
           # Copy CHH-specific C source files from the CHH repo
-          cp chh/chh-src/main_chh.c       autoloader-src/src/main_chh.c
-          cp chh/chh-src/main_chh_local.c autoloader-src/src/main_chh_local.c
           cp chh/chh-src/main_shortcut.c  autoloader-src/src/main_shortcut.c
 
           # Append CHH extension function to app_installer.c
           cat chh/chh-src/app_installer_chh_patch.c >> autoloader-src/src/app_installer.c
 
-          # (declaration is forward-declared inside main_chh.c / main_chh_local.c)
+          # (declaration is forward-declared inside main_shortcut.c)
 
           # Append CHH Makefile targets (Python writes tabs correctly)
           python3 - << 'PYEOF'
@@ -44,32 +42,15 @@ jobs:
           lines = [
               '',
               '# Console Homebrew Hub targets',
-              'CHH_SRCS          := src/main_chh.c src/app_installer.c src/notification.c src/log.c src/inflate.c src/chh_file_registry.c src/chh_data.S',
-              'CHH_LOCAL_SRCS    := src/main_chh_local.c src/app_installer.c src/notification.c src/log.c',
-              'CHH_SHORTCUT_SRCS := src/main_shortcut.c src/app_installer.c src/notification.c src/log.c',
-              'CHH_LIBS          := $(LOCAL_LIBS) -lmicrohttpd',
-              'CHH_SHORTCUT_LIBS := $(LOCAL_LIBS)',
+              'CHH_INSTALLER_SRCS := src/main_shortcut.c src/app_installer.c src/notification.c src/log.c',
+              'CHH_INSTALLER_LIBS := $(LOCAL_LIBS)',
               '',
-              '.PHONY: chh chh-local chh-shortcut',
+              '.PHONY: chh',
               'chh: chh-installer.elf',
-              'chh-local: chh-local-installer.elf',
-              'chh-shortcut: chh-shortcut.elf',
               '',
-              '# icon0.png is pre-placed by CI (CHH custom artwork); skip icons target',
-              'chh-installer.elf: version $(CHH_SRCS)',
-              T + '$(CC) $(CFLAGS) $(LDFLAGS) -o chh-installer.elf $(CHH_SRCS) $(CHH_LIBS)',
+              'chh-installer.elf: version $(CHH_INSTALLER_SRCS)',
+              T + '$(CC) $(CFLAGS) $(LDFLAGS) -o chh-installer.elf $(CHH_INSTALLER_SRCS) $(CHH_INSTALLER_LIBS)',
               T + '$(STRIP) chh-installer.elf',
-              '',
-              'chh-local-installer.elf: version $(CHH_LOCAL_SRCS)',
-              T + '$(CC) $(CFLAGS) $(LDFLAGS) -o chh-local-installer.elf $(CHH_LOCAL_SRCS) $(CHH_LIBS)',
-              T + '$(STRIP) chh-local-installer.elf',
-              '',
-              '# Tiny shortcut-only ELF — no MHD, no embedded files.',
-              '# Used as the autoload target in install mode so the exploit core',
-              '# holds only ~100-200 KB ArrayBuffer instead of 2-5 MB.',
-              'chh-shortcut.elf: version $(CHH_SHORTCUT_SRCS)',
-              T + '$(CC) $(CFLAGS) $(LDFLAGS) -o chh-shortcut.elf $(CHH_SHORTCUT_SRCS) $(CHH_SHORTCUT_LIBS)',
-              T + '$(STRIP) chh-shortcut.elf',
               '',
           ]
           with open('autoloader-src/Makefile', 'a') as f:
@@ -78,32 +59,6 @@ jobs:
           PYEOF
 
           echo "All patches applied."
-
-      - name: Download pldmgrx.elf for embedding
-        run: |
-          PLDMGRX_URL=$(curl -s https://api.github.com/repos/bsk193/ps5-payload-manager-x/releases/latest \
-            | python3 -c "import sys,json; r=json.load(sys.stdin); \
-              print(next(a['browser_download_url'] for a in r['assets'] if a['name'].endswith('.elf')))")
-          curl -fsSL "$PLDMGRX_URL" -o pldmgrx.elf
-          echo "pldmgrx.elf: $(wc -c < pldmgrx.elf) bytes"
-
-      - name: Generate CHH file registry
-        run: |
-          python3 chh/tools/gen_chh_registry.py chh/ pldmgrx.elf autoloader-src/src/
-
-      - name: Install Pillow for icon resize
-        run: pip install Pillow -q
-
-      - name: Override PS5 icon with CHH artwork
-        run: |
-          python3 - << 'PYEOF'
-          import os
-          from PIL import Image
-          img = Image.open('chh/chh-src/icon0.png').convert('RGBA')
-          img = img.resize((512, 512), Image.LANCZOS)
-          img.save('autoloader-src/assets/icon0.png')
-          print(f'icon0.png written: 512x512, {os.path.getsize("autoloader-src/assets/icon0.png")} bytes')
-          PYEOF
 
       - name: Cache Docker SDK image
         id: cache-docker
@@ -124,17 +79,14 @@ jobs:
         if: steps.cache-docker.outputs.cache-hit != 'true'
         run: docker save ps5-webkit-autoloader-sdk -o /tmp/ps5-sdk-image.tar
 
-      - name: Build CHH ELFs
+      - name: Build CHH ELF
         run: |
           docker run --rm -u "$(id -u):$(id -g)" \
             -v "$(pwd)/autoloader-src:/work" -w /work \
             ps5-webkit-autoloader-sdk \
-            make chh chh-local chh-shortcut
-          # Create versioned copies alongside the unversioned originals
-          cp autoloader-src/chh-installer.elf       autoloader-src/chh-installer_${{ env.CHH_VERSION }}.elf
-          cp autoloader-src/chh-local-installer.elf autoloader-src/chh-local-installer_${{ env.CHH_VERSION }}.elf
-          cp autoloader-src/chh-shortcut.elf        autoloader-src/chh-shortcut_${{ env.CHH_VERSION }}.elf
-          ls -lh autoloader-src/chh-installer*.elf autoloader-src/chh-local-installer*.elf autoloader-src/chh-shortcut*.elf
+            make chh
+          cp autoloader-src/chh-installer.elf autoloader-src/chh-installer_${{ env.CHH_VERSION }}.elf
+          ls -lh autoloader-src/chh-installer*.elf
 
       - name: Upload ELF artifacts
         uses: actions/upload-artifact@v4
@@ -143,10 +95,6 @@ jobs:
           path: |
             autoloader-src/chh-installer.elf
             autoloader-src/chh-installer_${{ env.CHH_VERSION }}.elf
-            autoloader-src/chh-local-installer.elf
-            autoloader-src/chh-local-installer_${{ env.CHH_VERSION }}.elf
-            autoloader-src/chh-shortcut.elf
-            autoloader-src/chh-shortcut_${{ env.CHH_VERSION }}.elf
 
   # ── Build chh-host.exe on Windows ─────────────────────────────────────────
   build-host-exe:
@@ -191,14 +139,6 @@ jobs:
           name: chh-host-exe
           path: release-assets
 
-      - name: Download pldmgrx.elf
-        run: |
-          PLDMGRX_URL=$(curl -s https://api.github.com/repos/bsk193/ps5-payload-manager-x/releases/latest \
-            | python3 -c "import sys,json; r=json.load(sys.stdin); \
-              print(next(a['browser_download_url'] for a in r['assets'] if a['name'].endswith('.elf')))")
-          curl -fsSL "$PLDMGRX_URL" -o release-assets/pldmgrx.elf
-          echo "pldmgrx.elf: $(wc -c < release-assets/pldmgrx.elf) bytes"
-
       - name: Copy chh-host.py
         run: |
           cp chh-host.py release-assets/chh-host.py
@@ -213,9 +153,7 @@ jobs:
           VER="${{ env.CHH_VERSION }}"
           BASE="https://github.com/bsk193/console-homebrew-hub/releases/download/${VER}"
           printf '## Downloads\n\n| Platform | File |\n|---|---|\n' > /tmp/notes.md
-          printf '| PS5 (shortcut installer — load this first) | [chh-shortcut_%s.elf](%s/chh-shortcut_%s.elf) |\n' "$VER" "$BASE" "$VER" >> /tmp/notes.md
-          printf '| PS5 (installer payload — legacy/local HTTP server) | [chh-installer_%s.elf](%s/chh-installer_%s.elf) |\n' "$VER" "$BASE" "$VER" >> /tmp/notes.md
-          printf '| PS5 (optional: local host shortcuts) | [chh-local-installer_%s.elf](%s/chh-local-installer_%s.elf) |\n' "$VER" "$BASE" "$VER" >> /tmp/notes.md
+          printf '| PS5 (installer — run after first jailbreak) | [chh-installer_%s.elf](%s/chh-installer_%s.elf) |\n' "$VER" "$BASE" "$VER" >> /tmp/notes.md
           printf '| Linux / macOS / WSL (host server) | [chh-host_%s.py](%s/chh-host_%s.py) |\n' "$VER" "$BASE" "$VER" >> /tmp/notes.md
           printf '| Windows (host server) | [chh-host_%s.exe](%s/chh-host_%s.exe) |\n' "$VER" "$BASE" "$VER" >> /tmp/notes.md
           printf '\nMirrored PS5 payload ELFs are also included in this release and auto-updated daily.\n' >> /tmp/notes.md

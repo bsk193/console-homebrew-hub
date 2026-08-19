@@ -47,9 +47,8 @@ BASE_URL = (
 print(f"[mirror] Using release tag: {_CHH_TAG or '(latest redirect fallback)'}")
 
 # Assets managed by build_chh.yml — never deleted by cleanup
-PROTECTED_ASSETS = {"chh-installer.elf", "chh-local-installer.elf", "chh-host.exe", "chh-host.py", "pldmgrx.elf"}
-# Versioned CHH file prefixes also protected (e.g. chh-installer_v1.0.0.elf, chh-host_v1.0.0.exe)
-_PROTECTED_PREFIXES = ("chh-installer_v", "chh-local-installer_v", "chh-host_v")
+PROTECTED_ASSETS = {"chh-installer.elf", "chh-host.exe", "chh-host.py", "pldmgrx.elf"}
+_PROTECTED_PREFIXES = ("chh-installer_v", "chh-host_v")
 
 def is_protected_asset(name):
     if name in PROTECTED_ASSETS:

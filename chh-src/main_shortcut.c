@@ -1,13 +1,9 @@
-/* chh-shortcut.elf — installs the CHH PS5 shortcut.
+/* chh-installer.elf — installs the CHH PS5 shortcut.
  *
- * This ELF is tiny by design: no HTTP server, no embedded files, no MHD.
- * It is the autoload target in install mode so that the exploit core only needs
- * to hold a ~100-200 KB ArrayBuffer (vs 2-5 MB for chh-installer.elf), which
- * prevents OOM during the kernel exploit phase.
- *
+ * Tiny by design: no HTTP server, no embedded files, no MHD.
+ * Loaded after the first jailbreak to install the CHH shortcut.
  * Offline caching is handled by AppCache on the shortcut landing page
- * (chh.html).  After the shortcut is installed once (while the PC host is
- * running), subsequent uses work fully offline.
+ * (chh.html) — subsequent uses work offline without the PC host.
  */
 
 #include <stddef.h>

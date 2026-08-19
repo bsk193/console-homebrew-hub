@@ -10,7 +10,6 @@ ps5/exploits/umtx/core/
 ps5/exploits/ipv6/core/
 ps5/exploits/slopkit/core/
 chh-installer.elf
-chh-local-installer.elf
 chh-host.exe
 pldmgrx.elf
 webkit-autoloader*.elf
