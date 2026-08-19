@@ -50,7 +50,8 @@ HTTP_PORT    = 6969
 CHH_REPO    = "bsk193/console-homebrew-hub"
 CHH_RELEASE = f"https://github.com/{CHH_REPO}/releases/latest/download"
 CHH_ZIP     = f"https://github.com/{CHH_REPO}/archive/refs/heads/main.zip"
-REQUIRED_ELFS = ["pldmgrx.elf", "chh-installer.elf"]
+REQUIRED_ELFS = ["chh-installer.elf"]
+OPTIONAL_ELFS = ["pldmgrx.elf"]
 
 # Exploit core repos (not in the main repo ZIP — separate git repos)
 EXPLOIT_CORES = [
@@ -624,8 +625,15 @@ def main(argv=None):
     if _needs_exploit_cores():
         download_exploit_cores()
 
+    # Always patch exploit cores (strip AppCache manifests that cause OOM on PS5)
+    _patch_exploit_cores()
+
     # Download required ELF files if missing
     for elf in REQUIRED_ELFS:
+        if not download_if_missing(elf, f"{CHH_RELEASE}/{elf}"):
+            print(tag(f"[-] {elf} is required. Cannot continue without it."))
+            return 1
+    for elf in OPTIONAL_ELFS:
         download_if_missing(elf, f"{CHH_RELEASE}/{elf}")
 
     guide = GuideStatus(logger=print)
