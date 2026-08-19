@@ -60,6 +60,20 @@ jobs:
 
           echo "All patches applied."
 
+      - name: Install Pillow for icon resize
+        run: pip install Pillow -q
+
+      - name: Override PS5 icon with CHH artwork
+        run: |
+          python3 - << 'PYEOF'
+          import os
+          from PIL import Image
+          img = Image.open('chh/chh-src/icon0.png').convert('RGBA')
+          img = img.resize((512, 512), Image.LANCZOS)
+          img.save('autoloader-src/assets/icon0.png')
+          print(f'icon0.png written: 512x512, {os.path.getsize("autoloader-src/assets/icon0.png")} bytes')
+          PYEOF
+
       - name: Cache Docker SDK image
         id: cache-docker
         uses: actions/cache@v4
