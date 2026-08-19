@@ -175,7 +175,11 @@ def download_web_content():
                     continue
                 if rel in ("chh-host.py",):
                     continue
-                dest = os.path.join(SERVE_DIR, rel.replace("/", os.sep))
+                if ".." in rel.split("/"):
+                    continue
+                dest = os.path.realpath(os.path.join(SERVE_DIR, rel.replace("/", os.sep)))
+                if not dest.startswith(os.path.realpath(SERVE_DIR) + os.sep):
+                    continue
                 os.makedirs(os.path.dirname(dest), exist_ok=True)
                 with zf.open(entry) as src, open(dest, "wb") as dst:
                     dst.write(src.read())
