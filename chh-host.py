@@ -23,6 +23,7 @@ PS5 setup:
 import argparse
 import errno
 import io
+import json
 import mimetypes
 import os
 import re
@@ -41,6 +42,8 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 # ── Configuration ─────────────────────────────────────────────────────────────
 
 DNS_TARGET   = "manuals.playstation.net"
+DNS_SHORTCUT = "ps5.chh"
+DNS_TARGETS  = {DNS_TARGET.lower(), DNS_SHORTCUT.lower()}
 DNS_TTL      = 300
 DNS_PORT     = 53
 HTTPS_PORT   = 443
@@ -157,6 +160,30 @@ def download_if_missing(filename, url, verbose=False):
         print(tag(f"[-]   Could not download {filename}: {e}"))
         print(f"    Get manually: {url}")
         return False
+
+
+def _resolve_elf_url(filename):
+    """Find a release asset matching filename, handling versioned names."""
+    direct = f"{CHH_RELEASE}/{filename}"
+    try:
+        req = urllib.request.Request(direct, method="HEAD",
+                                     headers={"User-Agent": "chh-host"})
+        urllib.request.urlopen(req)
+        return direct
+    except Exception:
+        pass
+    stem = filename.rsplit(".", 1)[0]
+    api = f"https://api.github.com/repos/{CHH_REPO}/releases/latest"
+    try:
+        req = urllib.request.Request(api, headers={"User-Agent": "chh-host"})
+        with urllib.request.urlopen(req) as resp:
+            data = json.loads(resp.read())
+        for asset in data.get("assets", []):
+            if asset["name"].startswith(stem) and asset["name"].endswith(".elf"):
+                return asset["browser_download_url"]
+    except Exception:
+        pass
+    return direct
 
 
 def _needs_web_content():
@@ -336,7 +363,10 @@ def _gen_cert_cryptography(cert_path, key_path):
         .not_valid_before(datetime.datetime.utcnow())
         .not_valid_after(datetime.datetime.utcnow() + datetime.timedelta(days=3650))
         .add_extension(
-            x509.SubjectAlternativeName([x509.DNSName(DNS_TARGET)]),
+            x509.SubjectAlternativeName([
+                x509.DNSName(DNS_TARGET),
+                x509.DNSName(DNS_SHORTCUT),
+            ]),
             critical=False,
         )
         .sign(key, hashes.SHA256())
@@ -427,7 +457,7 @@ class _DNSHandler(socketserver.BaseRequestHandler):
         if name is None:
             return
         server = self.server
-        if name == DNS_TARGET.lower():
+        if name in DNS_TARGETS:
             resp = _dns_response(data, server.local_ip)
             server.log_fn(_s(f"[DNS]  {name} -> {server.local_ip}", 36))
             server.guide.on_connection()
@@ -630,11 +660,11 @@ def main(argv=None):
 
     # Download required ELF files if missing
     for elf in REQUIRED_ELFS:
-        if not download_if_missing(elf, f"{CHH_RELEASE}/{elf}"):
+        if not download_if_missing(elf, _resolve_elf_url(elf)):
             print(tag(f"[-] {elf} is required. Cannot continue without it."))
             return 1
     for elf in OPTIONAL_ELFS:
-        download_if_missing(elf, f"{CHH_RELEASE}/{elf}")
+        download_if_missing(elf, _resolve_elf_url(elf))
 
     guide = GuideStatus(logger=print)
 
@@ -650,7 +680,8 @@ def main(argv=None):
                 guide=guide,
             )
             threading.Thread(target=dns.serve_forever, daemon=True).start()
-            print(tag(f"[+] DNS   server on UDP {args.dns_port}  (spoofing '{DNS_TARGET}' -> {ip})"))
+            targets = ", ".join(DNS_TARGETS)
+            print(tag(f"[+] DNS   server on UDP {args.dns_port}  (spoofing {targets} -> {ip})"))
         except OSError as exc:
             print(tag(f"[-] Could not bind DNS port {args.dns_port}: {exc}"))
             _bind_hint("DNS", args.dns_port, exc)

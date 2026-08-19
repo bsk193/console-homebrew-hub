@@ -23,8 +23,9 @@ int wkali_install_app_with_param(const char *title_id,
 extern int sceUserServiceInitialize(void *);
 
 #define CHH_SHORTCUT_ID  "CHHM00001"
-/* Shortcut opens chh.html which has AppCache manifest for offline caching. */
-#define CHH_SHORTCUT_URL "https://manuals.playstation.net/ps5/chh.html"
+/* Shortcut opens chh.html via custom domain (ps5.chh) — NXDOMAIN when DNS
+   is not spoofed preserves AppCache; avoids conflicts with nanodns/Sony. */
+#define CHH_SHORTCUT_URL "http://ps5.chh:6969/ps5/chh.html"
 #define CHH_LABEL        "CHH"
 
 int main(void)
