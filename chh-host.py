@@ -46,8 +46,10 @@ DNS_PORT     = 53
 HTTPS_PORT   = 443
 HTTP_PORT    = 6969
 
-# Files downloaded from the CHH release if missing at startup
-CHH_RELEASE = "https://github.com/bsk193/console-homebrew-hub/releases/latest/download"
+# GitHub repo and release URLs
+CHH_REPO    = "bsk193/console-homebrew-hub"
+CHH_RELEASE = f"https://github.com/{CHH_REPO}/releases/latest/download"
+CHH_ZIP     = f"https://github.com/{CHH_REPO}/archive/refs/heads/main.zip"
 REQUIRED_ELFS = ["pldmgrx.elf", "chh-shortcut.elf"]
 
 SERVE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -125,14 +127,70 @@ def download_if_missing(filename, url, verbose=False):
     if os.path.exists(path):
         if verbose:
             print(tag(f"[+] {filename} already present."))
-        return
+        return True
     print(tag(f"[+] Downloading {filename}..."))
     try:
         urllib.request.urlretrieve(url, path)
         print(tag(f"[+]   OK ({os.path.getsize(path):,} bytes)"))
+        return True
     except Exception as e:
         print(tag(f"[-]   Could not download {filename}: {e}"))
         print(f"    Get manually: {url}")
+        return False
+
+
+def _needs_web_content():
+    """Check if the web content (HTML pages, exploit cores) is present."""
+    markers = [
+        os.path.join(SERVE_DIR, "index.html"),
+        os.path.join(SERVE_DIR, "ps5", "index.html"),
+        os.path.join(SERVE_DIR, "ps5", "exploits", "slopkit", "index.html"),
+    ]
+    return not all(os.path.exists(m) for m in markers)
+
+
+def download_web_content():
+    """Download the full CHH repo as a ZIP and extract web content into SERVE_DIR."""
+    import zipfile
+
+    print(tag("[+] Web content not found — downloading from GitHub..."))
+    zip_path = os.path.join(SERVE_DIR, "_chh-repo.zip")
+    try:
+        urllib.request.urlretrieve(CHH_ZIP, zip_path)
+    except Exception as e:
+        print(tag(f"[-] Could not download repo: {e}"))
+        print(f"    Clone manually: git clone https://github.com/{CHH_REPO}.git")
+        return False
+
+    try:
+        with zipfile.ZipFile(zip_path) as zf:
+            prefix = zf.namelist()[0]  # e.g. "console-homebrew-hub-main/"
+            count = 0
+            for entry in zf.namelist():
+                if entry.endswith("/"):
+                    continue
+                rel = entry[len(prefix):]
+                # Skip CI, build files, and source — only extract web content
+                if rel.startswith((".github/", "chh-src/", "tools/")):
+                    continue
+                if rel in ("chh-host.py",):
+                    continue
+                dest = os.path.join(SERVE_DIR, rel.replace("/", os.sep))
+                os.makedirs(os.path.dirname(dest), exist_ok=True)
+                with zf.open(entry) as src, open(dest, "wb") as dst:
+                    dst.write(src.read())
+                count += 1
+            print(tag(f"[+]   Extracted {count} files."))
+    except Exception as e:
+        print(tag(f"[-] Could not extract repo ZIP: {e}"))
+        return False
+    finally:
+        try:
+            os.remove(zip_path)
+        except OSError:
+            pass
+
+    return True
 
 # ── Self-signed TLS certificate ───────────────────────────────────────────────
 
@@ -440,11 +498,17 @@ def main(argv=None):
 
     ip = args.ip or detect_local_ip()
 
+    print(banner())
+
+    # Download web content (HTML, JS, exploit cores) if not present
+    if _needs_web_content():
+        if not download_web_content():
+            print(tag("[-] Cannot start without web content."))
+            return 1
+
     # Download required ELF files if missing
     for elf in REQUIRED_ELFS:
         download_if_missing(elf, f"{CHH_RELEASE}/{elf}")
-
-    print(banner())
 
     guide = GuideStatus(logger=print)
 
