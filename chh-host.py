@@ -178,6 +178,39 @@ def _needs_exploit_cores():
     return not all(os.path.exists(m) for m in markers)
 
 
+def _patch_exploit_cores():
+    """Strip manifest="cache.appcache" from exploit core HTML files.
+
+    Upstream cores ship with AppCache manifests that cause OOM on PS5
+    when loaded inside CHH's iframe.  CHH handles caching separately
+    via the shortcut landing page, so the per-core manifests must go.
+    """
+    for core in EXPLOIT_CORES:
+        core_dir = os.path.join(SERVE_DIR, core["dest"])
+        if not os.path.isdir(core_dir):
+            continue
+        for dirpath, _, filenames in os.walk(core_dir):
+            for fn in filenames:
+                if not fn.endswith(".html"):
+                    continue
+                fpath = os.path.join(dirpath, fn)
+                try:
+                    with open(fpath, "r", encoding="utf-8", errors="replace") as f:
+                        content = f.read()
+                except OSError:
+                    continue
+                patched = re.sub(
+                    r'(<html)\s+manifest\s*=\s*["\'][^"\']*["\']',
+                    r'\1',
+                    content,
+                    count=1,
+                )
+                if patched != content:
+                    with open(fpath, "w", encoding="utf-8") as f:
+                        f.write(patched)
+                    print(tag(f"[+]   Patched {core['name']}: removed AppCache manifest from {fn}"))
+
+
 def download_exploit_cores():
     """Download exploit core repos (slopkit, umtx, ipv6) as ZIPs."""
     import zipfile
@@ -220,6 +253,8 @@ def download_exploit_cores():
                 os.remove(zip_path)
             except OSError:
                 pass
+
+    _patch_exploit_cores()
 
 
 def download_web_content():
