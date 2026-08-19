@@ -1,5 +1,18 @@
 [
   {
+    "name": "PS5Upload",
+    "filename": "ps5upload-5.3.2.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-5.3.2.elf",
+    "source": "https://github.com/phantomptr/ps5upload/releases",
+    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v5.3.2/ps5upload-5.3.2.elf",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-08-19",
+    "release_date": "2026-08-19",
+    "version": "v5.3.2",
+    "checksum": "ee2dba955f6988e1771eca7b12a707f4e8b97db208d2f2c1c4771148f032732f"
+  },
+  {
     "name": "CHH Installer",
     "filename": "chh-installer_v1.0.0.elf",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/chh-installer_v1.0.0.elf",
@@ -76,19 +89,6 @@
     "release_date": "2026-08-14",
     "version": "v0.3.0",
     "checksum": "0d4ca326cdb060a00e12b904ce46e9e3a0b935f44f261c2d63f2a0a6d7f98d57"
-  },
-  {
-    "name": "PS5Upload",
-    "filename": "ps5upload-5.2.1.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-5.2.1.elf",
-    "source": "https://github.com/phantomptr/ps5upload/releases",
-    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v5.2.1/ps5upload-5.2.1.elf",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-08-12",
-    "release_date": "2026-08-12",
-    "version": "v5.2.1",
-    "checksum": "0c23f88146a314c922953c326bc26d1a8adb871ba3244b76ce4cb6eca43977b3"
   },
   {
     "name": "KStuff Lite",
