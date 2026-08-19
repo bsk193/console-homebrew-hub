@@ -52,6 +52,25 @@ CHH_RELEASE = f"https://github.com/{CHH_REPO}/releases/latest/download"
 CHH_ZIP     = f"https://github.com/{CHH_REPO}/archive/refs/heads/main.zip"
 REQUIRED_ELFS = ["pldmgrx.elf", "chh-shortcut.elf"]
 
+# Exploit core repos (not in the main repo ZIP — separate git repos)
+EXPLOIT_CORES = [
+    {
+        "name": "slopkit",
+        "zip": "https://github.com/jordyidk/slopkit/archive/refs/heads/main.zip",
+        "dest": os.path.join("ps5", "exploits", "slopkit", "core"),
+    },
+    {
+        "name": "umtx",
+        "zip": "https://github.com/idlesauce/umtx2/archive/refs/heads/main.zip",
+        "dest": os.path.join("ps5", "exploits", "umtx", "core"),
+    },
+    {
+        "name": "ipv6",
+        "zip": "https://github.com/idlesauce/PS5-Exploit-Host/archive/refs/heads/main.zip",
+        "dest": os.path.join("ps5", "exploits", "ipv6", "core"),
+    },
+]
+
 SERVE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 mimetypes.add_type("text/cache-manifest", ".appcache")
@@ -147,6 +166,60 @@ def _needs_web_content():
         os.path.join(SERVE_DIR, "ps5", "exploits", "slopkit", "index.html"),
     ]
     return not all(os.path.exists(m) for m in markers)
+
+
+def _needs_exploit_cores():
+    """Check if the exploit core files (separate repos) are present."""
+    markers = [
+        os.path.join(SERVE_DIR, "ps5", "exploits", "slopkit", "core", "slopkit", "poops.html"),
+        os.path.join(SERVE_DIR, "ps5", "exploits", "umtx", "core", "document", "en", "ps5", "index.html"),
+        os.path.join(SERVE_DIR, "ps5", "exploits", "ipv6", "core", "document", "en", "ps5", "index.html"),
+    ]
+    return not all(os.path.exists(m) for m in markers)
+
+
+def download_exploit_cores():
+    """Download exploit core repos (slopkit, umtx, ipv6) as ZIPs."""
+    import zipfile
+
+    for core in EXPLOIT_CORES:
+        dest_dir = os.path.join(SERVE_DIR, core["dest"])
+        if os.path.isdir(dest_dir) and os.listdir(dest_dir):
+            continue
+        print(tag(f"[+] Downloading {core['name']} exploit core..."))
+        zip_path = os.path.join(SERVE_DIR, f"_core-{core['name']}.zip")
+        try:
+            urllib.request.urlretrieve(core["zip"], zip_path)
+        except Exception as e:
+            print(tag(f"[-]   Could not download {core['name']} core: {e}"))
+            continue
+        try:
+            with zipfile.ZipFile(zip_path) as zf:
+                prefix = zf.namelist()[0]
+                count = 0
+                for entry in zf.namelist():
+                    if entry.endswith("/"):
+                        continue
+                    rel = entry[len(prefix):]
+                    if ".." in rel.split("/"):
+                        continue
+                    dest = os.path.realpath(
+                        os.path.join(dest_dir, rel.replace("/", os.sep))
+                    )
+                    if not dest.startswith(os.path.realpath(dest_dir) + os.sep):
+                        continue
+                    os.makedirs(os.path.dirname(dest), exist_ok=True)
+                    with zf.open(entry) as src, open(dest, "wb") as dst:
+                        dst.write(src.read())
+                    count += 1
+                print(tag(f"[+]   {core['name']}: extracted {count} files."))
+        except Exception as e:
+            print(tag(f"[-]   Could not extract {core['name']} core: {e}"))
+        finally:
+            try:
+                os.remove(zip_path)
+            except OSError:
+                pass
 
 
 def download_web_content():
@@ -506,11 +579,15 @@ def main(argv=None):
 
     print(banner())
 
-    # Download web content (HTML, JS, exploit cores) if not present
+    # Download web content (HTML, JS, wrapper pages) if not present
     if _needs_web_content():
         if not download_web_content():
             print(tag("[-] Cannot start without web content."))
             return 1
+
+    # Download exploit core repos (slopkit, umtx, ipv6) if not present
+    if _needs_exploit_cores():
+        download_exploit_cores()
 
     # Download required ELF files if missing
     for elf in REQUIRED_ELFS:
