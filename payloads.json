@@ -13,6 +13,20 @@
     "checksum": "1b19e30742068581334d5e936f7416ddcb9fdcabb6acbc89c39aba6993f987e0"
   },
   {
+    "name": "WebKit Autoloader",
+    "filename": "webkit-autoloader-installer_v0.3.1.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/webkit-autoloader-installer_v0.3.1.elf",
+    "source": "https://github.com/itsPLK/ps5-webkit-autoloader/releases",
+    "source_direct": "https://github.com/itsPLK/ps5-webkit-autoloader/releases/download/v0.3.1/webkit-autoloader-installer_v0.3.1.elf",
+    "asset_pattern": "webkit-autoloader-installer.*\\.elf",
+    "category": "Utilities",
+    "description": "PS5 WebKit exploit autoloader installer ELF by itsPLK.",
+    "last_update": "2026-08-19",
+    "release_date": "2026-08-19",
+    "version": "v0.3.1",
+    "checksum": "69beea7c4460d283606889f7ae1685f32e8fb7203274c279eeefa97fe4f1eb17"
+  },
+  {
     "name": "CHH Installer",
     "filename": "chh-installer_v1.0.0.elf",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/chh-installer_v1.0.0.elf",
@@ -65,20 +79,6 @@
     "release_date": "2026-08-17",
     "version": "v0.0.10",
     "checksum": "fd6618fa00f4fc8ba437334aa20577acd79307fea19f6e210477a23d24fa18b6"
-  },
-  {
-    "name": "WebKit Autoloader",
-    "filename": "webkit-autoloader-installer_v0.3.0.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/webkit-autoloader-installer_v0.3.0.elf",
-    "source": "https://github.com/itsPLK/ps5-webkit-autoloader/releases",
-    "source_direct": "https://github.com/itsPLK/ps5-webkit-autoloader/releases/download/v0.3.0/webkit-autoloader-installer_v0.3.0.elf",
-    "asset_pattern": "webkit-autoloader-installer.*\\.elf",
-    "category": "Utilities",
-    "description": "PS5 WebKit exploit autoloader installer ELF by itsPLK.",
-    "last_update": "2026-08-14",
-    "release_date": "2026-08-14",
-    "version": "v0.3.0",
-    "checksum": "0d4ca326cdb060a00e12b904ce46e9e3a0b935f44f261c2d63f2a0a6d7f98d57"
   },
   {
     "name": "KStuff Lite",
