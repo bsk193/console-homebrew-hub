@@ -549,18 +549,13 @@ class ChhHandler(SimpleHTTPRequestHandler):
 
         return None, None
 
-    def _is_shortcut_origin(self):
-        host = (self.headers.get("Host") or "").split(":")[0].lower()
-        return host == DNS_SHORTCUT
-
     def do_GET(self):
         self._guide.on_connection()
 
         clean_path = self.path.split("?")[0]
 
-        # Block AppCache on non-shortcut origins (manuals / User's Guide).
-        # 404 on the manifest invalidates any stale AppCache for this origin.
-        if clean_path == "/cache.appcache" and not self._is_shortcut_origin():
+        # Block ALL .appcache files — caching only happens via the ELF server
+        if clean_path.endswith(".appcache"):
             self.send_error(404)
             return
 
@@ -574,14 +569,30 @@ class ChhHandler(SimpleHTTPRequestHandler):
             self.wfile.write(data)
             return
 
-        # Strip manifest attribute from chh.html on non-shortcut origins
-        if clean_path == "/ps5/chh.html" and not self._is_shortcut_origin():
-            fpath = os.path.join(SERVE_DIR, "ps5", "chh.html")
+        action, target = self._rewrite()
+        if action == "redirect":
+            self._guide.on_exploit_served()
+            self.send_response(302)
+            self.send_header("Location", target)
+            self.send_header("Cache-Control", "no-cache")
+            self.end_headers()
+            return
+
+        # Strip manifest= from ALL HTML to kill AppCache on this server.
+        # Exploit cores ship with their own manifests; stripping at serve
+        # time guarantees the browser never sees one, regardless of what
+        # upstream ships or whether _patch_exploit_cores() caught it.
+        if clean_path.endswith(".html") or clean_path.endswith(".htm"):
+            fpath = self.translate_path(self.path)
             if os.path.isfile(fpath):
-                with open(fpath, "r", encoding="utf-8") as f:
-                    content = f.read()
+                try:
+                    with open(fpath, "r", encoding="utf-8", errors="replace") as f:
+                        content = f.read()
+                except OSError:
+                    self.send_error(500)
+                    return
                 content = re.sub(
-                    r'(<html)\s+manifest\s*=\s*["\'][^"\']*["\']',
+                    r'(<html\b[^>]*?)\s+manifest\s*=\s*["\'][^"\']*["\']',
                     r'\1', content, count=1)
                 data = content.encode("utf-8")
                 self.send_response(200)
@@ -591,14 +602,6 @@ class ChhHandler(SimpleHTTPRequestHandler):
                 self.wfile.write(data)
                 return
 
-        action, target = self._rewrite()
-        if action == "redirect":
-            self._guide.on_exploit_served()
-            self.send_response(302)
-            self.send_header("Location", target)
-            self.send_header("Cache-Control", "no-cache")
-            self.end_headers()
-            return
         super().do_GET()
 
     def end_headers(self):
