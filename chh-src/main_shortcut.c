@@ -1,9 +1,9 @@
-/* chh-installer.elf — installs the CHH PS5 shortcut.
+/* LEGACY — replaced by main.c (which includes an HTTP server for AppCache).
  *
- * Tiny by design: no HTTP server, no embedded files, no MHD.
- * Loaded after the first jailbreak to install the CHH shortcut.
- * Offline caching is handled by AppCache on the shortcut landing page
- * (chh.html) — subsequent uses work offline without the PC host.
+ * This file is kept for reference only. The build now uses main.c which
+ * starts a local MHD server, caches web content via AppCache, and installs
+ * the shortcut after caching completes — matching ps5-webkit-autoloader's
+ * architecture. See main.c and http_server.c.
  */
 
 #include <stddef.h>
@@ -23,8 +23,7 @@ int wkali_install_app_with_param(const char *title_id,
 extern int sceUserServiceInitialize(void *);
 
 #define CHH_SHORTCUT_ID  "CHHM00001"
-/* Shortcut opens chh.html via custom domain (ps5.chh) — NXDOMAIN when DNS
-   is not spoofed preserves AppCache; avoids conflicts with nanodns/Sony. */
+/* LEGACY: see param.json for the new shortcut URL (http://127.0.0.1:18280/...) */
 #define CHH_SHORTCUT_URL "http://ps5.chh:6969/ps5/chh.html"
 #define CHH_LABEL        "CHH"
 

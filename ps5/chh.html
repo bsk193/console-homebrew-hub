@@ -4,10 +4,144 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>CHH</title>
-<style>body{background:#06060f;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;font:500 14px system-ui;color:#50608a}</style>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#06060f;display:flex;align-items:center;justify-content:center;min-height:100vh;font:500 14px system-ui;color:#dde4f2;flex-direction:column;gap:16px;padding:20px}
+.card{background:#0c0c1a;border:1px solid #1c1c30;border-radius:16px;padding:24px;width:100%;max-width:340px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px}
+.logo{width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,#4f87ff,#1957c8);display:flex;align-items:center;justify-content:center;font:800 14px/1 system-ui;color:#fff}
+h1{font:700 18px/1.2 system-ui;color:#fff}
+.msg{font:400 13px/1.5 system-ui;color:#50608a}
+.progress{width:100%;height:4px;background:#1c1c30;border-radius:2px;overflow:hidden}
+.bar{height:100%;width:0;background:linear-gradient(90deg,#4f87ff,#1dd17a);border-radius:2px;transition:width .3s}
+.status{font:400 12px/1 system-ui;color:#50608a}
+</style>
 </head>
 <body>
-Loading CHH&hellip;
-<script>location.replace('/ps5/' + location.search);</script>
+<div class="card">
+  <div class="logo">CHH</div>
+  <h1>Console Homebrew Hub</h1>
+  <div class="msg" id="msg">Connecting&hellip;</div>
+  <div class="progress" id="progress" style="display:none"><div class="bar" id="bar"></div></div>
+  <div class="status" id="status"></div>
+</div>
+<script>
+(function() {
+  var TARGET = '/ps5/?autoload=pldmgrx.elf';
+  var msg = document.getElementById('msg');
+  var progress = document.getElementById('progress');
+  var bar = document.getElementById('bar');
+  var status = document.getElementById('status');
+  var cache = window.applicationCache;
+  var done = false;
+  var timer;
+  var serverOnline = false;
+
+  function go() {
+    if (done) return;
+    done = true;
+    if (timer) clearTimeout(timer);
+    location.replace(TARGET);
+  }
+
+  function installAndGo() {
+    if (!serverOnline) { go(); return; }
+    msg.textContent = 'Installing shortcut…';
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/install', true);
+    xhr.timeout = 10000;
+    xhr.onload = function() {
+      msg.textContent = 'Shortcut installed!';
+      setTimeout(go, 500);
+    };
+    xhr.onerror = xhr.ontimeout = function() {
+      go();
+    };
+    xhr.send();
+  }
+
+  if (!cache) { go(); return; }
+
+  var cacheStatus = cache.status;
+
+  if (cacheStatus === cache.IDLE) {
+    msg.textContent = 'Cache ready';
+    installAndGo();
+    return;
+  }
+
+  if (cacheStatus === cache.UNCACHED ||
+      cacheStatus === cache.CHECKING ||
+      cacheStatus === cache.DOWNLOADING) {
+    msg.textContent = 'Caching content…';
+    progress.style.display = '';
+  }
+
+  cache.addEventListener('checking', function() {
+    msg.textContent = 'Checking cache…';
+  });
+
+  cache.addEventListener('downloading', function() {
+    msg.textContent = 'Caching content…';
+    progress.style.display = '';
+  });
+
+  cache.addEventListener('progress', function(e) {
+    if (e.lengthComputable) {
+      var pct = Math.round((e.loaded / e.total) * 100);
+      bar.style.width = pct + '%';
+      status.textContent = e.loaded + ' / ' + e.total + ' files';
+    }
+  });
+
+  cache.addEventListener('cached', function() {
+    msg.textContent = 'Cached!';
+    bar.style.width = '100%';
+    status.textContent = 'All files ready';
+    setTimeout(installAndGo, 500);
+  });
+
+  cache.addEventListener('noupdate', function() {
+    msg.textContent = 'Cache up to date';
+    bar.style.width = '100%';
+    installAndGo();
+  });
+
+  cache.addEventListener('updateready', function() {
+    msg.textContent = 'Update ready';
+    bar.style.width = '100%';
+    try { cache.swapCache(); } catch(e) {}
+    setTimeout(installAndGo, 500);
+  });
+
+  cache.addEventListener('error', function() {
+    status.textContent = 'Cache unavailable';
+    setTimeout(go, 1000);
+  });
+
+  cache.addEventListener('obsolete', function() {
+    setTimeout(go, 500);
+  });
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', '/version', true);
+  xhr.timeout = 5000;
+  xhr.onload = function() {
+    serverOnline = true;
+    if (cacheStatus === cache.IDLE) {
+      installAndGo();
+    }
+  };
+  xhr.onerror = xhr.ontimeout = function() {
+    msg.textContent = 'Offline mode';
+    setTimeout(go, 300);
+  };
+  xhr.send();
+
+  timer = setTimeout(function() {
+    status.textContent = 'Timeout — continuing…';
+    go();
+  }, 120000);
+})();
+</script>
 </body>
 </html>

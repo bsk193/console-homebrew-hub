@@ -549,37 +549,18 @@ class ChhHandler(SimpleHTTPRequestHandler):
 
         return None, None
 
-    def _is_shortcut_origin(self):
-        host = (self.headers.get("Host") or "").split(":")[0].lower()
-        return host == DNS_SHORTCUT
-
     def do_GET(self):
         self._guide.on_connection()
 
-        clean_path = self.path.split("?")[0]
-
-        # Block AppCache on non-shortcut origins (manuals / User's Guide).
-        # 404 on the manifest invalidates any stale AppCache for this origin.
-        if clean_path == "/cache.appcache" and not self._is_shortcut_origin():
-            self.send_error(404)
+        if self.path == "/version":
+            data = b'{"name":"chh","version":"1.0.0"}'
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Content-Length", str(len(data)))
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.end_headers()
+            self.wfile.write(data)
             return
-
-        # Strip manifest attribute from chh.html on non-shortcut origins
-        if clean_path == "/ps5/chh.html" and not self._is_shortcut_origin():
-            fpath = os.path.join(SERVE_DIR, "ps5", "chh.html")
-            if os.path.isfile(fpath):
-                with open(fpath, "r", encoding="utf-8") as f:
-                    content = f.read()
-                content = re.sub(
-                    r'(<html)\s+manifest\s*=\s*["\'][^"\']*["\']',
-                    r'\1', content, count=1)
-                data = content.encode("utf-8")
-                self.send_response(200)
-                self.send_header("Content-Type", "text/html; charset=utf-8")
-                self.send_header("Content-Length", str(len(data)))
-                self.end_headers()
-                self.wfile.write(data)
-                return
 
         action, target = self._rewrite()
         if action == "redirect":
@@ -589,15 +570,12 @@ class ChhHandler(SimpleHTTPRequestHandler):
             self.send_header("Cache-Control", "no-cache")
             self.end_headers()
             return
+
         super().do_GET()
 
     def end_headers(self):
         if self.path.endswith('.elf'):
             self.send_header("Cache-Control", "public, max-age=86400")
-        else:
-            self.send_header("Cache-Control", "no-cache, no-store, must-revalidate")
-            self.send_header("Pragma",        "no-cache")
-            self.send_header("Expires",       "0")
         super().end_headers()
 
     def log_message(self, fmt, *args):

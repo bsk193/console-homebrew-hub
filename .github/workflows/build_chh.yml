@@ -26,36 +26,99 @@ jobs:
           git clone --recurse-submodules --depth=1 \
             https://github.com/bsk193/ps5-webkit-autoloader-x.git autoloader-src
 
+      - name: Download exploit cores
+        run: |
+          set -e
+          download_core() {
+            local name=$1 url=$2 dest=$3
+            echo "Downloading $name exploit core..."
+            curl -sL "$url" -o "/tmp/$name.zip"
+            mkdir -p "$dest"
+            unzip -qo "/tmp/$name.zip" -d "/tmp/$name-extract"
+            # Move contents from the extracted root dir (repo-name-branch/) into dest
+            local inner=$(ls "/tmp/$name-extract/")
+            cp -r "/tmp/$name-extract/$inner/"* "$dest/"
+            rm -rf "/tmp/$name.zip" "/tmp/$name-extract"
+            echo "  $name: $(find "$dest" -type f | wc -l) files"
+          }
+          download_core slopkit \
+            "https://github.com/jordyidk/slopkit/archive/refs/heads/main.zip" \
+            "chh/ps5/exploits/slopkit/core"
+          download_core umtx \
+            "https://github.com/idlesauce/umtx2/archive/refs/heads/main.zip" \
+            "chh/ps5/exploits/umtx/core"
+          download_core ipv6 \
+            "https://github.com/idlesauce/PS5-Exploit-Host/archive/refs/heads/main.zip" \
+            "chh/ps5/exploits/ipv6/core"
+
+      - name: Download pldmgrx.elf
+        run: |
+          # Fetch latest pldmgrx release asset
+          PLDMGRX_URL=$(curl -s https://api.github.com/repos/bsk193/console-homebrew-hub/releases/latest \
+            | python3 -c "import sys,json; assets=json.load(sys.stdin).get('assets',[]); urls=[a['browser_download_url'] for a in assets if 'pldmgrx' in a['name'] and a['name'].endswith('.elf')]; print(urls[0] if urls else '')")
+          if [ -n "$PLDMGRX_URL" ]; then
+            echo "Downloading pldmgrx from: $PLDMGRX_URL"
+            curl -sL "$PLDMGRX_URL" -o chh/pldmgrx.elf
+          else
+            echo "pldmgrx.elf not found in release, skipping"
+          fi
+
+      - name: Stage web files for file registry
+        run: |
+          set -e
+          STAGE="chh/_stage"
+          mkdir -p "$STAGE"
+          # Copy CHH web content
+          cp -r chh/ps5 "$STAGE/ps5"
+          [ -f chh/console-nav.js ] && cp chh/console-nav.js "$STAGE/"
+          [ -f chh/pldmgrx.elf ] && cp chh/pldmgrx.elf "$STAGE/"
+          echo "Staged $(find "$STAGE" -type f | wc -l) files"
+
+      - name: Generate file registry
+        run: |
+          python3 chh/tools/gen_file_registry.py \
+            chh/_stage \
+            autoloader-src/include/file_registry.h \
+            autoloader-src/include/file_registry.c
+
       - name: Patch autoloader-x for CHH
         run: |
-          # Copy CHH-specific C source files from the CHH repo
-          cp chh/chh-src/main_shortcut.c  autoloader-src/src/main_shortcut.c
+          # Copy CHH-specific source files
+          cp chh/chh-src/main.c           autoloader-src/src/main.c
+          cp chh/chh-src/http_server.c    autoloader-src/src/http_server.c
+          cp chh/chh-src/http_server.h    autoloader-src/include/http_server.h
 
-          # Append CHH extension function to app_installer.c
+          # Append CHH extension to app_installer.c
           cat chh/chh-src/app_installer_chh_patch.c >> autoloader-src/src/app_installer.c
 
-          # (declaration is forward-declared inside main_shortcut.c)
+          # Copy CHH param.json and icon
+          cp chh/chh-src/param.json autoloader-src/assets/param.json
 
-          # Append CHH Makefile targets (Python writes tabs correctly)
+          # Append CHH Makefile target
           python3 - << 'PYEOF'
           T = '\t'
           lines = [
               '',
-              '# Console Homebrew Hub targets',
-              'CHH_INSTALLER_SRCS := src/main_shortcut.c src/app_installer.c src/notification.c src/log.c',
-              'CHH_INSTALLER_LIBS := $(LOCAL_LIBS)',
+              '# Console Homebrew Hub — full installer with embedded HTTP server',
+              'CHH_SRCS := src/main.c src/http_server.c src/app_installer.c \\',
+              '            src/notification.c src/ps5_launcher.c src/log.c src/inflate.c',
+              'CHH_LIBS := $(TARGET)/lib/libmicrohttpd.a \\',
+              '            -L$(TARGET)/lib -lpthread \\',
+              '            -lSceNetCtl -lSceUserService -lSceSystemService \\',
+              '            -lSceAppInstUtil',
+              'CHH_CFLAGS := -DWKAL_TITLE_ID=\'"CHHM00001"\'',
               '',
               '.PHONY: chh',
               'chh: chh-installer.elf',
               '',
-              'chh-installer.elf: version $(CHH_INSTALLER_SRCS)',
-              T + '$(CC) $(CFLAGS) $(LDFLAGS) -o chh-installer.elf $(CHH_INSTALLER_SRCS) $(CHH_INSTALLER_LIBS)',
+              'chh-installer.elf: $(FILE_REGISTRY_H) $(FILE_REGISTRY_C) $(CHH_SRCS)',
+              T + '$(CC) $(CFLAGS) $(CHH_CFLAGS) $(LDFLAGS) -o chh-installer.elf $(CHH_SRCS) $(FILE_REGISTRY_C) $(CHH_LIBS)',
               T + '$(STRIP) chh-installer.elf',
               '',
           ]
           with open('autoloader-src/Makefile', 'a') as f:
               f.write('\n'.join(lines) + '\n')
-          print('Patched Makefile')
+          print('Patched Makefile with CHH target')
           PYEOF
 
           echo "All patches applied."

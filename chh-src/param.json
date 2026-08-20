@@ -1,0 +1,11 @@
+{
+    "titleId": "CHHM00001",
+    "applicationCategoryType": 65536,
+    "deeplinkUri": "http://127.0.0.1:18280/ps5/chh.html",
+    "localizedParameters": {
+        "defaultLanguage": "en-US",
+        "en-US": {
+            "titleName": "CHH"
+        }
+    }
+}
