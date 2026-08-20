@@ -111,8 +111,8 @@ jobs:
               '.PHONY: chh',
               'chh: chh-installer.elf',
               '',
-              'chh-installer.elf: $(FILE_REGISTRY_H) $(FILE_REGISTRY_C) $(CHH_SRCS)',
-              T + '$(CC) $(CFLAGS) $(CHH_CFLAGS) $(LDFLAGS) -o chh-installer.elf $(CHH_SRCS) $(FILE_REGISTRY_C) $(CHH_LIBS)',
+              'chh-installer.elf: $(CHH_SRCS)',
+              T + '$(CC) $(CFLAGS) $(CHH_CFLAGS) $(LDFLAGS) -o chh-installer.elf $(CHH_SRCS) include/file_registry.c $(CHH_LIBS)',
               T + '$(STRIP) chh-installer.elf',
               '',
           ]
