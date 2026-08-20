@@ -94,6 +94,10 @@ jobs:
           # Copy CHH param.json and icon
           cp chh/chh-src/param.json autoloader-src/assets/param.json
 
+          # Generate wkali_version.h (normally created by autoloader-x's
+          # default target chain, but CHH bypasses it with a standalone target)
+          echo '#define WKALI_VERSION "chh-'${CHH_VERSION}'"' > autoloader-src/include/wkali_version.h
+
           # Append CHH Makefile target
           python3 - << 'PYEOF'
           T = '\t'
