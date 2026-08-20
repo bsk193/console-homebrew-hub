@@ -552,11 +552,8 @@ class ChhHandler(SimpleHTTPRequestHandler):
     def do_GET(self):
         self._guide.on_connection()
 
-        if self.path == "/cache.appcache":
-            self.send_response(410)
-            self.send_header("Content-Type", "text/plain")
-            self.send_header("Content-Length", "0")
-            self.end_headers()
+        if self.path.split("?")[0] == "/cache.appcache":
+            self.send_error(404)
             return
 
         if self.path == "/version":
@@ -583,6 +580,10 @@ class ChhHandler(SimpleHTTPRequestHandler):
     def end_headers(self):
         if self.path.endswith('.elf'):
             self.send_header("Cache-Control", "public, max-age=86400")
+        else:
+            self.send_header("Cache-Control", "no-cache, no-store, must-revalidate")
+            self.send_header("Pragma",        "no-cache")
+            self.send_header("Expires",       "0")
         super().end_headers()
 
     def log_message(self, fmt, *args):
