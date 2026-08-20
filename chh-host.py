@@ -228,7 +228,7 @@ def _patch_exploit_cores():
                 except OSError:
                     continue
                 patched = re.sub(
-                    r'(<html)\s+manifest\s*=\s*["\'][^"\']*["\']',
+                    r'(<html\b[^>]*?)\s+manifest\s*=\s*["\'][^"\']*["\']',
                     r'\1',
                     content,
                     count=1,
@@ -551,6 +551,13 @@ class ChhHandler(SimpleHTTPRequestHandler):
 
     def do_GET(self):
         self._guide.on_connection()
+
+        if self.path == "/cache.appcache":
+            self.send_response(410)
+            self.send_header("Content-Type", "text/plain")
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
 
         if self.path == "/version":
             data = b'{"name":"chh","version":"1.0.0"}'

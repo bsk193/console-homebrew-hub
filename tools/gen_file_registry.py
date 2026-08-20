@@ -83,11 +83,25 @@ def strip_manifest_attr(data, path):
         return data
     text = data.decode("utf-8", errors="replace")
     patched = re.sub(
-        r'(<html)\s+manifest\s*=\s*["\'][^"\']*["\']',
+        r'(<html\b[^>]*?)\s+manifest\s*=\s*["\'][^"\']*["\']',
         r'\1',
         text,
         count=1,
     )
+    return patched.encode("utf-8")
+
+
+def inject_manifest_attr(data, path):
+    """Add manifest="/cache.appcache" to chh.html — ELF-embedded version only.
+
+    The source ps5/chh.html has NO manifest (so chh-host.py never triggers
+    AppCache on the User's Guide origin).  The ELF's HTTP server serves the
+    version WITH the manifest so AppCache caches content for the shortcut.
+    """
+    if path != "/ps5/chh.html":
+        return data
+    text = data.decode("utf-8", errors="replace")
+    patched = re.sub(r'(<html)\b', r'\1 manifest="/cache.appcache"', text, count=1)
     return patched.encode("utf-8")
 
 
@@ -173,6 +187,7 @@ def main():
             with open(full, "rb") as f:
                 data = f.read()
             data = strip_manifest_attr(data, path)
+            data = inject_manifest_attr(data, path)
             stored, compressed = compress_entry(data)
             emit_c_array(out, f"file_{i}", stored)
             out.write("\n")
