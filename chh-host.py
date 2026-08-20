@@ -207,12 +207,25 @@ def _needs_exploit_cores():
 
 
 def _patch_exploit_cores():
-    """Strip manifest="cache.appcache" from exploit core HTML files.
+    """Neutralize all AppCache in exploit core files to prevent OOM on PS5.
 
-    Upstream cores ship with AppCache manifests that cause OOM on PS5
-    when loaded inside CHH's iframe.  CHH handles caching separately
-    via the shortcut landing page, so the per-core manifests must go.
+    Upstream cores ship with AppCache manifests AND JavaScript that actively
+    manages window.applicationCache (appcache_handler.js, custom_host_stuff.js).
+    On the User's Guide origin, stale AppCache triggers redownloads after reboot,
+    causing OOM / Boot Stalled.  CHH handles caching via the shortcut ELF only,
+    so all AppCache code must be neutralized when served by chh-host.py.
     """
+    APPCACHE_STUB = (
+        '<script>'
+        '(function(){'
+        'var s={status:0,addEventListener:function(){},removeEventListener:function(){},'
+        'swapCache:function(){},update:function(){},abort:function(){}};'
+        'try{Object.defineProperty(window,"applicationCache",'
+        '{value:s,writable:true,configurable:true})}catch(e){}'
+        '})();'
+        '</script>'
+    )
+
     for core in EXPLOIT_CORES:
         core_dir = os.path.join(SERVE_DIR, core["dest"])
         if not os.path.isdir(core_dir):
@@ -227,16 +240,35 @@ def _patch_exploit_cores():
                         content = f.read()
                 except OSError:
                     continue
-                patched = re.sub(
-                    r'(<html)\s+manifest\s*=\s*["\'][^"\']*["\']',
-                    r'\1',
-                    content,
-                    count=1,
+
+                original = content
+
+                content = re.sub(
+                    r'(<html\b[^>]*?)\s+manifest\s*=\s*["\'][^"\']*["\']',
+                    r'\1', content, count=1,
                 )
-                if patched != content:
+
+                content = re.sub(
+                    r'<script[^>]*\bsrc\s*=\s*["\']appcache_handler\.js["\'][^>]*>\s*</script>\s*',
+                    '', content,
+                )
+
+                if APPCACHE_STUB not in content:
+                    patched = re.sub(
+                        r'(<head\b[^>]*>)', r'\1' + APPCACHE_STUB,
+                        content, count=1,
+                    )
+                    if patched == content:
+                        patched = re.sub(
+                            r'(<html\b[^>]*>)', r'\1' + APPCACHE_STUB,
+                            content, count=1,
+                        )
+                    content = patched
+
+                if content != original:
                     with open(fpath, "w", encoding="utf-8") as f:
-                        f.write(patched)
-                    print(tag(f"[+]   Patched {core['name']}: removed AppCache manifest from {fn}"))
+                        f.write(content)
+                    print(tag(f"[+]   Patched {core['name']}: neutralized AppCache in {fn}"))
 
 
 def download_exploit_cores():
