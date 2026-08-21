@@ -104,7 +104,7 @@ int main(void) {
 
     wkali_log("[CHH] Server running on port %d.\n", CHH_PORT);
 
-    sleep(3);
+    sleep(5);
 
     char browser_url[256];
     snprintf(browser_url, sizeof(browser_url),
