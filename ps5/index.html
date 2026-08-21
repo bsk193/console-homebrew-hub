@@ -303,9 +303,9 @@ body{display:flex;flex-direction:column;align-items:center}
   }
 
   var EXPLOITS = {
-    umtx:        { url: '/ps5/exploits/umtx/',    label: 'UMTX',          dot: 'dot-green',  status: 'Full Jailbreak',    statusDot: 'dot-green' },
-    ipv6:        { url: '/ps5/exploits/ipv6/',    label: 'IPV6 + UMTX',   dot: 'dot-green',  status: 'Full Jailbreak',    statusDot: 'dot-green' },
-    slopkit:     { url: '/ps5/exploits/slopkit/', label: 'Slopkit',        dot: 'dot-green',  status: 'Full Jailbreak',    statusDot: 'dot-green' },
+    umtx:        { url: '/ps5/exploits/umtx/index.html',    label: 'UMTX',          dot: 'dot-green',  status: 'Full Jailbreak',    statusDot: 'dot-green' },
+    ipv6:        { url: '/ps5/exploits/ipv6/index.html',    label: 'IPV6 + UMTX',   dot: 'dot-green',  status: 'Full Jailbreak',    statusDot: 'dot-green' },
+    slopkit:     { url: '/ps5/exploits/slopkit/index.html', label: 'Slopkit',        dot: 'dot-green',  status: 'Full Jailbreak',    statusDot: 'dot-green' },
     older:       { url: null,                     label: 'None locally',   dot: 'dot-yellow', status: 'No Local Exploit',  statusDot: 'dot-yellow' },
     userland:    { url: null,                     label: 'Userland only',  dot: 'dot-yellow', status: 'No Kernel Exploit', statusDot: 'dot-yellow' },
     unsupported: { url: null,                     label: 'None',           dot: 'dot-red',    status: 'Not Supported',     statusDot: 'dot-red' },
@@ -359,7 +359,7 @@ body{display:flex;flex-direction:column;align-items:center}
       || (location.hash.length > 1 && new URLSearchParams(location.hash.slice(1)).get('autoload'));
 
   function exploitUrl(cfg) {
-    return _autoload ? (cfg.url + '?autoload=' + encodeURIComponent(_autoload)) : cfg.url;
+    return _autoload ? (cfg.url + '#autoload=' + encodeURIComponent(_autoload)) : cfg.url;
   }
 
   function apply(fw) {
@@ -396,12 +396,19 @@ body{display:flex;flex-direction:column;align-items:center}
     apply(picker.value || currentFW);
   });
 
-  /* Shortcut mode: firmware detected → auto-navigate to the exploit page immediately */
-  if (_autoload && detectedFW) {
-    var _autoRange = getRange(detectedFW);
-    var _autoCfg = EXPLOITS[_autoRange];
-    if (_autoCfg && _autoCfg.url) {
-      location.replace(exploitUrl(_autoCfg));
+  /* Shortcut mode: auto-navigate to the exploit page.
+     Prefer the cached exploit (set during install) for offline consistency. */
+  if (_autoload) {
+    var _cachedExploit = null;
+    try { _cachedExploit = localStorage.getItem('chh_exploit'); } catch(e) {}
+    if (_cachedExploit && EXPLOITS[_cachedExploit] && EXPLOITS[_cachedExploit].url) {
+      location.replace(exploitUrl(EXPLOITS[_cachedExploit]));
+    } else if (detectedFW) {
+      var _autoRange = getRange(detectedFW);
+      var _autoCfg = EXPLOITS[_autoRange];
+      if (_autoCfg && _autoCfg.url) {
+        location.replace(exploitUrl(_autoCfg));
+      }
     }
   }
 })();

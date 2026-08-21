@@ -1,7 +1,7 @@
 {
     "titleId": "CHHM00001",
     "applicationCategoryType": 65536,
-    "deeplinkUri": "http://127.0.0.1:18280/ps5/chh.html",
+    "deeplinkUri": "http://127.0.0.1:18280/ps5/index.html#autoload=pldmgrx.elf",
     "localizedParameters": {
         "defaultLanguage": "en-US",
         "en-US": {

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>CHH</title>
+<title>CHH Installer</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#06060f;display:flex;align-items:center;justify-content:center;min-height:100vh;font:500 14px system-ui;color:#dde4f2;flex-direction:column;gap:16px;padding:20px}
@@ -14,119 +14,171 @@ h1{font:700 18px/1.2 system-ui;color:#fff}
 .progress{width:100%;height:4px;background:#1c1c30;border-radius:2px;overflow:hidden}
 .bar{height:100%;width:0;background:linear-gradient(90deg,#4f87ff,#1dd17a);border-radius:2px;transition:width .3s}
 .status{font:400 12px/1 system-ui;color:#50608a}
+.log{width:100%;max-width:340px;background:#000;border:1px solid #1c1c30;border-radius:8px;max-height:140px;overflow-y:auto;padding:6px 8px;font:400 11px/1.5 monospace;color:#50608a;display:none}
+.log div{margin-bottom:2px}
+.log .ok{color:#1dd17a}
+.log .err{color:#f43f5e}
 </style>
 </head>
 <body>
 <div class="card">
   <div class="logo">CHH</div>
   <h1>Console Homebrew Hub</h1>
-  <div class="msg" id="msg">Connecting&hellip;</div>
+  <div class="msg" id="msg">Loading&hellip;</div>
   <div class="progress" id="progress" style="display:none"><div class="bar" id="bar"></div></div>
   <div class="status" id="status"></div>
 </div>
+<div class="log" id="log"></div>
 <script>
 (function() {
-  var OFFLINE_TARGET = '/ps5/index.html#autoload=pldmgrx.elf';
+  var APP_URL = '/ps5/index.html';
   var msg = document.getElementById('msg');
   var progress = document.getElementById('progress');
   var bar = document.getElementById('bar');
   var status = document.getElementById('status');
+  var logEl = document.getElementById('log');
   var cache = window.applicationCache;
-  var done = false;
-  var timer;
+  var completed = false;
+  var probeOk = false;
 
-  function goOffline() {
-    if (done) return;
-    done = true;
-    if (timer) clearTimeout(timer);
-    location.replace(OFFLINE_TARGET);
+  function appendLog(t, cls) {
+    logEl.style.display = '';
+    var d = document.createElement('div');
+    d.textContent = t;
+    if (cls) d.className = cls;
+    logEl.appendChild(d);
+    logEl.scrollTop = logEl.scrollHeight;
   }
 
-  function finish() {
-    if (done) return;
-    done = true;
-    if (timer) clearTimeout(timer);
-    bar.style.width = '100%';
+  function goToApp() {
+    window.location.replace(APP_URL);
+  }
+
+  function setProgress(pct) {
+    bar.style.width = pct + '%';
+  }
+
+  function installApp() {
+    if (completed) return;
+    completed = true;
     msg.textContent = 'Installing shortcut…';
+    appendLog('[CHH] Cache complete — installing shortcut...', 'ok');
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '/install', true);
+    xhr.timeout = 30000;
     xhr.onload = function() {
       if (xhr.status === 200) {
-        msg.textContent = 'Offline cache ready!';
-        status.textContent = 'CHH shortcut installed — use it after reboot';
+        setProgress(100);
+        msg.textContent = 'Installed!';
+        msg.style.color = '#1dd17a';
+        status.textContent = 'CHH shortcut added to homescreen';
+        appendLog('[CHH] Shortcut installed successfully!', 'ok');
       } else {
-        msg.textContent = 'Shortcut install failed';
+        msg.textContent = 'Install failed';
         status.textContent = 'Cache is ready but shortcut could not be created';
+        appendLog('[CHH] /install returned ' + xhr.status, 'err');
       }
     };
     xhr.onerror = function() {
-      msg.textContent = 'Offline cache ready!';
-      status.textContent = 'Use the CHH shortcut after reboot';
+      msg.textContent = 'Install failed';
+      status.textContent = 'Could not reach installer';
+      appendLog('[CHH] /install request failed', 'err');
+    };
+    xhr.ontimeout = function() {
+      msg.textContent = 'Install timed out';
+      appendLog('[CHH] /install timed out', 'err');
     };
     xhr.send();
   }
 
-  if (!cache) { goOffline(); return; }
+  function probeServer() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/version', true);
+    xhr.timeout = 3000;
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        probeOk = true;
+        msg.textContent = 'Caching content…';
+        status.textContent = 'Do not close this page';
+        progress.style.display = '';
+        appendLog('[CHH] Server connected, version: ' + xhr.responseText);
+      } else {
+        appendLog('[CHH] Server responded with ' + xhr.status + ', going to app');
+        goToApp();
+      }
+    };
+    xhr.onerror = function() {
+      appendLog('[CHH] Server offline — loading cached app');
+      goToApp();
+    };
+    xhr.ontimeout = function() {
+      appendLog('[CHH] Server timeout — loading cached app');
+      goToApp();
+    };
+    xhr.send();
+  }
+
+  if (!cache) {
+    appendLog('[CHH] No AppCache support — redirecting');
+    goToApp();
+    return;
+  }
 
   cache.addEventListener('checking', function() {
-    msg.textContent = 'Checking cache…';
-  });
-  cache.addEventListener('downloading', function() {
-    msg.textContent = 'Caching content…';
+    appendLog('[AppCache] Checking manifest...');
     progress.style.display = '';
   });
+  cache.addEventListener('downloading', function() {
+    appendLog('[AppCache] Downloading cache...');
+  });
   cache.addEventListener('progress', function(e) {
-    if (e.lengthComputable) {
-      var pct = Math.round((e.loaded / e.total) * 100);
-      bar.style.width = pct + '%';
+    if (e.url) appendLog('[AppCache] ' + e.url.split('/').pop());
+    if (e.total && e.total > 0) {
+      var pct = Math.min(99, Math.round((e.loaded / e.total) * 100));
+      setProgress(pct);
       status.textContent = e.loaded + ' / ' + e.total + ' files';
     }
   });
+  cache.addEventListener('cached', function() {
+    appendLog('[AppCache] Caching complete.', 'ok');
+    installApp();
+  });
+  cache.addEventListener('noupdate', function() {
+    appendLog('[AppCache] Already up to date.', 'ok');
+    installApp();
+  });
+  cache.addEventListener('updateready', function() {
+    appendLog('[AppCache] Update ready — swapping cache.', 'ok');
+    try { cache.swapCache(); } catch(e) {}
+    installApp();
+  });
   cache.addEventListener('error', function() {
-    status.textContent = 'Cache error';
-    goOffline();
+    appendLog('[AppCache] Error! Status: ' + cache.status, 'err');
   });
   cache.addEventListener('obsolete', function() {
-    goOffline();
+    appendLog('[AppCache] Manifest obsolete.', 'err');
   });
 
-  var vxhr = new XMLHttpRequest();
-  vxhr.open('GET', '/version', true);
-  vxhr.timeout = 5000;
-  vxhr.onload = function() {
-    msg.textContent = 'Server connected';
+  window.addEventListener('load', function() {
+    probeServer();
 
-    var cacheReady = function() { finish(); };
+    var waitTimer = setInterval(function() {
+      if (completed) { clearInterval(waitTimer); return; }
+      if (!probeOk) return;
+      if (cache.status === cache.IDLE) {
+        clearInterval(waitTimer);
+        installApp();
+      }
+    }, 1000);
 
-    cache.addEventListener('cached', cacheReady);
-    cache.addEventListener('noupdate', cacheReady);
-    cache.addEventListener('updateready', function() {
-      try { cache.swapCache(); } catch(e) {}
-      cacheReady();
-    });
-
-    if (cache.status === cache.IDLE || cache.status === cache.UPDATEREADY) {
-      msg.textContent = 'Updating cache…';
-      try { cache.update(); } catch(e) { finish(); }
-    } else if (cache.status === cache.UNCACHED) {
-      msg.textContent = 'Caching content…';
-      progress.style.display = '';
-    }
-  };
-  vxhr.onerror = vxhr.ontimeout = function() {
-    msg.textContent = 'Offline mode';
-    if (cache.status === cache.IDLE) {
-      goOffline();
-    } else {
-      setTimeout(goOffline, 300);
-    }
-  };
-  vxhr.send();
-
-  timer = setTimeout(function() {
-    status.textContent = 'Timeout';
-    goOffline();
-  }, 120000);
+    setTimeout(function() {
+      if (!completed && probeOk) {
+        msg.textContent = 'Caching is taking unusually long';
+        status.textContent = 'If this never completes, close and re-run the installer';
+        appendLog('[CHH] 2-minute timeout — still caching', 'err');
+      }
+    }, 120000);
+  });
 })();
 </script>
 </body>
