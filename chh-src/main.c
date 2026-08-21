@@ -24,6 +24,7 @@
 #include <unistd.h>
 
 #include "wkali.h"
+#include "wkali_version.h"
 #include "app_installer.h"
 #include "http_server.h"
 #include "ps5_launcher.h"
@@ -115,9 +116,9 @@ int main(void) {
               CHH_PORT);
     sleep(2);
 
-    char browser_url[128];
+    char browser_url[256];
     snprintf(browser_url, sizeof(browser_url),
-             "http://127.0.0.1:%d/ps5/chh.html", CHH_PORT);
+             "http://127.0.0.1:%d/ps5/chh.html?v=%s", CHH_PORT, WKALI_VERSION);
     wkali_log("[CHH] Opening browser: %s\n", browser_url);
     ps5_launch_browser(browser_url);
 

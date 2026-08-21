@@ -13,13 +13,13 @@
 #include <microhttpd.h>
 
 #include "wkali.h"
+#include "wkali_version.h"
 #include "http_server.h"
 #include "file_registry.h"
 #include "inflate.h"
 #include "app_installer.h"
 
 #define CORS_ORIGIN "*"
-#define CHH_VERSION "1.0.0"
 
 atomic_int http_keep_running = 1;
 
@@ -64,8 +64,8 @@ enum MHD_Result http_on_request(void *cls, struct MHD_Connection *conn,
         MHD_add_response_header(resp, "Content-Type", "text/plain");
         atomic_store(&http_keep_running, 0);
     } else if (strcmp(url, "/version") == 0) {
-        resp = MHD_create_response_from_buffer(strlen(CHH_VERSION),
-                                               (void *)CHH_VERSION,
+        resp = MHD_create_response_from_buffer(strlen(WKALI_VERSION),
+                                               (void *)WKALI_VERSION,
                                                MHD_RESPMEM_PERSISTENT);
         MHD_add_response_header(resp, "Content-Type", "text/plain");
     } else {
