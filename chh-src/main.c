@@ -4,7 +4,7 @@
  * Architecture copied from ps5-webkit-autoloader by PLK:
  *   1. Install the homescreen shortcut
  *   2. Start a temporary HTTP server on the PS5 (libmicrohttpd)
- *   3. Open the PS5 browser to cache all web content via AppCache
+ *   3. Wait — the exploit page redirects the browser here to cache via AppCache
  *   4. Exit — subsequent launches work offline from AppCache
  *
  * The shortcut points to http://127.0.0.1:<port>/ps5/chh.html.
@@ -27,7 +27,6 @@
 #include "wkali_version.h"
 #include "app_installer.h"
 #include "http_server.h"
-#include "ps5_launcher.h"
 
 #define CHH_PORT        18280
 #define CHH_THREAD_NAME "chh-inst.elf"
@@ -112,15 +111,8 @@ int main(void) {
         return 0;
     }
 
-    wkali_log("[CHH] Server running on port %d. Waiting before browser...\n",
+    wkali_log("[CHH] Server running on port %d. Browser will redirect here.\n",
               CHH_PORT);
-    sleep(2);
-
-    char browser_url[256];
-    snprintf(browser_url, sizeof(browser_url),
-             "http://127.0.0.1:%d/ps5/chh.html?v=%s", CHH_PORT, WKALI_VERSION);
-    wkali_log("[CHH] Opening browser: %s\n", browser_url);
-    ps5_launch_browser(browser_url);
 
     int remaining = CHH_TIMEOUT_SEC;
     while (atomic_load(&http_keep_running) && remaining > 0) {

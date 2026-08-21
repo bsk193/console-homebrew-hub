@@ -110,7 +110,7 @@ jobs:
               '',
               '# Console Homebrew Hub — full installer with embedded HTTP server',
               'CHH_SRCS := src/main.c src/http_server.c src/app_installer.c \\',
-              '            src/notification.c src/ps5_launcher.c src/log.c src/inflate.c',
+              '            src/notification.c src/log.c src/inflate.c',
               'CHH_LIBS := $(TARGET)/lib/libmicrohttpd.a \\',
               '            -L$(TARGET)/lib -lpthread \\',
               '            -lSceNetCtl -lSceUserService -lSceSystemService \\',
