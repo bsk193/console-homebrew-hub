@@ -58,21 +58,11 @@ enum MHD_Result http_on_request(void *cls, struct MHD_Connection *conn,
     int http_status = MHD_HTTP_OK;
 
     if (strcmp(url, "/install") == 0) {
-        int err = wkali_install_app_if_needed();
-        if (err == 0) {
-            wkali_log("[CHH] Shortcut installed. Stopping server...\n");
-            resp = MHD_create_response_from_buffer(2, (void *)"OK",
-                                                   MHD_RESPMEM_PERSISTENT);
-            MHD_add_response_header(resp, "Content-Type", "text/plain");
-            atomic_store(&http_keep_running, 0);
-        } else {
-            wkali_log("[CHH] Shortcut install failed (%d). Staying up.\n", err);
-            const char *fail = "Install failed";
-            resp = MHD_create_response_from_buffer(strlen(fail), (void *)fail,
-                                                   MHD_RESPMEM_PERSISTENT);
-            MHD_add_response_header(resp, "Content-Type", "text/plain");
-            http_status = MHD_HTTP_INTERNAL_SERVER_ERROR;
-        }
+        wkali_log("[CHH] /install called — caching done. Stopping server.\n");
+        resp = MHD_create_response_from_buffer(2, (void *)"OK",
+                                               MHD_RESPMEM_PERSISTENT);
+        MHD_add_response_header(resp, "Content-Type", "text/plain");
+        atomic_store(&http_keep_running, 0);
     } else if (strcmp(url, "/version") == 0) {
         resp = MHD_create_response_from_buffer(strlen(CHH_VERSION),
                                                (void *)CHH_VERSION,

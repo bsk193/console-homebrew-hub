@@ -2,9 +2,9 @@
  * chh-installer.elf — Console Homebrew Hub PS5 installer.
  *
  * Architecture copied from ps5-webkit-autoloader by PLK:
- *   1. Start a temporary HTTP server on the PS5 (libmicrohttpd)
- *   2. Open the PS5 browser to cache all web content via AppCache
- *   3. Install the homescreen shortcut after caching completes (/install)
+ *   1. Install the homescreen shortcut
+ *   2. Start a temporary HTTP server on the PS5 (libmicrohttpd)
+ *   3. Open the PS5 browser to cache all web content via AppCache
  *   4. Exit — subsequent launches work offline from AppCache
  *
  * The shortcut points to http://127.0.0.1:<port>/ps5/chh.html.
@@ -29,6 +29,7 @@
 
 #define CHH_PORT        18280
 #define CHH_THREAD_NAME "chh-inst.elf"
+#define CHH_TIMEOUT_SEC 120
 
 static pid_t find_pid(const char *name) {
     int mib[4] = {1, 14, 8, 0};
@@ -74,8 +75,7 @@ int main(void) {
         sleep(1);
     }
 
-    wkali_log("[CHH] Console Homebrew Hub installer starting on port %d...\n",
-              CHH_PORT);
+    wkali_log("[CHH] Console Homebrew Hub installer starting...\n");
 
     int err;
     if ((err = sceNetCtlInit()) != 0)
@@ -89,6 +89,14 @@ int main(void) {
     signal(SIGHUP, SIG_IGN);
     signal(SIGTERM, SIG_IGN);
 
+    err = wkali_install_app_if_needed();
+    if (err == 0)
+        wkali_log("[CHH] Shortcut installed.\n");
+    else
+        wkali_log("[CHH] Shortcut install returned: %d\n", err);
+
+    wkali_notify("CHH shortcut installed!");
+
     daemon = MHD_start_daemon(
         MHD_USE_INTERNAL_POLLING_THREAD | MHD_USE_DEBUG,
         CHH_PORT, NULL, NULL, &http_on_request, NULL,
@@ -97,24 +105,35 @@ int main(void) {
 
     if (!daemon) {
         wkali_log("[CHH] Failed to start HTTP server!\n");
-        wkali_notify("CHH: HTTP server failed to start");
-        return 1;
+        wkali_notify("CHH: HTTP server failed — offline caching skipped");
+        return 0;
     }
 
-    wkali_log("[CHH] Server running. Opening browser for caching...\n");
+    wkali_log("[CHH] Server running on port %d. Waiting before browser...\n",
+              CHH_PORT);
+    sleep(2);
 
     char browser_url[128];
     snprintf(browser_url, sizeof(browser_url),
              "http://127.0.0.1:%d/ps5/chh.html", CHH_PORT);
+    wkali_log("[CHH] Opening browser: %s\n", browser_url);
     ps5_launch_browser(browser_url);
 
-    while (atomic_load(&http_keep_running))
-        usleep(100000);
+    int remaining = CHH_TIMEOUT_SEC;
+    while (atomic_load(&http_keep_running) && remaining > 0) {
+        sleep(1);
+        remaining--;
+    }
 
-    wkali_notify("CHH shortcut installed!");
-    wkali_log("[CHH] Install complete. Shutting down.\n");
+    if (remaining <= 0) {
+        wkali_log("[CHH] Timeout waiting for cache. Shutting down.\n");
+        wkali_notify("CHH: Cache timeout — shortcut works with PC connected");
+    } else {
+        wkali_log("[CHH] Caching complete.\n");
+        wkali_notify("CHH: Offline cache ready!");
+    }
+
     wkali_log_wakeup();
-
     usleep(500000);
 
     if (daemon)
