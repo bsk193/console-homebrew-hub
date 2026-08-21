@@ -80,6 +80,14 @@ enum MHD_Result http_on_request(void *cls, struct MHD_Connection *conn,
         MHD_add_response_header(resp, "Content-Type", "text/plain");
     } else {
         const FileEntry *entry = file_registry_find(url);
+        if (!entry) {
+            size_t len = strlen(url);
+            if (len > 0 && url[len - 1] == '/') {
+                char idx[256];
+                snprintf(idx, sizeof(idx), "%sindex.html", url);
+                entry = file_registry_find(idx);
+            }
+        }
         if (entry) {
             void *payload = (void *)entry->data;
             size_t payload_size = entry->size;
