@@ -123,7 +123,7 @@ SLOPKIT_IFRAME_URL = (
     "?go=1&auto=1&production=1&trigger=netcontrol&attempts=8"
     "&only=ps0_preflight,ps1_prepare,ps3_stage0,ps4_validate"
     ",ps5_stage1,ps6_stage2,ps8_stage3,ps9_stage4,ps10_stage5"
-    "&log=debug&payload=1&v=final"
+    "&log=debug&v=final"
 )
 
 # UMTX/IPV6 iframe URLs — autoload=pldmgrx.elf for offline shortcut mode.
