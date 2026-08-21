@@ -92,7 +92,7 @@ def emit_c_array(out, name, data):
 
 
 def strip_manifest_attr(data, path):
-    """Strip manifest= from exploit core HTML (prevent nested AppCache)."""
+    """Strip manifest= from exploit core HTML and remove payload=1 from slopkit."""
     if not path.endswith(".html"):
         return data
     if b"/core/" not in path.encode() and b"\\core\\" not in path.encode():
@@ -104,6 +104,15 @@ def strip_manifest_attr(data, path):
         text,
         count=1,
     )
+    if "poops.html" in path and "slopkit" in path:
+        patched = re.sub(
+            r'(log: "debug",) payload: "1",(\s*v:)',
+            r'\1\2', patched,
+        )
+        patched = re.sub(
+            r'(log: "debug",) payload: "1",(\s*reuse:)',
+            r'\1\2', patched,
+        )
     return patched.encode("utf-8")
 
 
