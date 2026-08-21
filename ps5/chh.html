@@ -26,7 +26,7 @@ h1{font:700 18px/1.2 system-ui;color:#fff}
 </div>
 <script>
 (function() {
-  var TARGET = '/ps5/index.html#autoload=pldmgrx.elf';
+  var OFFLINE_TARGET = '/ps5/index.html#autoload=pldmgrx.elf';
   var msg = document.getElementById('msg');
   var progress = document.getElementById('progress');
   var bar = document.getElementById('bar');
@@ -34,60 +34,35 @@ h1{font:700 18px/1.2 system-ui;color:#fff}
   var cache = window.applicationCache;
   var done = false;
   var timer;
-  var serverOnline = false;
 
-  function go() {
+  function goOffline() {
     if (done) return;
     done = true;
     if (timer) clearTimeout(timer);
-    location.replace(TARGET);
+    location.replace(OFFLINE_TARGET);
   }
 
-  function installAndGo() {
-    if (!serverOnline) { go(); return; }
-    msg.textContent = 'Finalizing…';
+  function finish() {
+    if (done) return;
+    done = true;
+    if (timer) clearTimeout(timer);
+    msg.textContent = 'Offline cache ready!';
+    status.textContent = 'Use the CHH shortcut after reboot';
+    bar.style.width = '100%';
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '/install', true);
-    xhr.timeout = 10000;
-    xhr.onload = function() {
-      done = true;
-      if (timer) clearTimeout(timer);
-      msg.textContent = 'Offline cache ready!';
-      status.textContent = 'Use the CHH shortcut after reboot';
-      bar.style.width = '100%';
-    };
-    xhr.onerror = xhr.ontimeout = function() {
-      go();
-    };
     xhr.send();
   }
 
-  if (!cache) { go(); return; }
-
-  var cacheStatus = cache.status;
-
-  if (cacheStatus === cache.IDLE) {
-    msg.textContent = 'Cache ready';
-    installAndGo();
-    return;
-  }
-
-  if (cacheStatus === cache.UNCACHED ||
-      cacheStatus === cache.CHECKING ||
-      cacheStatus === cache.DOWNLOADING) {
-    msg.textContent = 'Caching content…';
-    progress.style.display = '';
-  }
+  if (!cache) { goOffline(); return; }
 
   cache.addEventListener('checking', function() {
     msg.textContent = 'Checking cache…';
   });
-
   cache.addEventListener('downloading', function() {
     msg.textContent = 'Caching content…';
     progress.style.display = '';
   });
-
   cache.addEventListener('progress', function(e) {
     if (e.lengthComputable) {
       var pct = Math.round((e.loaded / e.total) * 100);
@@ -95,54 +70,50 @@ h1{font:700 18px/1.2 system-ui;color:#fff}
       status.textContent = e.loaded + ' / ' + e.total + ' files';
     }
   });
-
-  cache.addEventListener('cached', function() {
-    msg.textContent = 'Cached!';
-    bar.style.width = '100%';
-    status.textContent = 'All files ready';
-    setTimeout(installAndGo, 500);
-  });
-
-  cache.addEventListener('noupdate', function() {
-    msg.textContent = 'Cache up to date';
-    bar.style.width = '100%';
-    installAndGo();
-  });
-
-  cache.addEventListener('updateready', function() {
-    msg.textContent = 'Update ready';
-    bar.style.width = '100%';
-    try { cache.swapCache(); } catch(e) {}
-    setTimeout(installAndGo, 500);
-  });
-
   cache.addEventListener('error', function() {
-    status.textContent = 'Cache unavailable';
-    setTimeout(go, 1000);
+    status.textContent = 'Cache error';
+    goOffline();
   });
-
   cache.addEventListener('obsolete', function() {
-    setTimeout(go, 500);
+    goOffline();
   });
 
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', '/version', true);
-  xhr.timeout = 5000;
-  xhr.onload = function() {
-    serverOnline = true;
-    if (cacheStatus === cache.IDLE) {
-      installAndGo();
+  var vxhr = new XMLHttpRequest();
+  vxhr.open('GET', '/version', true);
+  vxhr.timeout = 5000;
+  vxhr.onload = function() {
+    msg.textContent = 'Server connected';
+
+    var cacheReady = function() { finish(); };
+
+    cache.addEventListener('cached', cacheReady);
+    cache.addEventListener('noupdate', cacheReady);
+    cache.addEventListener('updateready', function() {
+      try { cache.swapCache(); } catch(e) {}
+      cacheReady();
+    });
+
+    if (cache.status === cache.IDLE || cache.status === cache.UPDATEREADY) {
+      msg.textContent = 'Updating cache…';
+      try { cache.update(); } catch(e) { finish(); }
+    } else if (cache.status === cache.UNCACHED) {
+      msg.textContent = 'Caching content…';
+      progress.style.display = '';
     }
   };
-  xhr.onerror = xhr.ontimeout = function() {
+  vxhr.onerror = vxhr.ontimeout = function() {
     msg.textContent = 'Offline mode';
-    setTimeout(go, 300);
+    if (cache.status === cache.IDLE) {
+      goOffline();
+    } else {
+      setTimeout(goOffline, 300);
+    }
   };
-  xhr.send();
+  vxhr.send();
 
   timer = setTimeout(function() {
-    status.textContent = 'Timeout — continuing…';
-    go();
+    status.textContent = 'Timeout';
+    goOffline();
   }, 120000);
 })();
 </script>

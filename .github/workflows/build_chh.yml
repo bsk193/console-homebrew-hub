@@ -94,6 +94,11 @@ jobs:
           # Copy CHH param.json and icon
           cp chh/chh-src/param.json autoloader-src/assets/param.json
 
+          # Override wkali.h defaults: title ID must match param.json,
+          # and the app label shows in PS5 notifications
+          sed -i 's/#define WKAL_TITLE_ID     "WKLX00001"/#define WKAL_TITLE_ID     "CHHM00001"/' autoloader-src/include/wkali.h
+          sed -i 's/#define WKAL_APP_LABEL    "Jailbreak"/#define WKAL_APP_LABEL    "CHH"/' autoloader-src/include/wkali.h
+
           # Generate wkali_version.h (normally created by autoloader-x's
           # default target chain, but CHH bypasses it with a standalone target)
           echo '#define WKALI_VERSION "chh-'${CHH_VERSION}'"' > autoloader-src/include/wkali_version.h
