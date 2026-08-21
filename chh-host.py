@@ -265,10 +265,28 @@ def _patch_exploit_cores():
                         )
                     content = patched
 
+                if fn == "poops.html" and core["name"] == "slopkit":
+                    content = content.replace(
+                        "const PAYLOAD_MAX_SIZE = 0x400000;",
+                        "const PAYLOAD_MAX_SIZE = 0x1000000;",
+                    )
+                    content = content.replace(
+                        'const PAYLOADS = Object.freeze([',
+                        'const PAYLOADS = Object.freeze([\n'
+                        '    { title: "CHH Manager", description: "Console Homebrew Hub payload manager.",\n'
+                        '        name: "pldmgrx.elf", info: "pldmgrx.elf - CHH" },\n'
+                        '    { title: "CHH Installer", description: "Install CHH offline shortcuts.",\n'
+                        '        name: "chh-installer.elf", info: "chh-installer.elf - CHH" },',
+                    )
+                    content = content.replace(
+                        'await fetch("../payloads/" + encodeURIComponent(name)',
+                        'await fetch("/" + encodeURIComponent(name)',
+                    )
+
                 if content != original:
                     with open(fpath, "w", encoding="utf-8") as f:
                         f.write(content)
-                    print(tag(f"[+]   Patched {core['name']}: neutralized AppCache in {fn}"))
+                    print(tag(f"[+]   Patched {core['name']}: {fn}"))
 
 
 def download_exploit_cores():

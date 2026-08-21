@@ -92,7 +92,7 @@ def emit_c_array(out, name, data):
 
 
 def strip_manifest_attr(data, path):
-    """Strip manifest= from exploit core HTML (prevent nested AppCache)."""
+    """Strip manifest= from exploit core HTML and patch slopkit payloads."""
     if not path.endswith(".html"):
         return data
     if b"/core/" not in path.encode() and b"\\core\\" not in path.encode():
@@ -104,6 +104,23 @@ def strip_manifest_attr(data, path):
         text,
         count=1,
     )
+    if "poops.html" in path and "slopkit" in path:
+        patched = patched.replace(
+            "const PAYLOAD_MAX_SIZE = 0x400000;",
+            "const PAYLOAD_MAX_SIZE = 0x1000000;",
+        )
+        patched = patched.replace(
+            'const PAYLOADS = Object.freeze([',
+            'const PAYLOADS = Object.freeze([\n'
+            '    { title: "CHH Manager", description: "Console Homebrew Hub payload manager.",\n'
+            '        name: "pldmgrx.elf", info: "pldmgrx.elf - CHH" },\n'
+            '    { title: "CHH Installer", description: "Install CHH offline shortcuts.",\n'
+            '        name: "chh-installer.elf", info: "chh-installer.elf - CHH" },',
+        )
+        patched = patched.replace(
+            'await fetch("../payloads/" + encodeURIComponent(name)',
+            'await fetch("/" + encodeURIComponent(name)',
+        )
     return patched.encode("utf-8")
 
 
