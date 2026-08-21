@@ -42,6 +42,8 @@ EXCLUDE_PATTERNS = [
     "/chh-src/",
     "/tools/",
     "/cache.appcache",
+    "/ps5/exploits/",
+    ".elf",
 ]
 
 
