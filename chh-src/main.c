@@ -104,6 +104,8 @@ int main(void) {
 
     wkali_log("[CHH] Server running on port %d.\n", CHH_PORT);
 
+    sleep(3);
+
     char browser_url[256];
     snprintf(browser_url, sizeof(browser_url),
              "http://127.0.0.1:%d/ps5/chh.html?v=%s", CHH_PORT, WKALI_VERSION);
