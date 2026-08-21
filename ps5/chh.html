@@ -26,7 +26,7 @@ h1{font:700 18px/1.2 system-ui;color:#fff}
 </div>
 <script>
 (function() {
-  var TARGET = '/ps5/?autoload=pldmgrx.elf';
+  var TARGET = '/ps5/index.html#autoload=pldmgrx.elf';
   var msg = document.getElementById('msg');
   var progress = document.getElementById('progress');
   var bar = document.getElementById('bar');
@@ -45,13 +45,16 @@ h1{font:700 18px/1.2 system-ui;color:#fff}
 
   function installAndGo() {
     if (!serverOnline) { go(); return; }
-    msg.textContent = 'Installing shortcut…';
+    msg.textContent = 'Finalizing…';
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '/install', true);
     xhr.timeout = 10000;
     xhr.onload = function() {
-      msg.textContent = 'Shortcut installed!';
-      setTimeout(go, 500);
+      done = true;
+      if (timer) clearTimeout(timer);
+      msg.textContent = 'Offline cache ready!';
+      status.textContent = 'Use the CHH shortcut after reboot';
+      bar.style.width = '100%';
     };
     xhr.onerror = xhr.ontimeout = function() {
       go();

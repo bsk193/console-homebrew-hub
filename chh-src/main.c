@@ -91,12 +91,13 @@ int main(void) {
     signal(SIGTERM, SIG_IGN);
 
     err = wkali_install_app_if_needed();
-    if (err == 0)
+    if (err == 0) {
         wkali_log("[CHH] Shortcut installed.\n");
-    else
-        wkali_log("[CHH] Shortcut install returned: %d\n", err);
-
-    wkali_notify("CHH shortcut installed!");
+        wkali_notify("CHH shortcut installed!");
+    } else {
+        wkali_log("[CHH] Shortcut install failed: 0x%08X\n", err);
+        wkali_notify("CHH: Shortcut install failed!");
+    }
 
     daemon = MHD_start_daemon(
         MHD_USE_INTERNAL_POLLING_THREAD | MHD_USE_DEBUG,
