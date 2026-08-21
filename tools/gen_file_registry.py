@@ -92,7 +92,7 @@ def emit_c_array(out, name, data):
 
 
 def strip_manifest_attr(data, path):
-    """Strip manifest= from exploit core HTML and remove payload=1 from slopkit."""
+    """Strip manifest= from exploit core HTML (prevent nested AppCache)."""
     if not path.endswith(".html"):
         return data
     if b"/core/" not in path.encode() and b"\\core\\" not in path.encode():
@@ -104,15 +104,6 @@ def strip_manifest_attr(data, path):
         text,
         count=1,
     )
-    if "poops.html" in path and "slopkit" in path:
-        patched = re.sub(
-            r'(log: "debug",) payload: "1",(\s*v:)',
-            r'\1\2', patched,
-        )
-        patched = re.sub(
-            r'(log: "debug",) payload: "1",(\s*reuse:)',
-            r'\1\2', patched,
-        )
     return patched.encode("utf-8")
 
 
@@ -132,7 +123,7 @@ SLOPKIT_IFRAME_URL = (
     "?go=1&auto=1&production=1&trigger=netcontrol&attempts=8"
     "&only=ps0_preflight,ps1_prepare,ps3_stage0,ps4_validate"
     ",ps5_stage1,ps6_stage2,ps8_stage3,ps9_stage4,ps10_stage5"
-    "&log=debug&v=final"
+    "&log=debug&payload=1&v=final"
 )
 
 # UMTX/IPV6 iframe URLs — autoload=pldmgrx.elf for offline shortcut mode.

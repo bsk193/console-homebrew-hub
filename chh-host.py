@@ -265,16 +265,6 @@ def _patch_exploit_cores():
                         )
                     content = patched
 
-                if fn == "poops.html" and core["name"] == "slopkit":
-                    content = re.sub(
-                        r'(log: "debug",) payload: "1",(\s*v:)',
-                        r'\1\2', content,
-                    )
-                    content = re.sub(
-                        r'(log: "debug",) payload: "1",(\s*reuse:)',
-                        r'\1\2', content,
-                    )
-
                 if content != original:
                     with open(fpath, "w", encoding="utf-8") as f:
                         f.write(content)
