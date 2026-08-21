@@ -46,11 +46,23 @@ h1{font:700 18px/1.2 system-ui;color:#fff}
     if (done) return;
     done = true;
     if (timer) clearTimeout(timer);
-    msg.textContent = 'Offline cache ready!';
-    status.textContent = 'Use the CHH shortcut after reboot';
     bar.style.width = '100%';
+    msg.textContent = 'Installing shortcut…';
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '/install', true);
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        msg.textContent = 'Offline cache ready!';
+        status.textContent = 'CHH shortcut installed — use it after reboot';
+      } else {
+        msg.textContent = 'Shortcut install failed';
+        status.textContent = 'Cache is ready but shortcut could not be created';
+      }
+    };
+    xhr.onerror = function() {
+      msg.textContent = 'Offline cache ready!';
+      status.textContent = 'Use the CHH shortcut after reboot';
+    };
     xhr.send();
   }
 

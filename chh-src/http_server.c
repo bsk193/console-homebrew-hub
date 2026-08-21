@@ -58,11 +58,21 @@ enum MHD_Result http_on_request(void *cls, struct MHD_Connection *conn,
     int http_status = MHD_HTTP_OK;
 
     if (strcmp(url, "/install") == 0) {
-        wkali_log("[CHH] /install called — caching done. Stopping server.\n");
-        resp = MHD_create_response_from_buffer(2, (void *)"OK",
-                                               MHD_RESPMEM_PERSISTENT);
-        MHD_add_response_header(resp, "Content-Type", "text/plain");
-        atomic_store(&http_keep_running, 0);
+        int err = wkali_install_app_if_needed();
+        if (err == 0) {
+            wkali_log("[CHH] App installed. Stopping server...\n");
+            resp = MHD_create_response_from_buffer(2, (void *)"OK",
+                                                   MHD_RESPMEM_PERSISTENT);
+            MHD_add_response_header(resp, "Content-Type", "text/plain");
+            atomic_store(&http_keep_running, 0);
+        } else {
+            wkali_log("[CHH] App install failed: 0x%08X. Staying up.\n", err);
+            const char *fail = "Install failed";
+            resp = MHD_create_response_from_buffer(strlen(fail), (void *)fail,
+                                                   MHD_RESPMEM_PERSISTENT);
+            MHD_add_response_header(resp, "Content-Type", "text/plain");
+            http_status = MHD_HTTP_INTERNAL_SERVER_ERROR;
+        }
     } else if (strcmp(url, "/version") == 0) {
         resp = MHD_create_response_from_buffer(strlen(WKALI_VERSION),
                                                (void *)WKALI_VERSION,
