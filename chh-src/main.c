@@ -24,6 +24,7 @@
 #include <unistd.h>
 
 #include "wkali.h"
+#include "app_installer.h"
 #include "http_server.h"
 #include "ps5_launcher.h"
 
