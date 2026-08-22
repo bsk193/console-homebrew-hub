@@ -1,16 +1,16 @@
 [
   {
     "name": "Payload Manager X",
-    "filename": "pldmgrx_v0.5.1.3x.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.2/pldmgrx_v0.5.1.3x.elf",
+    "filename": "pldmgrx_v0.5.1.4x.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.2/pldmgrx_v0.5.1.4x.elf",
     "source": "https://github.com/bsk193/ps5-payload-manager-x/releases",
-    "source_direct": "https://github.com/bsk193/ps5-payload-manager-x/releases/download/v0.5.1.3x/pldmgrx_v0.5.1.3x.elf",
+    "source_direct": "https://github.com/bsk193/ps5-payload-manager-x/releases/download/v0.5.1.4x/pldmgrx_v0.5.1.4x.elf",
     "category": "Utilities",
     "description": "",
     "last_update": "2026-08-22",
     "release_date": "2026-08-22",
-    "version": "v0.5.1.3x",
-    "checksum": "54ce5eb859ce372d99ef11103e60d2077e41b09eb8f9f67422e5efe38c65af91"
+    "version": "v0.5.1.4x",
+    "checksum": "77e90555e47f6275cc8ee6724d96e7244624a3b772879361f678b4c8d451d7e6"
   },
   {
     "name": "PS5Upload",
