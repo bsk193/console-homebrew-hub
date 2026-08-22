@@ -13,6 +13,19 @@
     "checksum": "77e90555e47f6275cc8ee6724d96e7244624a3b772879361f678b4c8d451d7e6"
   },
   {
+    "name": "elfldr",
+    "filename": "elfldr-ps5_v0.25.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.2/elfldr-ps5_v0.25.elf",
+    "source": "https://github.com/ps5-payload-dev/elfldr/releases",
+    "source_direct": "https://github.com/ps5-payload-dev/elfldr/releases/download/v0.25/elfldr-ps5.elf",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-08-22",
+    "release_date": "2026-08-22",
+    "version": "v0.25",
+    "checksum": "de70a47e6d099dc03718c33c158a727f1340c3b5310155618c5049ab0fb41754"
+  },
+  {
     "name": "PS5Upload",
     "filename": "ps5upload-5.4.8.elf",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.2/ps5upload-5.4.8.elf",
@@ -212,19 +225,6 @@
     "release_date": "2026-08-02",
     "version": "v0.9",
     "checksum": "e828ec144231f81547cb58bc7d2c396fa984be0c2295f31364b58017816dcceb"
-  },
-  {
-    "name": "elfldr",
-    "filename": "elfldr-ps5_v0.24.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.2/elfldr-ps5_v0.24.elf",
-    "source": "https://github.com/ps5-payload-dev/elfldr/releases",
-    "source_direct": "https://github.com/ps5-payload-dev/elfldr/releases/download/v0.24/elfldr-ps5.elf",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-08-02",
-    "release_date": "2026-08-02",
-    "version": "v0.24",
-    "checksum": "e23313367cf59a9b0a09e34eb59e435e2c387de418e557d65bf578b7744942a5"
   },
   {
     "name": "Payload Manager",
