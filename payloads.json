@@ -1,16 +1,16 @@
 [
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-5.4.9.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.2/ps5upload-5.4.9.elf",
+    "filename": "ps5upload-5.4.12.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.2/ps5upload-5.4.12.elf",
     "source": "https://github.com/phantomptr/ps5upload/releases",
-    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v5.4.9/ps5upload-5.4.9.elf",
+    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v5.4.12/ps5upload-5.4.12.elf",
     "category": "Utilities",
     "description": "",
     "last_update": "2026-08-23",
     "release_date": "2026-08-23",
-    "version": "v5.4.9",
-    "checksum": "e3e40a8318a6c35c3c362f326b07559df8514c15193e2fed280d4014ca8b9d9a"
+    "version": "v5.4.12",
+    "checksum": "19bd6981de25c1e4e2e9a962fac8d2e08cd748cf5896079438db46d0139f5d3f"
   },
   {
     "name": "Payload Manager X",
