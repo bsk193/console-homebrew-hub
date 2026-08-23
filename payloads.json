@@ -1,5 +1,18 @@
 [
   {
+    "name": "PS5Upload",
+    "filename": "ps5upload-5.4.9.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.2/ps5upload-5.4.9.elf",
+    "source": "https://github.com/phantomptr/ps5upload/releases",
+    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v5.4.9/ps5upload-5.4.9.elf",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-08-23",
+    "release_date": "2026-08-23",
+    "version": "v5.4.9",
+    "checksum": "e3e40a8318a6c35c3c362f326b07559df8514c15193e2fed280d4014ca8b9d9a"
+  },
+  {
     "name": "Payload Manager X",
     "filename": "pldmgrx_v0.5.1.4x.elf",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.2/pldmgrx_v0.5.1.4x.elf",
@@ -24,19 +37,6 @@
     "release_date": "2026-08-22",
     "version": "v0.25",
     "checksum": "de70a47e6d099dc03718c33c158a727f1340c3b5310155618c5049ab0fb41754"
-  },
-  {
-    "name": "PS5Upload",
-    "filename": "ps5upload-5.4.8.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.2/ps5upload-5.4.8.elf",
-    "source": "https://github.com/phantomptr/ps5upload/releases",
-    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v5.4.8/ps5upload-5.4.8.elf",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-08-21",
-    "release_date": "2026-08-21",
-    "version": "v5.4.8",
-    "checksum": "b255217ffcb5bc93a0ecdd4612927f241fbef3b3f936874223fcfba4cff17cf5"
   },
   {
     "name": "PIZZA-HEN",
