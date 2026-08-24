@@ -1,16 +1,30 @@
 [
   {
+    "name": "WebKit Autoloader",
+    "filename": "webkit-autoloader-installer_v0.4.0.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.2/webkit-autoloader-installer_v0.4.0.elf",
+    "source": "https://github.com/itsPLK/ps5-webkit-autoloader/releases",
+    "source_direct": "https://github.com/itsPLK/ps5-webkit-autoloader/releases/download/v0.4.0/webkit-autoloader-installer_v0.4.0.elf",
+    "asset_pattern": "webkit-autoloader-installer.*\\.elf",
+    "category": "Utilities",
+    "description": "PS5 WebKit exploit autoloader installer ELF by itsPLK.",
+    "last_update": "2026-08-24",
+    "release_date": "2026-08-24",
+    "version": "v0.4.0",
+    "checksum": "179d5e52ec3e0f595900b40883c0e10cc1fba1efc275a547f47e828d45d05915"
+  },
+  {
     "name": "PS5Upload",
-    "filename": "ps5upload-5.4.12.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.2/ps5upload-5.4.12.elf",
+    "filename": "ps5upload-5.4.17.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.2/ps5upload-5.4.17.elf",
     "source": "https://github.com/phantomptr/ps5upload/releases",
-    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v5.4.12/ps5upload-5.4.12.elf",
+    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v5.4.17/ps5upload-5.4.17.elf",
     "category": "Utilities",
     "description": "",
     "last_update": "2026-08-23",
     "release_date": "2026-08-23",
-    "version": "v5.4.12",
-    "checksum": "19bd6981de25c1e4e2e9a962fac8d2e08cd748cf5896079438db46d0139f5d3f"
+    "version": "v5.4.17",
+    "checksum": "38962c317978696aaf11a2c7c55495ecfad1868bbf2df23625cf6e0c6c6520fd"
   },
   {
     "name": "Payload Manager X",
@@ -78,20 +92,6 @@
     "release_date": "2026-08-20",
     "version": "v0.21.1",
     "checksum": "7d4b31c83eae4e056580482a3a074e1db25922efc74ac1e439473b45d71a5938"
-  },
-  {
-    "name": "WebKit Autoloader",
-    "filename": "webkit-autoloader-installer_v0.3.1.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.2/webkit-autoloader-installer_v0.3.1.elf",
-    "source": "https://github.com/itsPLK/ps5-webkit-autoloader/releases",
-    "source_direct": "https://github.com/itsPLK/ps5-webkit-autoloader/releases/download/v0.3.1/webkit-autoloader-installer_v0.3.1.elf",
-    "asset_pattern": "webkit-autoloader-installer.*\\.elf",
-    "category": "Utilities",
-    "description": "PS5 WebKit exploit autoloader installer ELF by itsPLK.",
-    "last_update": "2026-08-19",
-    "release_date": "2026-08-19",
-    "version": "v0.3.1",
-    "checksum": "69beea7c4460d283606889f7ae1685f32e8fb7203274c279eeefa97fe4f1eb17"
   },
   {
     "name": "CHH Installer",
