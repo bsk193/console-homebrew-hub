@@ -254,11 +254,11 @@ def main():
         # Latest stable
         picks.append((releases[latest_idx], 'stable'))
 
-        # ALL pre-releases newer than latest
+        # ALL pre-releases (newer and older than latest)
         if include_exp:
-            for i in range(latest_idx):
-                if releases[i].get('prerelease'):
-                    picks.append((releases[i], 'experimental'))
+            for i, r in enumerate(releases):
+                if i != latest_idx and r.get('prerelease'):
+                    picks.append((r, 'experimental'))
 
         # Two stable releases before latest
         n = 0

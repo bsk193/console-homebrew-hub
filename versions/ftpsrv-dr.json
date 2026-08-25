@@ -31,6 +31,26 @@
   },
   {
     "name": "ftpsrv DR",
+    "filename": "ftpsrv-ps5_1.15-ng-beta7.elf",
+    "version": "1.15-ng-beta7",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ftpsrv-ps5_1.15-ng-beta7.elf",
+    "checksum": "d0219821732633decf6376c3c9c4ae398970e22978574ec00d0509826a36a01b",
+    "channel": "experimental",
+    "category": "Utilities",
+    "last_update": "2026-01-14"
+  },
+  {
+    "name": "ftpsrv DR",
+    "filename": "ftpsrv-ps5_1.15-ng-beta1.elf",
+    "version": "1.15-ng-beta1",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ftpsrv-ps5_1.15-ng-beta1.elf",
+    "checksum": "9d168ade991ac8e884209a3603826e93682c82899c3204e7b94d89f2653f350d",
+    "channel": "experimental",
+    "category": "Utilities",
+    "last_update": "2026-01-08"
+  },
+  {
+    "name": "ftpsrv DR",
     "filename": "ftpsrv-ps5_1.15-ng-beta9.elf",
     "version": "1.15-ng-beta9",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ftpsrv-ps5_1.15-ng-beta9.elf",

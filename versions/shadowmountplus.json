@@ -91,6 +91,26 @@
   },
   {
     "name": "ShadowMountPlus",
+    "filename": "ShadowMountPlus_1.6test6.elf",
+    "version": "1.6test6",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ShadowMountPlus_1.6test6.elf",
+    "checksum": "6088868d3810875e1fdc151a9349ad899a98bedcbe5b7e8cd8b9a5554b262abd",
+    "channel": "experimental",
+    "category": "Utilities",
+    "last_update": "2026-03-22"
+  },
+  {
+    "name": "ShadowMountPlus",
+    "filename": "shadowmount_1.4_test.elf",
+    "version": "1.4+test",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/shadowmount_1.4_test.elf",
+    "checksum": "597823fd3cb6841e4f8ce7f9b77349f7dd908b8caecd19be68da6cb61e8ee751",
+    "channel": "experimental",
+    "category": "Utilities",
+    "last_update": "2026-02-14"
+  },
+  {
+    "name": "ShadowMountPlus",
     "filename": "shadowmountplus_1.6test15-fix2.elf",
     "version": "1.6test15-fix2",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/shadowmountplus_1.6test15-fix2.elf",

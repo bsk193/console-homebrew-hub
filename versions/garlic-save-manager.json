@@ -11,6 +11,26 @@
   },
   {
     "name": "Garlic Save Manager",
+    "filename": "garlic-savemgr_v1.62b.elf",
+    "version": "v1.62b",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/garlic-savemgr_v1.62b.elf",
+    "checksum": "7745f1f82c892c31da11a28574d0f2f27ce0c06f0f7f3cfa532f44460c661b41",
+    "channel": "experimental",
+    "category": "Utilities",
+    "last_update": "2026-03-15"
+  },
+  {
+    "name": "Garlic Save Manager",
+    "filename": "garlic-savemgr_v1.61b.elf",
+    "version": "v1.61b",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/garlic-savemgr_v1.61b.elf",
+    "checksum": "e3936deaab1e89c80625945e7ccd42b164fcc4779b1da74a2e719531c499a548",
+    "channel": "experimental",
+    "category": "Utilities",
+    "last_update": "2026-03-15"
+  },
+  {
+    "name": "Garlic Save Manager",
     "filename": "garlic-savemgr_v1.6b.elf",
     "version": "v1.6b",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/garlic-savemgr_v1.6b.elf",
