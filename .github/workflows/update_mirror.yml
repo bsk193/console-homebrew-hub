@@ -32,6 +32,12 @@ jobs:
         run: |
           python update_payloads.py
 
+      - name: Generate per-payload version lists
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python tools/gen_versions.py
+
       - name: Upload payloads to latest versioned release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -45,18 +51,12 @@ jobs:
           fi
           echo "Uploading payloads to release: $RELEASE_TAG"
 
-          # Upload all payload binaries
+          # Upload all payload binaries (main + version ELFs)
           if [ -d "payloads" ] && [ "$(ls -A payloads)" ]; then
             gh release upload "$RELEASE_TAG" payloads/* --clobber
           else
             echo "No payloads to upload."
           fi
-
-      - name: Generate per-payload version lists
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          python tools/gen_versions.py
 
       - name: Commit and Push payloads.json
         run: |
