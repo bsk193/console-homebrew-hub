@@ -1,16 +1,16 @@
 [
   {
     "name": "Payload Manager X",
-    "filename": "pldmgrx_v0.5.1.6x.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/latest/download/pldmgrx_v0.5.1.6x.elf",
+    "filename": "pldmgrx_v0.5.1.7x.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/latest/download/pldmgrx_v0.5.1.7x.elf",
     "source": "https://github.com/bsk193/ps5-payload-manager-x/releases",
-    "source_direct": "https://github.com/bsk193/ps5-payload-manager-x/releases/download/v0.5.1.6x/pldmgrx_v0.5.1.6x.elf",
+    "source_direct": "https://github.com/bsk193/ps5-payload-manager-x/releases/download/v0.5.1.7x/pldmgrx_v0.5.1.7x.elf",
     "category": "Utilities",
     "description": "",
     "last_update": "2026-08-25",
     "release_date": "2026-08-25",
-    "version": "v0.5.1.6x",
-    "checksum": "6906b4bab98969e560a196f2ba0ea10ba033a6c0f5bb6a2ecb1d426ddd8ded8f"
+    "version": "v0.5.1.7x",
+    "checksum": "1d7de16b34ebce83c99533e135547d1b7d1570fa902c4d54fe6417db527f8621"
   },
   {
     "name": "WebKit Autoloader",
