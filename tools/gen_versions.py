@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-Generate per-payload version lists (versions/<id>.json) for the
+Generate a single versions.json alongside payloads.json for the
 Payload Manager X version picker.
 
 Reads payloads.json, enumerates GitHub releases for each payload,
-downloads version ELFs into payloads/, and produces version files
-with mirror URLs so every version is downloadable from the release.
+downloads version ELFs into payloads/, and writes one combined
+versions.json with all non-latest versions.
 
 Usage:
     python tools/gen_versions.py                     # all payloads
@@ -28,11 +28,10 @@ import tempfile
 MAX_OLDER_STABLE = 2
 INCLUDE_EXPERIMENTAL = True
 
-VERSIONS_DIR = "versions"
 PAYLOADS_DIR = "payloads"
 PAYLOADS_JSON = "payloads.json"
-CACHE_FILE = os.path.join(VERSIONS_DIR, ".checksum_cache.json")
-PAGES_BASE = "https://bsk193.github.io/console-homebrew-hub/versions"
+VERSIONS_JSON = "versions.json"
+CACHE_FILE = ".checksum_cache.json"
 MIRROR_REPO = "bsk193/console-homebrew-hub"
 
 # --------------- helpers ---------------
@@ -210,13 +209,13 @@ def main():
         payloads = json.load(f)
 
     cache = load_cache()
-    os.makedirs(VERSIONS_DIR, exist_ok=True)
     os.makedirs(PAYLOADS_DIR, exist_ok=True)
 
     mirror_base = get_mirror_base_url()
     print(f"[gen_versions] Mirror base: {mirror_base}")
 
-    updated_entries = {}
+    all_versions = []
+    seen_filenames = set()
 
     for entry in payloads:
         name = entry.get('name', '')
@@ -322,6 +321,21 @@ def main():
 
             mirror_url = f"{mirror_base}/{fname}"
 
+            # Ensure filename uniqueness across all payloads
+            if fname in seen_filenames:
+                slug_prefix = slugify(name)
+                stem_f, ext_f = fname.rsplit('.', 1) if '.' in fname else (fname, 'elf')
+                fname = f"{slug_prefix}_{stem_f}.{ext_f}" if not stem_f.startswith(slug_prefix) else f"{stem_f}_{slug_prefix}.{ext_f}"
+                base_fname = fname
+                counter = 2
+                while fname in seen_filenames:
+                    stem2, ext2 = base_fname.rsplit('.', 1)
+                    fname = f"{stem2}_{counter}.{ext2}"
+                    counter += 1
+            seen_filenames.add(fname)
+
+            mirror_url = f"{mirror_base}/{fname}"
+
             ve = {
                 "name": name,
                 "filename": fname,
@@ -329,48 +343,27 @@ def main():
                 "url": mirror_url,
                 "checksum": cs,
                 "channel": channel,
+                "min_fw": entry.get('min_fw', ''),
+                "max_fw": entry.get('max_fw', ''),
                 "category": entry.get('category', 'Utilities'),
+                "description": entry.get('description', ''),
                 "last_update": date
             }
-            if entry.get('description'):
-                ve['description'] = entry['description']
-            if entry.get('min_fw'):
-                ve['min_fw'] = entry['min_fw']
-            if entry.get('max_fw'):
-                ve['max_fw'] = entry['max_fw']
 
             ver_entries.append(ve)
+            all_versions.append(ve)
 
-        if not ver_entries:
-            continue
+        if ver_entries:
+            print(f"  {len(ver_entries)} version(s) collected")
 
-        if args.dry_run:
-            print(f"  -> versions/{slug}.json ({len(ver_entries)} versions)")
-        else:
-            out = os.path.join(VERSIONS_DIR, f"{slug}.json")
-            with open(out, 'w') as f:
-                json.dump(ver_entries, f, indent=2)
-            print(f"  wrote {out} ({len(ver_entries)} versions)")
-
-        updated_entries[name] = slug
-
-    # --- add versions_url to payloads.json ---
-    if not args.dry_run and updated_entries:
-        changed = False
-        for entry in payloads:
-            n = entry.get('name', '')
-            if n in updated_entries:
-                vurl = f"{PAGES_BASE}/{updated_entries[n]}.json"
-                if entry.get('versions_url') != vurl:
-                    entry['versions_url'] = vurl
-                    changed = True
-        if changed:
-            with open(PAYLOADS_JSON, 'w') as f:
-                json.dump(payloads, f, indent=2)
-            print(f"\nUpdated {PAYLOADS_JSON}: {len(updated_entries)} entries got versions_url")
+    # --- write single versions.json ---
+    if not args.dry_run:
+        with open(VERSIONS_JSON, 'w') as f:
+            json.dump(all_versions, f, indent=2)
+        print(f"\nWrote {VERSIONS_JSON}: {len(all_versions)} total versions")
 
     save_cache(cache)
-    print("\nDone.")
+    print("Done.")
 
 
 if __name__ == '__main__':

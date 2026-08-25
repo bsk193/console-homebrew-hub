@@ -127,7 +127,7 @@ def calculate_checksum(filepath):
         return None
 
 def reorder_item(item):
-    order = ["name", "filename", "url", "source", "source_direct", "asset_pattern", "extract_file", "versions_url", "category", "min_fw", "max_fw", "description", "last_update", "release_date", "version", "checksum"]
+    order = ["name", "filename", "url", "source", "source_direct", "asset_pattern", "extract_file", "category", "min_fw", "max_fw", "description", "last_update", "release_date", "version", "checksum"]
     new_item = {}
     for key in order:
         if key in item:
