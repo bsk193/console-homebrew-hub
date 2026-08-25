@@ -1,10 +1,8 @@
 name: Build GitHub Pages
 
 on:
-  push:
-    branches: [main]
   workflow_run:
-    workflows: [Build Console Homebrew Hub Release]
+    workflows: [Automated Payloads Mirror]
     types: [completed]
   workflow_dispatch:
 

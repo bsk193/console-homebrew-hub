@@ -1,10 +1,8 @@
 name: Update README
 
 on:
-  push:
-    branches: [main]
   workflow_run:
-    workflows: [Automated Payloads Mirror]
+    workflows: [Build GitHub Pages]
     types: [completed]
   workflow_dispatch:
 
