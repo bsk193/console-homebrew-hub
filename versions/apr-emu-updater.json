@@ -1,6 +1,17 @@
 [
   {
     "name": "APR Emu Updater",
+    "filename": "apr_emu_updater_v1.5.1.elf",
+    "version": "v1.5.1",
+    "url": "https://github.com/tsuramatsu1/apr-emu-updater/releases/download/v1.5.1/apr_emu_updater.elf",
+    "checksum": "42a0b98ed05eab7bdbfab30ea15ef2a55ddefa34f729861e7dfcfcb1ea74258f",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-08-24",
+    "description": "Manages APR Emu versions per-game via web dashboard \u00e2\u20ac\u201d override libSceAmpr.sprx at runtime."
+  },
+  {
+    "name": "APR Emu Updater",
     "filename": "apr_emu_updater_v1.5.0.elf",
     "version": "v1.5.0",
     "url": "https://github.com/tsuramatsu1/apr-emu-updater/releases/download/v1.5.0/apr_emu_updater.elf",

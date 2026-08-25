@@ -1,0 +1,13 @@
+[
+  {
+    "name": "Fan Target 65\u00c2\u00b0C",
+    "filename": "fan-target_0.1.zip",
+    "version": "0.1",
+    "url": "https://github.com/drakmor/fan_target/releases/download/0.1/fan-target.zip",
+    "checksum": "6006a16f6862829d2c0a6dcf686e593c717fe3792d838ad79d298aa58d4b3c75",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-08-04",
+    "description": "PS5 fan controller \u00e2\u20ac\u201d maintains 65\u00c2\u00b0C target temperature. Maximum cooling, loudest fans."
+  }
+]

@@ -22,7 +22,6 @@ import sys
 import argparse
 
 # --------------- configuration ---------------
-MAX_EXPERIMENTAL = 2
 MAX_OLDER_STABLE = 2
 INCLUDE_EXPERIMENTAL = True
 
@@ -181,8 +180,8 @@ def main():
 
         print(f"\n--- {name} ({owner}/{repo}) ---")
         releases = list_releases(owner, repo)
-        if len(releases) < 2:
-            print(f"  {len(releases)} release(s), skipping")
+        if not releases:
+            print("  0 releases, skipping")
             continue
 
         releases.sort(key=lambda r: r.get('published_at', ''), reverse=True)
@@ -199,22 +198,18 @@ def main():
 
         picks = []
 
+        picks.append((releases[latest_idx], 'stable'))
+
         if include_exp:
-            n = 0
             for i in range(latest_idx):
-                if releases[i].get('prerelease') and n < MAX_EXPERIMENTAL:
+                if releases[i].get('prerelease'):
                     picks.append((releases[i], 'experimental'))
-                    n += 1
 
         n = 0
         for i in range(latest_idx + 1, len(releases)):
             if not releases[i].get('prerelease') and n < MAX_OLDER_STABLE:
                 picks.append((releases[i], 'stable'))
                 n += 1
-
-        if not picks:
-            print("  no additional versions")
-            continue
 
         slug = slugify(name)
         ap_val = entry.get('asset_pattern')

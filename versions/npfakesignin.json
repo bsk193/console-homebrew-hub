@@ -1,6 +1,16 @@
 [
   {
     "name": "NPFakeSignIn",
+    "filename": "np-fake-signin-ps5_1.1.elf",
+    "version": "1.1",
+    "url": "https://github.com/earthonion/np-fake-signin/releases/download/1.1/np-fake-signin-ps5.elf",
+    "checksum": "6a38ee251b2252ae6752bf23f4f22d970d449731cfe69c1f513f18670efd5314",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-02-02"
+  },
+  {
+    "name": "NPFakeSignIn",
     "filename": "np-fake-signin-ps5_1.0.elf",
     "version": "1.0",
     "url": "https://github.com/earthonion/np-fake-signin/releases/download/1.0/np-fake-signin-ps5.elf",

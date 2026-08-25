@@ -1,6 +1,16 @@
 [
   {
     "name": "PS5 App Dumper",
+    "filename": "ps5-app-dumper_v1.11.elf",
+    "version": "v1.11",
+    "url": "https://github.com/EchoStretch/ps5-app-dumper/releases/download/v1.11/ps5-app-dumper.elf",
+    "checksum": "18483751ebaea6879b020a9dd87c0a4fb4f1bf09f3708d950362a483f78cc0d0",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-07-28"
+  },
+  {
+    "name": "PS5 App Dumper",
     "filename": "ps5-app-dumper_v1.10.elf",
     "version": "v1.10",
     "url": "https://github.com/EchoStretch/ps5-app-dumper/releases/download/v1.10/ps5-app-dumper.elf",

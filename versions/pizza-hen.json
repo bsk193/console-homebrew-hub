@@ -1,6 +1,17 @@
 [
   {
     "name": "PIZZA-HEN",
+    "filename": "PIZZA-HEN-v2.00.elf",
+    "version": "v2.00",
+    "url": "https://github.com/Michele-M-Media/PIZZA-HEN/releases/download/v2.00/PIZZA-HEN-v2.00.elf",
+    "checksum": "8535d399612d61c50a528b2ae416f2fc3ccfb7480296df99c17302583fb3e345",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-08-24",
+    "description": "All-in-one PS5 homebrew environment with KStuff, FTP, ps5debug-NG, plugin manager, and Itemzflow integration."
+  },
+  {
+    "name": "PIZZA-HEN",
     "filename": "PIZZA-HEN-v1.0.elf",
     "version": "v1.0",
     "url": "https://github.com/Michele-M-Media/PIZZA-HEN/releases/download/v1.0/PIZZA-HEN-v1.0.elf",

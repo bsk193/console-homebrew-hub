@@ -1,6 +1,16 @@
 [
   {
     "name": "klogsrv",
+    "filename": "klogsrv-ps5_v0.9.elf",
+    "version": "v0.9",
+    "url": "https://github.com/ps5-payload-dev/klogsrv/releases/download/v0.9/klogsrv-ps5.elf",
+    "checksum": "e828ec144231f81547cb58bc7d2c396fa984be0c2295f31364b58017816dcceb",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-08-02"
+  },
+  {
+    "name": "klogsrv",
     "filename": "klogsrv-ps5_v0.8.elf",
     "version": "v0.8",
     "url": "https://github.com/ps5-payload-dev/klogsrv/releases/download/v0.8/klogsrv-ps5.elf",

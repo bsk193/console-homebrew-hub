@@ -1,6 +1,16 @@
 [
   {
     "name": "elfldr",
+    "filename": "elfldr-ps5_v0.25.elf",
+    "version": "v0.25",
+    "url": "https://github.com/ps5-payload-dev/elfldr/releases/download/v0.25/elfldr-ps5.elf",
+    "checksum": "de70a47e6d099dc03718c33c158a727f1340c3b5310155618c5049ab0fb41754",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-08-22"
+  },
+  {
+    "name": "elfldr",
     "filename": "elfldr-ps5_v0.24.elf",
     "version": "v0.24",
     "url": "https://github.com/ps5-payload-dev/elfldr/releases/download/v0.24/elfldr-ps5.elf",

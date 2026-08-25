@@ -1,6 +1,16 @@
 [
   {
     "name": "PS5Upload",
+    "filename": "ps5upload-5.4.19.elf",
+    "version": "v5.4.19",
+    "url": "https://github.com/phantomptr/ps5upload/releases/download/v5.4.19/ps5upload-5.4.19.elf",
+    "checksum": "33665dd87ede0dd020522222e9240405bac5036157132ba5fa92624378f94c7c",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-08-24"
+  },
+  {
+    "name": "PS5Upload",
     "filename": "ps5upload-5.4.17.elf",
     "version": "v5.4.17",
     "url": "https://github.com/phantomptr/ps5upload/releases/download/v5.4.17/ps5upload-5.4.17.elf",

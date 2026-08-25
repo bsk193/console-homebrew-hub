@@ -1,6 +1,16 @@
 [
   {
     "name": "nanoDNS",
+    "filename": "nanodns_0.4.elf",
+    "version": "0.4",
+    "url": "https://github.com/drakmor/nanoDNS/releases/download/0.4/nanodns.elf",
+    "checksum": "dcb845f3570771275b22b37534bf924a7f8ae219fb91ef00c6bccab85d1c2420",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-08-04"
+  },
+  {
+    "name": "nanoDNS",
     "filename": "nanodns_0.3.elf",
     "version": "0.3",
     "url": "https://github.com/drakmor/nanoDNS/releases/download/0.3/nanodns.elf",

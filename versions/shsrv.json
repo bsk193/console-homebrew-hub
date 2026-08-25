@@ -1,6 +1,16 @@
 [
   {
     "name": "shsrv",
+    "filename": "shsrv-ps5_v0.20.elf",
+    "version": "v0.20",
+    "url": "https://github.com/ps5-payload-dev/shsrv/releases/download/v0.20/shsrv-ps5.elf",
+    "checksum": "fa4ccb2587bb61be317df0d001f668b17ebf9b4aafad87acf691b1fb8da0bd2d",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-08-02"
+  },
+  {
+    "name": "shsrv",
     "filename": "shsrv-ps5_v0.19.elf",
     "version": "v0.19",
     "url": "https://github.com/ps5-payload-dev/shsrv/releases/download/v0.19/shsrv-ps5.elf",

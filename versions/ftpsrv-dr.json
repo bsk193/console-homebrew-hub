@@ -1,6 +1,16 @@
 [
   {
     "name": "ftpsrv DR",
+    "filename": "ftpsrv-ps5_1.15-ng-stable.elf",
+    "version": "1.15-ng-stable",
+    "url": "https://github.com/drakmor/ftpsrv/releases/download/1.15-ng-stable/ftpsrv-ps5.elf",
+    "checksum": "913a443af847b6861ec11748e2640f62d1fc1027076f576aa0ddccab8507311f",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-04-08"
+  },
+  {
+    "name": "ftpsrv DR",
     "filename": "ftpsrv-ps5_1.6-ng-test2.elf",
     "version": "1.6-ng-test2",
     "url": "https://github.com/drakmor/ftpsrv/releases/download/1.6-ng-test2/ftpsrv-ps5.elf",

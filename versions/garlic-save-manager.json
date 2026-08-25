@@ -1,6 +1,16 @@
 [
   {
     "name": "Garlic Save Manager",
+    "filename": "garlic-savemgr_v1.7.elf",
+    "version": "v1.7",
+    "url": "https://github.com/earthonion/garlic-savemgr/releases/download/v1.7/garlic-savemgr.elf",
+    "checksum": "124051ab3a762474720ae53187d2920bc96d6be1d69aa298e715667efc385a2f",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-03-16"
+  },
+  {
+    "name": "Garlic Save Manager",
     "filename": "garlic-savemgr_v1.6b.elf",
     "version": "v1.6b",
     "url": "https://github.com/earthonion/garlic-savemgr/releases/download/v1.6b/garlic-savemgr.elf",
