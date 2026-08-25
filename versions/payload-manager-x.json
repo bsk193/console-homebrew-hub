@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Payload Manager X",
+    "filename": "pldmgrx_v0.5.1.6x.elf",
+    "version": "v0.5.1.6x",
+    "url": "https://github.com/bsk193/ps5-payload-manager-x/releases/download/v0.5.1.6x/pldmgrx_v0.5.1.6x.elf",
+    "checksum": "6906b4bab98969e560a196f2ba0ea10ba033a6c0f5bb6a2ecb1d426ddd8ded8f",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-08-25"
+  },
+  {
+    "name": "Payload Manager X",
+    "filename": "pldmgrx_v0.5.1.5x.elf",
+    "version": "v0.5.1.5x",
+    "url": "https://github.com/bsk193/ps5-payload-manager-x/releases/download/v0.5.1.5x/pldmgrx_v0.5.1.5x.elf",
+    "checksum": "001836f4564e7f3fff8816e9ee0cadd77c0c352018483c486745acb0a5421e58",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-08-24"
+  }
+]

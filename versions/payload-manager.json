@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Payload Manager",
+    "filename": "pldmgr_v0.5.0.elf",
+    "version": "v0.5.0",
+    "url": "https://github.com/itsPLK/ps5-payload-manager/releases/download/v0.5.0/pldmgr_v0.5.0.elf",
+    "checksum": "1fe181908027fc625147ac888288ed1bee72a378b4751d36a8a8e0582d306169",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-07-21"
+  },
+  {
+    "name": "Payload Manager",
+    "filename": "pldmgr_v0.4.2.elf",
+    "version": "v0.4.2",
+    "url": "https://github.com/itsPLK/ps5-payload-manager/releases/download/v0.4.2/pldmgr_v0.4.2.elf",
+    "checksum": "ed6039f1f62a9de5016721e003a11da001a09695718e5b893424d9af0a5d56a2",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-07-20"
+  }
+]

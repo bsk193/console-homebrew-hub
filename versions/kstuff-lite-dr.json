@@ -1,0 +1,32 @@
+[
+  {
+    "name": "KStuff Lite DR",
+    "filename": "kstuff_1.2-dr-test2.elf",
+    "version": "1.2-dr-test2",
+    "url": "https://github.com/drakmor/kstuff-lite/releases/download/1.2-dr-test2/kstuff.elf",
+    "checksum": "2b699d411079a21dba7c39a02993fc0fb21e52f434103e884a0c892fafe56b75",
+    "channel": "experimental",
+    "category": "Utilities",
+    "last_update": "2026-06-11"
+  },
+  {
+    "name": "KStuff Lite DR",
+    "filename": "kstuff_1.1-dr.elf",
+    "version": "1.1-dr",
+    "url": "https://github.com/drakmor/kstuff-lite/releases/download/1.1-dr/kstuff.elf",
+    "checksum": "59d780c9095cda04b148da3d537e857059784b0ea43fc4646082f27aaeb7fa09",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-03-29"
+  },
+  {
+    "name": "KStuff Lite DR",
+    "filename": "kstuff_1.1-dr-beta6.elf",
+    "version": "1.1-dr-beta6",
+    "url": "https://github.com/drakmor/kstuff-lite/releases/download/1.1-dr-beta6/kstuff.elf",
+    "checksum": "c4eb96b6ef909df977484045c505d410277dbd1f541fd4b64ed9e85ae54ebe51",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-03-21"
+  }
+]

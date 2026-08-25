@@ -1,0 +1,42 @@
+[
+  {
+    "name": "ftpsrv DR",
+    "filename": "ftpsrv-ps5_1.6-ng-test2.elf",
+    "version": "1.6-ng-test2",
+    "url": "https://github.com/drakmor/ftpsrv/releases/download/1.6-ng-test2/ftpsrv-ps5.elf",
+    "checksum": "6364e0529416f400be123c52acdcda68efd5179d971c060286022131fd047b8e",
+    "channel": "experimental",
+    "category": "Utilities",
+    "last_update": "2026-06-03"
+  },
+  {
+    "name": "ftpsrv DR",
+    "filename": "ftpsrv-ps5_1.16-ng-test1.elf",
+    "version": "1.16-ng-test1",
+    "url": "https://github.com/drakmor/ftpsrv/releases/download/1.16-ng-test1/ftpsrv-ps5.elf",
+    "checksum": "1eb52ed530d8441686e108b4abc0785f6e124c974f3d522d5c7b08b94a927bf9",
+    "channel": "experimental",
+    "category": "Utilities",
+    "last_update": "2026-04-18"
+  },
+  {
+    "name": "ftpsrv DR",
+    "filename": "ftpsrv-ps5_1.15-ng-beta9.elf",
+    "version": "1.15-ng-beta9",
+    "url": "https://github.com/drakmor/ftpsrv/releases/download/1.15-ng-beta9/ftpsrv-ps5.elf",
+    "checksum": "cddb7b2951949ae1a92b0aeb5c08b73e18450569dd16c21aa88d2754464a805a",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-03-24"
+  },
+  {
+    "name": "ftpsrv DR",
+    "filename": "ftpsrv-ps5_1.15-ng-beta8.elf",
+    "version": "1.15-ng-beta8",
+    "url": "https://github.com/drakmor/ftpsrv/releases/download/1.15-ng-beta8/ftpsrv-ps5.elf",
+    "checksum": "e033fb02371ed45b42cb07b5979b490d1938af19229fd73e883ebf4cbfad2520",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-01-16"
+  }
+]

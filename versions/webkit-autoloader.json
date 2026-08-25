@@ -1,0 +1,24 @@
+[
+  {
+    "name": "WebKit Autoloader",
+    "filename": "webkit-autoloader-installer_v0.3.1.elf",
+    "version": "v0.3.1",
+    "url": "https://github.com/itsPLK/ps5-webkit-autoloader/releases/download/v0.3.1/webkit-autoloader-installer_v0.3.1.elf",
+    "checksum": "69beea7c4460d283606889f7ae1685f32e8fb7203274c279eeefa97fe4f1eb17",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-08-19",
+    "description": "PS5 WebKit exploit autoloader installer ELF by itsPLK."
+  },
+  {
+    "name": "WebKit Autoloader",
+    "filename": "webkit-autoloader-installer_v0.3.0.elf",
+    "version": "v0.3.0",
+    "url": "https://github.com/itsPLK/ps5-webkit-autoloader/releases/download/v0.3.0/webkit-autoloader-installer_v0.3.0.elf",
+    "checksum": "0d4ca326cdb060a00e12b904ce46e9e3a0b935f44f261c2d63f2a0a6d7f98d57",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-08-14",
+    "description": "PS5 WebKit exploit autoloader installer ELF by itsPLK."
+  }
+]

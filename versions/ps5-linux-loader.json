@@ -1,0 +1,26 @@
+[
+  {
+    "name": "PS5 Linux Loader",
+    "filename": "ps5-linux-loader_v2.3.elf",
+    "version": "v2.3",
+    "url": "https://github.com/ps5-linux/ps5-linux-loader/releases/download/v2.3/ps5-linux-loader.elf",
+    "checksum": "0723b5d5e09120861023e91780d9ec345a3aa2f32c8a17fdfb3a60a9e934e8a5",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-07-01",
+    "min_fw": "3.00",
+    "max_fw": "7.61"
+  },
+  {
+    "name": "PS5 Linux Loader",
+    "filename": "ps5-linux-loader_v2.2.elf",
+    "version": "v2.2",
+    "url": "https://github.com/ps5-linux/ps5-linux-loader/releases/download/v2.2/ps5-linux-loader.elf",
+    "checksum": "ec64491c0c8f559244709fbd6a1d6d0c43a402e40502c40ddccbd1722f376338",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-06-30",
+    "min_fw": "3.00",
+    "max_fw": "7.61"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "name": "KStuff Lite",
+    "filename": "kstuff_v1.09.elf",
+    "version": "v1.09",
+    "url": "https://github.com/EchoStretch/kstuff-lite/releases/download/v1.09/kstuff.elf",
+    "checksum": "ec5212794dc6e44ee8e70fd0549abec6d3dac8c3e03ddbeafd9f869ffe97d4e8",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-07-04"
+  },
+  {
+    "name": "KStuff Lite",
+    "filename": "kstuff_v1.08.elf",
+    "version": "v1.08",
+    "url": "https://github.com/EchoStretch/kstuff-lite/releases/download/v1.08/kstuff.elf",
+    "checksum": "17294fb95736b9871457c255c0fa2ce2fc2c0401f5cc5b26abd077393b018361",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-06-28"
+  }
+]

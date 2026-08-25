@@ -1,0 +1,41 @@
+name: Automated Pegasus Catalog
+
+on:
+  schedule:
+    - cron: '30 0 * * *' # Daily at 00:30 UTC (after mirror update)
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: 'HTTP base URL of the PKG server'
+        required: false
+        default: 'http://192.168.1.161:8090/'
+
+permissions:
+  contents: write
+
+jobs:
+  update-catalog:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Generate Pegasus catalog
+        run: |
+          BASE_URL="${{ github.event.inputs.base_url || 'http://192.168.1.161:8090/' }}"
+          python tools/make_pegasus_catalog.py "$BASE_URL" catalog.json
+
+      - name: Commit and Push catalog.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add catalog.json
+          git diff --cached --quiet && echo "No changes to commit" && exit 0
+          git commit -m "Auto-update pegasus catalog"
+          git pull --rebase origin main
+          git push

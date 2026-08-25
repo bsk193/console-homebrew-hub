@@ -1,0 +1,22 @@
+[
+  {
+    "name": "BFpilot Installer",
+    "filename": "bfpilot-launcher-installer_v0.4.3.elf",
+    "version": "v0.4.3",
+    "url": "https://github.com/ItsBlurf/BFpilot/releases/download/v0.4.3/bfpilot-launcher-installer.elf",
+    "checksum": "c79f65be428b6eefcc0df6e8c788111a3f477da3a71305c057e74d6cceab484c",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-07-27"
+  },
+  {
+    "name": "BFpilot Installer",
+    "filename": "bfpilot-launcher-installer_v0.4.1.elf",
+    "version": "v0.4.1",
+    "url": "https://github.com/ItsBlurf/BFpilot/releases/download/v0.4.1/bfpilot-launcher-installer.elf",
+    "checksum": "a9e955b70f3e9425b76db70c7791e5386997ff4d0f59d0ceb820d5eaaf0d7f56",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-07-17"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "name": "websrv",
+    "filename": "websrv-ps5_v0.33.elf",
+    "version": "v0.33",
+    "url": "https://github.com/ps5-payload-dev/websrv/releases/download/v0.33/websrv-ps5.elf",
+    "checksum": "4676a40ac4c7ca1adeb04980efa48dd33a8961446b42e6a12abfcbe96090c8ac",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-06-28"
+  },
+  {
+    "name": "websrv",
+    "filename": "websrv-ps5_v0.32.elf",
+    "version": "v0.32",
+    "url": "https://github.com/ps5-payload-dev/websrv/releases/download/v0.32/websrv-ps5.elf",
+    "checksum": "8dd24df100bff6db156e86bdf9380d5c0fcd2a680c2b08f5c87380d5007190c5",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-05-25"
+  }
+]

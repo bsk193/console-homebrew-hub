@@ -1,0 +1,22 @@
+[
+  {
+    "name": "zftpd",
+    "filename": "zftpd-ps5-v1.4.0.elf",
+    "version": "v1.4.0",
+    "url": "https://github.com/seregonwar/zftpd/releases/download/v1.4.0/zftpd-ps5-v1.4.0.elf",
+    "checksum": "6d4559e0507ce4e6551e7c81af6bedb98863d28ff5694e76b3f7f94e38b82a96",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-03-11"
+  },
+  {
+    "name": "zftpd",
+    "filename": "zftpd-ps5-v1.4.0_v1.3.0.elf",
+    "version": "v1.3.0",
+    "url": "https://github.com/seregonwar/zftpd/releases/download/v1.3.0/zftpd-ps5-v1.4.0.elf",
+    "checksum": "6d4559e0507ce4e6551e7c81af6bedb98863d28ff5694e76b3f7f94e38b82a96",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-02-28"
+  }
+]

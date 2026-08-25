@@ -1,0 +1,22 @@
+[
+  {
+    "name": "PegasusDL",
+    "filename": "pegasus_dl_v1.6.0.elf",
+    "version": "v1.6.0",
+    "url": "https://github.com/pegasus-ps5/pegasus-dl/releases/download/v1.6.0/pegasus_dl.elf",
+    "checksum": "29b62ef5004729af92a40caeeb956c6fd2c1a795079317a4e3285599a641a89e",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-06-21"
+  },
+  {
+    "name": "PegasusDL",
+    "filename": "pegasus_dl_v1.5.0.elf",
+    "version": "v1.5.0",
+    "url": "https://github.com/pegasus-ps5/pegasus-dl/releases/download/v1.5.0/pegasus_dl.elf",
+    "checksum": "d48b96e93a5d47324bd1adc79ae834009c297fdb5759a136552158ef5e2a1ab6",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-06-19"
+  }
+]

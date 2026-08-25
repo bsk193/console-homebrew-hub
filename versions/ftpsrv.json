@@ -1,0 +1,22 @@
+[
+  {
+    "name": "ftpsrv",
+    "filename": "ftpsrv-ps5_v0.21.elf",
+    "version": "v0.21",
+    "url": "https://github.com/ps5-payload-dev/ftpsrv/releases/download/v0.21/ftpsrv-ps5.elf",
+    "checksum": "c580f0534ac6349dc5a4a5c656eaced537b4c2b18da51886d943cea6393436c8",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-08-02"
+  },
+  {
+    "name": "ftpsrv",
+    "filename": "ftpsrv-ps5_v0.20.elf",
+    "version": "v0.20",
+    "url": "https://github.com/ps5-payload-dev/ftpsrv/releases/download/v0.20/ftpsrv-ps5.elf",
+    "checksum": "8f305a959fb9d70fd8d52ba88409e0d5a1632e83d4ecdd38646a0a33e54089da",
+    "channel": "stable",
+    "category": "Utilities",
+    "last_update": "2026-05-12"
+  }
+]
