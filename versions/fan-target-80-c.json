@@ -1,10 +1,10 @@
 [
   {
     "name": "Fan Target 80\u00c2\u00b0C",
-    "filename": "fan-target_0.1.zip",
+    "filename": "fan-target_0.1.elf",
     "version": "0.1",
-    "url": "https://github.com/drakmor/fan_target/releases/download/0.1/fan-target.zip",
-    "checksum": "6006a16f6862829d2c0a6dcf686e593c717fe3792d838ad79d298aa58d4b3c75",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/fan-target_0.1.elf",
+    "checksum": "0bedeb564947530d09d1dfb27df63c2a09eaa7f51faf3ddcc90b3fb2870e6312",
     "channel": "stable",
     "category": "Utilities",
     "last_update": "2026-08-04",

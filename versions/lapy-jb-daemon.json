@@ -3,7 +3,7 @@
     "name": "Lapy JB Daemon",
     "filename": "lapy_jb_daemon-v1.2.elf",
     "version": "v1.2",
-    "url": "https://github.com/itsPLK/PS5-Lapy-JB-Daemon/releases/download/v1.2/lapy_jb_daemon-v1.2.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/lapy_jb_daemon-v1.2.elf",
     "checksum": "13559b858fc33cc7fa3dc89e10dccf139070d99ee5d378dd75c969293700799e",
     "channel": "stable",
     "category": "Utilities",

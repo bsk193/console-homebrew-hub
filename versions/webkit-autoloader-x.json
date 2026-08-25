@@ -3,7 +3,7 @@
     "name": "WebKit Autoloader X",
     "filename": "webkit-autoloader-x-installer_v0.4.0.3x.elf",
     "version": "v0.4.0.3x",
-    "url": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases/download/v0.4.0.3x/webkit-autoloader-x-installer_v0.4.0.3x.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/webkit-autoloader-x-installer_v0.4.0.3x.elf",
     "checksum": "707439e0d3cb44fe9d9ba9dce3efe35970be569fd469f626667e9c2ec84603f3",
     "channel": "stable",
     "category": "Utilities",

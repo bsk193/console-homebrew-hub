@@ -3,7 +3,7 @@
     "name": "BackPork",
     "filename": "ps5-backpork_0.1.elf",
     "version": "0.1",
-    "url": "https://github.com/BestPig/BackPork/releases/download/0.1/ps5-backpork.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5-backpork_0.1.elf",
     "checksum": "d74e4cd119b2bb1fd423f2f5b1c9a7f096b3e588c753af1ab48b983d56216a52",
     "channel": "stable",
     "category": "Utilities",
