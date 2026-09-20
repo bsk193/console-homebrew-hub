@@ -189,7 +189,6 @@ def load_cache():
 
 
 def save_cache(cache):
-    os.makedirs(VERSIONS_DIR, exist_ok=True)
     with open(CACHE_FILE, 'w') as f:
         json.dump(cache, f, indent=2)
 
