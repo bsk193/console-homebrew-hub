@@ -519,5 +519,18 @@
     "release_date": "2025-12-25",
     "version": "2.5B",
     "checksum": "4845cac45095361b8983b14d6690622183b0dcfbf6d7fda16e161aa91ff0531e"
+  },
+  {
+    "name": "PKG Manager",
+    "filename": "pkgmgr_v1.0.0.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/pkgmgr_v1.0.0.elf",
+    "source": "https://github.com/itsPLK/ps5-pkg-manager/releases",
+    "source_direct": "https://github.com/itsPLK/ps5-pkg-manager/releases/download/v1.0.0/pkgmgr_v1.0.0.elf",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-09-17",
+    "release_date": "2026-09-17",
+    "version": "v1.0.0",
+    "checksum": "51d3f13a91d007019f3262e1bd8ccc8ba3cbea6b1b6534b8e86df6bd2e0efb4b"
   }
 ]
