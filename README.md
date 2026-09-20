@@ -58,6 +58,7 @@ The GitHub Actions `update_mirror.yml` workflow runs this daily automatically.
 
 | Payload | Version | FW Range | Description | Last Updated | Source | Download |
 | --- | --- | --- | --- | --- | --- | --- |
+| **A53 PPR** | `v20.09` | `11.60+` | A53 PPR payload for PS5 firmware 11.60. | `2026-09-20` | [Source]() | [Download](https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/a53-ppr-v20.09.elf) |
 | **APR Emu Updater** | `v1.5.1` | `—` | Manages APR Emu versions per-game via web dashboard — override libSceAmpr.sprx at runtime. | `2026-08-24` | [Source](https://github.com/tsuramatsu1/apr-emu-updater/releases) | [Download](https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/apr_emu_updater_v1.5.1.elf) |
 | **BackPork** | `0.1` | `—` | No description provided. | `2026-04-30` | [Source](https://github.com/BestPig/BackPork/releases) | [Download](https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5-backpork_0.1.elf) |
 | **BFpilot** | `v0.4.4` | `—` | No description provided. | `2026-08-11` | [Source](https://github.com/ItsBlurf/BFpilot/releases) | [Download](https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/bfpilot_v0.4.4.elf) |
@@ -77,6 +78,7 @@ The GitHub Actions `update_mirror.yml` workflow runs this daily automatically.
 | **KStuff** | `v1.6.7` | `—` | No description provided. | `2026-01-04` | [Source](https://github.com/EchoStretch/kstuff/releases) | [Download](https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/kstuff_v1.6.7.elf) |
 | **KStuff Lite** | `v1.11` | `—` | No description provided. | `2026-09-20` | [Source](https://github.com/EchoStretch/kstuff-lite/releases) | [Download](https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/kstuff_v1.11.elf) |
 | **KStuff Lite DR** | `1.2-dr-test1` | `—` | No description provided. | `2026-05-31` | [Source](https://github.com/drakmor/kstuff-lite/releases) | [Download](https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/kstuff_1.2-dr-test1.elf) |
+| **KStuff Lite DR FPKG** | `v1.12-fpkg-dr-test9` | `—` | KStuff Lite DR FPKG test build for PS5. | `2026-09-20` | [Source]() | [Download](https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/kstuff-lite-v1.12-fpkg-dr-test9.elf) |
 | **Kura Loader** | `v1.6.50` | `—` | All-in-one PS5 payload: PKG installer, game dumper, cheats engine (1500+ cheats), save manager, fan control, ShadowMountPlus integration, web dashboard | `2026-09-02` | [Source](https://github.com/NookieAI/kura/releases) | [Download](https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/kura-loader_v1.6.50.elf) |
 | **Lapy JB Daemon** | `v1.2` | `—` | No description provided. | `2026-06-01` | [Source](https://github.com/itsPLK/PS5-Lapy-JB-Daemon/releases) | [Download](https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/lapy_jb_daemon-v1.2.elf) |
 | **nanoDNS** | `0.4` | `—` | No description provided. | `2026-08-04` | [Source](https://github.com/drakmor/nanoDNS/releases) | [Download](https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/nanodns_0.4.elf) |
