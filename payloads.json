@@ -36,7 +36,7 @@
     "last_update": "2026-09-20",
     "release_date": "2026-09-20",
     "version": "v1.11",
-    "checksum": "ea14edbfe18ddc04f10dc09c4b1bf0c26e95b34a115a797722d6eda6298769c7"
+    "checksum": "ac5dd04e124ffb555a672326adf727596068c60ccef83ca88902efc625a36ce6"
   },
   {
     "name": "ftpsrv DR",
@@ -50,6 +50,20 @@
     "release_date": "2026-09-20",
     "version": "1.16-ng-stable",
     "checksum": "f19ae469b25453a7a4af4529527521d31f143100f18a2c6839666e7121c8bd32"
+  },
+  {
+    "name": "Spectrum Library",
+    "filename": "SpectrumLibrary_1.4.6.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/SpectrumLibrary_1.4.6.elf",
+    "source": "https://github.com/Phoenixx1202/Spectrum-Library/releases",
+    "source_direct": "https://github.com/Phoenixx1202/Spectrum-Library/releases/download/1.4.6/SpectrumLibrary_1.4.6.elf",
+    "asset_pattern": "SpectrumLibrary.*\\.elf",
+    "category": "Utilities",
+    "description": "PS5 content manager \u2014 browse game library with DPI support, FPKG install, and cover art.",
+    "last_update": "2026-09-19",
+    "release_date": "2026-09-19",
+    "version": "1.4.6",
+    "checksum": "73dd3f3938867ac970207ae8e4093e2d0c5b005bcad1ff9ff2aeb5d34294a161"
   },
   {
     "name": "PegasusDL",
@@ -110,6 +124,20 @@
     "checksum": "8bac520b2b99dcda8109838884380605736d8b1c23793754250bcef00536b6ab"
   },
   {
+    "name": "ProsperoTV",
+    "filename": "PPSA99003_01.000.002.ffpfsc",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/PPSA99003_01.000.002.ffpfsc",
+    "source": "https://github.com/blackbearreloaded/ProsperoTV/releases",
+    "source_direct": "https://github.com/blackbearreloaded/ProsperoTV/releases/download/01.000.002/PPSA99003.ffpfsc",
+    "asset_pattern": "^PPSA99003\\.ffpfsc$",
+    "category": "Utilities",
+    "description": "Native IPTV client for PS5 with hardware H.264/HEVC/VP9 decoding.",
+    "last_update": "2026-08-30",
+    "release_date": "2026-08-30",
+    "version": "01.000.002",
+    "checksum": "ad7244924485313c1fdd7ca05e12d96fb7da0b03105eb21e4820bcd62cbaa05c"
+  },
+  {
     "name": "elfldr",
     "filename": "elfldr-ps5_v0.26.elf",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/elfldr-ps5_v0.26.elf",
@@ -134,6 +162,20 @@
     "release_date": "2026-08-25",
     "version": "v0.5.1.8x",
     "checksum": "4bdb75ea40e0d21cfcd74a3ba16d86c2c85d7cc36ccd21bb3fd33bf3e4bbd213"
+  },
+  {
+    "name": "ProsperoMgr",
+    "filename": "ProsperoMgr.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ProsperoMgr.elf",
+    "source": "https://github.com/notmaj0r/ProsperoMgr/releases",
+    "source_direct": "https://github.com/notmaj0r/ProsperoMgr/releases/download/beta/ProsperoMgr.elf",
+    "asset_pattern": "^ProsperoMgr\\.elf$",
+    "category": "Utilities",
+    "description": "Web-based all-in-one homebrew manager for PS5 \u2014 serves UI on port 7070.",
+    "last_update": "2026-08-25",
+    "release_date": "2026-08-25",
+    "version": "beta",
+    "checksum": ""
   },
   {
     "name": "WebKit Autoloader",
@@ -217,6 +259,20 @@
     "release_date": "2026-08-20",
     "version": "v0.21.1",
     "checksum": "7d4b31c83eae4e056580482a3a074e1db25922efc74ac1e439473b45d71a5938"
+  },
+  {
+    "name": "ps-patch-system",
+    "filename": "patch-bundle-loader-prospero.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/patch-bundle-loader-prospero.elf",
+    "source": "https://github.com/illusionyy/ps-patch-system/releases",
+    "source_direct": "https://github.com/illusionyy/ps-patch-system/releases/download/32151111844/patch-bundle-loader-prospero.elf",
+    "asset_pattern": "^patch-bundle-loader-prospero\\.elf$",
+    "category": "Utilities",
+    "description": "App patching system for PS4/PS5 \u2014 web dashboard for managing game patches. PS5 loader ELF.",
+    "last_update": "2026-08-18",
+    "release_date": "2026-08-18",
+    "version": "32151111844",
+    "checksum": "8300db1e4d5e2004534c534c6154f8bf3eb8e12f02f443b0bf68f12bc695a025"
   },
   {
     "name": "BFpilot",
@@ -390,6 +446,20 @@
     "checksum": "c79f65be428b6eefcc0df6e8c788111a3f477da3a71305c057e74d6cceab484c"
   },
   {
+    "name": "Porkfolio",
+    "filename": "Porkfolio-1.0.9-portable.exe",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/Porkfolio-1.0.9-portable.exe",
+    "source": "https://github.com/StonedModder/Porkfolio/releases",
+    "source_direct": "https://github.com/StonedModder/Porkfolio/releases/download/v1.0.9/Porkfolio-1.0.9-portable.exe",
+    "asset_pattern": "Porkfolio.*portable\\.exe",
+    "category": "Desktop",
+    "description": "Desktop companion app for PS5 management \u2014 Windows, macOS, Linux (Electron).",
+    "last_update": "2026-07-12",
+    "release_date": "2026-07-12",
+    "version": "v1.0.9",
+    "checksum": "8fb47b0e82985795cac9a54e2216ba3f9016e9b7f0029d1878c7da753a3e02c1"
+  },
+  {
     "name": "ELFArsenal",
     "filename": "elf-arsenal_v1.6.22.elf",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/elf-arsenal_v1.6.22.elf",
@@ -532,75 +602,5 @@
     "release_date": "2025-12-25",
     "version": "2.5B",
     "checksum": "4845cac45095361b8983b14d6690622183b0dcfbf6d7fda16e161aa91ff0531e"
-  },
-  {
-    "name": "Spectrum Library",
-    "filename": "SpectrumLibrary_1.4.6.elf",
-    "url": "https://github.com/Phoenixx1202/Spectrum-Library/releases/download/1.4.6/SpectrumLibrary_1.4.6.elf",
-    "source": "https://github.com/Phoenixx1202/Spectrum-Library/releases",
-    "source_direct": "https://github.com/Phoenixx1202/Spectrum-Library/releases/download/1.4.6/SpectrumLibrary_1.4.6.elf",
-    "asset_pattern": "SpectrumLibrary.*\\.elf",
-    "category": "Utilities",
-    "description": "PS5 content manager — browse game library with DPI support, FPKG install, and cover art.",
-    "last_update": "2026-09-19",
-    "release_date": "2026-09-19",
-    "version": "1.4.6",
-    "checksum": ""
-  },
-  {
-    "name": "ps-patch-system",
-    "filename": "patch-bundle-loader-prospero.elf",
-    "url": "https://github.com/illusionyy/ps-patch-system/releases/download/32151111844/patch-bundle-loader-prospero.elf",
-    "source": "https://github.com/illusionyy/ps-patch-system/releases",
-    "source_direct": "https://github.com/illusionyy/ps-patch-system/releases/download/32151111844/patch-bundle-loader-prospero.elf",
-    "asset_pattern": "^patch-bundle-loader-prospero\\.elf$",
-    "category": "Utilities",
-    "description": "App patching system for PS4/PS5 — web dashboard for managing game patches. PS5 loader ELF.",
-    "last_update": "2026-08-18",
-    "release_date": "2026-08-18",
-    "version": "32151111844",
-    "checksum": ""
-  },
-  {
-    "name": "ProsperoMgr",
-    "filename": "ProsperoMgr.elf",
-    "url": "https://github.com/notmaj0r/ProsperoMgr/releases/download/beta/ProsperoMgr.elf",
-    "source": "https://github.com/notmaj0r/ProsperoMgr/releases",
-    "source_direct": "https://github.com/notmaj0r/ProsperoMgr/releases/download/beta/ProsperoMgr.elf",
-    "asset_pattern": "^ProsperoMgr\\.elf$",
-    "category": "Utilities",
-    "description": "Web-based all-in-one homebrew manager for PS5 — serves UI on port 7070.",
-    "last_update": "2026-08-25",
-    "release_date": "2026-08-25",
-    "version": "beta",
-    "checksum": ""
-  },
-  {
-    "name": "ProsperoTV",
-    "filename": "PPSA99003.ffpfsc",
-    "url": "https://github.com/blackbearreloaded/ProsperoTV/releases/download/01.000.004/PPSA99003.ffpfsc",
-    "source": "https://github.com/blackbearreloaded/ProsperoTV/releases",
-    "source_direct": "https://github.com/blackbearreloaded/ProsperoTV/releases/download/01.000.004/PPSA99003.ffpfsc",
-    "asset_pattern": "^PPSA99003\\.ffpfsc$",
-    "category": "Utilities",
-    "description": "Native IPTV client for PS5 with hardware H.264/HEVC/VP9 decoding.",
-    "last_update": "2026-08-31",
-    "release_date": "2026-08-31",
-    "version": "01.000.004",
-    "checksum": ""
-  },
-  {
-    "name": "Porkfolio",
-    "filename": "Porkfolio-1.0.9-portable.exe",
-    "url": "https://github.com/StonedModder/Porkfolio/releases/download/v1.0.9/Porkfolio-1.0.9-portable.exe",
-    "source": "https://github.com/StonedModder/Porkfolio/releases",
-    "source_direct": "https://github.com/StonedModder/Porkfolio/releases/download/v1.0.9/Porkfolio-1.0.9-portable.exe",
-    "asset_pattern": "Porkfolio.*portable\\.exe",
-    "category": "Desktop",
-    "description": "Desktop companion app for PS5 management — Windows, macOS, Linux (Electron).",
-    "last_update": "2026-07-12",
-    "release_date": "2026-07-12",
-    "version": "v1.0.9",
-    "checksum": ""
   }
 ]
