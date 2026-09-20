@@ -1,5 +1,102 @@
 [
   {
+    "name": "PS5Upload",
+    "filename": "ps5upload-5.30.0.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-5.30.0.elf",
+    "source": "https://github.com/phantomptr/ps5upload/releases",
+    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v5.30.0/ps5upload-5.30.0.elf",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-09-18",
+    "release_date": "2026-09-18",
+    "version": "v5.30.0",
+    "checksum": "5d459934a2e8dac8e1a21104db8c1632809d2f45bb2f9a5a0395317d44de32c8"
+  },
+  {
+    "name": "PKG Manager",
+    "filename": "pkgmgr_v1.0.0.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/pkgmgr_v1.0.0.elf",
+    "source": "https://github.com/itsPLK/ps5-pkg-manager/releases",
+    "source_direct": "https://github.com/itsPLK/ps5-pkg-manager/releases/download/v1.0.0/pkgmgr_v1.0.0.elf",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-09-17",
+    "release_date": "2026-09-17",
+    "version": "v1.0.0",
+    "checksum": "51d3f13a91d007019f3262e1bd8ccc8ba3cbea6b1b6534b8e86df6bd2e0efb4b"
+  },
+  {
+    "name": "PegasusDL",
+    "filename": "pegasus_dl_v1.9.0.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/pegasus_dl_v1.9.0.elf",
+    "source": "https://github.com/pegasus-ps5/pegasus-dl/releases",
+    "source_direct": "https://github.com/pegasus-ps5/pegasus-dl/releases/download/v1.9.0/pegasus_dl.elf",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-09-15",
+    "release_date": "2026-09-15",
+    "version": "v1.9.0",
+    "checksum": "6336c626f0fbdef1272cc5d4e0239d7b44bf40f8106679083cf50d4c8e02389b"
+  },
+  {
+    "name": "onionHEN",
+    "filename": "OnionHEN_v0.0.13.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/OnionHEN_v0.0.13.elf",
+    "source": "https://github.com/aydencharles/onionHEN/releases",
+    "source_direct": "https://github.com/aydencharles/onionHEN/releases/download/v0.0.13/OnionHEN.elf",
+    "asset_pattern": "OnionHEN\\.elf",
+    "category": "Utilities",
+    "min_fw": "4.03",
+    "max_fw": "12.70",
+    "description": "PS5 homebrew enabler based on etaHEN. Supports firmware 4.03\u201312.7.",
+    "last_update": "2026-09-11",
+    "release_date": "2026-09-11",
+    "version": "v0.0.13",
+    "checksum": "aa3f98847948e2ae8ea600c3f437e28247a0a4f8b73651a046d2859924bf97b3"
+  },
+  {
+    "name": "PS5 Linux Loader",
+    "filename": "ps5-linux-loader_v2.5.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5-linux-loader_v2.5.elf",
+    "source": "https://github.com/ps5-linux/ps5-linux-loader/releases",
+    "source_direct": "https://github.com/ps5-linux/ps5-linux-loader/releases/download/v2.5/ps5-linux-loader.elf",
+    "category": "Utilities",
+    "min_fw": "3.00",
+    "max_fw": "7.61",
+    "description": "",
+    "last_update": "2026-09-05",
+    "release_date": "2026-09-05",
+    "version": "v2.5",
+    "checksum": "9fc48733077145d1d204a4c9cdb879baaab1e711a604dd73af0dd4a807d6bc49"
+  },
+  {
+    "name": "Kura Loader",
+    "filename": "kura-loader_v1.6.50.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/kura-loader_v1.6.50.elf",
+    "source": "https://github.com/NookieAI/kura/releases",
+    "source_direct": "https://github.com/NookieAI/kura/releases/download/v1.6.50/kura-loader.elf",
+    "asset_pattern": "^kura-loader\\.elf$",
+    "category": "Utilities",
+    "description": "All-in-one PS5 payload: PKG installer, game dumper, cheats engine (1500+ cheats), save manager, fan control, ShadowMountPlus integration, web dashboard",
+    "last_update": "2026-09-02",
+    "release_date": "2026-09-02",
+    "version": "v1.6.50",
+    "checksum": "8bac520b2b99dcda8109838884380605736d8b1c23793754250bcef00536b6ab"
+  },
+  {
+    "name": "elfldr",
+    "filename": "elfldr-ps5_v0.26.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/elfldr-ps5_v0.26.elf",
+    "source": "https://github.com/ps5-payload-dev/elfldr/releases",
+    "source_direct": "https://github.com/ps5-payload-dev/elfldr/releases/download/v0.26/elfldr-ps5.elf",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-08-29",
+    "release_date": "2026-08-29",
+    "version": "v0.26",
+    "checksum": "ed6d587a057c09d6a95b2176e336d9ffc605e547ac56462128b029e47b8ccea1"
+  },
+  {
     "name": "Payload Manager X",
     "filename": "pldmgrx_v0.5.1.8x.elf",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/pldmgrx_v0.5.1.8x.elf",
@@ -41,19 +138,6 @@
     "checksum": "707439e0d3cb44fe9d9ba9dce3efe35970be569fd469f626667e9c2ec84603f3"
   },
   {
-    "name": "PS5Upload",
-    "filename": "ps5upload-5.4.19.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-5.4.19.elf",
-    "source": "https://github.com/phantomptr/ps5upload/releases",
-    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v5.4.19/ps5upload-5.4.19.elf",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-08-24",
-    "release_date": "2026-08-24",
-    "version": "v5.4.19",
-    "checksum": "33665dd87ede0dd020522222e9240405bac5036157132ba5fa92624378f94c7c"
-  },
-  {
     "name": "PIZZA-HEN",
     "filename": "PIZZA-HEN-v2.00.elf",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/PIZZA-HEN-v2.00.elf",
@@ -80,19 +164,6 @@
     "release_date": "2026-08-24",
     "version": "v1.5.1",
     "checksum": "42a0b98ed05eab7bdbfab30ea15ef2a55ddefa34f729861e7dfcfcb1ea74258f"
-  },
-  {
-    "name": "elfldr",
-    "filename": "elfldr-ps5_v0.25.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/elfldr-ps5_v0.25.elf",
-    "source": "https://github.com/ps5-payload-dev/elfldr/releases",
-    "source_direct": "https://github.com/ps5-payload-dev/elfldr/releases/download/v0.25/elfldr-ps5.elf",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-08-22",
-    "release_date": "2026-08-22",
-    "version": "v0.25",
-    "checksum": "de70a47e6d099dc03718c33c158a727f1340c3b5310155618c5049ab0fb41754"
   },
   {
     "name": "PS5GameCompressor",
@@ -122,36 +193,6 @@
     "checksum": "7d4b31c83eae4e056580482a3a074e1db25922efc74ac1e439473b45d71a5938"
   },
   {
-    "name": "Kura Loader",
-    "filename": "kura-loader_v1.6.48.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/kura-loader_v1.6.48.elf",
-    "source": "https://github.com/NookieAI/kura/releases",
-    "source_direct": "https://github.com/NookieAI/kura/releases/download/v1.6.48/kura-loader.elf",
-    "asset_pattern": "^kura-loader\\.elf$",
-    "category": "Utilities",
-    "description": "All-in-one PS5 payload: PKG installer, game dumper, cheats engine (1500+ cheats), save manager, fan control, ShadowMountPlus integration, web dashboard",
-    "last_update": "2026-08-19",
-    "release_date": "2026-08-19",
-    "version": "v1.6.48",
-    "checksum": "a01c8be395a1f71fe9badf864328a2a2f6378d8dc08b948be020b2dd49edb7a9"
-  },
-  {
-    "name": "onionHEN",
-    "filename": "OnionHEN.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/OnionHEN.elf",
-    "source": "https://github.com/aydencharles/onionHEN/releases",
-    "source_direct": "https://github.com/aydencharles/onionHEN/releases/download/v0.0.10/OnionHEN.elf",
-    "asset_pattern": "OnionHEN\\.elf",
-    "category": "Utilities",
-    "min_fw": "4.03",
-    "max_fw": "12.70",
-    "description": "PS5 homebrew enabler based on etaHEN. Supports firmware 4.03\u201312.7.",
-    "last_update": "2026-08-17",
-    "release_date": "2026-08-17",
-    "version": "v0.0.10",
-    "checksum": "fd6618fa00f4fc8ba437334aa20577acd79307fea19f6e210477a23d24fa18b6"
-  },
-  {
     "name": "KStuff Lite",
     "filename": "kstuff_v1.10.elf",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/kstuff_v1.10.elf",
@@ -162,7 +203,7 @@
     "last_update": "2026-08-12",
     "release_date": "2026-08-12",
     "version": "v1.10",
-    "checksum": "b1dfe57f367a35374f605127915eda38c76a6ed5d1c729e427955798bd78c66a"
+    "checksum": "82cbb1e70f8a562317d6b65269cf6aa0d7d94e22df4f1ac89a260ca0ec261252"
   },
   {
     "name": "BFpilot",
@@ -349,21 +390,6 @@
     "checksum": "ee8f47e4d6a5fd85cef113341aa1eb74d68e373a58fcb1fb5a9274acd2b83bd2"
   },
   {
-    "name": "PS5 Linux Loader",
-    "filename": "ps5-linux-loader_v2.4.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5-linux-loader_v2.4.elf",
-    "source": "https://github.com/ps5-linux/ps5-linux-loader/releases",
-    "source_direct": "https://github.com/ps5-linux/ps5-linux-loader/releases/download/v2.4/ps5-linux-loader.elf",
-    "category": "Utilities",
-    "min_fw": "3.00",
-    "max_fw": "7.61",
-    "description": "",
-    "last_update": "2026-07-06",
-    "release_date": "2026-07-06",
-    "version": "v2.4",
-    "checksum": "51382795b486f7c5a3681648d457d129088311fc3f9601aeaff78dc72fafcf1d"
-  },
-  {
     "name": "ShadowMountPlus",
     "filename": "shadowmountplus_1.6beta16.elf",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/shadowmountplus_1.6beta16.elf",
@@ -375,19 +401,6 @@
     "release_date": "2026-06-28",
     "version": "1.6beta16",
     "checksum": "a35246fb3bb6042b25653b51cdcbc33254b40339342bf1d2dd0d2eceee2ca526"
-  },
-  {
-    "name": "PegasusDL",
-    "filename": "pegasus_dl_v1.7.0.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/pegasus_dl_v1.7.0.elf",
-    "source": "https://github.com/pegasus-ps5/pegasus-dl/releases",
-    "source_direct": "https://github.com/pegasus-ps5/pegasus-dl/releases/download/v1.7.0/pegasus_dl.elf",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-06-24",
-    "release_date": "2026-06-24",
-    "version": "v1.7.0",
-    "checksum": "cb2a4b3c248323f2432ce118cb1bf4975146035239ce9b571a9bdb51b3fee226"
   },
   {
     "name": "PS5Debug",
@@ -519,18 +532,5 @@
     "release_date": "2025-12-25",
     "version": "2.5B",
     "checksum": "4845cac45095361b8983b14d6690622183b0dcfbf6d7fda16e161aa91ff0531e"
-  },
-  {
-    "name": "PKG Manager",
-    "filename": "pkgmgr_v1.0.0.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/pkgmgr_v1.0.0.elf",
-    "source": "https://github.com/itsPLK/ps5-pkg-manager/releases",
-    "source_direct": "https://github.com/itsPLK/ps5-pkg-manager/releases/download/v1.0.0/pkgmgr_v1.0.0.elf",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-09-17",
-    "release_date": "2026-09-17",
-    "version": "v1.0.0",
-    "checksum": "51d3f13a91d007019f3262e1bd8ccc8ba3cbea6b1b6534b8e86df6bd2e0efb4b"
   }
 ]
