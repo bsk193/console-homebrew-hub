@@ -14,6 +14,19 @@
   },
   {
     "name": "PS5Upload",
+    "filename": "ps5upload-5.31.3.elf",
+    "version": "v5.31.3",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-5.31.3.elf",
+    "checksum": "b1d02286a0b3dd10dc57275e8477513dca08ffb0697ad6543cd6a8bc7d771c25",
+    "channel": "experimental",
+    "min_fw": "",
+    "max_fw": "",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-09-20"
+  },
+  {
+    "name": "PS5Upload",
     "filename": "ps5upload-5.31.2.elf",
     "version": "v5.31.2",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-5.31.2.elf",
@@ -134,7 +147,7 @@
     "filename": "kstuff_v1.11.elf",
     "version": "v1.11",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/kstuff_v1.11.elf",
-    "checksum": "ac5dd04e124ffb555a672326adf727596068c60ccef83ca88902efc625a36ce6",
+    "checksum": "62d9bb6f16531e1c10fd522cb918431eaa3319dcd37405af5cc0b2240d7b2ee5",
     "channel": "stable",
     "min_fw": "",
     "max_fw": "",
@@ -453,32 +466,6 @@
     "category": "Utilities",
     "description": "All-in-one PS5 payload: PKG installer, game dumper, cheats engine (1500+ cheats), save manager, fan control, ShadowMountPlus integration, web dashboard",
     "last_update": "2026-08-19"
-  },
-  {
-    "name": "ProsperoTV",
-    "filename": "PPSA99003_01.000.002.ffpfsc",
-    "version": "01.000.002",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/PPSA99003_01.000.002.ffpfsc",
-    "checksum": "ad7244924485313c1fdd7ca05e12d96fb7da0b03105eb21e4820bcd62cbaa05c",
-    "channel": "stable",
-    "min_fw": "",
-    "max_fw": "",
-    "category": "Utilities",
-    "description": "Native IPTV client for PS5 with hardware H.264/HEVC/VP9 decoding.",
-    "last_update": "2026-08-30"
-  },
-  {
-    "name": "ProsperoTV",
-    "filename": "PPSA99003_01.000.003.ffpfsc",
-    "version": "01.000.003",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/PPSA99003_01.000.003.ffpfsc",
-    "checksum": "e00d69667bb155a30c189ae4e9a0a3d92c55f68e082c97e8b85722a82c72ef44",
-    "channel": "experimental",
-    "min_fw": "",
-    "max_fw": "",
-    "category": "Utilities",
-    "description": "Native IPTV client for PS5 with hardware H.264/HEVC/VP9 decoding.",
-    "last_update": "2026-08-31"
   },
   {
     "name": "elfldr",
