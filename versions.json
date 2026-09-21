@@ -1,29 +1,16 @@
 [
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-5.31.1.elf",
-    "version": "v5.31.1",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-5.31.1.elf",
-    "checksum": "c366ebdec72c53154938d3dc319ca9ee6b1bbceee52344755e88774c3d3b0956",
+    "filename": "ps5upload-5.31.4.elf",
+    "version": "v5.31.4",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-5.31.4.elf",
+    "checksum": "420bdd4d9328ab1068f32ef1a19f96387586ddd2a308744f81957d04d8a41d3b",
     "channel": "stable",
     "min_fw": "",
     "max_fw": "",
     "category": "Utilities",
     "description": "",
-    "last_update": "2026-09-20"
-  },
-  {
-    "name": "PS5Upload",
-    "filename": "ps5upload-5.31.3.elf",
-    "version": "v5.31.3",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-5.31.3.elf",
-    "checksum": "b1d02286a0b3dd10dc57275e8477513dca08ffb0697ad6543cd6a8bc7d771c25",
-    "channel": "experimental",
-    "min_fw": "",
-    "max_fw": "",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-09-20"
+    "last_update": "2026-09-21"
   },
   {
     "name": "PS5Upload",
@@ -92,29 +79,29 @@
   },
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-5.30.0.elf",
-    "version": "v5.30.0",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-5.30.0.elf",
-    "checksum": "5d459934a2e8dac8e1a21104db8c1632809d2f45bb2f9a5a0395317d44de32c8",
+    "filename": "ps5upload-5.31.3.elf",
+    "version": "v5.31.3",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-5.31.3.elf",
+    "checksum": "b1d02286a0b3dd10dc57275e8477513dca08ffb0697ad6543cd6a8bc7d771c25",
     "channel": "stable",
     "min_fw": "",
     "max_fw": "",
     "category": "Utilities",
     "description": "",
-    "last_update": "2026-09-18"
+    "last_update": "2026-09-20"
   },
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-5.28.0.elf",
-    "version": "v5.28.0",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-5.28.0.elf",
-    "checksum": "e5937396055234122e21fa39ebc88287a8de916dbf541d5739b376e74ff882a3",
+    "filename": "ps5upload-5.31.1.elf",
+    "version": "v5.31.1",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-5.31.1.elf",
+    "checksum": "c366ebdec72c53154938d3dc319ca9ee6b1bbceee52344755e88774c3d3b0956",
     "channel": "stable",
     "min_fw": "",
     "max_fw": "",
     "category": "Utilities",
     "description": "",
-    "last_update": "2026-09-15"
+    "last_update": "2026-09-20"
   },
   {
     "name": "PKG Manager",
