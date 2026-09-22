@@ -1,5 +1,18 @@
 [
   {
+    "name": "PKG Manager",
+    "filename": "pkgmgr_v1.2.1.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/pkgmgr_v1.2.1.elf",
+    "source": "https://github.com/itsPLK/ps5-pkg-manager/releases",
+    "source_direct": "https://github.com/itsPLK/ps5-pkg-manager/releases/download/v1.2.1/pkgmgr_v1.2.1.elf",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-09-22",
+    "release_date": "2026-09-22",
+    "version": "v1.2.1",
+    "checksum": "dff50e27f954e78838e97bcddbb5914bd348572a3caa3b2f9a0880e25a0f5fbc"
+  },
+  {
     "name": "PS5Upload",
     "filename": "ps5upload-5.31.4.elf",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-5.31.4.elf",
@@ -11,19 +24,6 @@
     "release_date": "2026-09-21",
     "version": "v5.31.4",
     "checksum": "420bdd4d9328ab1068f32ef1a19f96387586ddd2a308744f81957d04d8a41d3b"
-  },
-  {
-    "name": "PKG Manager",
-    "filename": "pkgmgr_v1.1.0.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/pkgmgr_v1.1.0.elf",
-    "source": "https://github.com/itsPLK/ps5-pkg-manager/releases",
-    "source_direct": "https://github.com/itsPLK/ps5-pkg-manager/releases/download/v1.1.0/pkgmgr_v1.1.0.elf",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-09-20",
-    "release_date": "2026-09-20",
-    "version": "v1.1.0",
-    "checksum": "3df00c908411741216b3a5741b297cd3e771ce3b492cdf0f2f4edb7cc60b403b"
   },
   {
     "name": "KStuff Lite",
