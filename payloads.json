@@ -39,6 +39,19 @@
     "checksum": "dff50e27f954e78838e97bcddbb5914bd348572a3caa3b2f9a0880e25a0f5fbc"
   },
   {
+    "name": "ShadowMountPlus",
+    "filename": "shadowmountplus_1.7beta2.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/shadowmountplus_1.7beta2.elf",
+    "source": "https://github.com/drakmor/ShadowMountPlus/releases",
+    "source_direct": "https://github.com/drakmor/ShadowMountPlus/releases/download/1.7beta2/shadowmountplus.elf",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-09-21",
+    "release_date": "2026-09-21",
+    "version": "1.7beta2",
+    "checksum": "3f716a7b2220c7e87e87452ae05cad689ef842d3beb4cdad6c526cb6dfc2b6b5"
+  },
+  {
     "name": "KStuff Lite",
     "filename": "kstuff_v1.11.elf",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/kstuff_v1.11.elf",
@@ -483,19 +496,6 @@
     "release_date": "2026-07-09",
     "version": "v1.6.22",
     "checksum": "ee8f47e4d6a5fd85cef113341aa1eb74d68e373a58fcb1fb5a9274acd2b83bd2"
-  },
-  {
-    "name": "ShadowMountPlus",
-    "filename": "shadowmountplus_1.6beta16.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/shadowmountplus_1.6beta16.elf",
-    "source": "https://github.com/drakmor/ShadowMountPlus/releases",
-    "source_direct": "https://github.com/drakmor/ShadowMountPlus/releases/download/1.6beta16/shadowmountplus.elf",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-06-28",
-    "release_date": "2026-06-28",
-    "version": "1.6beta16",
-    "checksum": "a35246fb3bb6042b25653b51cdcbc33254b40339342bf1d2dd0d2eceee2ca526"
   },
   {
     "name": "zftpd",
