@@ -1,16 +1,29 @@
 [
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-5.34.0.elf",
-    "version": "v5.34.0",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-5.34.0.elf",
-    "checksum": "fbe6fb2c306828d72bffefef4e4149ec189a748c3f7662dffeb6c281bf7437c0",
+    "filename": "ps5upload-5.36.0.elf",
+    "version": "v5.36.0",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-5.36.0.elf",
+    "checksum": "b1a10ae2b55ae8929681941991535226610d3fe2af9454a34d260e5884c8d336",
     "channel": "stable",
     "min_fw": "",
     "max_fw": "",
     "category": "Utilities",
     "description": "",
-    "last_update": "2026-09-25"
+    "last_update": "2026-09-27"
+  },
+  {
+    "name": "PS5Upload",
+    "filename": "ps5upload-5.35.0.elf",
+    "version": "v5.35.0",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-5.35.0.elf",
+    "checksum": "94a996dc7adaaf264545ffc3b7f4fb471a52569630ea5538ee18d20039c4213b",
+    "channel": "stable",
+    "min_fw": "",
+    "max_fw": "",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-09-27"
   },
   {
     "name": "PS5Debug",
@@ -440,6 +453,19 @@
     "category": "Utilities",
     "description": "",
     "last_update": "2026-03-24"
+  },
+  {
+    "name": "Spectrum Library",
+    "filename": "LegacyJB_1.1_1.4.7.bin",
+    "version": "1.4.7",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/LegacyJB_1.1_1.4.7.bin",
+    "checksum": "9c7b60380153cda2eb4a6f20ddc46774a621706388714d0fd97b492a6152f751",
+    "channel": "stable",
+    "min_fw": "",
+    "max_fw": "",
+    "category": "Utilities",
+    "description": "PS5 content manager \u2014 browse game library with DPI support, FPKG install, and cover art.",
+    "last_update": "2026-09-27"
   },
   {
     "name": "Spectrum Library",
