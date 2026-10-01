@@ -1,16 +1,70 @@
 [
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-5.38.0.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-5.38.0.elf",
+    "filename": "ps5upload-5.41.0.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-5.41.0.elf",
     "source": "https://github.com/phantomptr/ps5upload/releases",
-    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v5.38.0/ps5upload-5.38.0.elf",
+    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v5.41.0/ps5upload-5.41.0.elf",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-10-01",
+    "release_date": "2026-10-01",
+    "version": "v5.41.0",
+    "checksum": "90db08434228a08554e06a949f26457fb25c9b607f126fa63616b8d261426dee"
+  },
+  {
+    "name": "PegasusDL",
+    "filename": "pegasus_dl_v1.10.1.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/pegasus_dl_v1.10.1.elf",
+    "source": "https://github.com/pegasus-ps5/pegasus-dl/releases",
+    "source_direct": "https://github.com/pegasus-ps5/pegasus-dl/releases/download/v1.10.1/pegasus_dl.elf",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-09-30",
+    "release_date": "2026-09-30",
+    "version": "v1.10.1",
+    "checksum": "b24fdc62fc6cad14684b214a9c5be6c1221585afbf9493e387ab90f9dee21138"
+  },
+  {
+    "name": "WebKit Autoloader",
+    "filename": "webkit-autoloader-installer_v0.5.2.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/webkit-autoloader-installer_v0.5.2.elf",
+    "source": "https://github.com/itsPLK/ps5-webkit-autoloader/releases",
+    "source_direct": "https://github.com/itsPLK/ps5-webkit-autoloader/releases/download/v0.5.2/webkit-autoloader-installer_v0.5.2.elf",
+    "asset_pattern": "webkit-autoloader-installer.*\\.elf",
+    "category": "Utilities",
+    "description": "PS5 WebKit exploit autoloader installer ELF by itsPLK.",
+    "last_update": "2026-09-30",
+    "release_date": "2026-09-30",
+    "version": "v0.5.2",
+    "checksum": "f990e48e8330231d2066a7b8ab6dc25fda83b2cc36cb426c472b35b33767451a"
+  },
+  {
+    "name": "zftpd",
+    "filename": "zftpd-ps5-v1.6.0.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/zftpd-ps5-v1.6.0.elf",
+    "source": "https://github.com/seregonwar/zftpd/releases",
+    "source_direct": "https://github.com/seregonwar/zftpd/releases/download/v1.6.0/zftpd-ps5-v1.6.0.elf",
+    "asset_pattern": "^zftpd-ps5-v.+\\.elf$",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-09-30",
+    "release_date": "2026-09-30",
+    "version": "v1.6.0",
+    "checksum": "39ed57bef579282418f822da2e58ea5d56acfa5aa4cd38816744b1f610bfa14d"
+  },
+  {
+    "name": "Payload Manager",
+    "filename": "pldmgr_v0.5.2.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/pldmgr_v0.5.2.elf",
+    "source": "https://github.com/itsPLK/ps5-payload-manager/releases",
+    "source_direct": "https://github.com/itsPLK/ps5-payload-manager/releases/download/v0.5.2/pldmgr_v0.5.2.elf",
     "category": "Utilities",
     "description": "",
     "last_update": "2026-09-29",
     "release_date": "2026-09-29",
-    "version": "v5.38.0",
-    "checksum": "a57d86cb3b1ddab89f4317f021da4b4e0ef8180a5a88d50a0fb17a1c1ba8fd28"
+    "version": "v0.5.2",
+    "checksum": "62b3ba2a4937c2afc502f9a4e7242cca538610ebb4ae2800c7c6f72e7f268e7c"
   },
   {
     "name": "PS5Debug",
@@ -119,19 +173,6 @@
     "checksum": "73dd3f3938867ac970207ae8e4093e2d0c5b005bcad1ff9ff2aeb5d34294a161"
   },
   {
-    "name": "PegasusDL",
-    "filename": "pegasus_dl_v1.9.0.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/pegasus_dl_v1.9.0.elf",
-    "source": "https://github.com/pegasus-ps5/pegasus-dl/releases",
-    "source_direct": "https://github.com/pegasus-ps5/pegasus-dl/releases/download/v1.9.0/pegasus_dl.elf",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-09-15",
-    "release_date": "2026-09-15",
-    "version": "v1.9.0",
-    "checksum": "6336c626f0fbdef1272cc5d4e0239d7b44bf40f8106679083cf50d4c8e02389b"
-  },
-  {
     "name": "onionHEN",
     "filename": "OnionHEN_v0.0.13.elf",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/OnionHEN_v0.0.13.elf",
@@ -201,20 +242,6 @@
     "release_date": "2026-08-25",
     "version": "v0.5.1.8x",
     "checksum": "4bdb75ea40e0d21cfcd74a3ba16d86c2c85d7cc36ccd21bb3fd33bf3e4bbd213"
-  },
-  {
-    "name": "WebKit Autoloader",
-    "filename": "webkit-autoloader-installer_v0.4.0.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/webkit-autoloader-installer_v0.4.0.elf",
-    "source": "https://github.com/itsPLK/ps5-webkit-autoloader/releases",
-    "source_direct": "https://github.com/itsPLK/ps5-webkit-autoloader/releases/download/v0.4.0/webkit-autoloader-installer_v0.4.0.elf",
-    "asset_pattern": "webkit-autoloader-installer.*\\.elf",
-    "category": "Utilities",
-    "description": "PS5 WebKit exploit autoloader installer ELF by itsPLK.",
-    "last_update": "2026-08-24",
-    "release_date": "2026-08-24",
-    "version": "v0.4.0",
-    "checksum": "179d5e52ec3e0f595900b40883c0e10cc1fba1efc275a547f47e828d45d05915"
   },
   {
     "name": "WebKit Autoloader X",
@@ -431,19 +458,6 @@
     "checksum": "e828ec144231f81547cb58bc7d2c396fa984be0c2295f31364b58017816dcceb"
   },
   {
-    "name": "Payload Manager",
-    "filename": "pldmgr_v0.5.1.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/pldmgr_v0.5.1.elf",
-    "source": "https://github.com/itsPLK/ps5-payload-manager/releases",
-    "source_direct": "https://github.com/itsPLK/ps5-payload-manager/releases/download/v0.5.1/pldmgr_v0.5.1.elf",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-08-02",
-    "release_date": "2026-08-02",
-    "version": "v0.5.1",
-    "checksum": "05617c69ea145d1c11b8f7a6b7d3bd9e6df3831afd25d71a4ac85d63fb8e28aa"
-  },
-  {
     "name": "PS5 App Dumper",
     "filename": "ps5-app-dumper_v1.11.elf",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5-app-dumper_v1.11.elf",
@@ -496,20 +510,6 @@
     "release_date": "2026-07-09",
     "version": "v1.6.22",
     "checksum": "ee8f47e4d6a5fd85cef113341aa1eb74d68e373a58fcb1fb5a9274acd2b83bd2"
-  },
-  {
-    "name": "zftpd",
-    "filename": "zftpd-ps5-v1.5.0.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/zftpd-ps5-v1.5.0.elf",
-    "source": "https://github.com/seregonwar/zftpd/releases",
-    "source_direct": "https://github.com/seregonwar/zftpd/releases/download/v1.5.0/zftpd-ps5-v1.5.0.elf",
-    "asset_pattern": "^zftpd-ps5-v.+\\.elf$",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-06-14",
-    "release_date": "2026-06-14",
-    "version": "v1.5.0",
-    "checksum": "68a80e1cb45544c15b1581a49154ad14aa8e29483e5fec786f2a95e0e28ea6cb"
   },
   {
     "name": "Lapy JB Daemon",
