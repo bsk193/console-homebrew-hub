@@ -13,6 +13,20 @@
     "checksum": "90db08434228a08554e06a949f26457fb25c9b607f126fa63616b8d261426dee"
   },
   {
+    "name": "Spectrum Library",
+    "filename": "SpectrumLibrary_1.4.8.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/SpectrumLibrary_1.4.8.elf",
+    "source": "https://github.com/Phoenixx1202/Spectrum-Library/releases",
+    "source_direct": "https://github.com/Phoenixx1202/Spectrum-Library/releases/download/1.4.8/SpectrumLibrary_1.4.8.elf",
+    "asset_pattern": "SpectrumLibrary.*\\.elf",
+    "category": "Utilities",
+    "description": "PS5 content manager \u2014 browse game library with DPI support, FPKG install, and cover art.",
+    "last_update": "2026-10-01",
+    "release_date": "2026-10-01",
+    "version": "1.4.8",
+    "checksum": "5d1372d48f76167e3f9e24b335cf571ea6e4b3960e6b7202d2802b0f78c3a519"
+  },
+  {
     "name": "PegasusDL",
     "filename": "pegasus_dl_v1.10.1.elf",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/pegasus_dl_v1.10.1.elf",
@@ -157,20 +171,6 @@
     "release_date": "2026-09-20",
     "version": "v1.12-fpkg-dr-test9",
     "checksum": "c1d32ad8152e02aa4b6f3f0f072746799451b0a8aa3687ee1a8c647c1515710d"
-  },
-  {
-    "name": "Spectrum Library",
-    "filename": "SpectrumLibrary_1.4.6.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/SpectrumLibrary_1.4.6.elf",
-    "source": "https://github.com/Phoenixx1202/Spectrum-Library/releases",
-    "source_direct": "https://github.com/Phoenixx1202/Spectrum-Library/releases/download/1.4.6/SpectrumLibrary_1.4.6.elf",
-    "asset_pattern": "SpectrumLibrary.*\\.elf",
-    "category": "Utilities",
-    "description": "PS5 content manager \u2014 browse game library with DPI support, FPKG install, and cover art.",
-    "last_update": "2026-09-19",
-    "release_date": "2026-09-19",
-    "version": "1.4.6",
-    "checksum": "73dd3f3938867ac970207ae8e4093e2d0c5b005bcad1ff9ff2aeb5d34294a161"
   },
   {
     "name": "onionHEN",

@@ -39,6 +39,19 @@
     "last_update": "2026-09-29"
   },
   {
+    "name": "Spectrum Library",
+    "filename": "SpectrumLibrary_1.4.8.elf",
+    "version": "1.4.8",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/SpectrumLibrary_1.4.8.elf",
+    "checksum": "5d1372d48f76167e3f9e24b335cf571ea6e4b3960e6b7202d2802b0f78c3a519",
+    "channel": "stable",
+    "min_fw": "",
+    "max_fw": "",
+    "category": "Utilities",
+    "description": "PS5 content manager \u2014 browse game library with DPI support, FPKG install, and cover art.",
+    "last_update": "2026-10-01"
+  },
+  {
     "name": "PegasusDL",
     "filename": "pegasus_dl_v1.10.1.elf",
     "version": "v1.10.1",
@@ -388,6 +401,19 @@
     "category": "Utilities",
     "description": "",
     "last_update": "2026-09-21"
+  },
+  {
+    "name": "ShadowMountPlus",
+    "filename": "shadowmountplus_1.7beta3.elf",
+    "version": "1.7beta3",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/shadowmountplus_1.7beta3.elf",
+    "checksum": "2a7427e20ba7a70bd8cd01e47eb00ee7ca82db82dff3da7884f48f9c3fcbe95a",
+    "channel": "experimental",
+    "min_fw": "",
+    "max_fw": "",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-10-01"
   },
   {
     "name": "ShadowMountPlus",
