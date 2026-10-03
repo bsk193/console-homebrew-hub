@@ -1,5 +1,32 @@
 [
   {
+    "name": "Payload Manager X",
+    "filename": "pldmgrx_v1.0.0_x-v1.0.0.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/pldmgrx_v1.0.0_x-v1.0.0.elf",
+    "source": "https://github.com/bsk193/ps5-payload-manager-x/releases",
+    "source_direct": "https://github.com/bsk193/ps5-payload-manager-x/releases/download/x-v1.0.0/pldmgrx_v1.0.0.elf",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-10-02",
+    "release_date": "2026-10-02",
+    "version": "x-v1.0.0",
+    "checksum": "ba83322942e95de743d28a258d99229ada95261aba5a784a652f31762e9851fc"
+  },
+  {
+    "name": "WebKit Autoloader X",
+    "filename": "webkit-autoloader-x-installer_v1.0.0_ps5_wkx-v1.0.0.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/webkit-autoloader-x-installer_v1.0.0_ps5_wkx-v1.0.0.elf",
+    "source": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases",
+    "source_direct": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases/download/wkx-v1.0.0/webkit-autoloader-x-installer_v1.0.0_ps5.elf",
+    "asset_pattern": "webkit-autoloader-x-installer.*\\.elf",
+    "category": "Utilities",
+    "description": "PS5 WebKit exploit autoloader X installer ELF by bsk193.",
+    "last_update": "2026-10-02",
+    "release_date": "2026-10-02",
+    "version": "wkx-v1.0.0",
+    "checksum": "88e4b8a3d5712515426112419df7a7afdd3a27e544f6608441d3d4d5ca194226"
+  },
+  {
     "name": "PS5Upload",
     "filename": "ps5upload-5.41.0.elf",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-5.41.0.elf",
@@ -229,33 +256,6 @@
     "release_date": "2026-08-29",
     "version": "v0.26",
     "checksum": "ed6d587a057c09d6a95b2176e336d9ffc605e547ac56462128b029e47b8ccea1"
-  },
-  {
-    "name": "Payload Manager X",
-    "filename": "pldmgrx_v0.5.1.8x.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/pldmgrx_v0.5.1.8x.elf",
-    "source": "https://github.com/bsk193/ps5-payload-manager-x/releases",
-    "source_direct": "https://github.com/bsk193/ps5-payload-manager-x/releases/download/v0.5.1.8x/pldmgrx_v0.5.1.8x.elf",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-08-25",
-    "release_date": "2026-08-25",
-    "version": "v0.5.1.8x",
-    "checksum": "4bdb75ea40e0d21cfcd74a3ba16d86c2c85d7cc36ccd21bb3fd33bf3e4bbd213"
-  },
-  {
-    "name": "WebKit Autoloader X",
-    "filename": "webkit-autoloader-x-installer_v0.4.0.3x.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/webkit-autoloader-x-installer_v0.4.0.3x.elf",
-    "source": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases",
-    "source_direct": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases/download/v0.4.0.3x/webkit-autoloader-x-installer_v0.4.0.3x.elf",
-    "asset_pattern": "webkit-autoloader-x-installer.*\\.elf",
-    "category": "Utilities",
-    "description": "PS5 WebKit exploit autoloader X installer ELF by bsk193.",
-    "last_update": "2026-08-24",
-    "release_date": "2026-08-24",
-    "version": "v0.4.0.3x",
-    "checksum": "707439e0d3cb44fe9d9ba9dce3efe35970be569fd469f626667e9c2ec84603f3"
   },
   {
     "name": "PIZZA-HEN",
