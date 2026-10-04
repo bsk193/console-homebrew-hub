@@ -54,6 +54,19 @@
     "checksum": "5d1372d48f76167e3f9e24b335cf571ea6e4b3960e6b7202d2802b0f78c3a519"
   },
   {
+    "name": "ShadowMountPlus",
+    "filename": "shadowmountplus_1.7beta3.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/shadowmountplus_1.7beta3.elf",
+    "source": "https://github.com/drakmor/ShadowMountPlus/releases",
+    "source_direct": "https://github.com/drakmor/ShadowMountPlus/releases/download/1.7beta3/shadowmountplus.elf",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-10-01",
+    "release_date": "2026-10-01",
+    "version": "1.7beta3",
+    "checksum": "2a7427e20ba7a70bd8cd01e47eb00ee7ca82db82dff3da7884f48f9c3fcbe95a"
+  },
+  {
     "name": "PegasusDL",
     "filename": "pegasus_dl_v1.10.1.elf",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/pegasus_dl_v1.10.1.elf",
@@ -132,19 +145,6 @@
     "release_date": "2026-09-22",
     "version": "v1.2.1",
     "checksum": "dff50e27f954e78838e97bcddbb5914bd348572a3caa3b2f9a0880e25a0f5fbc"
-  },
-  {
-    "name": "ShadowMountPlus",
-    "filename": "shadowmountplus_1.7beta2.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/shadowmountplus_1.7beta2.elf",
-    "source": "https://github.com/drakmor/ShadowMountPlus/releases",
-    "source_direct": "https://github.com/drakmor/ShadowMountPlus/releases/download/1.7beta2/shadowmountplus.elf",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-09-21",
-    "release_date": "2026-09-21",
-    "version": "1.7beta2",
-    "checksum": "3f716a7b2220c7e87e87452ae05cad689ef842d3beb4cdad6c526cb6dfc2b6b5"
   },
   {
     "name": "KStuff Lite",
