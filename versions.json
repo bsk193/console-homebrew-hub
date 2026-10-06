@@ -1,5 +1,44 @@
 [
   {
+    "name": "PS5Upload",
+    "filename": "ps5upload-6.1.2.elf",
+    "version": "v6.1.2",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-6.1.2.elf",
+    "checksum": "1fdf0a79687a4a823dd7c331c267cf492f849bd2bc6666e2db496fc03e544162",
+    "channel": "stable",
+    "min_fw": "",
+    "max_fw": "",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-10-06"
+  },
+  {
+    "name": "PS5Upload",
+    "filename": "ps5upload-6.1.1.elf",
+    "version": "v6.1.1",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-6.1.1.elf",
+    "checksum": "db3f750a1a0daecc9c6c25b85fadf47c1083185bd7e6a4f9628724382eee78c0",
+    "channel": "stable",
+    "min_fw": "",
+    "max_fw": "",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-10-05"
+  },
+  {
+    "name": "PS5Upload",
+    "filename": "ps5upload-6.1.0.elf",
+    "version": "v6.1.0",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-6.1.0.elf",
+    "checksum": "39bb275892ad9f07dfd6da56de9467945b0c9dc839db877cd00d881aa60481e9",
+    "channel": "stable",
+    "min_fw": "",
+    "max_fw": "",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-10-05"
+  },
+  {
     "name": "Payload Manager X",
     "filename": "pldmgrx_v1.0.0_x-v1.0.0.elf",
     "version": "x-v1.0.0",
@@ -63,45 +102,6 @@
     "category": "Utilities",
     "description": "PS5 WebKit exploit autoloader X installer ELF by bsk193.",
     "last_update": "2026-08-24"
-  },
-  {
-    "name": "PS5Upload",
-    "filename": "ps5upload-5.41.0.elf",
-    "version": "v5.41.0",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-5.41.0.elf",
-    "checksum": "90db08434228a08554e06a949f26457fb25c9b607f126fa63616b8d261426dee",
-    "channel": "stable",
-    "min_fw": "",
-    "max_fw": "",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-10-01"
-  },
-  {
-    "name": "PS5Upload",
-    "filename": "ps5upload-5.40.0.elf",
-    "version": "v5.40.0",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-5.40.0.elf",
-    "checksum": "d10ba9d979ac6a18bd8d3d77ea3845ae592761768c9aec89e2b71735cda2927b",
-    "channel": "stable",
-    "min_fw": "",
-    "max_fw": "",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-09-30"
-  },
-  {
-    "name": "PS5Upload",
-    "filename": "ps5upload-5.39.1.elf",
-    "version": "v5.39.1",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-5.39.1.elf",
-    "checksum": "a50d66033f66cb9d6600c810066b699e59b1a0cc3d7e98bffd5a0b6eb9ebd1a3",
-    "channel": "stable",
-    "min_fw": "",
-    "max_fw": "",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-09-29"
   },
   {
     "name": "Spectrum Library",
