@@ -1,16 +1,30 @@
 [
   {
+    "name": "ps-patch-system",
+    "filename": "patch-bundle-loader-prospero_37549880588.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/patch-bundle-loader-prospero_37549880588.elf",
+    "source": "https://github.com/illusionyy/ps-patch-system/releases",
+    "source_direct": "https://github.com/illusionyy/ps-patch-system/releases/download/37549880588/patch-bundle-loader-prospero.elf",
+    "asset_pattern": "^patch-bundle-loader-prospero\\.elf$",
+    "category": "Utilities",
+    "description": "App patching system for PS4/PS5 \u2014 web dashboard for managing game patches. PS5 loader ELF.",
+    "last_update": "2026-10-07",
+    "release_date": "2026-10-07",
+    "version": "37549880588",
+    "checksum": "0c684eac2f61eedcd5f1966b669158233a256be071956b6b060ef5a6d294cf42"
+  },
+  {
     "name": "PS5Upload",
-    "filename": "ps5upload-6.1.2.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-6.1.2.elf",
+    "filename": "ps5upload-6.2.1.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-6.2.1.elf",
     "source": "https://github.com/phantomptr/ps5upload/releases",
-    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v6.1.2/ps5upload-6.1.2.elf",
+    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v6.2.1/ps5upload-6.2.1.elf",
     "category": "Utilities",
     "description": "",
     "last_update": "2026-10-06",
     "release_date": "2026-10-06",
-    "version": "v6.1.2",
-    "checksum": "1fdf0a79687a4a823dd7c331c267cf492f849bd2bc6666e2db496fc03e544162"
+    "version": "v6.2.1",
+    "checksum": "eb0bf3b9f5c0004cecc5e2c43dbd3d0749fa6e032a9a4b0343c115d79fb10a96"
   },
   {
     "name": "Payload Manager X",
@@ -311,20 +325,6 @@
     "release_date": "2026-08-20",
     "version": "v0.21.1",
     "checksum": "7d4b31c83eae4e056580482a3a074e1db25922efc74ac1e439473b45d71a5938"
-  },
-  {
-    "name": "ps-patch-system",
-    "filename": "patch-bundle-loader-prospero.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/patch-bundle-loader-prospero.elf",
-    "source": "https://github.com/illusionyy/ps-patch-system/releases",
-    "source_direct": "https://github.com/illusionyy/ps-patch-system/releases/download/32151111844/patch-bundle-loader-prospero.elf",
-    "asset_pattern": "^patch-bundle-loader-prospero\\.elf$",
-    "category": "Utilities",
-    "description": "App patching system for PS4/PS5 \u2014 web dashboard for managing game patches. PS5 loader ELF.",
-    "last_update": "2026-08-18",
-    "release_date": "2026-08-18",
-    "version": "32151111844",
-    "checksum": "8300db1e4d5e2004534c534c6154f8bf3eb8e12f02f443b0bf68f12bc695a025"
   },
   {
     "name": "BFpilot",
