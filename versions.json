@@ -1,5 +1,70 @@
 [
   {
+    "name": "PS5Upload",
+    "filename": "ps5upload-6.4.0.elf",
+    "version": "v6.4.0",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-6.4.0.elf",
+    "checksum": "b0392932ae957821fbaccee44d761a9320655995ccfa80c9ffdcc5cec2497f70",
+    "channel": "stable",
+    "min_fw": "",
+    "max_fw": "",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-10-08"
+  },
+  {
+    "name": "PS5Upload",
+    "filename": "ps5upload-6.2.2.elf",
+    "version": "v6.2.2",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-6.2.2.elf",
+    "checksum": "8b5a2c1ae0450044523cc96750db38c356613efcefb6fe5d532bc47c872718e7",
+    "channel": "experimental",
+    "min_fw": "",
+    "max_fw": "",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-10-07"
+  },
+  {
+    "name": "PS5Upload",
+    "filename": "ps5upload-6.2.0.elf",
+    "version": "v6.2.0",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-6.2.0.elf",
+    "checksum": "2b19e3823621295ff02b9e3534be028f533805482dece3ebf23caa2e45e1c8e5",
+    "channel": "experimental",
+    "min_fw": "",
+    "max_fw": "",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-10-06"
+  },
+  {
+    "name": "PS5Upload",
+    "filename": "ps5upload-6.3.1.elf",
+    "version": "v6.3.1",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-6.3.1.elf",
+    "checksum": "2ff17e8096fa06c36fe27f4ea28d750733a9d10677ae6c566fd851f07da6b136",
+    "channel": "stable",
+    "min_fw": "",
+    "max_fw": "",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-10-07"
+  },
+  {
+    "name": "PS5Upload",
+    "filename": "ps5upload-6.3.0.elf",
+    "version": "v6.3.0",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-6.3.0.elf",
+    "checksum": "9614060e2b7903bc583f14909dbade4357654e635606e29a4e93eee4886560b5",
+    "channel": "stable",
+    "min_fw": "",
+    "max_fw": "",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-10-07"
+  },
+  {
     "name": "ps-patch-system",
     "filename": "patch-bundle-orbis_37549880588.elf",
     "version": "37549880588",
@@ -689,58 +754,6 @@
     "last_update": "2026-08-17"
   },
   {
-    "name": "PS5Upload",
-    "filename": "ps5upload-6.2.1.elf",
-    "version": "v6.2.1",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-6.2.1.elf",
-    "checksum": "eb0bf3b9f5c0004cecc5e2c43dbd3d0749fa6e032a9a4b0343c115d79fb10a96",
-    "channel": "stable",
-    "min_fw": "",
-    "max_fw": "",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-10-06"
-  },
-  {
-    "name": "PS5Upload",
-    "filename": "ps5upload-6.2.0.elf",
-    "version": "v6.2.0",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-6.2.0.elf",
-    "checksum": "2b19e3823621295ff02b9e3534be028f533805482dece3ebf23caa2e45e1c8e5",
-    "channel": "experimental",
-    "min_fw": "",
-    "max_fw": "",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-10-06"
-  },
-  {
-    "name": "PS5Upload",
-    "filename": "ps5upload-6.1.2.elf",
-    "version": "v6.1.2",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-6.1.2.elf",
-    "checksum": "1fdf0a79687a4a823dd7c331c267cf492f849bd2bc6666e2db496fc03e544162",
-    "channel": "stable",
-    "min_fw": "",
-    "max_fw": "",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-10-06"
-  },
-  {
-    "name": "PS5Upload",
-    "filename": "ps5upload-6.1.1.elf",
-    "version": "v6.1.1",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-6.1.1.elf",
-    "checksum": "db3f750a1a0daecc9c6c25b85fadf47c1083185bd7e6a4f9628724382eee78c0",
-    "channel": "stable",
-    "min_fw": "",
-    "max_fw": "",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-10-05"
-  },
-  {
     "name": "Payload Manager X",
     "filename": "pldmgrx_v1.0.0_x-v1.0.0.elf",
     "version": "x-v1.0.0",
@@ -1090,6 +1103,19 @@
     "category": "Utilities",
     "description": "PS5 WebKit exploit autoloader installer ELF by itsPLK.",
     "last_update": "2026-09-30"
+  },
+  {
+    "name": "WebKit Autoloader",
+    "filename": "webkit-autoloader-installer_v0.6.0-pre-4488577.elf",
+    "version": "v0.6.0-pre-4488577",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/webkit-autoloader-installer_v0.6.0-pre-4488577.elf",
+    "checksum": "7b7e2284c331599a6193cb00fa7d5fd227d784ef95ceda32b1485989ff1d6b21",
+    "channel": "experimental",
+    "min_fw": "",
+    "max_fw": "",
+    "category": "Utilities",
+    "description": "PS5 WebKit exploit autoloader installer ELF by itsPLK.",
+    "last_update": "2026-10-07"
   },
   {
     "name": "WebKit Autoloader",
@@ -1519,6 +1545,19 @@
     "category": "Utilities",
     "description": "PS5 homebrew enabler based on etaHEN. Supports firmware 4.03\u201312.7.",
     "last_update": "2026-09-11"
+  },
+  {
+    "name": "onionHEN",
+    "filename": "OnionHEN_v0.9.0-beta2.elf",
+    "version": "v0.9.0-beta2",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/OnionHEN_v0.9.0-beta2.elf",
+    "checksum": "dd2e78af126d9d115df147a0f2bff6269de7a3eee5a556e06b6c21726a36f087",
+    "channel": "experimental",
+    "min_fw": "4.03",
+    "max_fw": "12.70",
+    "category": "Utilities",
+    "description": "PS5 homebrew enabler based on etaHEN. Supports firmware 4.03\u201312.7.",
+    "last_update": "2026-10-07"
   },
   {
     "name": "onionHEN",
