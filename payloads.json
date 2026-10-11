@@ -1,16 +1,43 @@
 [
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-6.7.3.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-6.7.3.elf",
+    "filename": "ps5upload-7.0.1.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-7.0.1.elf",
     "source": "https://github.com/phantomptr/ps5upload/releases",
-    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v6.7.3/ps5upload-6.7.3.elf",
+    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v7.0.1/ps5upload-7.0.1.elf",
     "category": "Utilities",
     "description": "",
-    "last_update": "2026-10-09",
-    "release_date": "2026-10-09",
-    "version": "v6.7.3",
-    "checksum": "468740692643ecef083da7d761169c09accec4f43b199a64df9c394ecd6b5df3"
+    "last_update": "2026-10-11",
+    "release_date": "2026-10-11",
+    "version": "v7.0.1",
+    "checksum": "cf37ffb531a7dd56fb78d72eb01b5ec44fed40959504581a432b49a8d8352291"
+  },
+  {
+    "name": "ps-patch-system",
+    "filename": "patch-bundle-loader-prospero_38108724867.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/patch-bundle-loader-prospero_38108724867.elf",
+    "source": "https://github.com/illusionyy/ps-patch-system/releases",
+    "source_direct": "https://github.com/illusionyy/ps-patch-system/releases/download/38108724867/patch-bundle-loader-prospero.elf",
+    "asset_pattern": "^patch-bundle-loader-prospero\\.elf$",
+    "category": "Utilities",
+    "description": "App patching system for PS4/PS5 \u2014 web dashboard for managing game patches. PS5 loader ELF.",
+    "last_update": "2026-10-11",
+    "release_date": "2026-10-11",
+    "version": "38108724867",
+    "checksum": "10d8636e1b0f07f3f046aadb5c050a24ed9b0fae3585ec29a1ecabec07035589"
+  },
+  {
+    "name": "ShadowMountPlus",
+    "filename": "shadowmountplus_1.7-beta5fix1.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/shadowmountplus_1.7-beta5fix1.elf",
+    "source": "https://github.com/drakmor/ShadowMountPlus/releases",
+    "source_direct": "https://github.com/drakmor/ShadowMountPlus/releases/download/1.7-beta5fix1/shadowmountplus.elf",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-10-10",
+    "release_date": "2026-10-10",
+    "version": "1.7-beta5fix1",
+    "checksum": "e85fd63b705498488f39c09c9aea6f9fa22e0df2e932865de49a8cedf25172d5"
   },
   {
     "name": "PegasusDL",
@@ -38,20 +65,6 @@
     "release_date": "2026-10-08",
     "version": "v0.6.1",
     "checksum": "f662c75a502e4f1bc41b055dcb490625f8222c499ce437dc80f439a3a279e93f"
-  },
-  {
-    "name": "ps-patch-system",
-    "filename": "patch-bundle-loader-prospero_37549880588.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/patch-bundle-loader-prospero_37549880588.elf",
-    "source": "https://github.com/illusionyy/ps-patch-system/releases",
-    "source_direct": "https://github.com/illusionyy/ps-patch-system/releases/download/37549880588/patch-bundle-loader-prospero.elf",
-    "asset_pattern": "^patch-bundle-loader-prospero\\.elf$",
-    "category": "Utilities",
-    "description": "App patching system for PS4/PS5 \u2014 web dashboard for managing game patches. PS5 loader ELF.",
-    "last_update": "2026-10-07",
-    "release_date": "2026-10-07",
-    "version": "37549880588",
-    "checksum": "0c684eac2f61eedcd5f1966b669158233a256be071956b6b060ef5a6d294cf42"
   },
   {
     "name": "Payload Manager X",
@@ -93,19 +106,6 @@
     "release_date": "2026-10-01",
     "version": "1.4.8",
     "checksum": "5d1372d48f76167e3f9e24b335cf571ea6e4b3960e6b7202d2802b0f78c3a519"
-  },
-  {
-    "name": "ShadowMountPlus",
-    "filename": "shadowmountplus_1.7beta3.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/shadowmountplus_1.7beta3.elf",
-    "source": "https://github.com/drakmor/ShadowMountPlus/releases",
-    "source_direct": "https://github.com/drakmor/ShadowMountPlus/releases/download/1.7beta3/shadowmountplus.elf",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-10-01",
-    "release_date": "2026-10-01",
-    "version": "1.7beta3",
-    "checksum": "2a7427e20ba7a70bd8cd01e47eb00ee7ca82db82dff3da7884f48f9c3fcbe95a"
   },
   {
     "name": "zftpd",
