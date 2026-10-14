@@ -1,5 +1,44 @@
 [
   {
+    "name": "Payload Manager",
+    "filename": "pldmgr_v0.6.0.elf",
+    "version": "v0.6.0",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/pldmgr_v0.6.0.elf",
+    "checksum": "5b31079d81d6467f2754edd1d6dbe63b0306502e135c21a425ecb263e39e2059",
+    "channel": "stable",
+    "min_fw": "",
+    "max_fw": "",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-10-13"
+  },
+  {
+    "name": "Payload Manager",
+    "filename": "pldmgr_v0.5.2.elf",
+    "version": "v0.5.2",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/pldmgr_v0.5.2.elf",
+    "checksum": "62b3ba2a4937c2afc502f9a4e7242cca538610ebb4ae2800c7c6f72e7f268e7c",
+    "channel": "stable",
+    "min_fw": "",
+    "max_fw": "",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-09-29"
+  },
+  {
+    "name": "Payload Manager",
+    "filename": "pldmgr_v0.5.1.elf",
+    "version": "v0.5.1",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/pldmgr_v0.5.1.elf",
+    "checksum": "05617c69ea145d1c11b8f7a6b7d3bd9e6df3831afd25d71a4ac85d63fb8e28aa",
+    "channel": "stable",
+    "min_fw": "",
+    "max_fw": "",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-08-02"
+  },
+  {
     "name": "PS5Upload",
     "filename": "ps5upload-7.0.22.elf",
     "version": "v7.0.22",
@@ -1415,45 +1454,6 @@
     "category": "Utilities",
     "description": "",
     "last_update": "2026-03-11"
-  },
-  {
-    "name": "Payload Manager",
-    "filename": "pldmgr_v0.5.2.elf",
-    "version": "v0.5.2",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/pldmgr_v0.5.2.elf",
-    "checksum": "62b3ba2a4937c2afc502f9a4e7242cca538610ebb4ae2800c7c6f72e7f268e7c",
-    "channel": "stable",
-    "min_fw": "",
-    "max_fw": "",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-09-29"
-  },
-  {
-    "name": "Payload Manager",
-    "filename": "pldmgr_v0.5.1.elf",
-    "version": "v0.5.1",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/pldmgr_v0.5.1.elf",
-    "checksum": "05617c69ea145d1c11b8f7a6b7d3bd9e6df3831afd25d71a4ac85d63fb8e28aa",
-    "channel": "stable",
-    "min_fw": "",
-    "max_fw": "",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-08-02"
-  },
-  {
-    "name": "Payload Manager",
-    "filename": "pldmgr_v0.5.0.elf",
-    "version": "v0.5.0",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/pldmgr_v0.5.0.elf",
-    "checksum": "1fe181908027fc625147ac888288ed1bee72a378b4751d36a8a8e0582d306169",
-    "channel": "stable",
-    "min_fw": "",
-    "max_fw": "",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-07-21"
   },
   {
     "name": "PS5Debug",
