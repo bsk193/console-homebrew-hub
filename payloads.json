@@ -1,5 +1,34 @@
 [
   {
+    "name": "PS5Upload",
+    "filename": "ps5upload-7.0.26.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-7.0.26.elf",
+    "source": "https://github.com/phantomptr/ps5upload/releases",
+    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v7.0.26/ps5upload-7.0.26.elf",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-10-16",
+    "release_date": "2026-10-16",
+    "version": "v7.0.26",
+    "checksum": "9b08d5a3849a10209be028b63c07a181b10fd146a7cf94fd3185f328e68dea01"
+  },
+  {
+    "name": "onionHEN",
+    "filename": "OnionHEN_v0.9.0.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/OnionHEN_v0.9.0.elf",
+    "source": "https://github.com/aydencharles/onionHEN/releases",
+    "source_direct": "https://github.com/aydencharles/onionHEN/releases/download/v0.9.0/OnionHEN.elf",
+    "asset_pattern": "OnionHEN\\.elf",
+    "category": "Utilities",
+    "min_fw": "4.03",
+    "max_fw": "12.70",
+    "description": "PS5 homebrew enabler based on etaHEN. Supports firmware 4.03\u201312.7.",
+    "last_update": "2026-10-15",
+    "release_date": "2026-10-15",
+    "version": "v0.9.0",
+    "checksum": "1f1f7c883d5d998be1d95d7d80b718f85180f8156f257661b0f445a7c6b7c212"
+  },
+  {
     "name": "Payload Manager",
     "filename": "pldmgr_v0.6.1.elf",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/pldmgr_v0.6.1.elf",
@@ -11,19 +40,6 @@
     "release_date": "2026-10-14",
     "version": "v0.6.1",
     "checksum": "5165cbe4c13360828bd0f5d558cdbb9e2d55b0660b1dc7f7a58d3f4ee9e23285"
-  },
-  {
-    "name": "PS5Upload",
-    "filename": "ps5upload-7.0.22.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-7.0.22.elf",
-    "source": "https://github.com/phantomptr/ps5upload/releases",
-    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v7.0.22/ps5upload-7.0.22.elf",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-10-12",
-    "release_date": "2026-10-12",
-    "version": "v7.0.22",
-    "checksum": "e382353612fdf85b2fdbfea75f4f5ebad260c767faa51b0446118646a6db0267"
   },
   {
     "name": "ps-patch-system",
@@ -212,22 +228,6 @@
     "release_date": "2026-09-20",
     "version": "v1.12-fpkg-dr-test9",
     "checksum": "c1d32ad8152e02aa4b6f3f0f072746799451b0a8aa3687ee1a8c647c1515710d"
-  },
-  {
-    "name": "onionHEN",
-    "filename": "OnionHEN_v0.0.13.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/OnionHEN_v0.0.13.elf",
-    "source": "https://github.com/aydencharles/onionHEN/releases",
-    "source_direct": "https://github.com/aydencharles/onionHEN/releases/download/v0.0.13/OnionHEN.elf",
-    "asset_pattern": "OnionHEN\\.elf",
-    "category": "Utilities",
-    "min_fw": "4.03",
-    "max_fw": "12.70",
-    "description": "PS5 homebrew enabler based on etaHEN. Supports firmware 4.03\u201312.7.",
-    "last_update": "2026-09-11",
-    "release_date": "2026-09-11",
-    "version": "v0.0.13",
-    "checksum": "aa3f98847948e2ae8ea600c3f437e28247a0a4f8b73651a046d2859924bf97b3"
   },
   {
     "name": "PS5 Linux Loader",
