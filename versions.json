@@ -1,16 +1,29 @@
 [
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-7.0.26.elf",
-    "version": "v7.0.26",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-7.0.26.elf",
-    "checksum": "9b08d5a3849a10209be028b63c07a181b10fd146a7cf94fd3185f328e68dea01",
+    "filename": "ps5upload-7.0.31.elf",
+    "version": "v7.0.31",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-7.0.31.elf",
+    "checksum": "4ef3b781ae178bbe402a87a64b6f366d3386d6557306db0f51b46b458ffa7e24",
     "channel": "stable",
     "min_fw": "",
     "max_fw": "",
     "category": "Utilities",
     "description": "",
     "last_update": "2026-10-16"
+  },
+  {
+    "name": "PS5Upload",
+    "filename": "ps5upload-7.0.32.elf",
+    "version": "v7.0.32",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-7.0.32.elf",
+    "checksum": "05f0fd48d3983cd34c03163950f545446a4db0e34eaf3131753e3fb8fbdf1f3d",
+    "channel": "experimental",
+    "min_fw": "",
+    "max_fw": "",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-10-17"
   },
   {
     "name": "PS5Upload",
@@ -170,29 +183,29 @@
   },
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-7.0.25.elf",
-    "version": "v7.0.25",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-7.0.25.elf",
-    "checksum": "35c6b820302bb5ca2d3b270caa808f95b351bf7ca2bc5c0e10daba3204c1e862",
+    "filename": "ps5upload-7.0.30.elf",
+    "version": "v7.0.30",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-7.0.30.elf",
+    "checksum": "670089a592a9ddcf93039a24897639b12d14277417b35507bba3cbd15031cadf",
     "channel": "stable",
     "min_fw": "",
     "max_fw": "",
     "category": "Utilities",
     "description": "",
-    "last_update": "2026-10-15"
+    "last_update": "2026-10-16"
   },
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-7.0.23.elf",
-    "version": "v7.0.23",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-7.0.23.elf",
-    "checksum": "419b56a10336dda8f4a28672271dfb635e74b05966cc08d44305e70f862dc110",
+    "filename": "ps5upload-7.0.29.elf",
+    "version": "v7.0.29",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-7.0.29.elf",
+    "checksum": "fa935b612129c225342cb7016159bfa3d5f4cbef75bb4132ce1e0ade03ae39da",
     "channel": "stable",
     "min_fw": "",
     "max_fw": "",
     "category": "Utilities",
     "description": "",
-    "last_update": "2026-10-15"
+    "last_update": "2026-10-16"
   },
   {
     "name": "onionHEN",

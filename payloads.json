@@ -1,16 +1,16 @@
 [
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-7.0.26.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-7.0.26.elf",
+    "filename": "ps5upload-7.0.31.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-7.0.31.elf",
     "source": "https://github.com/phantomptr/ps5upload/releases",
-    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v7.0.26/ps5upload-7.0.26.elf",
+    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v7.0.31/ps5upload-7.0.31.elf",
     "category": "Utilities",
     "description": "",
     "last_update": "2026-10-16",
     "release_date": "2026-10-16",
-    "version": "v7.0.26",
-    "checksum": "9b08d5a3849a10209be028b63c07a181b10fd146a7cf94fd3185f328e68dea01"
+    "version": "v7.0.31",
+    "checksum": "4ef3b781ae178bbe402a87a64b6f366d3386d6557306db0f51b46b458ffa7e24"
   },
   {
     "name": "onionHEN",
