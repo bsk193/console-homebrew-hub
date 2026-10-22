@@ -1,16 +1,55 @@
 [
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-7.1.10.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-7.1.10.elf",
+    "filename": "ps5upload-7.1.11.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-7.1.11.elf",
     "source": "https://github.com/phantomptr/ps5upload/releases",
-    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v7.1.10/ps5upload-7.1.10.elf",
+    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v7.1.11/ps5upload-7.1.11.elf",
     "category": "Utilities",
     "description": "",
-    "last_update": "2026-10-20",
-    "release_date": "2026-10-20",
-    "version": "v7.1.10",
-    "checksum": "0025ee8d5ac9b660e8bc0ee98e42675ddd69b39c58ce71ff5ac0fb97de1a6040"
+    "last_update": "2026-10-21",
+    "release_date": "2026-10-21",
+    "version": "v7.1.11",
+    "checksum": "d82120553ab8826f64e1ce3fa3137a51dc28e8ee99711ebbe783d5b86bf7f814"
+  },
+  {
+    "name": "ShadowMountPlus",
+    "filename": "shadowmountplus_1.7beta7.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/shadowmountplus_1.7beta7.elf",
+    "source": "https://github.com/drakmor/ShadowMountPlus/releases",
+    "source_direct": "https://github.com/drakmor/ShadowMountPlus/releases/download/1.7beta7/shadowmountplus.elf",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-10-21",
+    "release_date": "2026-10-21",
+    "version": "1.7beta7",
+    "checksum": "a8f9d7f76e8749912508ade0cd5c78076b5bbf1271813c78c80c3d3d9d4777ee"
+  },
+  {
+    "name": "elfldr",
+    "filename": "elfldr-ps5_v0.27.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/elfldr-ps5_v0.27.elf",
+    "source": "https://github.com/ps5-payload-dev/elfldr/releases",
+    "source_direct": "https://github.com/ps5-payload-dev/elfldr/releases/download/v0.27/elfldr-ps5.elf",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-10-21",
+    "release_date": "2026-10-21",
+    "version": "v0.27",
+    "checksum": "82f6227610172c98bad6efe68219fc93a10027035991f47eb4b75532d023407d"
+  },
+  {
+    "name": "Garlic Save Manager",
+    "filename": "garlic-savemgr_v1.14.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/garlic-savemgr_v1.14.elf",
+    "source": "https://github.com/earthonion/garlic-savemgr/releases",
+    "source_direct": "https://github.com/earthonion/garlic-savemgr/releases/download/v1.14/garlic-savemgr.elf",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-10-21",
+    "release_date": "2026-10-21",
+    "version": "v1.14",
+    "checksum": "aaec2cb0a39e94217665652fd84fa7706f09c9f8640c07785b6a68b1711f18fc"
   },
   {
     "name": "Payload Manager",
@@ -54,19 +93,6 @@
     "release_date": "2026-10-11",
     "version": "38108724867",
     "checksum": "10d8636e1b0f07f3f046aadb5c050a24ed9b0fae3585ec29a1ecabec07035589"
-  },
-  {
-    "name": "ShadowMountPlus",
-    "filename": "shadowmountplus_1.7-beta5fix1.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/shadowmountplus_1.7-beta5fix1.elf",
-    "source": "https://github.com/drakmor/ShadowMountPlus/releases",
-    "source_direct": "https://github.com/drakmor/ShadowMountPlus/releases/download/1.7-beta5fix1/shadowmountplus.elf",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-10-10",
-    "release_date": "2026-10-10",
-    "version": "1.7-beta5fix1",
-    "checksum": "e85fd63b705498488f39c09c9aea6f9fa22e0df2e932865de49a8cedf25172d5"
   },
   {
     "name": "PegasusDL",
@@ -257,19 +283,6 @@
     "release_date": "2026-09-02",
     "version": "v1.6.50",
     "checksum": "8bac520b2b99dcda8109838884380605736d8b1c23793754250bcef00536b6ab"
-  },
-  {
-    "name": "elfldr",
-    "filename": "elfldr-ps5_v0.26.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/elfldr-ps5_v0.26.elf",
-    "source": "https://github.com/ps5-payload-dev/elfldr/releases",
-    "source_direct": "https://github.com/ps5-payload-dev/elfldr/releases/download/v0.26/elfldr-ps5.elf",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-08-29",
-    "release_date": "2026-08-29",
-    "version": "v0.26",
-    "checksum": "ed6d587a057c09d6a95b2176e336d9ffc605e547ac56462128b029e47b8ccea1"
   },
   {
     "name": "PIZZA-HEN",
@@ -549,19 +562,6 @@
     "release_date": "2026-04-30",
     "version": "0.1",
     "checksum": "d74e4cd119b2bb1fd423f2f5b1c9a7f096b3e588c753af1ab48b983d56216a52"
-  },
-  {
-    "name": "Garlic Save Manager",
-    "filename": "garlic-savemgr_v1.7.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/garlic-savemgr_v1.7.elf",
-    "source": "https://github.com/earthonion/garlic-savemgr/releases",
-    "source_direct": "https://github.com/earthonion/garlic-savemgr/releases/download/v1.7/garlic-savemgr.elf",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-03-16",
-    "release_date": "2026-03-16",
-    "version": "v1.7",
-    "checksum": "124051ab3a762474720ae53187d2920bc96d6be1d69aa298e715667efc385a2f"
   },
   {
     "name": "NPFakeSignIn",
