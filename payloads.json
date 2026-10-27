@@ -1,16 +1,16 @@
 [
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-7.5.3.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-7.5.3.elf",
+    "filename": "ps5upload-8.3.0.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-8.3.0.elf",
     "source": "https://github.com/phantomptr/ps5upload/releases",
-    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v7.5.3/ps5upload-7.5.3.elf",
+    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v8.3.0/ps5upload-8.3.0.elf",
     "category": "Utilities",
     "description": "",
-    "last_update": "2026-10-25",
-    "release_date": "2026-10-25",
-    "version": "v7.5.3",
-    "checksum": "2beb6924e2ecd5fa865c1ca2211009ba4bcf03457f4b9a089ab6945ff65e3ac3"
+    "last_update": "2026-10-26",
+    "release_date": "2026-10-26",
+    "version": "v8.3.0",
+    "checksum": "9fe5785c63382b2d3c6eb131b14b7027a6c7cf0fcac011ba26cc331051e44a13"
   },
   {
     "name": "ShadowMountPlus",
