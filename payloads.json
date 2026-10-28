@@ -1,29 +1,43 @@
 [
   {
+    "name": "WebKit Autoloader",
+    "filename": "webkit-autoloader-installer_v0.6.2.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/webkit-autoloader-installer_v0.6.2.elf",
+    "source": "https://github.com/itsPLK/ps5-webkit-autoloader/releases",
+    "source_direct": "https://github.com/itsPLK/ps5-webkit-autoloader/releases/download/v0.6.2/webkit-autoloader-installer_v0.6.2.elf",
+    "asset_pattern": "webkit-autoloader-installer.*\\.elf",
+    "category": "Utilities",
+    "description": "PS5 WebKit exploit autoloader installer ELF by itsPLK.",
+    "last_update": "2026-10-28",
+    "release_date": "2026-10-28",
+    "version": "v0.6.2",
+    "checksum": "27fd335764270716972faea399a5cc7810b9e49a21abf4966d9759580756cb19"
+  },
+  {
     "name": "PS5Upload",
-    "filename": "ps5upload-8.3.0.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-8.3.0.elf",
+    "filename": "ps5upload-8.5.1.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-8.5.1.elf",
     "source": "https://github.com/phantomptr/ps5upload/releases",
-    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v8.3.0/ps5upload-8.3.0.elf",
+    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v8.5.1/ps5upload-8.5.1.elf",
     "category": "Utilities",
     "description": "",
-    "last_update": "2026-10-26",
-    "release_date": "2026-10-26",
-    "version": "v8.3.0",
-    "checksum": "9fe5785c63382b2d3c6eb131b14b7027a6c7cf0fcac011ba26cc331051e44a13"
+    "last_update": "2026-10-27",
+    "release_date": "2026-10-27",
+    "version": "v8.5.1",
+    "checksum": "2039eb340f6c09f7fce6bd726ad526adb68e9e924351b21dba74720025267481"
   },
   {
     "name": "ShadowMountPlus",
-    "filename": "shadowmountplus_1.7beta7.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/shadowmountplus_1.7beta7.elf",
+    "filename": "shadowmountplus_1.7beta9.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/shadowmountplus_1.7beta9.elf",
     "source": "https://github.com/drakmor/ShadowMountPlus/releases",
-    "source_direct": "https://github.com/drakmor/ShadowMountPlus/releases/download/1.7beta7/shadowmountplus.elf",
+    "source_direct": "https://github.com/drakmor/ShadowMountPlus/releases/download/1.7beta9/shadowmountplus.elf",
     "category": "Utilities",
     "description": "",
-    "last_update": "2026-10-21",
-    "release_date": "2026-10-21",
-    "version": "1.7beta7",
-    "checksum": "a8f9d7f76e8749912508ade0cd5c78076b5bbf1271813c78c80c3d3d9d4777ee"
+    "last_update": "2026-10-27",
+    "release_date": "2026-10-27",
+    "version": "1.7beta9",
+    "checksum": "928a5a7e33d2801c1c14a5ed8ad83fcab07957ba3a5daccd382dba67d408b3e2"
   },
   {
     "name": "elfldr",
@@ -106,20 +120,6 @@
     "release_date": "2026-10-09",
     "version": "v1.11.0",
     "checksum": "32b69c2089bb545abfabd04d5827444698f9c4f1bc4915d72247cb781e8c23d9"
-  },
-  {
-    "name": "WebKit Autoloader",
-    "filename": "webkit-autoloader-installer_v0.6.1.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/webkit-autoloader-installer_v0.6.1.elf",
-    "source": "https://github.com/itsPLK/ps5-webkit-autoloader/releases",
-    "source_direct": "https://github.com/itsPLK/ps5-webkit-autoloader/releases/download/v0.6.1/webkit-autoloader-installer_v0.6.1.elf",
-    "asset_pattern": "webkit-autoloader-installer.*\\.elf",
-    "category": "Utilities",
-    "description": "PS5 WebKit exploit autoloader installer ELF by itsPLK.",
-    "last_update": "2026-10-08",
-    "release_date": "2026-10-08",
-    "version": "v0.6.1",
-    "checksum": "f662c75a502e4f1bc41b055dcb490625f8222c499ce437dc80f439a3a279e93f"
   },
   {
     "name": "Payload Manager X",
