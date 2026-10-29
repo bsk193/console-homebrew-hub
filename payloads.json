@@ -1,5 +1,18 @@
 [
   {
+    "name": "PS5Upload",
+    "filename": "ps5upload-8.10.0.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-8.10.0.elf",
+    "source": "https://github.com/phantomptr/ps5upload/releases",
+    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v8.10.0/ps5upload-8.10.0.elf",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-10-29",
+    "release_date": "2026-10-29",
+    "version": "v8.10.0",
+    "checksum": "d863502e034ccb7d632b296305c4cb121b0716619b9cf14b8c6a88c511b6f473"
+  },
+  {
     "name": "WebKit Autoloader",
     "filename": "webkit-autoloader-installer_v0.6.2.elf",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/webkit-autoloader-installer_v0.6.2.elf",
@@ -14,30 +27,45 @@
     "checksum": "27fd335764270716972faea399a5cc7810b9e49a21abf4966d9759580756cb19"
   },
   {
-    "name": "PS5Upload",
-    "filename": "ps5upload-8.5.1.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-8.5.1.elf",
-    "source": "https://github.com/phantomptr/ps5upload/releases",
-    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v8.5.1/ps5upload-8.5.1.elf",
+    "name": "ShadowMountPlus",
+    "filename": "shadowmountplus_1.7beta10.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/shadowmountplus_1.7beta10.elf",
+    "source": "https://github.com/drakmor/ShadowMountPlus/releases",
+    "source_direct": "https://github.com/drakmor/ShadowMountPlus/releases/download/1.7beta10/shadowmountplus.elf",
     "category": "Utilities",
     "description": "",
-    "last_update": "2026-10-27",
-    "release_date": "2026-10-27",
-    "version": "v8.5.1",
-    "checksum": "2039eb340f6c09f7fce6bd726ad526adb68e9e924351b21dba74720025267481"
+    "last_update": "2026-10-28",
+    "release_date": "2026-10-28",
+    "version": "1.7beta10",
+    "checksum": "8c6798232ae2a8fbcd209ab97fc4f8d4d47cf23b7eecfaa6349c0bfeb8e4a3d3"
   },
   {
-    "name": "ShadowMountPlus",
-    "filename": "shadowmountplus_1.7beta9.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/shadowmountplus_1.7beta9.elf",
-    "source": "https://github.com/drakmor/ShadowMountPlus/releases",
-    "source_direct": "https://github.com/drakmor/ShadowMountPlus/releases/download/1.7beta9/shadowmountplus.elf",
+    "name": "zftpd",
+    "filename": "zftpd-ps5-v1.7.0.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/zftpd-ps5-v1.7.0.elf",
+    "source": "https://github.com/seregonwar/zftpd/releases",
+    "source_direct": "https://github.com/seregonwar/zftpd/releases/download/v1.7.0/zftpd-ps5-v1.7.0.elf",
+    "asset_pattern": "^zftpd-ps5-v.+\\.elf$",
     "category": "Utilities",
     "description": "",
-    "last_update": "2026-10-27",
-    "release_date": "2026-10-27",
-    "version": "1.7beta9",
-    "checksum": "928a5a7e33d2801c1c14a5ed8ad83fcab07957ba3a5daccd382dba67d408b3e2"
+    "last_update": "2026-10-28",
+    "release_date": "2026-10-28",
+    "version": "v1.7.0",
+    "checksum": "533ef2ea5f56af392419b6ce6d05112da79428c2fef252a1a2bcf388be617484"
+  },
+  {
+    "name": "Kura Loader",
+    "filename": "kura-loader_v1.6.51.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/kura-loader_v1.6.51.elf",
+    "source": "https://github.com/NookieAI/kura/releases",
+    "source_direct": "https://github.com/NookieAI/kura/releases/download/v1.6.51/kura-loader.elf",
+    "asset_pattern": "^kura-loader\\.elf$",
+    "category": "Utilities",
+    "description": "All-in-one PS5 payload: PKG installer, game dumper, cheats engine (1500+ cheats), save manager, fan control, ShadowMountPlus integration, web dashboard",
+    "last_update": "2026-10-28",
+    "release_date": "2026-10-28",
+    "version": "v1.6.51",
+    "checksum": "57f96e4ad256a53ca812129d0ed7f3e104afb7088d0d4b24876dff78050a4547"
   },
   {
     "name": "elfldr",
@@ -163,20 +191,6 @@
     "checksum": "5d1372d48f76167e3f9e24b335cf571ea6e4b3960e6b7202d2802b0f78c3a519"
   },
   {
-    "name": "zftpd",
-    "filename": "zftpd-ps5-v1.6.0.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/zftpd-ps5-v1.6.0.elf",
-    "source": "https://github.com/seregonwar/zftpd/releases",
-    "source_direct": "https://github.com/seregonwar/zftpd/releases/download/v1.6.0/zftpd-ps5-v1.6.0.elf",
-    "asset_pattern": "^zftpd-ps5-v.+\\.elf$",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-09-30",
-    "release_date": "2026-09-30",
-    "version": "v1.6.0",
-    "checksum": "39ed57bef579282418f822da2e58ea5d56acfa5aa4cd38816744b1f610bfa14d"
-  },
-  {
     "name": "PS5Debug",
     "filename": "ps5debug-NG_v1.3.2.elf",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5debug-NG_v1.3.2.elf",
@@ -269,20 +283,6 @@
     "release_date": "2026-09-05",
     "version": "v2.5",
     "checksum": "9fc48733077145d1d204a4c9cdb879baaab1e711a604dd73af0dd4a807d6bc49"
-  },
-  {
-    "name": "Kura Loader",
-    "filename": "kura-loader_v1.6.50.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/kura-loader_v1.6.50.elf",
-    "source": "https://github.com/NookieAI/kura/releases",
-    "source_direct": "https://github.com/NookieAI/kura/releases/download/v1.6.50/kura-loader.elf",
-    "asset_pattern": "^kura-loader\\.elf$",
-    "category": "Utilities",
-    "description": "All-in-one PS5 payload: PKG installer, game dumper, cheats engine (1500+ cheats), save manager, fan control, ShadowMountPlus integration, web dashboard",
-    "last_update": "2026-09-02",
-    "release_date": "2026-09-02",
-    "version": "v1.6.50",
-    "checksum": "8bac520b2b99dcda8109838884380605736d8b1c23793754250bcef00536b6ab"
   },
   {
     "name": "PIZZA-HEN",
