@@ -1,16 +1,29 @@
 [
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-10.0.1.elf",
-    "version": "v10.0.1",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-10.0.1.elf",
-    "checksum": "c5da95b6438a6d68e8c453df8ea84fb0341744f5fc9dae0781371b350450c3cc",
+    "filename": "ps5upload-10.3.0.elf",
+    "version": "v10.3.0",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-10.3.0.elf",
+    "checksum": "e3da25330b0b3aeba1ad1eab628726a7b7526bd2be2d5f9a40dba59527dfb155",
     "channel": "stable",
     "min_fw": "",
     "max_fw": "",
     "category": "Utilities",
     "description": "",
-    "last_update": "2026-10-31"
+    "last_update": "2026-11-01"
+  },
+  {
+    "name": "PS5Upload",
+    "filename": "ps5upload-10.2.1.elf",
+    "version": "v10.2.1",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-10.2.1.elf",
+    "checksum": "e497814706b2c1b914e6e6906e37884c233a0c1dde4d4d3e12ac2e53503bd00c",
+    "channel": "experimental",
+    "min_fw": "",
+    "max_fw": "",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-11-01"
   },
   {
     "name": "PS5Upload",
@@ -261,55 +274,29 @@
   },
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-6.8.0.elf",
-    "version": "v6.8.0",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-6.8.0.elf",
-    "checksum": "a9e2aef4c83dc80f3a6704310437db9bd563b83ff9e825a67ec297646a44dadd",
-    "channel": "experimental",
-    "min_fw": "",
-    "max_fw": "",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-10-10"
-  },
-  {
-    "name": "PS5Upload",
-    "filename": "ps5upload-6.7.2.elf",
-    "version": "v6.7.2",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-6.7.2.elf",
-    "checksum": "4c374114a0dcba6e71029220f2112e275719bc1d48c52bab711ed129cee0c1d3",
-    "channel": "experimental",
-    "min_fw": "",
-    "max_fw": "",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-10-09"
-  },
-  {
-    "name": "PS5Upload",
-    "filename": "ps5upload-10.0.0.elf",
-    "version": "v10.0.0",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-10.0.0.elf",
-    "checksum": "493d155cbcce86784cee589824f2f3e112e6a8d702afaf5adbc35c73b33ecb4a",
+    "filename": "ps5upload-10.2.0.elf",
+    "version": "v10.2.0",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-10.2.0.elf",
+    "checksum": "44c1f5315d0020d14311bdd6bdb079ff8dfb1311bee9972a0749648a23918804",
     "channel": "stable",
     "min_fw": "",
     "max_fw": "",
     "category": "Utilities",
     "description": "",
-    "last_update": "2026-10-30"
+    "last_update": "2026-11-01"
   },
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-9.11.0.elf",
-    "version": "v9.11.0",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-9.11.0.elf",
-    "checksum": "ea961717fb823398dbf346a215cab21aba8cf7a966fb8be53b9d48e75543bdd9",
+    "filename": "ps5upload-10.1.0.elf",
+    "version": "v10.1.0",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-10.1.0.elf",
+    "checksum": "2608d338b47438f7702a7be04a7821c637ace1e64fb046e179eb29c5385dfda0",
     "channel": "stable",
     "min_fw": "",
     "max_fw": "",
     "category": "Utilities",
     "description": "",
-    "last_update": "2026-10-30"
+    "last_update": "2026-10-31"
   },
   {
     "name": "ShadowMountPlus",
@@ -596,6 +583,19 @@
     "category": "Utilities",
     "description": "PS5 WebKit exploit autoloader installer ELF by itsPLK.",
     "last_update": "2026-10-28"
+  },
+  {
+    "name": "WebKit Autoloader",
+    "filename": "webkit-autoloader-installer_v0.7.0-dev-3a34c3b_v0.7.0-prerelease-2.elf",
+    "version": "v0.7.0-prerelease-2",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/webkit-autoloader-installer_v0.7.0-dev-3a34c3b_v0.7.0-prerelease-2.elf",
+    "checksum": "2a202023ee9ef4c742c3dc05d872c679c3570ca28e50c668b4b2e86c732d27b1",
+    "channel": "experimental",
+    "min_fw": "",
+    "max_fw": "",
+    "category": "Utilities",
+    "description": "PS5 WebKit exploit autoloader installer ELF by itsPLK.",
+    "last_update": "2026-10-31"
   },
   {
     "name": "WebKit Autoloader",
