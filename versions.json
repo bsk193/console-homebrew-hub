@@ -1,16 +1,16 @@
 [
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-10.7.2.elf",
-    "version": "v10.7.2",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-10.7.2.elf",
-    "checksum": "afb8b1965796795f308dcc8e27be1a2e80feeaddbb85e3c94823ba46dabeb0d2",
+    "filename": "ps5upload-10.7.6.elf",
+    "version": "v10.7.6",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-10.7.6.elf",
+    "checksum": "354053806db54695837576bbe7f80740420884486eef00b4a6b4c77f654035e0",
     "channel": "stable",
     "min_fw": "",
     "max_fw": "",
     "category": "Utilities",
     "description": "",
-    "last_update": "2026-11-02"
+    "last_update": "2026-11-03"
   },
   {
     "name": "PS5Upload",
@@ -235,36 +235,10 @@
   },
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-7.0.14.elf",
-    "version": "v7.0.14",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-7.0.14.elf",
-    "checksum": "0b420c7ed29ee3970af3687102e8feec469927e9b5b5a675dc02617a67cd10fa",
-    "channel": "experimental",
-    "min_fw": "",
-    "max_fw": "",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-10-12"
-  },
-  {
-    "name": "PS5Upload",
-    "filename": "ps5upload-7.0.11.elf",
-    "version": "v7.0.11",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-7.0.11.elf",
-    "checksum": "80f992eb814779ed56c73cd6a29a2b88f5323c9afa72613cc768651c9ac61cb4",
-    "channel": "experimental",
-    "min_fw": "",
-    "max_fw": "",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-10-11"
-  },
-  {
-    "name": "PS5Upload",
-    "filename": "ps5upload-10.7.1.elf",
-    "version": "v10.7.1",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-10.7.1.elf",
-    "checksum": "db65ec2b61a6532620eb7b941cf378dadd11a254f05e1dd7b545911f65bfe49e",
+    "filename": "ps5upload-10.7.5.elf",
+    "version": "v10.7.5",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-10.7.5.elf",
+    "checksum": "aca8424e53bc08da2e3b41acb5bed563a73a31698a3b69825977f95625c3decb",
     "channel": "stable",
     "min_fw": "",
     "max_fw": "",
@@ -274,16 +248,16 @@
   },
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-10.7.0.elf",
-    "version": "v10.7.0",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-10.7.0.elf",
-    "checksum": "bdb3c4fc89d4ecb13c8472f31dbadc0ca9050d3fbcb0a359de4fb745fec49949",
+    "filename": "ps5upload-10.7.4.elf",
+    "version": "v10.7.4",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-10.7.4.elf",
+    "checksum": "31b39654ddf0d7e97160f99bbae57bff669ec34c8f7dd19ae8b15668205f1e5c",
     "channel": "stable",
     "min_fw": "",
     "max_fw": "",
     "category": "Utilities",
     "description": "",
-    "last_update": "2026-11-01"
+    "last_update": "2026-11-02"
   },
   {
     "name": "ShadowMountPlus",
