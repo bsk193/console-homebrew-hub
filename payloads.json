@@ -1,16 +1,43 @@
 [
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-10.7.6.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-10.7.6.elf",
+    "filename": "ps5upload-11.0.3.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-11.0.3.elf",
     "source": "https://github.com/phantomptr/ps5upload/releases",
-    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v10.7.6/ps5upload-10.7.6.elf",
+    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v11.0.3/ps5upload-11.0.3.elf",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-11-04",
+    "release_date": "2026-11-04",
+    "version": "v11.0.3",
+    "checksum": "0b0cd0b743772cb54c106b10c97935c6e4d96ba3da1dbedb7710594f4ead73aa"
+  },
+  {
+    "name": "Payload Manager X",
+    "filename": "pldmgrx_v1.1.2_x-v1.1.2.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/pldmgrx_v1.1.2_x-v1.1.2.elf",
+    "source": "https://github.com/bsk193/ps5-payload-manager-x/releases",
+    "source_direct": "https://github.com/bsk193/ps5-payload-manager-x/releases/download/x-v1.1.2/pldmgrx_v1.1.2.elf",
     "category": "Utilities",
     "description": "",
     "last_update": "2026-11-03",
     "release_date": "2026-11-03",
-    "version": "v10.7.6",
-    "checksum": "354053806db54695837576bbe7f80740420884486eef00b4a6b4c77f654035e0"
+    "version": "x-v1.1.2",
+    "checksum": "4bb5cb4a40762998d53c50f18540473eff9ed98fa48d6684d21678c7592f3480"
+  },
+  {
+    "name": "WebKit Autoloader X",
+    "filename": "webkit-autoloader-x-installer_v1.2.0_ps5_x-v1.2.0.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/webkit-autoloader-x-installer_v1.2.0_ps5_x-v1.2.0.elf",
+    "source": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases",
+    "source_direct": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases/download/x-v1.2.0/webkit-autoloader-x-installer_v1.2.0_ps5.elf",
+    "asset_pattern": "webkit-autoloader-x-installer.*\\.elf",
+    "category": "Utilities",
+    "description": "PS5 WebKit exploit autoloader X installer ELF by bsk193.",
+    "last_update": "2026-11-03",
+    "release_date": "2026-11-03",
+    "version": "x-v1.2.0",
+    "checksum": "ea073e5eec9bac262b64ea2c8a2521c0a998c927e14e76f5ee8f2a70a0542304"
   },
   {
     "name": "ShadowMountPlus",
@@ -148,33 +175,6 @@
     "release_date": "2026-10-09",
     "version": "v1.11.0",
     "checksum": "32b69c2089bb545abfabd04d5827444698f9c4f1bc4915d72247cb781e8c23d9"
-  },
-  {
-    "name": "Payload Manager X",
-    "filename": "pldmgrx_v1.0.0_x-v1.0.0.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/pldmgrx_v1.0.0_x-v1.0.0.elf",
-    "source": "https://github.com/bsk193/ps5-payload-manager-x/releases",
-    "source_direct": "https://github.com/bsk193/ps5-payload-manager-x/releases/download/x-v1.0.0/pldmgrx_v1.0.0.elf",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-10-02",
-    "release_date": "2026-10-02",
-    "version": "x-v1.0.0",
-    "checksum": "ba83322942e95de743d28a258d99229ada95261aba5a784a652f31762e9851fc"
-  },
-  {
-    "name": "WebKit Autoloader X",
-    "filename": "webkit-autoloader-x-installer_v1.0.0_ps5_wkx-v1.0.0.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/webkit-autoloader-x-installer_v1.0.0_ps5_wkx-v1.0.0.elf",
-    "source": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases",
-    "source_direct": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases/download/wkx-v1.0.0/webkit-autoloader-x-installer_v1.0.0_ps5.elf",
-    "asset_pattern": "webkit-autoloader-x-installer.*\\.elf",
-    "category": "Utilities",
-    "description": "PS5 WebKit exploit autoloader X installer ELF by bsk193.",
-    "last_update": "2026-10-02",
-    "release_date": "2026-10-02",
-    "version": "wkx-v1.0.0",
-    "checksum": "88e4b8a3d5712515426112419df7a7afdd3a27e544f6608441d3d4d5ca194226"
   },
   {
     "name": "Spectrum Library",
