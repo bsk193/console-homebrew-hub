@@ -1,43 +1,56 @@
 [
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-11.1.0.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-11.1.0.elf",
+    "filename": "ps5upload-11.2.4.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-11.2.4.elf",
     "source": "https://github.com/phantomptr/ps5upload/releases",
-    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v11.1.0/ps5upload-11.1.0.elf",
+    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v11.2.4/ps5upload-11.2.4.elf",
     "category": "Utilities",
     "description": "",
-    "last_update": "2026-11-05",
-    "release_date": "2026-11-05",
-    "version": "v11.1.0",
-    "checksum": "1aaf50efa91aac8d26d53ce27ec223a3646a880892834977615c2770ff17197b"
+    "last_update": "2026-11-06",
+    "release_date": "2026-11-06",
+    "version": "v11.2.4",
+    "checksum": "06fb08963fb31c59ab277d5e1b109481c546fc1128a664b06ca70a9c2078e374"
   },
   {
     "name": "Payload Manager X",
-    "filename": "pldmgrx_v1.1.4_x-v1.1.4.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/pldmgrx_v1.1.4_x-v1.1.4.elf",
+    "filename": "pldmgrx_v1.1.5_x-v1.1.5.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/pldmgrx_v1.1.5_x-v1.1.5.elf",
     "source": "https://github.com/bsk193/ps5-payload-manager-x/releases",
-    "source_direct": "https://github.com/bsk193/ps5-payload-manager-x/releases/download/x-v1.1.4/pldmgrx_v1.1.4.elf",
+    "source_direct": "https://github.com/bsk193/ps5-payload-manager-x/releases/download/x-v1.1.5/pldmgrx_v1.1.5.elf",
     "category": "Utilities",
     "description": "",
     "last_update": "2026-11-05",
     "release_date": "2026-11-05",
-    "version": "x-v1.1.4",
-    "checksum": "dac802d01dd41b011bed547af04b6a43872a2478b962fc4d7e46aac734fc2787"
+    "version": "x-v1.1.5",
+    "checksum": "b3466551464b9cb3535a05d86cd1a4dee854204f8e5a675363d9316fee7d7da3"
   },
   {
     "name": "WebKit Autoloader X",
-    "filename": "webkit-autoloader-x-installer_v1.2.2_ps5_x-v1.2.2.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/webkit-autoloader-x-installer_v1.2.2_ps5_x-v1.2.2.elf",
+    "filename": "webkit-autoloader-x-installer_v1.2.3_ps5_x-v1.2.3.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/webkit-autoloader-x-installer_v1.2.3_ps5_x-v1.2.3.elf",
     "source": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases",
-    "source_direct": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases/download/x-v1.2.2/webkit-autoloader-x-installer_v1.2.2_ps5.elf",
+    "source_direct": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases/download/x-v1.2.3/webkit-autoloader-x-installer_v1.2.3_ps5.elf",
     "asset_pattern": "webkit-autoloader-x-installer.*\\.elf",
     "category": "Utilities",
     "description": "PS5 WebKit exploit autoloader X installer ELF by bsk193.",
     "last_update": "2026-11-05",
     "release_date": "2026-11-05",
-    "version": "x-v1.2.2",
-    "checksum": "af8f33545bd8f94fa1835167725080bba93219ee2714f025043d72612724043b"
+    "version": "x-v1.2.3",
+    "checksum": "8bd9dc51aa5c6bda5cf4d429c350c263b8e4537254d64bf3cba1c84c82289f8d"
+  },
+  {
+    "name": "Garlic Save Manager",
+    "filename": "garlic-savemgr_v1.15-beta9.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/garlic-savemgr_v1.15-beta9.elf",
+    "source": "https://github.com/earthonion/garlic-savemgr/releases",
+    "source_direct": "https://github.com/earthonion/garlic-savemgr/releases/download/v1.15-beta9/garlic-savemgr.elf",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-11-05",
+    "release_date": "2026-11-05",
+    "version": "v1.15-beta9",
+    "checksum": "88ed2c04be0f20342a6e83eef7a97c8f3de9f15359f5859e00083e534888a062"
   },
   {
     "name": "ShadowMountPlus",
@@ -106,19 +119,6 @@
     "release_date": "2026-10-21",
     "version": "v0.27",
     "checksum": "82f6227610172c98bad6efe68219fc93a10027035991f47eb4b75532d023407d"
-  },
-  {
-    "name": "Garlic Save Manager",
-    "filename": "garlic-savemgr_v1.14.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/garlic-savemgr_v1.14.elf",
-    "source": "https://github.com/earthonion/garlic-savemgr/releases",
-    "source_direct": "https://github.com/earthonion/garlic-savemgr/releases/download/v1.14/garlic-savemgr.elf",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-10-21",
-    "release_date": "2026-10-21",
-    "version": "v1.14",
-    "checksum": "aaec2cb0a39e94217665652fd84fa7706f09c9f8640c07785b6a68b1711f18fc"
   },
   {
     "name": "Payload Manager",
