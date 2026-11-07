@@ -1,16 +1,43 @@
 [
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-11.2.4.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-11.2.4.elf",
+    "filename": "ps5upload-11.3.0.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-11.3.0.elf",
     "source": "https://github.com/phantomptr/ps5upload/releases",
-    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v11.2.4/ps5upload-11.2.4.elf",
+    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v11.3.0/ps5upload-11.3.0.elf",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-11-07",
+    "release_date": "2026-11-07",
+    "version": "v11.3.0",
+    "checksum": "db1d0e2be1d14fea08b42a9289e20ebe8609011f288b29b7dd73c957b2616ffd"
+  },
+  {
+    "name": "Garlic Save Manager",
+    "filename": "garlic-savemgr_v1.15-beta12.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/garlic-savemgr_v1.15-beta12.elf",
+    "source": "https://github.com/earthonion/garlic-savemgr/releases",
+    "source_direct": "https://github.com/earthonion/garlic-savemgr/releases/download/v1.15-beta12/garlic-savemgr.elf",
     "category": "Utilities",
     "description": "",
     "last_update": "2026-11-06",
     "release_date": "2026-11-06",
-    "version": "v11.2.4",
-    "checksum": "06fb08963fb31c59ab277d5e1b109481c546fc1128a664b06ca70a9c2078e374"
+    "version": "v1.15-beta12",
+    "checksum": "ad4b49a58375def0d1d4d3772b369ee5d50dc2ff571bdd4ea0c6294a822fe0fc"
+  },
+  {
+    "name": "WebKit Autoloader",
+    "filename": "webkit-autoloader-installer_v0.7.0.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/webkit-autoloader-installer_v0.7.0.elf",
+    "source": "https://github.com/itsPLK/ps5-webkit-autoloader/releases",
+    "source_direct": "https://github.com/itsPLK/ps5-webkit-autoloader/releases/download/v0.7.0/webkit-autoloader-installer_v0.7.0.elf",
+    "asset_pattern": "webkit-autoloader-installer.*\\.elf",
+    "category": "Utilities",
+    "description": "PS5 WebKit exploit autoloader installer ELF by itsPLK.",
+    "last_update": "2026-11-06",
+    "release_date": "2026-11-06",
+    "version": "v0.7.0",
+    "checksum": "10cb38baae078e41f252cffb0d356829c89ee63fd3234f1fd1e6b19f81eab1c7"
   },
   {
     "name": "Payload Manager X",
@@ -40,19 +67,6 @@
     "checksum": "8bd9dc51aa5c6bda5cf4d429c350c263b8e4537254d64bf3cba1c84c82289f8d"
   },
   {
-    "name": "Garlic Save Manager",
-    "filename": "garlic-savemgr_v1.15-beta9.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/garlic-savemgr_v1.15-beta9.elf",
-    "source": "https://github.com/earthonion/garlic-savemgr/releases",
-    "source_direct": "https://github.com/earthonion/garlic-savemgr/releases/download/v1.15-beta9/garlic-savemgr.elf",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-11-05",
-    "release_date": "2026-11-05",
-    "version": "v1.15-beta9",
-    "checksum": "88ed2c04be0f20342a6e83eef7a97c8f3de9f15359f5859e00083e534888a062"
-  },
-  {
     "name": "ShadowMountPlus",
     "filename": "shadowmountplus_1.7beta11.elf",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/shadowmountplus_1.7beta11.elf",
@@ -64,20 +78,6 @@
     "release_date": "2026-10-29",
     "version": "1.7beta11",
     "checksum": "08c843018750bef013fe3a4de5f80c5c9738c6c2dafa2406e6b6e68d7585f3da"
-  },
-  {
-    "name": "WebKit Autoloader",
-    "filename": "webkit-autoloader-installer_v0.6.2.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/webkit-autoloader-installer_v0.6.2.elf",
-    "source": "https://github.com/itsPLK/ps5-webkit-autoloader/releases",
-    "source_direct": "https://github.com/itsPLK/ps5-webkit-autoloader/releases/download/v0.6.2/webkit-autoloader-installer_v0.6.2.elf",
-    "asset_pattern": "webkit-autoloader-installer.*\\.elf",
-    "category": "Utilities",
-    "description": "PS5 WebKit exploit autoloader installer ELF by itsPLK.",
-    "last_update": "2026-10-28",
-    "release_date": "2026-10-28",
-    "version": "v0.6.2",
-    "checksum": "27fd335764270716972faea399a5cc7810b9e49a21abf4966d9759580756cb19"
   },
   {
     "name": "zftpd",
