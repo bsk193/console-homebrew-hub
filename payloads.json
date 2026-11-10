@@ -1,16 +1,29 @@
 [
   {
     "name": "Garlic Save Manager",
-    "filename": "garlic-savemgr_v1.15-beta18.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/garlic-savemgr_v1.15-beta18.elf",
+    "filename": "garlic-savemgr_v1.15-beta21.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/garlic-savemgr_v1.15-beta21.elf",
     "source": "https://github.com/earthonion/garlic-savemgr/releases",
-    "source_direct": "https://github.com/earthonion/garlic-savemgr/releases/download/v1.15-beta18/garlic-savemgr.elf",
+    "source_direct": "https://github.com/earthonion/garlic-savemgr/releases/download/v1.15-beta21/garlic-savemgr.elf",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-11-10",
+    "release_date": "2026-11-10",
+    "version": "v1.15-beta21",
+    "checksum": "49228b624f1ba85e67f1e2cadbeb93963c52ebc656449f68cf8f041fce801e6b"
+  },
+  {
+    "name": "PS5Upload",
+    "filename": "ps5upload-12.4.2.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-12.4.2.elf",
+    "source": "https://github.com/phantomptr/ps5upload/releases",
+    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v12.4.2/ps5upload-12.4.2.elf",
     "category": "Utilities",
     "description": "",
     "last_update": "2026-11-09",
     "release_date": "2026-11-09",
-    "version": "v1.15-beta18",
-    "checksum": "4e8886c440ca9daff416c36167a30240a4a0b4858703be0749b490b3efb0e62a"
+    "version": "v12.4.2",
+    "checksum": "06dbb9022bcb71cb95178c29c9da39ae6e60d17becf9c1ff8938c98bd15fa8ef"
   },
   {
     "name": "WebKit Autoloader",
@@ -27,17 +40,18 @@
     "checksum": "df60538570e9811bb0b4652a3fdb3e1a35ec3455b3ca7c80edc4140c5bb47ce2"
   },
   {
-    "name": "PS5Upload",
-    "filename": "ps5upload-11.6.0.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-11.6.0.elf",
-    "source": "https://github.com/phantomptr/ps5upload/releases",
-    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v11.6.0/ps5upload-11.6.0.elf",
+    "name": "ftpsrv",
+    "filename": "ftpsrv-ps5_v0.22.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ftpsrv-ps5_v0.22.elf",
+    "source": "https://github.com/ps5-payload-dev/ftpsrv/releases",
+    "source_direct": "https://github.com/ps5-payload-dev/ftpsrv/releases/download/v0.22/ftpsrv-ps5.elf",
+    "asset_pattern": "^ftpsrv-ps5\\.elf$",
     "category": "Utilities",
     "description": "",
     "last_update": "2026-11-08",
     "release_date": "2026-11-08",
-    "version": "v11.6.0",
-    "checksum": "13dca53b2216d920ad94b9564cba68fd085d4ea0f1f0193be5b5299c9872e67e"
+    "version": "v0.22",
+    "checksum": "41148c2c1cad1ea9e7cfde03e389fa918e3338e896d06167346de09adbdc8757"
   },
   {
     "name": "Payload Manager X",
@@ -324,20 +338,6 @@
     "release_date": "2026-08-21",
     "version": "v1.0.4",
     "checksum": "e55e90aaade13b6e0d4316c1597ef90a21b67a06475c3e25de054224bc1e941b"
-  },
-  {
-    "name": "ftpsrv",
-    "filename": "ftpsrv-ps5_v0.21.1.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ftpsrv-ps5_v0.21.1.elf",
-    "source": "https://github.com/ps5-payload-dev/ftpsrv/releases",
-    "source_direct": "https://github.com/ps5-payload-dev/ftpsrv/releases/download/v0.21.1/ftpsrv-ps5.elf",
-    "asset_pattern": "^ftpsrv-ps5\\.elf$",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-08-20",
-    "release_date": "2026-08-20",
-    "version": "v0.21.1",
-    "checksum": "7d4b31c83eae4e056580482a3a074e1db25922efc74ac1e439473b45d71a5938"
   },
   {
     "name": "BFpilot",
