@@ -1,10 +1,10 @@
 [
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-12.4.12.elf",
-    "version": "v12.4.12",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-12.4.12.elf",
-    "checksum": "7ce3b5fc3b5815b8b39711aacc83df247d93947fc165810161f1336b8527f2e3",
+    "filename": "ps5upload-12.4.14.elf",
+    "version": "v12.4.14",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-12.4.14.elf",
+    "checksum": "17dc0827d3d49701534a8b2f7dca337ec88f213eb825ed028763be5eeec72f7e",
     "channel": "stable",
     "min_fw": "",
     "max_fw": "",
@@ -196,10 +196,10 @@
   },
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-12.4.11.elf",
-    "version": "v12.4.11",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-12.4.11.elf",
-    "checksum": "476d569b8dc68bd07c6ef225b166e9d7e1f3aca843a8057ab08880a2c5c9cbd8",
+    "filename": "ps5upload-12.4.13.elf",
+    "version": "v12.4.13",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-12.4.13.elf",
+    "checksum": "be4879657d76ad8880b3176a215387462776569b9d6e077f29b2ff544d43338a",
     "channel": "stable",
     "min_fw": "",
     "max_fw": "",
@@ -209,16 +209,16 @@
   },
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-12.4.10.elf",
-    "version": "v12.4.10",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-12.4.10.elf",
-    "checksum": "c51f52398aa9a9b0c78b5561010dffbaf198511f3daf8388bcf293918810f483",
+    "filename": "ps5upload-12.4.12.elf",
+    "version": "v12.4.12",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-12.4.12.elf",
+    "checksum": "7ce3b5fc3b5815b8b39711aacc83df247d93947fc165810161f1336b8527f2e3",
     "channel": "stable",
     "min_fw": "",
     "max_fw": "",
     "category": "Utilities",
     "description": "",
-    "last_update": "2026-11-11"
+    "last_update": "2026-11-12"
   },
   {
     "name": "Garlic Save Manager",
