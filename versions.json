@@ -1,16 +1,16 @@
 [
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-12.4.17.elf",
-    "version": "v12.4.17",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-12.4.17.elf",
-    "checksum": "f145f543338cab0b5f67946d1b98c4cc2dab1ca6e898f088da41e525fb0c6903",
+    "filename": "ps5upload-12.4.20.elf",
+    "version": "v12.4.20",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-12.4.20.elf",
+    "checksum": "23584161eb851eca7185ede538387da8a280cfc84092e0c3dff488e41975cbba",
     "channel": "stable",
     "min_fw": "",
     "max_fw": "",
     "category": "Utilities",
     "description": "",
-    "last_update": "2026-11-13"
+    "last_update": "2026-11-14"
   },
   {
     "name": "PS5Upload",
@@ -183,29 +183,29 @@
   },
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-12.4.16.elf",
-    "version": "v12.4.16",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-12.4.16.elf",
-    "checksum": "e533fae01c1277a5504bc2d74fbb05544f9cc2070c1e7f6aae7a6e03e0e54fc3",
+    "filename": "ps5upload-12.4.19.elf",
+    "version": "v12.4.19",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-12.4.19.elf",
+    "checksum": "cd3765ab9c643190bb3ca00b40de0dee5a90d6f5f0f1085d0decd056c5d91889",
     "channel": "stable",
     "min_fw": "",
     "max_fw": "",
     "category": "Utilities",
     "description": "",
-    "last_update": "2026-11-13"
+    "last_update": "2026-11-14"
   },
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-12.4.15.elf",
-    "version": "v12.4.15",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-12.4.15.elf",
-    "checksum": "e70e8c6fcc8f0f833f71e9c631d9be809cd567e31f7d7e8e8ecf3e4e5f87f8e6",
+    "filename": "ps5upload-12.4.18.elf",
+    "version": "v12.4.18",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-12.4.18.elf",
+    "checksum": "36f7d3a1982b372e6d63d4de6528492a3f2c85366d7b88ff091d760212c7d03e",
     "channel": "stable",
     "min_fw": "",
     "max_fw": "",
     "category": "Utilities",
     "description": "",
-    "last_update": "2026-11-13"
+    "last_update": "2026-11-14"
   },
   {
     "name": "Garlic Save Manager",
