@@ -1,30 +1,71 @@
 [
   {
+    "name": "Kura Loader",
+    "filename": "kura-loader_v1.6.53.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/kura-loader_v1.6.53.elf",
+    "source": "https://github.com/NookieAI/kura/releases",
+    "source_direct": "https://github.com/NookieAI/kura/releases/download/v1.6.53/kura-loader.elf",
+    "asset_pattern": "^kura-loader\\.elf$",
+    "category": "Utilities",
+    "description": "All-in-one PS5 payload: PKG installer, game dumper, cheats engine (1500+ cheats), save manager, fan control, ShadowMountPlus integration, web dashboard",
+    "last_update": "2026-11-21",
+    "release_date": "2026-11-21",
+    "version": "v1.6.53",
+    "checksum": "c3bfb1db0f1fda7fe640e95711d78ae2cf9e94efa12742b5fc19c660ec43d627"
+  },
+  {
     "name": "WebKit Autoloader",
-    "filename": "webkit-autoloader-installer_v0.8.0.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/webkit-autoloader-installer_v0.8.0.elf",
+    "filename": "webkit-autoloader-installer_v0.8.2.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/webkit-autoloader-installer_v0.8.2.elf",
     "source": "https://github.com/itsPLK/ps5-webkit-autoloader/releases",
-    "source_direct": "https://github.com/itsPLK/ps5-webkit-autoloader/releases/download/v0.8.0/webkit-autoloader-installer_v0.8.0.elf",
+    "source_direct": "https://github.com/itsPLK/ps5-webkit-autoloader/releases/download/v0.8.2/webkit-autoloader-installer_v0.8.2.elf",
     "asset_pattern": "webkit-autoloader-installer.*\\.elf",
     "category": "Utilities",
     "description": "PS5 WebKit exploit autoloader installer ELF by itsPLK.",
     "last_update": "2026-11-20",
     "release_date": "2026-11-20",
-    "version": "v0.8.0",
-    "checksum": "015959f76c48e45df2b331ee2a6b52096afa3c2f9f1cbf9a29e67be699a6455b"
+    "version": "v0.8.2",
+    "checksum": "1c415bc124944c85b86a4751006b98010b977f142142d67306d13804899bad54"
   },
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-12.6.13.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-12.6.13.elf",
+    "filename": "ps5upload-12.6.16.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-12.6.16.elf",
     "source": "https://github.com/phantomptr/ps5upload/releases",
-    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v12.6.13/ps5upload-12.6.13.elf",
+    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v12.6.16/ps5upload-12.6.16.elf",
     "category": "Utilities",
     "description": "",
-    "last_update": "2026-11-19",
-    "release_date": "2026-11-19",
-    "version": "v12.6.13",
-    "checksum": "83b0222253285e3a95db389caaffb3063ea659a3940e7f95c70f5568f887365e"
+    "last_update": "2026-11-20",
+    "release_date": "2026-11-20",
+    "version": "v12.6.16",
+    "checksum": "e02f0251c60e3de979e99b37b2f5276f7887a535223f78f35daf73735cea6576"
+  },
+  {
+    "name": "Garlic Save Manager",
+    "filename": "garlic-savemgr_v2.0.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/garlic-savemgr_v2.0.elf",
+    "source": "https://github.com/earthonion/garlic-savemgr/releases",
+    "source_direct": "https://github.com/earthonion/garlic-savemgr/releases/download/v2.0/garlic-savemgr.elf",
+    "category": "Utilities",
+    "description": "",
+    "last_update": "2026-11-20",
+    "release_date": "2026-11-20",
+    "version": "v2.0",
+    "checksum": "805902a1ef3d54854850518b11602e0ab973192e0338fc30b28a3a9e4aae5be6"
+  },
+  {
+    "name": "WebKit Autoloader X",
+    "filename": "webkit-autoloader-x-installer_v1.3.1_ps5_x-v1.3.1.elf",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/webkit-autoloader-x-installer_v1.3.1_ps5_x-v1.3.1.elf",
+    "source": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases",
+    "source_direct": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases/download/x-v1.3.1/webkit-autoloader-x-installer_v1.3.1_ps5.elf",
+    "asset_pattern": "webkit-autoloader-x-installer.*\\.elf",
+    "category": "Utilities",
+    "description": "PS5 WebKit exploit autoloader X installer ELF by bsk193.",
+    "last_update": "2026-11-20",
+    "release_date": "2026-11-20",
+    "version": "x-v1.3.1",
+    "checksum": "1ee40bdde72914f02fbb0edf05571cf82647285bb8783a2dc32f3b1dc527357c"
   },
   {
     "name": "elfldr",
@@ -38,19 +79,6 @@
     "release_date": "2026-11-19",
     "version": "v0.28",
     "checksum": "66968bae6159d8fb06125fcd43fb99cf64d6bfdf730c70f37a6f5d056ff63458"
-  },
-  {
-    "name": "Garlic Save Manager",
-    "filename": "garlic-savemgr_v1.15-beta23.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/garlic-savemgr_v1.15-beta23.elf",
-    "source": "https://github.com/earthonion/garlic-savemgr/releases",
-    "source_direct": "https://github.com/earthonion/garlic-savemgr/releases/download/v1.15-beta23/garlic-savemgr.elf",
-    "category": "Utilities",
-    "description": "",
-    "last_update": "2026-11-11",
-    "release_date": "2026-11-11",
-    "version": "v1.15-beta23",
-    "checksum": "b4667d5bc57998e66fd4b093d367a26bec47c9517e2c0d53e0fc5eef5f2c4098"
   },
   {
     "name": "ftpsrv",
@@ -93,20 +121,6 @@
     "checksum": "b3466551464b9cb3535a05d86cd1a4dee854204f8e5a675363d9316fee7d7da3"
   },
   {
-    "name": "WebKit Autoloader X",
-    "filename": "webkit-autoloader-x-installer_v1.2.3_ps5_x-v1.2.3.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/webkit-autoloader-x-installer_v1.2.3_ps5_x-v1.2.3.elf",
-    "source": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases",
-    "source_direct": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases/download/x-v1.2.3/webkit-autoloader-x-installer_v1.2.3_ps5.elf",
-    "asset_pattern": "webkit-autoloader-x-installer.*\\.elf",
-    "category": "Utilities",
-    "description": "PS5 WebKit exploit autoloader X installer ELF by bsk193.",
-    "last_update": "2026-11-05",
-    "release_date": "2026-11-05",
-    "version": "x-v1.2.3",
-    "checksum": "8bd9dc51aa5c6bda5cf4d429c350c263b8e4537254d64bf3cba1c84c82289f8d"
-  },
-  {
     "name": "zftpd",
     "filename": "zftpd-ps5-v1.7.0.elf",
     "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/zftpd-ps5-v1.7.0.elf",
@@ -119,20 +133,6 @@
     "release_date": "2026-10-28",
     "version": "v1.7.0",
     "checksum": "533ef2ea5f56af392419b6ce6d05112da79428c2fef252a1a2bcf388be617484"
-  },
-  {
-    "name": "Kura Loader",
-    "filename": "kura-loader_v1.6.51.elf",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/kura-loader_v1.6.51.elf",
-    "source": "https://github.com/NookieAI/kura/releases",
-    "source_direct": "https://github.com/NookieAI/kura/releases/download/v1.6.51/kura-loader.elf",
-    "asset_pattern": "^kura-loader\\.elf$",
-    "category": "Utilities",
-    "description": "All-in-one PS5 payload: PKG installer, game dumper, cheats engine (1500+ cheats), save manager, fan control, ShadowMountPlus integration, web dashboard",
-    "last_update": "2026-10-28",
-    "release_date": "2026-10-28",
-    "version": "v1.6.51",
-    "checksum": "57f96e4ad256a53ca812129d0ed7f3e104afb7088d0d4b24876dff78050a4547"
   },
   {
     "name": "Payload Manager",
