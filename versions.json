@@ -1,16 +1,16 @@
 [
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-12.6.26.elf",
-    "version": "v12.6.26",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-12.6.26.elf",
-    "checksum": "19da4e310383d9152cb96f078ae63e4207dec42ac8793a81719505605253eb13",
+    "filename": "ps5upload-12.6.27.elf",
+    "version": "v12.6.27",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-12.6.27.elf",
+    "checksum": "db18b4299ce969c6df2adaccddc5014cc80406eac3ec783cbbacd9f0d39c14f9",
     "channel": "stable",
     "min_fw": "",
     "max_fw": "",
     "category": "Utilities",
     "description": "",
-    "last_update": "2026-11-24"
+    "last_update": "2026-11-25"
   },
   {
     "name": "PS5Upload",
@@ -222,23 +222,23 @@
   },
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-12.6.25.elf",
-    "version": "v12.6.25",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-12.6.25.elf",
-    "checksum": "ebf636206c7773a7232801923e321bebafef592c26de611980d9f83c8e8e0343",
+    "filename": "ps5upload-12.6.26.elf",
+    "version": "v12.6.26",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-12.6.26.elf",
+    "checksum": "19da4e310383d9152cb96f078ae63e4207dec42ac8793a81719505605253eb13",
     "channel": "stable",
     "min_fw": "",
     "max_fw": "",
     "category": "Utilities",
     "description": "",
-    "last_update": "2026-11-23"
+    "last_update": "2026-11-24"
   },
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-12.6.24.elf",
-    "version": "v12.6.24",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-12.6.24.elf",
-    "checksum": "d39590efb253c80d8121c4e6c28db794c582d144d8b81a434e404a51c724f026",
+    "filename": "ps5upload-12.6.25.elf",
+    "version": "v12.6.25",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-12.6.25.elf",
+    "checksum": "ebf636206c7773a7232801923e321bebafef592c26de611980d9f83c8e8e0343",
     "channel": "stable",
     "min_fw": "",
     "max_fw": "",
@@ -427,45 +427,6 @@
     "category": "Utilities",
     "description": "PS5 WebKit exploit autoloader installer ELF by itsPLK.",
     "last_update": "2026-11-20"
-  },
-  {
-    "name": "Kura Loader",
-    "filename": "kura-loader-ps5_v1.6.60.elf",
-    "version": "v1.6.60",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/kura-loader-ps5_v1.6.60.elf",
-    "checksum": "c3bfb1db0f1fda7fe640e95711d78ae2cf9e94efa12742b5fc19c660ec43d627",
-    "channel": "stable",
-    "min_fw": "",
-    "max_fw": "",
-    "category": "Utilities",
-    "description": "All-in-one PS5 payload: PKG installer, game dumper, cheats engine (1500+ cheats), save manager, fan control, ShadowMountPlus integration, web dashboard",
-    "last_update": "2026-11-22"
-  },
-  {
-    "name": "Kura Loader",
-    "filename": "kura-loader-ps5_v1.6.59.elf",
-    "version": "v1.6.59",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/kura-loader-ps5_v1.6.59.elf",
-    "checksum": "c3bfb1db0f1fda7fe640e95711d78ae2cf9e94efa12742b5fc19c660ec43d627",
-    "channel": "stable",
-    "min_fw": "",
-    "max_fw": "",
-    "category": "Utilities",
-    "description": "All-in-one PS5 payload: PKG installer, game dumper, cheats engine (1500+ cheats), save manager, fan control, ShadowMountPlus integration, web dashboard",
-    "last_update": "2026-11-22"
-  },
-  {
-    "name": "Kura Loader",
-    "filename": "kura-loader-ps5_v1.6.58.elf",
-    "version": "v1.6.58",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/kura-loader-ps5_v1.6.58.elf",
-    "checksum": "c3bfb1db0f1fda7fe640e95711d78ae2cf9e94efa12742b5fc19c660ec43d627",
-    "channel": "stable",
-    "min_fw": "",
-    "max_fw": "",
-    "category": "Utilities",
-    "description": "All-in-one PS5 payload: PKG installer, game dumper, cheats engine (1500+ cheats), save manager, fan control, ShadowMountPlus integration, web dashboard",
-    "last_update": "2026-11-22"
   },
   {
     "name": "Garlic Save Manager",
