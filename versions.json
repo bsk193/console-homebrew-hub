@@ -1,16 +1,16 @@
 [
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-12.6.27.elf",
-    "version": "v12.6.27",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-12.6.27.elf",
-    "checksum": "db18b4299ce969c6df2adaccddc5014cc80406eac3ec783cbbacd9f0d39c14f9",
+    "filename": "ps5upload-12.6.31.elf",
+    "version": "v12.6.31",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-12.6.31.elf",
+    "checksum": "57bc3a0df33226c7f37c9d870aa21ec549dedb2414c09e8c47e647d14f125e45",
     "channel": "stable",
     "min_fw": "",
     "max_fw": "",
     "category": "Utilities",
     "description": "",
-    "last_update": "2026-11-25"
+    "last_update": "2026-11-26"
   },
   {
     "name": "PS5Upload",
@@ -222,29 +222,29 @@
   },
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-12.6.26.elf",
-    "version": "v12.6.26",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-12.6.26.elf",
-    "checksum": "19da4e310383d9152cb96f078ae63e4207dec42ac8793a81719505605253eb13",
+    "filename": "ps5upload-12.6.30.elf",
+    "version": "v12.6.30",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-12.6.30.elf",
+    "checksum": "722badeb0943b624660a6614a403cfba46ed28094701ab3a49655037d5a8e6a9",
     "channel": "stable",
     "min_fw": "",
     "max_fw": "",
     "category": "Utilities",
     "description": "",
-    "last_update": "2026-11-24"
+    "last_update": "2026-11-25"
   },
   {
     "name": "PS5Upload",
-    "filename": "ps5upload-12.6.25.elf",
-    "version": "v12.6.25",
-    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-12.6.25.elf",
-    "checksum": "ebf636206c7773a7232801923e321bebafef592c26de611980d9f83c8e8e0343",
+    "filename": "ps5upload-12.6.29.elf",
+    "version": "v12.6.29",
+    "url": "https://github.com/bsk193/console-homebrew-hub/releases/download/v1.0.0/ps5upload-12.6.29.elf",
+    "checksum": "2f9c8f3810629de0d8add238bc47b99801374fae2d0a2f83ddcc013729bb706b",
     "channel": "stable",
     "min_fw": "",
     "max_fw": "",
     "category": "Utilities",
     "description": "",
-    "last_update": "2026-11-23"
+    "last_update": "2026-11-25"
   },
   {
     "name": "WebKit Autoloader",
